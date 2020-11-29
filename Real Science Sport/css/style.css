@@ -301,6 +301,18 @@ a.home_screan:active{
 	text-decoration:none;
 }
 
+.home_screan_part > a:nth-of-type(1){
+	animation-delay: 0.2s;
+} 
+
+.home_screan_part > a:nth-of-type(2){
+	animation-delay: 0.4s;
+} 
+
+.home_screan_part > a:nth-of-type(3){
+	animation-delay: 0.6s;
+} 
+
 #lang{
 	position:absolute;
 	top:80%;
@@ -405,8 +417,8 @@ span.home_screan_underline{
 
 .box{
 	width: 50%;
-	height:100%;
-	padding:10px 40px;
+	height:80%;
+	padding:30px 40px;
 	
 	display: table-cell;
 	float: none;
@@ -414,6 +426,10 @@ span.home_screan_underline{
 	overflow:hidden;
 	
 	position:relative;
+}
+
+#Biofeedback > .box{
+	padding:50px 40px;
 }
 
 .YtPlayer {width:100%; padding-bottom:56.25%; position:relative; height:0; dispay:block;}
@@ -529,7 +545,6 @@ footer  p{
 }
 
 footer a{
-	display: inline-block;
 	color: white;
 	margin: 6px 16px 0 0;
 }
@@ -556,9 +571,9 @@ footer img{
 
 
 #oferta{
-padding:50px;
   text-align:center;
   position:relative;
+  padding: 40px 0 0 0;
   
   background: white;
   border-top: 3px solid #eee;
@@ -601,7 +616,7 @@ a.btn:hover{
 .photo_container{  
   display: flex;
   margin: 50px 0 0 0;
-  padding:25px 0;
+  padding:25px;
   flex-wrap: wrap;
   justify-content: space-around;
   background: rgb(250,250,250);
@@ -669,4 +684,6 @@ a.btn:hover{
 	background:black;
 	color:white;
 }
+
+
 
