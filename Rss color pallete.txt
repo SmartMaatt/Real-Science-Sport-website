@@ -1,0 +1,4 @@
+RSS color pallete
+White: ffffff
+Black: #333
+Orange: #f7ac25
