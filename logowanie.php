@@ -11,8 +11,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <meta name="description" content="Projekt zaliczeniony IO grupy 3-2-1">
-  <meta name="author" content="IO grupa 3-2-1">
+  <meta name="author" content="DeVision303" />
+  <meta name="description" content="Official website of Real Science Sport" />
   
   <title>Logowanie-Real Science Sport</title>
   
@@ -59,7 +59,7 @@
                 <div class="card-header border-0">
                   <div class="card-title text-center">
                     <div class="p-1">
-                      <img class="brand-logo" alt="Real science sport logo" src="app-assets/images/logoBlack.png">
+                      <img class="display-logo" alt="Real science sport logo" src="app-assets/images/logoBlack.png">
                     </div>
                   </div>
                   <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
@@ -97,7 +97,7 @@
                       </div>
 					  
                       <button type="submit" class="btn btn-lg btn-block btn-rss"><i class="ft-unlock"></i> Zaloguj</button>
-					  <a class="knefel" href="rejestracja.php"><button type="button" class="btn btn-lg btn-block btn-info"><i class="ft-plus-square"></i> Rejestracja</button></a>
+					  <a class="btn btn-lg btn-block btn-info" role="button" href="rejestracja.php"><i class="ft-plus-square"></i> Rejestracja</a>
 					  <?php
 							if (isset($_SESSION['error'])) {
 								echo $_SESSION['error'];

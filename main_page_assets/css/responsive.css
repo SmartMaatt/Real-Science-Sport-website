@@ -88,7 +88,7 @@ and (max-device-width : 1100px) {
 	ul.bar {display:flex; flex-direction: row-reverse;}
 	ul.bar > li{width:33%; float:left; margin:0;}
 	ul.bar > li:nth-child(1) {display:none;}
-	ul.bar > li:nth-of-type(2) a {margin-top: 0; padding: 5px 0;}
+	ul.bar > li:nth-of-type(2) a {margin-top: 3px;padding: 5px 0;}
 
 	
 	#home_screan{background-position: center; background-size: cover;}
@@ -120,7 +120,7 @@ and (max-device-width : 1100px) {
 	span.underline_short{
 	width:40%;}
 	
-	#wraper{top:75vh;}
+	#wraper{top: 80vh;}
 	#oferta {padding:30px;}
 	#oferta h1{width:100%;}
 	#oferta p.text{width:80%;}

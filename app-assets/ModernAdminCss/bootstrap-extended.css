@@ -62,7 +62,8 @@ a:focus {
   padding: 4px 6px; }
 
 ol li, ul li, dl li {
-  line-height: 1.8; }
+  line-height: 1.8;
+  }
 
 code {
   padding: .2rem .4rem;
@@ -497,7 +498,8 @@ select.form-control {
       color: #fff; }
 
 .nav-item i {
-  margin-right: 0.5rem; }
+  margin-right: 0.5rem;
+  }
 
 .show > .dropdown-menu {
   transform: scale(1, 1);
@@ -735,7 +737,8 @@ select.form-control {
     transition: 300ms ease all; }
     .header-navbar .navbar-header .navbar-brand {
       padding: 17px 0px;
-      margin-right: 0; }
+      margin-right: 0;
+      }
       .header-navbar .navbar-header .navbar-brand .brand-logo {
         width: 36px; }
       .header-navbar .navbar-header .navbar-brand .brand-text {
@@ -747,7 +750,8 @@ select.form-control {
     padding: 0rem 18px;
     height: 5rem;
     transition: 300ms ease all;
-    background: inherit; }
+    background: inherit;
+    }
     .header-navbar .navbar-container ul.nav li > a.nav-link {
       padding: 1.9rem 1rem;
       font-size: 1.15rem; }
@@ -796,16 +800,18 @@ select.form-control {
   .header-navbar.navbar-without-menu .navbar-container {
     margin-left: 0; }
   .header-navbar .nav-item + .nav-item {
-    margin-left: 0rem; }
+    margin-left: 0rem;
+    }
   @media (max-width: 767.98px) {
     .header-navbar .navbar-header {
       width: 100% !important;
       padding: 0.5rem 1rem; }
       .header-navbar .navbar-header .menu-toggle {
-        top: 2px;
-        position: relative; }
+        position: relative;
+        }
       .header-navbar .navbar-header .open-navbar-container i {
-        font-size: 1.8rem; }
+        font-size: 1.8rem;
+        }
       .header-navbar .navbar-header .navbar-brand {
         position: absolute;
         left: 50%;
@@ -854,7 +860,8 @@ select.form-control {
     .navbar-semi-dark .navbar-header .brand-text {
       color: #FFFFFF; }
   .navbar-semi-dark .navbar-nav li {
-    line-height: 1; }
+    line-height: 1;
+    }
   .navbar-semi-dark .navbar-nav .nav-link {
     color: #6B6F82; }
   .navbar-semi-dark .navbar-nav .active.nav-link {
@@ -1011,7 +1018,8 @@ select.form-control {
   .header-navbar .navbar-nav .show {
     position: static; }
   .header-navbar .navbar-nav .open-navbar-container {
-    padding-top: 0.625rem; }
+    padding-top: 0.625rem;
+    }
   .header-navbar .navbar-container .show .dropdown-menu {
     right: 0;
     left: 0 !important;
@@ -1077,7 +1085,8 @@ select.form-control {
   .header-navbar .navbar-container ul.nav li > a.nav-link i.flag-icon {
     margin-right: 0.2rem; }
   .header-navbar .navbar-container ul.nav li a.dropdown-user-link {
-    padding: 0.8rem 0.6rem; }
+    /* padding: 0.8rem 0.6rem; */
+    }
   .header-navbar .navbar-container ul.nav li .dropdown-toggle::after {
     margin-right: 0;
     margin-left: -2px; } }
@@ -1447,7 +1456,8 @@ select.form-control {
   padding: 0; }
 
 .nav {
-  border-radius: 0.25rem; }
+  border-radius: 0.25rem;
+  }
   .nav.wrap-border {
     border: 1px solid #ddd; }
     .nav.wrap-border li.nav-header {
@@ -1467,7 +1477,8 @@ select.form-control {
   .nav .nav-item .nav-link {
     display: inline-flex; }
   .nav .nav-item i {
-    align-self: center; }
+    align-self: center;
+    }
   .nav .dropdown-divider {
     margin: 0.5rem 0; }
   .nav .modern-nav-toggle {
@@ -1816,7 +1827,8 @@ select.form-control {
       .nav.nav-tabs.nav-iconfall .nav-item a.dropdown-toggle:after {
         margin-top: -1rem; }
   .nav .nav-item .nav-link {
-    display: block; }
+    display: block;
+    }
   .nav .dropdown-divider {
     margin: 0.5rem 0; }
 

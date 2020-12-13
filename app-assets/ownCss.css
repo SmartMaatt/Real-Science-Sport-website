@@ -3,6 +3,7 @@
 	font-weight: bold;
 }
 
+/*Sekcja tła podstron*/
 .bgLoggin
 {
   background: url(images/bgLogging.jpg);
@@ -17,15 +18,28 @@
 }
 
 
-img.brand-logo{
+img.display-logo{
 	width:250px;
 }
 
+img.sideBar-logo-revieved{
+	margin: 0 10px;
+	width:150px;
+}
+
+img.sideBar-logo-collapsed{    
+	margin: 0;
+    width: 50px;
+    padding: 0 10px 0 0;
+}
+
+/*Hiperłącze będące przyciskiem*/
 a.knefel{
 	display: block;
     margin: 10px auto;
 }
 
+/*Kolor przycisków w stylu rrs*/
 .btn-rss{
 	color: white;
 	background: #f7ac25;
@@ -34,6 +48,20 @@ a.knefel{
 .btn-rss:hover{
 	background: #f6bd55;
 }
+
+/*DODATKOWE STYLE GÓRNEGO NAV BARA*/
+/*Dodatkowa stylizacja nazwiska w górnym nav barze*/
+.surNavBar{
+	margin-top:7px;
+}
+
+/*Podświetlenie ikon po najechaniu*/
+a.iconsRss > i:hover{
+	color: #f7ac25;
+	pointer: cursor;
+	animation-delay: .6s;
+}
+
 
 /*Style tabeli*/
 #table_card
@@ -254,10 +282,26 @@ a.knefel{
 
 
 /*RESPONSYWNOŚĆ APLIKACJI*/
-@media screen and (max-width: 700px){
+@media screen and (min-width:768px) and (max-width: 1000px){
+
+.navbar-container h3
+{
+	font-size: 1.4rem;
+}
+}
+
+
+@media screen and (max-width: 767px){
 
 .bgLoggin {background-size: cover; background-position: 0;}
 img.brand-logo{width:200px;}
+	
+.navbar-container h3
+{
+	font-size: 2rem;
+	width: 100%;
+	margin: 8px 0 2px 0;
+}
 	
 	.card-title{font-size:1rem !important; font-weight:700 !important;}
 	.card-text{font-size:1rem !important; width:75%;}

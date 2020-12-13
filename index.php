@@ -8,7 +8,7 @@
 	
 	<title>Real Science Sport</title>
 	
-	<meta name="author" content="Mateusz Płonka/ SmartMatt" />
+	<meta name="author" content="DeVision303" />
 	<meta name="description" content="Official website of Real Science Sport" />
 	
 	<link rel="shortcut icon" type="image/x-icon" href="app-assets/images/logoCard.png">
@@ -338,7 +338,7 @@
 	
 	<!-- Stopka -->
 	<footer>	
-		<p>RealScienceSport.com - Copyright All Rights Reserved © 2020</br><span style="color: #f7ac25;">Designed by <a href="http://smartmatt.pl/">SmartMatt</a></span></br>Version 1.2</p>
+		<p>RealScienceSport.com - Copyright All Rights Reserved © 2020</br><span style="color: #f7ac25;">Designed by <a href="http://smartmatt.pl/">DeVision303</a></span></br>Version 1.3</p>
 			<a href="#"><i class="icon icon-youtube-play"></i></a>
 			<a href="#"><i class="icon icon-instagram"></i></a>
 			<a href="#"><i class="icon icon-instagram"></i></a>

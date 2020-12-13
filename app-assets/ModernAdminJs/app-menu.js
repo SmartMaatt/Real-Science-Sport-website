@@ -794,9 +794,12 @@
       function modernMenuExpand(){
         if( $body.data('menu') == 'vertical-menu-modern'){
           $('.main-menu, .navbar-header').addClass('expanded');
+          $('.sideBar-logo-collapsed').attr('src','app-assets/images/logoWhite.png');
+          $('.sideBar-logo-collapsed').attr('class','sideBar-logo-revieved');
           if($body.hasClass('menu-collapsed')){
             var $listItem = $('.main-menu li.menu-collapsed-open'),
             $subList = $listItem.children('ul');
+             
 
             $subList.hide().slideDown(200, function() {
                 $(this).css('display', '');
@@ -814,6 +817,8 @@
             if($('.main-menu:hover').length === 0 && $('.navbar-header:hover').length === 0){
 
               $('.main-menu, .navbar-header').removeClass('expanded');
+              $('.sideBar-logo-revieved').attr('src','app-assets/images/logoCard.png');
+              $('.sideBar-logo-revieved').attr('class','sideBar-logo-collapsed');
               if($body.hasClass('menu-collapsed')){
                 var $listItem = $('.main-menu li.open'),
                 $subList = $listItem.children('ul');

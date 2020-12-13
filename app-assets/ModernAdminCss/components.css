@@ -340,7 +340,8 @@ footer.footer-dark {
         .main-menu.menu-dark .navigation > li.open > a {
           color: #c3c3c3;
           background: #23262f;
-          border-right: 4px solid #1E9FF2; }
+          border-right: 4px solid #f7ac25;
+          }
         .main-menu.menu-dark .navigation > li.open .hover > a {
           transform: translateX(-4px); }
         .main-menu.menu-dark .navigation > li:not(.open) > ul {
