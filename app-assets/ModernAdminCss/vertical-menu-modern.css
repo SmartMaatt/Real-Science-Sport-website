@@ -33,7 +33,7 @@ body.vertical-layout.vertical-menu-modern.menu-expanded .navbar.navbar-brand-cen
   width: auto; }
 
 body.vertical-layout.vertical-menu-modern.menu-expanded .navbar .navbar-container {
-  margin-left: 300px;
+  margin-left: 280px;
   }
 
 body.vertical-layout.vertical-menu-modern.menu-expanded .navbar .navbar-brand .brand-text {
@@ -97,7 +97,7 @@ body.vertical-layout.vertical-menu-modern.menu-collapsed .navbar.navbar-brand-ce
   width: auto; }
 
 body.vertical-layout.vertical-menu-modern.menu-collapsed .navbar .navbar-container {
-  margin-left: 60px; }
+  margin-left: 40px; }
 
 body.vertical-layout.vertical-menu-modern.menu-collapsed .main-menu {
   width: 60px;

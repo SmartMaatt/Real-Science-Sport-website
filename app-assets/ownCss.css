@@ -1,9 +1,10 @@
 .navbar-container h3
 {
 	font-weight: bold;
+	margin-left: 20px;
 }
 
-/*Sekcja tła podstron*/
+/*Sekcja tÅ‚a podstron*/
 .bgLoggin
 {
   background: url(images/bgLogging.jpg);
@@ -33,13 +34,13 @@ img.sideBar-logo-collapsed{
     padding: 0 10px 0 0;
 }
 
-/*Hiperłącze będące przyciskiem*/
+/*HiperÅ‚Ä…cze bÄ™dÄ…ce przyciskiem*/
 a.knefel{
 	display: block;
     margin: 10px auto;
 }
 
-/*Kolor przycisków w stylu rrs*/
+/*Kolor przyciskÃ³w w stylu rrs*/
 .btn-rss{
 	color: white;
 	background: #f7ac25;
@@ -49,13 +50,13 @@ a.knefel{
 	background: #f6bd55;
 }
 
-/*DODATKOWE STYLE GÓRNEGO NAV BARA*/
-/*Dodatkowa stylizacja nazwiska w górnym nav barze*/
+/*DODATKOWE STYLE GÃ“RNEGO NAV BARA*/
+/*Dodatkowa stylizacja nazwiska w gÃ³rnym nav barze*/
 .surNavBar{
 	margin-top:7px;
 }
 
-/*Podświetlenie ikon po najechaniu*/
+/*PodÅ›wietlenie ikon po najechaniu*/
 a.iconsRss > i:hover{
 	color: #f7ac25;
 	pointer: cursor;
@@ -255,7 +256,7 @@ a.iconsRss > i:hover{
 	margin-top:10px;
 }
 
-/*Karta: powodzenie w złożeniu rezerwacji*/
+/*Karta: powodzenie w zÅ‚oÅ¼eniu rezerwacji*/
 #infoCard_1 > h2{
 	font-weight: bold;
 	text-align:center;
@@ -281,7 +282,7 @@ a.iconsRss > i:hover{
 
 
 
-/*RESPONSYWNOŚĆ APLIKACJI*/
+/*RESPONSYWNOÅšÄ† APLIKACJI*/
 @media screen and (min-width:768px) and (max-width: 1000px){
 
 .navbar-container h3

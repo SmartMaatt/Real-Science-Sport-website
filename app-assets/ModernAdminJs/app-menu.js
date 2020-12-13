@@ -443,6 +443,11 @@
           $('.modern-nav-toggle').find('.toggle-icon')
           .removeClass('ft-toggle-right').addClass('ft-toggle-left');
 
+          if(defMenu == "collapsed"){
+            $('.sideBar-logo-revieved').attr('src','app-assets/images/logoCard.png');
+              $('.sideBar-logo-revieved').attr('class','sideBar-logo-collapsed');
+          }
+          
           // Code for localStorage
           if (typeof(Storage) !== "undefined") {
             localStorage.setItem("menuLocked", "false");
