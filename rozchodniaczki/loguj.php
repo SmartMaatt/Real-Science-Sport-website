@@ -42,7 +42,7 @@
 				$_SESSION['id_opcji'] 	= 1;
                 unset($_SESSION['error']);
 
-                header('Location: ../rezerwacja.php');
+                header('Location: ../clientPanelTemplate.php');
             } else {
                 return_to_login_page($incorrect_login_or_password);
             }

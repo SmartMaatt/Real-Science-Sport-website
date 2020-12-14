@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html class="loading" lang="pl" data-textdirection="ltr">
-<?php
-	session_start();
-
-	if (isset($_SESSION['id_osoby'])) {
-		header('Location: rezerwacja.php');
-	}
-?>
+<html class="loading" lang="en" data-textdirection="ltr">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
   <meta name="author" content="DeVision303" />
   <meta name="description" content="Official website of Real Science Sport" />
+  <title>Reset hasła - Real Science Sport</title>
+  <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
+  rel="stylesheet">
+  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
+  rel="stylesheet">
   
-  <title>Logowanie-Real Science Sport</title>
   
   <!-- Ikony i animacje -->
   <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/logoCard.png">
@@ -34,79 +33,69 @@
   <link rel="stylesheet" type="text/css" href="app-assets/ModernAdminCss/palette-gradient.css">
   <link rel="stylesheet" type="text/css" href="app-assets/ModernAdminCss/login-register.css">
 
+  <!-- TOASTR PLUGIN -->
+  <link rel="stylesheet" type="text/css" href="app-assets/ModernAdminCss/plugins/toastr.css">
+	
   <!-- WŁASNE STYLE CSS -->
   <link rel="stylesheet" type="text/css" href="app-assets/ownCss.css">
   
+  
 </head>
-
-
-
-<body 
-	class="vertical-layout vertical-menu-modern 1-column menu-expanded blank-page blank-page"
-	data-open="click" 
-	data-menu="vertical-menu-modern" 
-	data-col="1-column"
->
+<body class="vertical-layout vertical-menu-modern 1-column  bgResetPass menu-expanded blank-page blank-page"
+data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
+  <!-- ////////////////////////////////////////////////////////////////////////////-->
+  
+  <div class="blackBlind"></div>
+  
   <div class="app-content content">
-    <div class="content-wrapper bgLoggin">
-	<div class="blackBlind"></div>
+    <div class="content-wrapper">
       <div class="content-header row">
       </div>
       <div class="content-body">
         <section class="flexbox-container">
           <div class="col-12 d-flex align-items-center justify-content-center">
             <div class="col-md-4 col-12 box-shadow-2 p-0">
-              <div class="card border-grey border-lighten-3 m-0">
-                <div class="card-header border-0">
+              <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
+                <div class="card-header border-0 pb-0">
                   <div class="card-title text-center">
-                    <div class="p-1">
-                      <img class="display-logo" alt="Real science sport logo" src="app-assets/images/logoBlack.png">
-                    </div>
+                    <img class="display-logo" src="app-assets/images/logoBlack.png" alt="Real Science Sport logo">
                   </div>
-                  <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
-                    <span>Panel logowania</span>
-                  </h6>
                 </div>
-                <div class="card-content">
+                <div class="card-content mt-1">
+                  <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1">
+                    <span><b>Resetuj hasło</b></span>
+                  </p>
                   <div class="card-body">
 				  
-					<!-- FORMULARZ LOGOWANIE-->
-                    <form class="form-horizontal form-simple" action="rozchodniaczki/loguj.php" method ="post" novalidate>
+				  
+				  <!--FORMULARZ RESETU TUTAJ TUTAJ -->
+				  
+				  
+                    <form class="form-horizontal" action="index.html" novalidate>
                       <fieldset class="form-group position-relative has-icon-left">
-					  
-                        <input type="text" class="form-control form-control-lg input-lg" id="user-name" placeholder="Wprowadź login" name="login" required>
+                        <input type="text" class="form-control" id="user-name" placeholder="Imie">
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>
                       </fieldset>
-					  
-                      <fieldset class="form-group position-relative has-icon-left mb-3">
-                        <input type="password" class="form-control form-control-lg input-lg" id="user-password" placeholder="Wprowadź hasło" name="haslo" required>
+					  <fieldset class="form-group position-relative has-icon-left">
+                        <input type="text" class="form-control" id="user-name" placeholder="Nazwisko">
                         <div class="form-control-position">
-                          <i class="la la-key"></i>
+                          <i class="ft-user"></i>
                         </div>
                       </fieldset>
-                      <div class="form-group row">
-							<div class="col-md-6 col-12 text-center text-md-left">
-                          <fieldset>
-                            <input type="checkbox" id="remember-me" class="chk-remember">
-                            <label for="Zapamiętaj mnie"> Zapamiętaj mnie</label>
-                          </fieldset>
-                        </div> 
-						
-                        <div class="col-md-6 col-12 text-center text-md-right"><a href="resetuj_haslo.php" class="card-link">Zapomniałeś hasła?</a></div>
-                      </div>
-					  
-                      <button type="submit" class="btn btn-lg btn-block btn-rss"><i class="ft-unlock"></i> Zaloguj</button>
-					  <a class="btn btn-lg btn-block btn-info" role="button" href="rejestracja.php"><i class="ft-plus-square"></i> Rejestracja</a>
-					  <?php
-							if (isset($_SESSION['error'])) {
-								echo $_SESSION['error'];
-							}
-						?>
+                      <fieldset class="form-group position-relative has-icon-left">
+                        <input type="email" class="form-control" id="user-email" placeholder="E-mail"
+                        required>
+                        <div class="form-control-position">
+                          <i class="ft-mail"></i>
+                        </div>
+                      </fieldset>
+                      
+                      <button type="submit" class="btn btn-lg btn-block btn-warning"><i class="ft-download-cloud"></i> Resetuj</button>
+					  <a class="btn btn-lg btn-block btn-info" role="button" href="logowanie.php"><i class="ft-unlock"></i> Logowanie powrót</a>
+					  <a class="btn btn-lg btn-block btn-success" id="testKnefel1" role="button" href="#"><i class="ft-check"></i> Testowy knefel</a>
                     </form>
-					<!-- ////////////////////////////////////////////////////////////////////////////-->
-					
                   </div>
                 </div>
               </div>
@@ -117,7 +106,6 @@
     </div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
-  
   <!-- BEGIN VENDOR JS-->
   <script src="app-assets/ModernAdminJs/vendors.min.js" type="text/javascript"></script>
   
@@ -131,6 +119,9 @@
 
   <!-- BEGIN PAGE LEVEL JS-->
   <script src="app-assets/ModernAdminJs/form-login-register.js" type="text/javascript"></script>
-
+  
+  <!-- TOASTR PLUGIN -->
+  <script src="app-assets/ModernAdminJs/toastrConfig.js" type="text/javascript"></script>
+  <script src="app-assets/ModernAdminJs/toastrPlugin.js" type="text/javascript"></script>
 </body>
 </html>

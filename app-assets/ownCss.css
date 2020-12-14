@@ -5,6 +5,15 @@
 }
 
 /*Sekcja tÅ‚a podstron*/
+
+.blackBlind{
+	width:100%;
+	height:100%;
+	background: black;
+	opacity: 0.2;
+	position: absolute;
+}
+
 .bgLoggin
 {
   background: url(images/bgLogging.jpg);
@@ -18,6 +27,10 @@
     background-size: cover;
 }
 
+.bgResetPass{
+	background: url(images/bgResetPass.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
 
 img.display-logo{
 	width:250px;

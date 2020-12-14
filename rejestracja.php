@@ -41,6 +41,7 @@
 <body class="vertical-layout vertical-menu-modern 1-column  bgRegistration menu-expanded blank-page blank-page"
 data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
   <!-- ////////////////////////////////////////////////////////////////////////////-->
+  <div class="blackBlind"></div>
   <div class="app-content content">
     <div class="content-wrapper">
       <div class="content-header row">
@@ -102,6 +103,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                       
                       <button type="submit" class="btn btn-lg btn-block btn-rss"><i class="ft-plus-square"></i> Rejestracja</button>
 					  <a  class="btn btn-lg btn-block btn-info" role="button" href="logowanie.php"><i class="ft-unlock"></i> Logowanie powrót</a>
+					  
                     </form>
                   </div>
                 </div>
