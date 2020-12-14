@@ -71,22 +71,21 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
 				  <!--FORMULARZ RESETU TUTAJ TUTAJ -->
 				  
 				  
-                    <form class="form-horizontal" action="index.html" novalidate>
+                    <form class="form-horizontal" action="rozchodniaczki/resetuj_haslo.php" method="post">
                       <fieldset class="form-group position-relative has-icon-left">
-                        <input type="text" class="form-control" id="user-name" placeholder="Imie">
+                        <input type="text" class="form-control" id="user-name" placeholder="Imie" name='imie' required>
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>
                       </fieldset>
 					  <fieldset class="form-group position-relative has-icon-left">
-                        <input type="text" class="form-control" id="user-name" placeholder="Nazwisko">
+                        <input type="text" class="form-control" id="user-name" placeholder="Nazwisko" name='nazwisko' required>
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>
                       </fieldset>
                       <fieldset class="form-group position-relative has-icon-left">
-                        <input type="email" class="form-control" id="user-email" placeholder="E-mail"
-                        required>
+                        <input type="email" class="form-control" id="user-email" placeholder="E-mail" name='mail' required>
                         <div class="form-control-position">
                           <i class="ft-mail"></i>
                         </div>

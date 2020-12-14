@@ -5,9 +5,9 @@
 
 	$page_info="Page info undefined";
 
-	 if (!isset($_SESSION['id_osoby'])) 
+	 if (!isset($_SESSION['id_klienta'])) 
 	 {
-		 header('Location: index.php');
+		 header('Location: logowanie.php');
 	 }
 	
 	 // if(isset($_POST['global_date']))
@@ -105,7 +105,7 @@
             <li class="dropdown dropdown-user nav-item">
               <a class="dropdown-toggle nav-link dropdown-user-link surNavBar" href="#" data-toggle="dropdown">
                 <span>Witaj,
-                  <span class="text-bold-700"><?php  echo $_SESSION['Imie']." ".$_SESSION['Nazwisko']; ?></span>
+                  <span class="text-bold-700"><?php  echo $_SESSION['imie']." ".$_SESSION['nazwisko']; ?></span>
                 </span>
               </a>
               <div class="dropdown-menu dropdown-menu-right">

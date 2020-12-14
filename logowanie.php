@@ -3,8 +3,8 @@
 <?php
 	session_start();
 
-	if (isset($_SESSION['id_osoby'])) {
-		header('Location: rezerwacja.php');
+	if (isset($_SESSION['id_klienta'])) {
+		header('Location: panel.php');
 	}
 ?>
 <head>
@@ -74,7 +74,7 @@
                     <form class="form-horizontal form-simple" action="rozchodniaczki/loguj.php" method ="post" novalidate>
                       <fieldset class="form-group position-relative has-icon-left">
 					  
-                        <input type="text" class="form-control form-control-lg input-lg" id="user-name" placeholder="Wprowadź login" name="login" required>
+                        <input type="email" class="form-control form-control-lg input-lg" id="user-name" placeholder="Wprowadź mail" name="mail" required>
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>
@@ -90,15 +90,15 @@
 							<div class="col-md-6 col-12 text-center text-md-left">
                           <fieldset>
                             <input type="checkbox" id="remember-me" class="chk-remember">
-                            <label for="Zapamiętaj mnie"> Zapamiętaj mnie</label>
+                            <label for="Zapamiętaj mnie">Zapamiętaj mnie</label>
                           </fieldset>
                         </div> 
 						
-                        <div class="col-md-6 col-12 text-center text-md-right"><a href="resetuj_haslo.php" class="card-link">Zapomniałeś hasła?</a></div>
+                        <div class="col-md-6 col-12 text-center text-md-right"><a href="reset_hasla.php" class="card-link">Zapomniałeś hasła?</a></div>
                       </div>
 					  
-                      <button type="submit" class="btn btn-lg btn-block btn-rss"><i class="ft-unlock"></i> Zaloguj</button>
-					  <a class="btn btn-lg btn-block btn-info" role="button" href="rejestracja.php"><i class="ft-plus-square"></i> Rejestracja</a>
+                      <button type="submit" class="btn btn-lg btn-block btn-rss"><i class="ft-unlock"></i>Zaloguj</button>
+					  <a class="btn btn-lg btn-block btn-info" role="button" href="rejestracja.php"><i class="ft-plus-square"></i>Rejestracja</a>
 					  <?php
 							if (isset($_SESSION['error'])) {
 								echo $_SESSION['error'];

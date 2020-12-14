@@ -1,12 +1,11 @@
 <?php
     session_start();
-    unset($_SESSION['id_osoby']);
-    unset($_SESSION['login']);
-    unset($_SESSION['error']);
-	unset($_SESSION['Imie']);
-    unset($_SESSION['Nazwisko']);
-	unset($_SESSION['id_klubu']);
+    unset($_SESSION['id_klienta']);
+    unset($_SESSION['imie']);
+    unset($_SESSION['naziwsko']);
+	unset($_SESSION['mail']);
     unset($_SESSION['data']);
+	unset($_SESSION['io_opcji']);
 
-    header('Location: ../index.php');
+    header('Location: ../logowanie.php');
 ?>

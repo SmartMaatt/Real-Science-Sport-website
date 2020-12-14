@@ -66,36 +66,33 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
 				  <!--FORMULARZ REJESTACJI TUTAJ -->
 				  
 				  
-                    <form class="form-horizontal" action="index.html" novalidate>
+                    <form class="form-horizontal" action="rozchodniaczki/rejestruj.php" method="post">
                       <fieldset class="form-group position-relative has-icon-left">
-                        <input type="text" class="form-control" id="user-name" placeholder="Imie">
+                        <input type="text" class="form-control" id="user-name" placeholder="Imie" name="imie" required>
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>
                       </fieldset>
 					  <fieldset class="form-group position-relative has-icon-left">
-                        <input type="text" class="form-control" id="user-name" placeholder="Nazwisko">
+                        <input type="text" class="form-control" id="user-name" placeholder="Nazwisko" name="nazwisko" required>
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>
                       </fieldset>
                       <fieldset class="form-group position-relative has-icon-left">
-                        <input type="email" class="form-control" id="user-email" placeholder="E-mail"
-                        required>
+                        <input type="email" class="form-control" id="user-email" placeholder="E-mail" name="mail" required>
                         <div class="form-control-position">
                           <i class="ft-mail"></i>
                         </div>
                       </fieldset>
                       <fieldset class="form-group position-relative has-icon-left">
-                        <input type="password" class="form-control" id="user-password" placeholder="Hasło"
-                        required>
+                        <input type="password" class="form-control" id="user-password" placeholder="Hasło" name="haslo1" required>
                         <div class="form-control-position">
                           <i class="la la-key"></i>
                         </div>
                       </fieldset>
 					  <fieldset class="form-group position-relative has-icon-left">
-                        <input type="password" class="form-control" id="user-password" placeholder="Powtórz hasło"
-                        required>
+                        <input type="password" class="form-control" id="user-password" placeholder="Powtórz hasło" name="haslo2" required>
                         <div class="form-control-position">
                           <i class="la la-key"></i>
                         </div>
