@@ -5,7 +5,8 @@
     unset($_SESSION['naziwsko']);
 	unset($_SESSION['mail']);
     unset($_SESSION['data']);
-	unset($_SESSION['io_opcji']);
+	unset($_SESSION['id_opcji']);
+	unset($_SESSION['id_podopcji']);
 
     header('Location: ../logowanie.php');
 ?>

@@ -2,6 +2,14 @@ document.addEventListener('DOMContentLoaded', function() {
 correctForms();	
 });
 
+
+//Załaduj nową opcję
+function nowaOpcja(opcja, podopcja){
+	document.getElementById('nowyIdOpcjiInput').setAttribute("value", opcja);
+	document.getElementById('nowyIdPodopcjiInput').setAttribute("value", podopcja);
+	document.getElementById('nowyIdOpcji').submit();	
+}
+
 //Wprowadza dane czasu do formularzy rezerwacji
 function correctForms()
 {

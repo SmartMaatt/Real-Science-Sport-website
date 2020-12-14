@@ -4,7 +4,7 @@
 	margin-left: 20px;
 }
 
-/*Sekcja tÅ‚a podstron*/
+/*Sekcja tÃƒâ€¦Ã¢â‚¬Å¡a podstron*/
 
 .blackBlind{
 	width:100%;
@@ -47,13 +47,13 @@ img.sideBar-logo-collapsed{
     padding: 0 10px 0 0;
 }
 
-/*HiperÅ‚Ä…cze bÄ™dÄ…ce przyciskiem*/
+/*HiperÃƒâ€¦Ã¢â‚¬Å¡Ãƒâ€žÃ¢â‚¬Â¦cze bÃƒâ€žÃ¢â€žÂ¢dÃƒâ€žÃ¢â‚¬Â¦ce przyciskiem*/
 a.knefel{
 	display: block;
     margin: 10px auto;
 }
 
-/*Kolor przyciskÃ³w w stylu rrs*/
+/*Kolor przyciskÃƒÆ’Ã‚Â³w w stylu rrs*/
 .btn-rss{
 	color: white;
 	background: #f7ac25;
@@ -63,19 +63,18 @@ a.knefel{
 	background: #f6bd55;
 }
 
-/*DODATKOWE STYLE GÃ“RNEGO NAV BARA*/
-/*Dodatkowa stylizacja nazwiska w gÃ³rnym nav barze*/
+/*DODATKOWE STYLE GÃƒÆ’Ã¢â‚¬Å“RNEGO NAV BARA*/
+/*Dodatkowa stylizacja nazwiska w gÃƒÆ’Ã‚Â³rnym nav barze*/
 .surNavBar{
 	margin-top:7px;
 }
 
-/*PodÅ›wietlenie ikon po najechaniu*/
+/*PodÃƒâ€¦Ã¢â‚¬Âºwietlenie ikon po najechaniu*/
 a.iconsRss > i:hover{
 	color: #f7ac25;
 	pointer: cursor;
 	animation-delay: .6s;
 }
-
 
 /*Style tabeli*/
 #table_card
@@ -269,7 +268,7 @@ a.iconsRss > i:hover{
 	margin-top:10px;
 }
 
-/*Karta: powodzenie w zÅ‚oÅ¼eniu rezerwacji*/
+/*Karta: powodzenie w zÃƒâ€¦Ã¢â‚¬Å¡oÃƒâ€¦Ã‚Â¼eniu rezerwacji*/
 #infoCard_1 > h2{
 	font-weight: bold;
 	text-align:center;
@@ -295,7 +294,7 @@ a.iconsRss > i:hover{
 
 
 
-/*RESPONSYWNOÅšÄ† APLIKACJI*/
+/*RESPONSYWNOÃƒâ€¦Ã…Â¡Ãƒâ€žÃ¢â‚¬Â  APLIKACJI*/
 @media screen and (min-width:768px) and (max-width: 1000px){
 
 .navbar-container h3
