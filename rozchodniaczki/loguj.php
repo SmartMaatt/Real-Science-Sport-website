@@ -2,8 +2,8 @@
     session_start();
 
     function return_to_login_page($reason) {
-        $_SESSION['error'] = '<span style="color:red">'.$reason.'</span>';
         header('Location: ../logowanie.php');
+		$_SESSION['error'] = 'onload="loadToast(\'2\',\''.$reason.'\',\'\')"';
         exit(0);
     }
     $incorrect_login_or_password = 'Nieprawidłowy mail lub hasło!';
@@ -36,15 +36,16 @@
                 unset($_SESSION['error']);
                 header('Location: ../panel.php');
             } else {
-                //return_to_login_page($incorrect_login_or_password);
+                return_to_login_page($incorrect_login_or_password);
             }
         } else {
-			//return_to_login_page($incorrect_login_or_password);
+			return_to_login_page($incorrect_login_or_password);
         }
         $result->free_result();
 		
 		$connection->close();
 	} else {
-		echo 'Error: '.$connection->connect_errno;
+		header('Location: ../logowanie.php');
+		$_SESSION['error'] = 'onload="loadToast(\'3\',\'Błąd bazy danych\',\'Error '.$connection->connect_errno.'\')"';
 	}
 ?>

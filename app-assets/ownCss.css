@@ -17,9 +17,12 @@
 .bgLoggin
 {
   background: url(images/bgLogging.jpg);
-  background-repeat: no-repeat;
-  background-size: 150%;
-  background-position: 70% 40%;
+    background-size: 125%;
+    background-position: 80% 40%;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
 }
 
 .bgRegistration{
@@ -295,18 +298,15 @@ a.iconsRss > i:hover{
 
 
 /*RESPONSYWNOÃƒâ€¦Ã…Â¡Ãƒâ€žÃ¢â‚¬Â  APLIKACJI*/
-@media screen and (min-width:768px) and (max-width: 1000px){
-
-.navbar-container h3
-{
-	font-size: 1.4rem;
-}
+@media screen and (min-width:768px) and (max-width: 1365px){
+.bgLoggin {background-size: cover;}
+.navbar-container h3{font-size: 1.4rem;}
 }
 
 
 @media screen and (max-width: 767px){
 
-.bgLoggin {background-size: cover; background-position: 0;}
+.bgLoggin {background-size: cover;}
 img.brand-logo{width:200px;}
 	
 .navbar-container h3

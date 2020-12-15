@@ -2,7 +2,7 @@
     session_start();
 
     function return_to_login_page($reason) {
-        $_SESSION['error'] = '<span style="color:red">'.$reason.'</span>';
+        $_SESSION['error'] = 'onload="loadToast(\'2\',\''.$reason.'\',\'\')"';
         header('Location: ../logowanie.php');
         exit(0);
     }
@@ -59,6 +59,7 @@
 		
 		$connection->close();
 	} else {
-		echo 'Error: '.$connection->connect_errno;
+		header('Location: ../reset_hasla.php');
+        $_SESSION['error'] = 'onload="loadToast(\'3\',\'Błąd bazy danych\',\'Error '.$connection->connect_errno.'\')"';
 	}
 ?>

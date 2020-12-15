@@ -1,3 +1,15 @@
+<?php
+	session_start();
+	$error_msg = "";
+
+	if (isset($_SESSION['id_klienta'])) {
+		header('Location: panel.php');
+	}
+	elseif(isset($_SESSION['error'])){
+		$error_msg = $_SESSION['error'];
+		unset($_SESSION['error']);
+	}
+?>
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <head>
@@ -42,7 +54,7 @@
   
 </head>
 <body class="vertical-layout vertical-menu-modern 1-column  bgResetPass menu-expanded blank-page blank-page"
-data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
+data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php echo $error_msg;?>>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
   
   <div class="blackBlind"></div>
@@ -54,7 +66,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
       <div class="content-body">
         <section class="flexbox-container">
           <div class="col-12 d-flex align-items-center justify-content-center">
-            <div class="col-md-4 col-12 box-shadow-2 p-0">
+            <div class="col-lg-5 col-md-6 col-12 box-shadow-2 p-0">
               <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
                 <div class="card-header border-0 pb-0">
                   <div class="card-title text-center">
@@ -119,8 +131,12 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
   <!-- BEGIN PAGE LEVEL JS-->
   <script src="app-assets/ModernAdminJs/form-login-register.js" type="text/javascript"></script>
   
-  <!-- TOASTR PLUGIN -->
+ <!-- TOASTR PLUGIN -->
   <script src="app-assets/ModernAdminJs/toastrConfig.js" type="text/javascript"></script>
   <script src="app-assets/ModernAdminJs/toastrPlugin.js" type="text/javascript"></script>
+  
+  <!-- WŁASNE SKRYPTY JS-->
+  <script src="app-assets/ownJs.js" type="text/javascript"></script>
+  
 </body>
 </html>

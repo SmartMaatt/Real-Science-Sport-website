@@ -3,6 +3,19 @@ correctForms();
 });
 
 
+//Load toast using params
+	function loadToast(type, header, bottom){
+		if(type == 0){
+			toastr.success(bottom, header);
+		}else if(type == 1){
+			toastr.info(bottom, header);
+		}else if(type == 2){
+			toastr.warning(bottom, header);
+		}else if(type == 3){
+			toastr.error(bottom, header);
+		}
+	}
+
 //Załaduj nową opcję
 function nowaOpcja(opcja, podopcja){
 	document.getElementById('nowyIdOpcjiInput').setAttribute("value", opcja);

@@ -11,9 +11,8 @@
 	 // {
 		 // $_SESSION['data'] = $_POST['global_date'];
 	 // }
-	 
+	  
 	$id_opcji = $_SESSION['id_opcji']; 
-	//$id_podopcji = $_SESSION['id_podopcji']; 
 	
 	if($id_opcji  == 1) 
 	{
@@ -122,7 +121,7 @@
 	}
 	else
 		header('Location: logowanie.php');
-?>
+	?>
 
 	<!-- GŁÓWNY KONTENER -->
   <div class="app-content content">

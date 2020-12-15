@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html class="loading" lang="pl" data-textdirection="ltr">
 <?php
 	session_start();
+	$error_msg = "";
 
 	if (isset($_SESSION['id_klienta'])) {
 		header('Location: panel.php');
 	}
+	elseif(isset($_SESSION['error'])){
+		$error_msg = $_SESSION['error'];
+		unset($_SESSION['error']);
+	}
 ?>
+<!DOCTYPE html>
+<html class="loading" lang="pl" data-textdirection="ltr">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,26 +41,29 @@
 
   <!-- WŁASNE STYLE CSS -->
   <link rel="stylesheet" type="text/css" href="app-assets/ownCss.css">
+  <!-- TOASTR PLUGIN -->
+  <link rel="stylesheet" type="text/css" href="app-assets/ModernAdminCss/plugins/toastr.css">
   
 </head>
 
 
 
 <body 
-	class="vertical-layout vertical-menu-modern 1-column menu-expanded blank-page blank-page"
+	class="vertical-layout vertical-menu-modern 1-column menu-expanded blank-page blank-page bgLoggin"
 	data-open="click" 
 	data-menu="vertical-menu-modern" 
 	data-col="1-column"
+	<?php echo $error_msg;?>
 >
   <div class="app-content content">
-    <div class="content-wrapper bgLoggin">
+    <div class="content-wrapper">
 	<div class="blackBlind"></div>
       <div class="content-header row">
       </div>
       <div class="content-body">
         <section class="flexbox-container">
           <div class="col-12 d-flex align-items-center justify-content-center">
-            <div class="col-md-4 col-12 box-shadow-2 p-0">
+            <div class="col-lg-5 col-md-6 col-12 box-shadow-2 p-0">
               <div class="card border-grey border-lighten-3 m-0">
                 <div class="card-header border-0">
                   <div class="card-title text-center">
@@ -71,7 +79,7 @@
                   <div class="card-body">
 				  
 					<!-- FORMULARZ LOGOWANIE-->
-                    <form class="form-horizontal form-simple" action="rozchodniaczki/loguj.php" method ="post" novalidate>
+                    <form class="form-horizontal form-simple" action="rozchodniaczki/loguj.php" method ="post">
                       <fieldset class="form-group position-relative has-icon-left">
 					  
                         <input type="email" class="form-control form-control-lg input-lg" id="user-name" placeholder="Wprowadź mail" name="mail" required>
@@ -99,11 +107,6 @@
 					  
                       <button type="submit" class="btn btn-lg btn-block btn-rss"><i class="ft-unlock"></i>Zaloguj</button>
 					  <a class="btn btn-lg btn-block btn-info" role="button" href="rejestracja.php"><i class="ft-plus-square"></i>Rejestracja</a>
-					  <?php
-							if (isset($_SESSION['error'])) {
-								echo $_SESSION['error'];
-							}
-						?>
                     </form>
 					<!-- ////////////////////////////////////////////////////////////////////////////-->
 					
@@ -131,6 +134,13 @@
 
   <!-- BEGIN PAGE LEVEL JS-->
   <script src="app-assets/ModernAdminJs/form-login-register.js" type="text/javascript"></script>
+  
+  <!-- TOASTR PLUGIN -->
+  <script src="app-assets/ModernAdminJs/toastrConfig.js" type="text/javascript"></script>
+  <script src="app-assets/ModernAdminJs/toastrPlugin.js" type="text/javascript"></script>
+  
+  <!-- WŁASNE SKRYPTY JS-->
+  <script src="app-assets/ownJs.js" type="text/javascript"></script>
 
 </body>
 </html>

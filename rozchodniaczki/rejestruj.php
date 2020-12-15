@@ -2,8 +2,8 @@
     session_start();
 
     function return_to_register_page($reason) {
-        $_SESSION['error'] = '<span style="color:red">'.$reason.'</span>';
         header('Location: ../rejestracja.php');
+		$_SESSION['error'] = 'onload="loadToast(\'2\',\''.$reason.'\',\'\')"';
         exit(0);
     }
 
@@ -55,17 +55,20 @@
             if ($result) {
                 header('Location: ../panel.php');
             } else {
-                echo 'Error: '.$connection->connect_errno;
+				header('Location: ../rejestracja.php');
+                $_SESSION['error'] = 'onload="loadToast(\'3\',\'Błąd bazy danych\',\'Error '.$connection->connect_errno.'\')"';
             }
 
             $result->free_result();
         } else {
-            echo 'Error: '.$connection->connect_errno;
+			header('Location: ../rejestracja.php');
+            $_SESSION['error'] = 'onload="loadToast(\'3\',\'Błąd bazy danych\',\'Error '.$connection->connect_errno.'\')"';
         }
 
         $result->free_result();
 		$connection->close();
 	} else {
-		echo 'Error: '.$connection->connect_errno;
+		header('Location: ../rejestracja.php');
+		$_SESSION['error'] = 'onload="loadToast(\'3\',\'Błąd bazy danych\',\'Error '.$connection->connect_errno.'\')"';
 	}
 ?>
