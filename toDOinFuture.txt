@@ -1,4 +1,9 @@
-recaptacha
+﻿recaptacha
 mail z haslem
 mail z aktywacja
 bug z menu bocznym z potrojną opcją
+
+
+--------------------------------------------------------------
+WAŻNE DO KRZYCHA!!!
+Jak zpullujesz v2.7 to popraw sobie wyloguj.php bo zostało dodane zabezpieczenie przed sesją!

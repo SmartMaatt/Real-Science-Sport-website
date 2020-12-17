@@ -64,7 +64,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
       <div class="content-body">
         <section class="flexbox-container">
           <div class="col-12 d-flex align-items-center justify-content-center">
-            <div class="col-lg-5 col-md-6 col-12 box-shadow-2 p-0">
+            <div class="col-lg-6 col-md-10 col-12 box-shadow-2 p-0">
               <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
                 <div class="card-header border-0 pb-0">
                   <div class="card-title text-center">
@@ -82,30 +82,60 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
 				  
 				  
                     <form class="form-horizontal" action="rozchodniaczki/rejestruj.php" method="post">
+					
+					<label>Imie</label>
                       <fieldset class="form-group position-relative has-icon-left">
-                        <input type="text" class="form-control" id="user-name" placeholder="Imie" name="imie" required>
+                        <input type="text" class="form-control" id="input_imie" placeholder="Imie" name="imie" required>
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>
                       </fieldset>
+					  
+					   <label>Nazwisko</label>
 					  <fieldset class="form-group position-relative has-icon-left">
                         <input type="text" class="form-control" id="user-name" placeholder="Nazwisko" name="nazwisko" required>
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>
                       </fieldset>
+					  
+					  <label>E-mail</label>
                       <fieldset class="form-group position-relative has-icon-left">
                         <input type="email" class="form-control" id="user-email" placeholder="E-mail" name="mail" required>
                         <div class="form-control-position">
                           <i class="ft-mail"></i>
                         </div>
                       </fieldset>
+					  
+					  <label>Płeć</label>
+					  <fieldset class="form-group position-relative has-icon-left">
+					  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+						  <label class="btn btn-secondary active">
+							<input type="radio" id="mezczyzna" name="plec" value="m" checked required>
+						  Mężczyzna</label>
+						  <label class="btn btn-secondary">
+							<input type="radio" id="kobieta" name="plec" value="k" required>
+						  Kobieta</label>
+					</div>
+					</fieldset>
+					  
+					  <label>Data urodzenia</label>
+					  <fieldset class="form-group position-relative has-icon-left">
+                        <input type="date" class="form-control" id="user-birth-date" value="<?php echo date('Y-m-d'); ?>" name="data" required>
+                        <div class="form-control-position">
+                          <i class="fas fa-birthday-cake"></i>
+                        </div>
+                      </fieldset>
+					  
+					  <label>Hasło</label>
                       <fieldset class="form-group position-relative has-icon-left">
                         <input type="password" class="form-control" id="user-password" placeholder="Hasło" name="haslo1" required>
                         <div class="form-control-position">
                           <i class="la la-key"></i>
                         </div>
                       </fieldset>
+					  
+					  <label>Powtórz hasło</label>
 					  <fieldset class="form-group position-relative has-icon-left">
                         <input type="password" class="form-control" id="user-password" placeholder="Powtórz hasło" name="haslo2" required>
                         <div class="form-control-position">
@@ -113,8 +143,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
                         </div>
                       </fieldset>
                       
-                      <button type="submit" class="btn btn-lg btn-block btn-rss"><i class="ft-plus-square"></i> Rejestracja</button>
-					  <a  class="btn btn-lg btn-block btn-info" role="button" href="logowanie.php"><i class="ft-unlock"></i> Logowanie powrót</a>
+					  <hr>
+                      <button type="submit" class="btn btn-rss"><i class="ft-plus-square"></i> Rejestracja</button>
+					  <a  class="btn btn-info" role="button" href="logowanie.php"><i class="ft-unlock"></i> Logowanie powrót</a>
 					  
                     </form>
                   </div>
@@ -147,5 +178,6 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
   
   <!-- WŁASNE SKRYPTY JS-->
   <script src="app-assets/ownJs.js" type="text/javascript"></script>
+  <script src="https://kit.fontawesome.com/9b863fbae2.js"></script>
 </body>
 </html>

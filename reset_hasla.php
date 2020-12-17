@@ -103,6 +103,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
                         </div>
                       </fieldset>
                       
+					  <hr>
                       <button type="submit" class="btn btn-lg btn-block btn-warning"><i class="ft-download-cloud"></i> Resetuj</button>
 					  <a class="btn btn-lg btn-block btn-info" role="button" href="logowanie.php"><i class="ft-unlock"></i> Logowanie powrót</a>
 					  <a class="btn btn-lg btn-block btn-success" id="testKnefel1" role="button" href="#"><i class="ft-check"></i> Testowy knefel</a>

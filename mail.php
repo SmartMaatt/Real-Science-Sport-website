@@ -32,7 +32,7 @@
 	<div class="home_screan_part" style="text-align:center;">
 	
 		<?php
-					$to      = 'realsciencesport@gmail.com';
+					$to      = 'mateuszplonka.tg@gmail.com';
 					$subject = $_POST['name'] . ' ' . $_POST['surname'];
 					$message = "Imie: " . $_POST['name'] . "<BR />Nazwisko: " . $_POST['surname'] . "<BR />E-mail: " . $_POST['e-mail'] . "<BR /><BR />" . $_POST['message'];
 					$headers = 'From: ' . $_POST['e-mail'] . "\r\n" .

@@ -225,7 +225,7 @@ form {
   form label {
     color: #2b335e; }
   form .form-group {
-    margin-bottom: 1.5rem; }
+    /*margin-bottom: 1.5rem;*/ }
   form .form-control {
     border: 1px solid #cacfe7;
     color: #3b4781; }
@@ -1130,7 +1130,8 @@ select.form-control {
   .card .card-title {
     font-weight: 500;
     letter-spacing: 0.05rem;
-    font-size: 1.12rem; }
+    font-size: 1.5rem;
+    }
   .card .card-bordered {
     border: 1px solid rgba(0, 0, 0, 0.06); }
   .card.card-fullscreen {
