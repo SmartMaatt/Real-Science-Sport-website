@@ -157,8 +157,11 @@
     <div class="content-wrapper">
 	
 		<!-- TU KONTENT AKTUALNEJ STRONY WEDŁUG SESJI -->
-		
-		<?php
+	<?php
+		//if($id_opcji  < 10){
+			//include("szablony/uzytkownik/badanie.php");
+		//}
+
 		if($id_podopcji == 11){
 			
 		}
@@ -168,8 +171,11 @@
 		elseif($id_podopcji == 13){
 			include("szablony/uzytkownik/panel_kontakt.php");
 		}
+		else{
+			include("szablony/uzytkownik/badanie.php");
+		}
 		
-		?>
+	?>
 
 	 </div>
 	</div>
