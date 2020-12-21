@@ -2,6 +2,17 @@ document.addEventListener('DOMContentLoaded', function() {
 correctForms();	
 });
 
+//Insert only numbers
+function onlyNumber(input) {
+    var insertWord = input.value;
+
+    insertWord = insertWord.toUpperCase();
+    insertWord = insertWord.replaceAll("[^0-9']+", "");
+    insertWord = insertWord.replace(/[A-Z' '&\/\\#,+()$~%.'":*?<>{}]/g, '');
+    insertWord.trim();
+
+    input.value = insertWord;
+}
 
 //Load toast using params
 	function loadToast(type, header, bottom){

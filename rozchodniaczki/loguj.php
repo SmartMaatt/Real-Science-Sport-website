@@ -43,8 +43,7 @@
 				} else {
 					return_to_login_page($incorrect_login_or_password);
 				}
-			}
-			else{
+			} else {
 				return_to_login_page("Proszę potwierdzić konto na mailu");
 			}
         } else {

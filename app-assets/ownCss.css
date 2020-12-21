@@ -2,13 +2,17 @@ label{
 	margin-bottom:2px;
 }
 
+i.m-corr{
+	font-size:1rem;
+}
+
 .navbar-container h3
 {
 	font-weight: bold;
 	margin-left: 20px;
 }
 
-/*Sekcja tÃƒâ€¦Ã¢â‚¬Å¡a podstron*/
+/*Sekcja tÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡a podstron*/
 
 .blackBlind{
 	width:100%;
@@ -54,13 +58,13 @@ img.sideBar-logo-collapsed{
     padding: 0 10px 0 0;
 }
 
-/*HiperÃƒâ€¦Ã¢â‚¬Å¡Ãƒâ€žÃ¢â‚¬Â¦cze bÃƒâ€žÃ¢â€žÂ¢dÃƒâ€žÃ¢â‚¬Â¦ce przyciskiem*/
+/*HiperÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦cze bÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢dÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ce przyciskiem*/
 a.knefel{
 	display: block;
     margin: 10px auto;
 }
 
-/*Kolor przyciskÃƒÆ’Ã‚Â³w w stylu rrs*/
+/*Kolor przyciskÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³w w stylu rrs*/
 .btn-rss{
 	color: white;
 	background: #f7ac25;
@@ -69,6 +73,8 @@ a.knefel{
 .btn-rss:hover{
 	background: #f6bd55;
 }
+
+
 
 /*PANEL CONTACT*/
 .card-profile-image{
@@ -106,13 +112,48 @@ a.knefel{
     color: #2b2b2b;
 }
 
-/*DODATKOWE STYLE GÃƒÆ’Ã¢â‚¬Å“RNEGO NAV BARA*/
-/*Dodatkowa stylizacja nazwiska w gÃƒÆ’Ã‚Â³rnym nav barze*/
+
+
+/*Panel profil*/
+.profile-card-border{
+	border-bottom: 2px solid #f7ac25;
+}
+
+.profile-card:hover{
+	background: #fafafa;
+}
+
+.profile-card a:hover{
+	color: #333;
+	cursor: pointer;
+}
+
+.profile-card a:hover .profile-card{
+	background: #fafafa;
+	cursor: pointer;
+}
+
+.profile-subcard{
+	background: #eee;
+}
+
+a.settings-link{
+	color: #333 !important;
+}
+
+a.settings-link.active{
+	color: #f7ac25 !important;
+}
+
+
+
+/*DODATKOWE STYLE GÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“RNEGO NAV BARA*/
+/*Dodatkowa stylizacja nazwiska w gÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³rnym nav barze*/
 .surNavBar{
 	margin-top:7px;
 }
 
-/*PodÃƒâ€¦Ã¢â‚¬Âºwietlenie ikon po najechaniu*/
+/*PodÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Âºwietlenie ikon po najechaniu*/
 a.iconsRss > i:hover{
 	color: #f7ac25;
 	pointer: cursor;
@@ -311,7 +352,7 @@ a.iconsRss > i:hover{
 	margin-top:10px;
 }
 
-/*Karta: powodzenie w zÃƒâ€¦Ã¢â‚¬Å¡oÃƒâ€¦Ã‚Â¼eniu rezerwacji*/
+/*Karta: powodzenie w zÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡oÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼eniu rezerwacji*/
 #infoCard_1 > h2{
 	font-weight: bold;
 	text-align:center;
@@ -337,7 +378,7 @@ a.iconsRss > i:hover{
 
 
 
-/*RESPONSYWNOÃƒâ€¦Ã…Â¡Ãƒâ€žÃ¢â‚¬Â  APLIKACJI*/
+/*RESPONSYWNOÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â  APLIKACJI*/
 @media screen and (min-width:767px) and (max-width: 1365px){
 .bgLoggin {background-size: cover;}
 .navbar-container h3{font-size: 1.4rem;}
@@ -349,7 +390,10 @@ a.iconsRss > i:hover{
 .bgLoggin {background-size: cover;}
 img.brand-logo{width:200px;}
 img.display-logo{width:200px;}
-.card-body{padding: 1rem 0.5rem}
+
+.form-group.register-field{
+	margin-bottom:3px;
+}
 
 .navbar-nav{
 	margin-top: 5px;
@@ -362,7 +406,7 @@ img.display-logo{width:200px;}
 	margin: 8px 0 2px 0;
 }
 	
-	.card-title{font-size:1rem !important; font-weight:700 !important;}
+	.card-title{font-weight:700 !important;}
 	.card-text{font-size:1rem !important; width:75%;}
 	#table_date_picker{margin-top:10px;}
 	#table_date_picker input {width:60%;}
