@@ -8,17 +8,16 @@
                     <ul class="list-inline mb-0">
                       <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                       <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                      
-                      
                     </ul>
                   </div>
-                </div>
-                <div class="card-content collapse show">
-                  <div class="card-body">
-                    <div class="card-text">
+				   <div class="card-text">
 						<p>Skontaktuj się z nami w przypadku niejasności bądź pytań dotyczących badań czy obsługi serwisu jak również ewentualnych błędów które na nim znalazłeś. Będziemy wdzięczni za każdą pomoc oraz krytykę.
 						</p>
                     </div>
+                </div>
+                <div class="card-content collapse show">
+                  <div class="card-body pt-0">
+                   
 					
 					
 					
@@ -46,14 +45,14 @@
 						</div>
                         <div class="form-group">
                           <label for="issueinput2">Tytuł</label>
-                          <input type="text" id="issueinput2" class="form-control" placeholder="Tytuł maila" name="tytul_maila" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Opened By" data-original-title="" required>
+                          <input type="text" id="issueinput2" class="form-control" placeholder="Tytuł maila" name="tytul_maila" required>
                         </div>
                         
                         
                         
                         <div class="form-group">
                           <label for="issueinput3">Treść</label>
-                          <textarea id="issueinput8" rows="8" class="form-control" name="tresc_maila" placeholder="Treść maila" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Comments" data-original-title="" title="" style="margin-top: 0px; margin-bottom: 0px; height: 185px;" required></textarea>
+                          <textarea id="issueinput8" rows="8" class="form-control" name="tresc_maila" placeholder="Treść maila" style="margin-top: 0px; margin-bottom: 0px; height: 185px;" required></textarea>
                         </div>
                       </div>
                       <div class="form-actions">
@@ -104,4 +103,5 @@
             </div>
           </div>
        
+	   
           </div>

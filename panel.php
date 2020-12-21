@@ -31,9 +31,15 @@
 	//Przypisanie do zmiennych informacyjnych odpowiednich treści
 	if($id_podopcji == 11){
 		$page_info = "Profil użytkownika";
+		$page_header = "Profil- RSS panel";
 	}
 	elseif($id_podopcji == 12){
-		$page_info = "Ustawienia";
+		//$page_info = "Ustawienia";
+		//page_header = "Ustawienia- RSS panel";
+		
+		$page_info = "Profil użytkownika";
+		$page_header = "Profil- RSS panel";
+		$error_msg = 'onload="loadToast(\'0\',\'Przekierowanie do profilu\',\'Panel ustawień oraz profilu zostały tymczasowo połączone ze względu na poprawienie przejrzystości strony.\')"';
 	}
 	elseif($id_podopcji == 13){
 		$page_info = "Kontakt";
@@ -92,7 +98,6 @@
    <meta name="author" content="DeVision303" />
   <meta name="description" content="Official website of Real Science Sport" />
   
-  <!--TUTAJ PHP!!! -->
   <title><?php echo $page_header; ?></title>
   
   <!-- Ikony i animacje -->
@@ -157,19 +162,25 @@
     <div class="content-wrapper">
 	
 		<!-- TU KONTENT AKTUALNEJ STRONY WEDŁUG SESJI -->
-		
-		<?php
+	<?php
+		//if($id_opcji  < 10){
+			//include("szablony/uzytkownik/badanie.php");
+		//}
+
 		if($id_podopcji == 11){
-			
+			include("szablony/uzytkownik/panel_profil.php");
 		}
 		elseif($id_podopcji == 12){
-			
+			include("szablony/uzytkownik/panel_profil.php");
 		}
 		elseif($id_podopcji == 13){
 			include("szablony/uzytkownik/panel_kontakt.php");
 		}
+		else{
+			include("szablony/uzytkownik/badanie.php");
+		}
 		
-		?>
+	?>
 
 	 </div>
 	</div>
