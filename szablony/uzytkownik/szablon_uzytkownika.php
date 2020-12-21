@@ -32,18 +32,18 @@
             </li>
 			
 			<li class="dropdown dropdown-notification nav-item">
-              <a class="dropdown-toggle nav-link dropdown-user-link nav-link-label iconsRss" href="ustawienia.php" data-toggle="dropdown">
+              <a class="dropdown-toggle nav-link dropdown-user-link nav-link-label iconsRss" href="#" data-toggle="dropdown">
 				<i class="ficon ft-user"></i>
               </a>
 			  <div class="dropdown-menu dropdown-menu-right">
-				<a class="dropdown-item" href="profil.php"><i class="ft-user"></i>Pokaż profil</a>
-				<a class="dropdown-item" href="ustawienia.php"><i class="ft-settings"></i>Ustawienia</a>
+				<a class="dropdown-item" href="#" onclick="nowaOpcja(<?php echo $_SESSION['id_opcji'] ?>,11)"><i class="ft-user"></i>Pokaż profil</a>
+				<a class="dropdown-item" href="#" onclick="nowaOpcja(<?php echo $_SESSION['id_opcji'] ?>,12)"><i class="ft-settings"></i>Ustawienia</a>
                 <div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="rozchodniaczki/wyloguj.php"><i class="ft-power"></i> Wyloguj</a>
               </div>
             </li>
             <li class="dropdown dropdown-notification nav-item">
-              <a class="nav-link nav-link-label iconsRss" href="#" data-toggle="dropdown"><i class="ficon ft-mail"></i></a>
+              <a class="nav-link nav-link-label iconsRss" href="#" onclick="nowaOpcja(<?php echo $_SESSION['id_opcji'] ?>,13)" data-toggle="dropdown"><i class="ficon ft-mail"></i></a>
              
             </li>
           </ul>

@@ -98,15 +98,16 @@
 							<div class="col-md-6 col-12 text-center text-md-left">
                           <fieldset>
                             <input type="checkbox" id="remember-me" class="chk-remember">
-                            <label for="Zapamiętaj mnie">Zapamiętaj mnie</label>
+                            <label for="Zapamiętaj mnie"> Zapamiętaj mnie</label>
                           </fieldset>
                         </div> 
 						
                         <div class="col-md-6 col-12 text-center text-md-right"><a href="reset_hasla.php" class="card-link">Zapomniałeś hasła?</a></div>
                       </div>
 					  
-                      <button type="submit" class="btn btn-lg btn-block btn-rss"><i class="ft-unlock"></i>Zaloguj</button>
-					  <a class="btn btn-lg btn-block btn-info" role="button" href="rejestracja.php"><i class="ft-plus-square"></i>Rejestracja</a>
+					  <hr>
+                      <button type="submit" style="margin-right:5px;" class="btn btn-lg btn-rss"><i class="ft-unlock"></i> Zaloguj</button>
+					  <a class="btn btn-lg btn-info" role="button" href="rejestracja.php"><i class="ft-plus-square"></i> Rejestracja</a>
                     </form>
 					<!-- ////////////////////////////////////////////////////////////////////////////-->
 					

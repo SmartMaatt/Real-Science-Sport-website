@@ -172,7 +172,7 @@
               this.open();
             }
             else{
-              this.collapse();
+              this.collapse("mediumScr");
             }
             break;
           case 'sm':
@@ -443,7 +443,7 @@
           $('.modern-nav-toggle').find('.toggle-icon')
           .removeClass('ft-toggle-right').addClass('ft-toggle-left');
 
-          if(defMenu == "collapsed"){
+          if(defMenu == "collapsed" || defMenu == "mediumScr"){
             $('.sideBar-logo-revieved').attr('src','app-assets/images/logoCard.png');
               $('.sideBar-logo-revieved').attr('class','sideBar-logo-collapsed');
           }

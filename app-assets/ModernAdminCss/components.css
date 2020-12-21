@@ -139,7 +139,8 @@ html {
   padding: 0; }
 
 .header-navbar .navbar-container {
-  height: auto; }
+  /* height: auto; */
+  }
 
 footer.footer {
   padding: 0.8rem; }
@@ -428,7 +429,8 @@ footer.footer-dark {
     height: 100%;
     /* fallback if needed */
     top: 5rem;
-    height: calc(100% - 5rem); }
+    height: calc(100% - 5rem);
+    }
     .main-menu.menu-fixed .main-menu-footer {
       position: fixed; }
   .main-menu.menu-shadow {

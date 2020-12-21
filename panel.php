@@ -1,20 +1,45 @@
 <?php
 	session_start();
-
-	$page_info="Page info undefined";
-
+	
+	//Czy sesja istnieje, jeśli nie do logowania
 	 if (!isset($_SESSION['id_klienta'])){
 		 header('Location: logowanie.php');
 	 }
+	 
+	//Czy wyświetlić error
+	$error_msg = "";	
+	if(isset($_SESSION['error'])){
+		$error_msg = $_SESSION['error'];
+		unset($_SESSION['error']);
+	}
 	
 	 // if(isset($_POST['global_date']))
 	 // {
 		 // $_SESSION['data'] = $_POST['global_date'];
 	 // }
-	  
-	$id_opcji = $_SESSION['id_opcji']; 
 	
-	if($id_opcji  == 1) 
+	//Zmienne w zależności od id_opcji i id_podopcji
+	$page_info="Page info undefined";
+	$page_header="Page info undefined";
+	
+	
+	//Odczyt opcji i podopcji z sesji
+	$id_opcji = $_SESSION['id_opcji']; 
+	$id_podopcji = $_SESSION['id_podopcji']; 
+	
+	
+	//Przypisanie do zmiennych informacyjnych odpowiednich treści
+	if($id_podopcji == 11){
+		$page_info = "Profil użytkownika";
+	}
+	elseif($id_podopcji == 12){
+		$page_info = "Ustawienia";
+	}
+	elseif($id_podopcji == 13){
+		$page_info = "Kontakt";
+		$page_header = "Kontakt- RSS panel";
+	}
+	elseif($id_opcji  == 1) 
 	{
 		$page_info = "Info karta 1";
 	}
@@ -33,6 +58,7 @@
 	elseif($id_opcji  == 5) $page_info = "Info karta 5";
 	elseif($id_opcji  == 6) $page_info = "Info karta 6";
 	elseif($id_opcji  == 7) $page_info = "Info karta 7";
+	
 	
 	//Podświetlanie aktualnie wybranej karty w bocznym menu
 	function activateMenu($opcja, $podopcja) {
@@ -67,7 +93,7 @@
   <meta name="description" content="Official website of Real Science Sport" />
   
   <!--TUTAJ PHP!!! -->
-  <title>Rezerwacje - Wysokiej klasy kręgielnia</title>
+  <title><?php echo $page_header; ?></title>
   
   <!-- Ikony i animacje -->
   <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/logoCard.png">
@@ -88,6 +114,8 @@
   
   <!-- WŁASNE STYLE CSS -->
    <link rel="stylesheet" type="text/css" href="app-assets/ownCss.css">
+   <!-- TOASTR PLUGIN -->
+  <link rel="stylesheet" type="text/css" href="app-assets/ModernAdminCss/plugins/toastr.css">
    
 </head>
 
@@ -110,6 +138,7 @@
 			}
 			unset($_SESSION['correct_reservation']);
 		}
+		echo $error_msg;
 	?>
 >
 
@@ -117,7 +146,7 @@
 
 	if (isset($_SESSION['id_klienta'])) {
 		
-		include('clientPanelTemplate.php');
+		include('szablony/uzytkownik/szablon_uzytkownika.php');
 	}
 	else
 		header('Location: logowanie.php');
@@ -129,15 +158,19 @@
 	
 		<!-- TU KONTENT AKTUALNEJ STRONY WEDŁUG SESJI -->
 		
+		<?php
+		if($id_podopcji == 11){
+			
+		}
+		elseif($id_podopcji == 12){
+			
+		}
+		elseif($id_podopcji == 13){
+			include("szablony/uzytkownik/panel_kontakt.php");
+		}
 		
-		
-		
-		
-		
-		
-		
-		
-	
+		?>
+
 	 </div>
 	</div>
 
@@ -175,6 +208,10 @@
 	<!-- WŁASNE SKRYPTY JS-->
   <script src="app-assets/ownJs.js" type="text/javascript"></script>
   <script src="https://kit.fontawesome.com/9b863fbae2.js"></script>
+  
+  <!-- TOASTR PLUGIN -->
+  <script src="app-assets/ModernAdminJs/toastrConfig.js" type="text/javascript"></script>
+  <script src="app-assets/ModernAdminJs/toastrPlugin.js" type="text/javascript"></script>
   
 </body>
 </html>
