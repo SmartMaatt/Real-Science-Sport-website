@@ -31,6 +31,8 @@
 				$_SESSION['nazwisko'] 	= $row['nazwisko'];
 				$_SESSION['mail']       = $row['mail'];
 				$_SESSION['data'] 		= date("Y-m-d");
+				$_SESSION['data_urodzenia'] = $row['data_urodzenia'];
+				$_SESSION['plec']		= $row['plec'];
 				$_SESSION['id_opcji'] 	= 1;
 				$_SESSION['id_podopcji'] = 0;
                 unset($_SESSION['error']);

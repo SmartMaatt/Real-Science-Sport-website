@@ -84,7 +84,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
                     <form class="form-horizontal" action="rozchodniaczki/rejestruj.php" method="post">
 					
 					<label>Imie</label>
-                      <fieldset class="form-group position-relative has-icon-left">
+                      <fieldset class="form-group register-field position-relative has-icon-left">
                         <input type="text" class="form-control" id="input_imie" placeholder="Imie" name="imie" required>
                         <div class="form-control-position">
                           <i class="ft-user"></i>
@@ -92,7 +92,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
                       </fieldset>
 					  
 					   <label>Nazwisko</label>
-					  <fieldset class="form-group position-relative has-icon-left">
+					  <fieldset class="form-group register-field position-relative has-icon-left">
                         <input type="text" class="form-control" id="user-name" placeholder="Nazwisko" name="nazwisko" required>
                         <div class="form-control-position">
                           <i class="ft-user"></i>
@@ -100,7 +100,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
                       </fieldset>
 					  
 					  <label>E-mail</label>
-                      <fieldset class="form-group position-relative has-icon-left">
+                      <fieldset class="form-group register-field position-relative has-icon-left">
                         <input type="email" class="form-control" id="user-email" placeholder="E-mail" name="mail" required>
                         <div class="form-control-position">
                           <i class="ft-mail"></i>
@@ -108,19 +108,19 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
                       </fieldset>
 					  
 					  <label>Płeć</label>
-					  <fieldset class="form-group position-relative has-icon-left">
+					  <fieldset class="form-group register-field position-relative has-icon-left">
 					  <div class="btn-group btn-group-toggle" data-toggle="buttons">
 						  <label class="btn btn-secondary active">
-							<input type="radio" id="mezczyzna" name="plec" value="m" checked required>
+							<input type="radio" id="mezczyzna" name="plec" value="M" checked required>
 						  Mężczyzna</label>
 						  <label class="btn btn-secondary">
-							<input type="radio" id="kobieta" name="plec" value="k" required>
+							<input type="radio" id="kobieta" name="plec" value="K" required>
 						  Kobieta</label>
 					</div>
 					</fieldset>
 					  
 					  <label>Data urodzenia</label>
-					  <fieldset class="form-group position-relative has-icon-left">
+					  <fieldset class="form-group register-field position-relative has-icon-left">
                         <input type="date" class="form-control" id="user-birth-date" value="<?php echo date('Y-m-d'); ?>" name="data" required>
                         <div class="form-control-position">
                           <i class="fas fa-birthday-cake"></i>
@@ -128,7 +128,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
                       </fieldset>
 					  
 					  <label>Hasło</label>
-                      <fieldset class="form-group position-relative has-icon-left">
+                      <fieldset class="form-group register-field position-relative has-icon-left">
                         <input type="password" class="form-control" id="user-password" placeholder="Hasło" name="haslo1" required>
                         <div class="form-control-position">
                           <i class="la la-key"></i>
@@ -136,7 +136,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
                       </fieldset>
 					  
 					  <label>Powtórz hasło</label>
-					  <fieldset class="form-group position-relative has-icon-left">
+					  <fieldset class="form-group register-field position-relative has-icon-left">
                         <input type="password" class="form-control" id="user-password" placeholder="Powtórz hasło" name="haslo2" required>
                         <div class="form-control-position">
                           <i class="la la-key"></i>
