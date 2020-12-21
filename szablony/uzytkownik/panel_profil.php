@@ -1,9 +1,9 @@
 <?php
 	$plec = "";
-	if($_SESSION['plec'] == "M"){
+	if($_SESSION['plec'] == "m"){
 		$plec = '<i class="fas fa-mars"></i>';
 	}
-	elseif($_SESSION['plec'] == "K"){
+	elseif($_SESSION['plec'] == "k"){
 		$plec = '<i class="fas fa-venus"></i>';
 	}
 	
@@ -122,19 +122,19 @@
 				  
                   <div class="tab-content px-1 pt-1">
                     <div role="tabpanel" class="tab-pane active" id="activeIcon">
-					   <form class="form" method="post" action="">
+					   <form class="form" method="post" action="rozchodniaczki/zmien_haslo.php">
 							<div class="form-body">
 								<div class="form-group">
 								  <label for="issueinput1">Stare hasło</label></br>
-								  <input type="password" name="waga" required />
+								  <input type="password" name="stare_haslo" required />
 								</div>
 								<div class="form-group">
 								  <label for="issueinput2">Wprowadź nowe hasło</label></br>
-								  <input type="password" name="waga" required />
+								  <input type="password" name="nowe_haslo1" required />
 								</div>
 								<div class="form-group">
 								  <label for="issueinput3">Wprowadź nowe hasło</label></br>
-								  <input type="password" name="waga" required />
+								  <input type="password" name="nowe_haslo2" required />
 								</div>
 								<button type="submit" class="btn btn-warning">Zmień hasło</button>
 							</div>
