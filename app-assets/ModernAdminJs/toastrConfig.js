@@ -9,27 +9,6 @@
 ==========================================================================================*/
 $(document).ready(function(){
 
-	//My first toast
-	$('#testKnefel1').on('click',function(){
-		
-		if($(this).attr('id') == 'testKnefel1'){
-		toastr.success('Nie czuję różnicy, z napojem czy bez', 'W sumie to jest w pytke');
-		$('#testKnefel1').attr('id', 'testKnefel2');
-		
-		}else if($(this).attr('id') == 'testKnefel2'){
-			toastr.info('To jest fakt a nie obelga!', 'Wali ci z japy a tam są drzwi!');
-			$('#testKnefel2').attr('id', 'testKnefel3');
-
-		}else if($(this).attr('id') == 'testKnefel3'){
-			toastr.warning('Myyyyy..... tego.... BAGNO!', 'A co wy tu robicie?');
-			$('#testKnefel3').attr('id', 'testKnefel4');
-			
-		}else if($(this).attr('id') == 'testKnefel4'){
-			toastr.error('No i chuj no i cześć', '2.51 ze smiwa');
-			$('#testKnefel4').attr('id', 'testKnefel1');
-		}
-	});
-
 	// Success Type
 	$('#type-success').on('click',function(){
 		toastr.success('Have fun storming the castle!', 'Miracle Max Says');

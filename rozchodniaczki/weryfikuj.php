@@ -1,5 +1,11 @@
 <?php
 	session_start();
+	
+	 function jump_to_page($mode,$top,$bottom) {
+        header('Location: ../logowanie.php');
+		$_SESSION['error'] = 'loadToast(\''.$mode.'\',\''.$top.'\',\''.$bottom.'\')';
+        exit(0);
+    }
 
 	//Czy istnieje parametr
 	if(isset($_GET['vkey']))
@@ -31,42 +37,39 @@
 					//Udało się zweryfikować konto
 					if($result)
 					{
-						header('Location: ../logowanie.php');
-						$_SESSION['error'] = 'loadToast(\'0\',\'Weryfikacja przebiegła pomyślnie!\',\'\')';
+						jump_to_page('0','Weryfikacja przebiegła pomyślnie!','');
+						$connection->close();
 					}
 					else
 					{
 						//Błąd bazy
-						header('Location: ../logowanie.php');
-						$_SESSION['error'] = 'loadToast(\'3\',\'Błąd bazy danych!\',\''.$connection->connect_errno.'\')';
+						jump_to_page('3','Błąd bazy danych!','Niepowodzenie wykonania zapytania sql!');
+						$connection->close();
 					}
 				}
 				else
 				{
 					//Liczba rekordów != 1
-					header('Location: ../logowanie.php');
-					$_SESSION['error'] = 'loadToast(\'2\',\'Błąd logiczny\',\'Konto nie istnieje lub jest już zweryfikowane!\')';
+					jump_to_page('2','Błąd logiczny!','Konto nie istnieje lub jest już zweryfikowane!');
+					$connection->close();
 				}
 			}
 			else
 			{
 				//Niepowodzenie wykonania zapytania sql
-				//header('Location: ../logowanie.php');
-				$_SESSION['error'] = 'loadToast(\'3\',\'Błąd bazy danych\',\'Niepowodzenie wykonania zapytania sql!\')';
+				jump_to_page('3','Błąd bazy danych!','Niepowodzenie wykonania zapytania sql!');
+				$connection->close();
 			}
 		}
 		else
 		{
 			//Niepowodzenie połącznie z bazą danych
-			header('Location: ../logowanie.php');
-			$_SESSION['error'] = 'loadToast(\'3\',\'Błąd bazy danych\',\'Nieudane połącznie z bazą danych!\')';
+			jump_to_page('3','Błąd bazy danych!','Nieudane połącznie z bazą danych!');
 		}
 	}
 	else
 	{
 		//Brak parametrów get'a
-		header('Location: ../logowanie.php');
-		$_SESSION['error'] = 'loadToast(\'2\',\'Błąd dostępu do podanej strony!\',\'\')';
+		jump_to_page('2','Błąd dostępu do podanej strony!','');
 	}
-	$connection->close();
 ?>

@@ -50,9 +50,5 @@
 	 else{
 		 header('Location: ../logowanie.php');
 		 $_SESSION['error'] = 'loadToast(\'3\',\'Błąd logiczny!\',\'Próba przejścia na stronę bez logowania!\')';
-	 }
-
-
-	
-	 
+	 } 
 ?>

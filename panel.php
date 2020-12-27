@@ -9,7 +9,7 @@
 	//Czy wyświetlić error
 	$error_msg = "";	
 	if(isset($_SESSION['error'])){
-		$error_msg = "onload='".$_SESSION['error']."'";
+		$error_msg = "onload=\"".$_SESSION['error']."\"";
 		unset($_SESSION['error']);
 	}
 	

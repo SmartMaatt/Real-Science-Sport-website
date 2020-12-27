@@ -1,66 +1,103 @@
 <?php
     session_start();
 
-    function return_to_login_page($reason) {
-        header('Location: ../panel.php');
-		$_SESSION['error'] = 'loadToast(\'3\',\'Hasło nie zostało zmienione\',\''.$reason.'\')';
+   function jump_to_page($location,$mode,$top,$bottom) {
+        header('Location: ../'.$location);
+		$_SESSION['error'] = 'loadToast(\''.$mode.'\',\''.$top.'\',\''.$bottom.'\')';
         exit(0);
     }
 	
     $incorrect_data = 'Brak takiego konta!';
 	$incorrect_conection = 'Nie udało się zresetować hasła spróbuj ponownie!';
 
-	$stare_haslo = htmlentities($_POST['stare_haslo']);
-    $nowe_haslo1 = htmlentities($_POST['nowe_haslo1']);
-    $nowe_haslo2 = htmlentities($_POST['nowe_haslo2']);
-	$id_klienta = $_SESSION['id_klienta'];
-	
-	if ($nowe_haslo1 != $nowe_haslo2) {
-        return_to_login_page('Hasła się nie zgadzają!');
-    }
-	
-	require_once 'connect.php';
+	//Parametry wymagane do przeprowadzenia algorytmu
+	if(isset($_POST['stare_haslo']) && isset($_POST['nowe_haslo1']) && isset($_POST['nowe_haslo2']))
+	{	
+		//Pobranie wartości z POST
+		$stare_haslo = htmlentities($_POST['stare_haslo']);
+		$nowe_haslo1 = htmlentities($_POST['nowe_haslo1']);
+		$nowe_haslo2 = htmlentities($_POST['nowe_haslo2']);
+		$id_klienta = $_SESSION['id_klienta'];
+		
+		//Hasła się nie zgadzają
+		if ($nowe_haslo1 != $nowe_haslo2) {
+			jump_to_page('panel.php','2','Hasła się nie zgadzają!','');
+		}
+		
+		//Przynajmniej 6 znaków, jedna mała litera, jedna duża litera, jedna cyfra
+		$uppercase = preg_match('@[A-Z]@', $nowe_haslo1);
+		$lowercase = preg_match('@[a-z]@', $nowe_haslo1);
+		$number    = preg_match('@[0-9]@', $nowe_haslo1);
 
-	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
+		if(!$uppercase || !$lowercase || !$number || strlen($nowe_haslo1) < 6) {
+			jump_to_page('panel.php','2','Hasło nie spełnia kryteriów!','');
+		}
+		
+		//Stare hasło jest takie samo jako podane nowe
+		if($nowe_haslo1 == $stare_haslo){
+			jump_to_page('panel.php', '2', 'Nowe hasło nie różni się od starego!', '');
+		}
+		
+		//Połączenie z bazą
+		require_once 'connect.php';
+		$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 
-	if ($connection->connect_errno == 0) {
-        $sql = "SELECT haslo FROM klient WHERE id_klienta = '$id_klienta'";
+		//Czy połącznie z bazą zostało nawiązane?
+		if ($connection->connect_errno == 0) {
+			
+			$sql = "SELECT haslo FROM klient WHERE id_klienta = '$id_klienta'";
+			$result = @$connection->query($sql);
 
-		$result = @$connection->query($sql);
-
-		if ($result && $result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-			$db_pass = $row['haslo'];
-			$old_pw_hash = password_hash($stare_haslo, PASSWORD_BCRYPT);
-			if(password_verify($stare_haslo, $db_pass))
+			//Sprawdzenie wykonania powyższego zapytania sql
+			if ($result && $result->num_rows > 0) 
 			{
-				$pw_hash = password_hash($nowe_haslo1, PASSWORD_BCRYPT);
-				$sql2 = "UPDATE klient SET haslo = '$pw_hash' WHERE id_klienta = '$id_klienta'";
-				$result2 = @$connection->query($sql2);
-				if($result2)
+				$row = $result->fetch_assoc();
+				$db_pass = $row['haslo'];
+				$old_pw_hash = password_hash($stare_haslo, PASSWORD_BCRYPT);
+				
+				//Sprawdź czy podane stare hasło jest poprawne
+				if(password_verify($stare_haslo, $db_pass))
 				{
-					//$result2->free_result();
-					header('Location: ../panel.php');
-					$_SESSION['error'] = 'loadToast(\'0\',\'Hasło zostało zmienione pomyślnie\',\'\')';
+					$pw_hash = password_hash($nowe_haslo1, PASSWORD_BCRYPT);
+					$sql2 = "UPDATE klient SET haslo = '$pw_hash' WHERE id_klienta = '$id_klienta'";
+					$result2 = @$connection->query($sql2);
+					
+					//Sprawdź czy poprawnie zmieniono hasło
+					if($result2)
+					{
+						//Poprawna aktualizacja
+						jump_to_page('panel.php','0','Hasło zostało zmienione poprawnie','');
+						$connection->close();
+					}
+					else
+						//Niepowodzenie wykonania zapytania sql
+						jump_to_page('panel.php','3','Błąd bazy danych!','Niepowodzenie wykonania zapytania sql!<br/>Command: UPDATE');
+						$connection->close();
 				}
-				else
-					return_to_login_page($incorrect_data);
+				else 
+				{
+					//Podane stare hasło jest niepoprawne
+					jump_to_page('panel.php','2','Błąd logiczny!','Stare hasło jest niepoprawne!');
+					$connection->close();
+				}
+			} 
+			else 
+			{
+				//Niepowodzenie wykonania zapytania sql
+				jump_to_page('panel.php','3','Błąd bazy danych!','Niepowodzenie wykonania zapytania sql!<br/>Command: SELECT');
+				$connection->close();
 			}
-			else {
-				echo $id_klienta."\n";
-				echo $db_pass."\n";
-				echo $old_pw_hash."\n";
-				return_to_login_page('Hasła się nie zgadzają!');
-			}
-            
-        } else {
-            return_to_login_page($incorrect_data);
-        }
-		
-        $result->free_result();
-		
-		$connection->close();
-	} else {
-		echo 'Error: '.$connection->connect_errno;
+			$result->free_result();
+		} 
+		else 
+		{
+			//Nieudane połącznie z bazą danych
+			jump_to_page('panel.php', '3', 'Błąd bazy danych', 'Nieudane połączenie z bazą danych!');
+		}
+	}
+	else
+	{
+		//Brak parametrów POST
+		jump_to_page('logowanie.php','3','Błąd logiczny','Nie podano wszystkich parametrów wymaganych do rejestracji');
 	}
 ?>

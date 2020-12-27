@@ -6,12 +6,12 @@
 		header('Location: panel.php');
 	}
 	elseif(isset($_SESSION['error'])){
-		$error_msg = $_SESSION['error'];
+		$error_msg = "onload=\"".$_SESSION['error']."\"";
 		unset($_SESSION['error']);
 	}
 ?>
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
+<html class="loading" lang="pl" data-textdirection="ltr">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +19,6 @@
   <meta name="author" content="DeVision303" />
   <meta name="description" content="Official website of Real Science Sport" />
   <title>Reset hasła - Real Science Sport</title>
-  <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
   <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
   rel="stylesheet">
@@ -83,7 +82,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
 				  <!--FORMULARZ RESETU TUTAJ TUTAJ -->
 				  
 				  
-                    <form class="form-horizontal" action="rozchodniaczki/resetuj_haslo.php" method="post">
+                    <form class="form-horizontal" action="rozchodniaczki/resetuj_haslo.php" method="get">
                       <fieldset class="form-group position-relative has-icon-left">
                         <input type="text" class="form-control" id="user-name" placeholder="Imie" name='imie' required>
                         <div class="form-control-position">
@@ -106,7 +105,6 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
 					  <hr>
                       <button type="submit" class="btn btn-lg btn-block btn-warning"><i class="ft-download-cloud"></i> Resetuj</button>
 					  <a class="btn btn-lg btn-block btn-info" role="button" href="logowanie.php"><i class="ft-unlock"></i> Logowanie powrót</a>
-					  <a class="btn btn-lg btn-block btn-success" id="testKnefel1" role="button" href="#"><i class="ft-check"></i> Testowy knefel</a>
                     </form>
                   </div>
                 </div>

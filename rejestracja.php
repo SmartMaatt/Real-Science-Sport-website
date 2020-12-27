@@ -56,13 +56,11 @@
 <body class="vertical-layout vertical-menu-modern 1-column  bgRegistration menu-expanded blank-page blank-page"
 data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php echo $error_msg;?>>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
-  <div class="blackBlind"></div>
   <div class="app-content content">
     <div class="content-wrapper">
-      <div class="content-header row">
-      </div>
+	  <div class="blackBlind"></div>
       <div class="content-body register-body">
-        <section class="flexbox-container">
+        <section style="height:auto;" class="flexbox-container">
           <div class="col-12 d-flex align-items-center justify-content-center">
             <div class="col-lg-6 col-md-10 col-12 box-shadow-2 p-0">
               <div class="card border-grey border-lighten-3 m-0">
@@ -148,6 +146,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
 					  <a  class="btn btn-info" role="button" href="logowanie.php"><i class="ft-unlock"></i> Logowanie powrót</a>
 					  
                     </form>
+					
+					<h4>Wymagania dotyczące hasła:</h4>
+					<ul>
+						<li>Minimum jedena duża litera</li>
+						<li>Minimum jedna mała litera</li>
+						<li>Minimum jedna cyfra</li>
+						<li>Długość hasła minimum 6 znaków</li>
+					</ul>
                   </div>
                 </div>
               </div>
