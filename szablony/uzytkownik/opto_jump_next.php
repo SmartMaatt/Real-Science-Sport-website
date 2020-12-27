@@ -1,3 +1,12 @@
+<?php
+
+	if (session_status() == PHP_SESSION_NONE) {
+		header('Location: ../../logowanie.php');
+	}
+
+?>
+
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>

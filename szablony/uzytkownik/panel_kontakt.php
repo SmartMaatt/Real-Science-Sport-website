@@ -1,3 +1,10 @@
+<?php 
+	if (session_status() == PHP_SESSION_NONE) {
+			header('Location: ../../logowanie.php');
+		}
+?>
+
+
 <div class="row">
             <div class="col-lg-8 col-12">
               <div class="card">

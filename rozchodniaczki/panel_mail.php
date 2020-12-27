@@ -23,7 +23,7 @@
 			}
 			
 			$subject = $_SESSION['imie'] . ' ' . $_SESSION['nazwisko'];
-			$message = "Imie: " . $_SESSION['imie'] . "<br/>Nazwisko: " . $_SESSION['nazwisko'] . "<br/>E-mail: " . $_SESSION['mail'] . "<br/>Temat: <b>". $tematyka ."</b></br><br/>" . $tresc;
+			$message = "Adresat: " . $_SESSION['imie'] . " " . $_SESSION['nazwisko'] . "<br/>E-mail: " . $_SESSION['mail'] . "<br/>Zagadnienie: <b>". $tematyka ."</b><br/><br/>" . $tresc;
 			$headers = 'RSS Panel: ' . $tytul . "\r\n" .'Content-type: text/html; charset=utf-8';
 
 			/*echo "Tematyka: ".$tematyka."</br>";
@@ -36,20 +36,20 @@
 			
 			if(!mail($to, $subject, $message, $headers)){
 				header('Location: ../panel.php');
-				$_SESSION['error'] = 'onload="loadToast(\'3\',\'Błąd formularza wiadomości!\',\'Próba wysłania maila nie powiodła się. Skontaktuj się z działem technicznym!\')"';
+				$_SESSION['error'] = 'loadToast(\'3\',\'Błąd formularza wiadomości!\',\'Próba wysłania maila nie powiodła się. Skontaktuj się z działem technicznym!\')';
 			}
 			
 			 header('Location: ../panel.php');
-				$_SESSION['error'] = 'onload="loadToast(\'0\',\'Formularz wiadomości!\',\'Mail o temacie <b>'.$tematyka.'</b> został wysłany pomyślnie!\')"';
+				$_SESSION['error'] = 'loadToast(\'0\',\'Formularz wiadomości!\',\'Mail o temacie <b>'.$tematyka.'</b> został wysłany pomyślnie!\')';
 		}
 		else{
 			header('Location: ../panel.php');
-			$_SESSION['error'] = 'onload="loadToast(\'3\',\'Błąd formularza wiadomości!\',\'Próba wysłania maila bez danych nie powiodła się.\')"';
+			$_SESSION['error'] = 'loadToast(\'3\',\'Błąd formularza wiadomości!\',\'Próba wysłania maila bez danych nie powiodła się.\')';
 		}  
 	 }
 	 else{
 		 header('Location: ../logowanie.php');
-		 $_SESSION['error'] = 'onload="loadToast(\'3\',\'Błąd logiczny!\',\'Próba przejścia na stronę bez logowania!\')"';
+		 $_SESSION['error'] = 'loadToast(\'3\',\'Błąd logiczny!\',\'Próba przejścia na stronę bez logowania!\')';
 	 }
 
 

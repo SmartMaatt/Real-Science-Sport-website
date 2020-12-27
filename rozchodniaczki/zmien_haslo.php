@@ -3,7 +3,7 @@
 
     function return_to_login_page($reason) {
         header('Location: ../panel.php');
-		$_SESSION['error'] = 'onload="loadToast(\'3\',\'Hasło nie zostało zmienione\',\''.$reason.'\')"';
+		$_SESSION['error'] = 'loadToast(\'3\',\'Hasło nie zostało zmienione\',\''.$reason.'\')';
         exit(0);
     }
 	
@@ -41,7 +41,7 @@
 				{
 					//$result2->free_result();
 					header('Location: ../panel.php');
-					$_SESSION['error'] = 'onload="loadToast(\'0\',\'Hasło zostało zmienione pomyślnie\',\'\')"';
+					$_SESSION['error'] = 'loadToast(\'0\',\'Hasło zostało zmienione pomyślnie\',\'\')';
 				}
 				else
 					return_to_login_page($incorrect_data);

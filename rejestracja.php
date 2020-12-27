@@ -6,7 +6,7 @@
 		header('Location: panel.php');
 	}
 	elseif(isset($_SESSION['error'])){
-		$error_msg = $_SESSION['error'];
+		$error_msg = "onload=\"".$_SESSION['error']."\"";
 		unset($_SESSION['error']);
 	}
 ?>
@@ -61,11 +61,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
     <div class="content-wrapper">
       <div class="content-header row">
       </div>
-      <div class="content-body">
+      <div class="content-body register-body">
         <section class="flexbox-container">
           <div class="col-12 d-flex align-items-center justify-content-center">
             <div class="col-lg-6 col-md-10 col-12 box-shadow-2 p-0">
-              <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
+              <div class="card border-grey border-lighten-3 m-0">
                 <div class="card-header border-0 pb-0">
                   <div class="card-title text-center">
                     <img class="display-logo" src="app-assets/images/logoBlack.png" alt="Real Science Sport logo">
@@ -111,10 +111,10 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
 					  <fieldset class="form-group register-field position-relative has-icon-left">
 					  <div class="btn-group btn-group-toggle" data-toggle="buttons">
 						  <label class="btn btn-secondary active">
-							<input type="radio" id="mezczyzna" name="plec" value="M" checked required>
+							<input type="radio" id="mezczyzna" name="plec" value="m" checked required>
 						  Mężczyzna</label>
 						  <label class="btn btn-secondary">
-							<input type="radio" id="kobieta" name="plec" value="K" required>
+							<input type="radio" id="kobieta" name="plec" value="k" required>
 						  Kobieta</label>
 					</div>
 					</fieldset>
@@ -137,7 +137,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
 					  
 					  <label>Powtórz hasło</label>
 					  <fieldset class="form-group register-field position-relative has-icon-left">
-                        <input type="password" class="form-control" id="user-password" placeholder="Powtórz hasło" name="haslo2" required>
+                        <input type="password" class="form-control" id="user-password2" placeholder="Powtórz hasło" name="haslo2" required>
                         <div class="form-control-position">
                           <i class="la la-key"></i>
                         </div>

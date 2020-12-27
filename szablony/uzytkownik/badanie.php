@@ -1,5 +1,9 @@
 <?php
 
+	if (session_status() == PHP_SESSION_NONE) {
+		header('Location: ../../logowanie.php');
+	}
+
 	$badanie = "";
 	if($id_opcji  == 1) $badanie = "biofeedback_eeg";
 	elseif($id_opcji  == 2) $badanie= "analiza_skladu_ciala";
