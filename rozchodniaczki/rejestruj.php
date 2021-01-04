@@ -56,7 +56,7 @@
 				if ($result) {
 					header('Location: ../panel.php');
 				} else {
-					//header('Location: ../rejestracja.php');
+					header('Location: ../rejestracja.php');
 					$_SESSION['error'] = 'onload="loadToast(\'3\',\'Błąd bazy danych\',\'Error '.$connection->connect_errno.'\')"';
 				}
 			}
@@ -64,7 +64,7 @@
 		//$result->free_result();
 		$connection->close();
 	} else {
-		//header('Location: ../rejestracja.php');
+		header('Location: ../rejestracja.php');
 		$_SESSION['error'] = 'onload="loadToast(\'3\',\'Błąd bazy danych\',\'Error '.$connection->connect_errno.'\')"';
 	}
 ?>
