@@ -1,4 +1,9 @@
 <?php
+
+	if (session_status() == PHP_SESSION_NONE) {
+		header('Location: ../../logowanie.php');
+	}
+	
 	require_once "rozchodniaczki/connect.php";
 	
 	$connection = @new mysqli($host, $db_user, $db_password, $db_name);

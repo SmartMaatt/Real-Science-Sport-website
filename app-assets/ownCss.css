@@ -12,10 +12,8 @@ i.m-corr{
 	margin-left: 20px;
 }
 
-/*Sekcja tÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡a podstron*/
-
 .blackBlind{
-	width:100%;
+	width:100vw;
 	height:100%;
 	background: black;
 	opacity: 0.2;
@@ -58,13 +56,13 @@ img.sideBar-logo-collapsed{
     padding: 0 10px 0 0;
 }
 
-/*HiperÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦cze bÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢dÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ce przyciskiem*/
+/*Hiperłącze z przyciskiem*/
 a.knefel{
 	display: block;
     margin: 10px auto;
 }
 
-/*Kolor przyciskÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³w w stylu rrs*/
+/*Kolor przycisków w stylu rrs*/
 .btn-rss{
 	color: white;
 	background: #f7ac25;
@@ -74,9 +72,33 @@ a.knefel{
 	background: #f6bd55;
 }
 
+/*Rejestracja*/
+
+.register-body input{
+	padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+    line-height: 1;
+}
+
+.register-body div.form-control-position{
+	line-height: 2.5rem;
+}
+
+.register-body .btn{
+	padding: 0.6rem 0.8rem;
+}
+
+.register-body h4{
+	margin-top:20px;
+	font-weight: 600;
+}
+
+.register-body li{
+	list-style-type: disc;
+}
 
 
-/*PANEL CONTACT*/
+/*Panel kontakt*/
 .card-profile-image{
 	margin: 20px auto 0 auto;
 	background: #333;
@@ -115,6 +137,28 @@ a.knefel{
 
 
 /*Panel profil*/
+
+div.profile-card{
+	position: relative;
+}
+
+div.profile-card img{
+	position: absolute;
+	width: 60px;
+	display: block;
+	background: #333;
+	border-radius: 10% 0 10% 0 ;
+	top: -20px;
+	right: -20px;
+	padding: 5px;
+}
+
+div.profile-card img:hover{
+	background:#222;
+	cursor: pointer;
+	animation-delay: 1s;
+}
+
 .profile-card-border{
 	border-bottom: 2px solid #f7ac25;
 }
@@ -147,244 +191,29 @@ a.settings-link.active{
 
 
 
-/*DODATKOWE STYLE GÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“RNEGO NAV BARA*/
-/*Dodatkowa stylizacja nazwiska w gÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³rnym nav barze*/
+/*DODATKOWE STYLE GÓRNEGO NAV BARA*/
+/*Dodatkowa stylizacja nazwiska w górnym nav barze*/
 .surNavBar{
 	margin-top:7px;
 }
 
-/*PodÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Âºwietlenie ikon po najechaniu*/
+/*Podświetlenie ikon po najechaniu*/
 a.iconsRss > i:hover{
 	color: #f7ac25;
 	pointer: cursor;
 	animation-delay: .6s;
 }
 
-/*Style tabeli*/
-#table_card
-{
-  background-position: 66% 50px;
-  background-repeat: no-repeat;
-  background-size: 150px;
- 
-}
-
-.table_card1{
-	background-image: url("images/bg_icons/bowling_icon.png");
-}
-
-.table_card2{
-	background-image: url("images/bg_icons/bilard_icon.png");
-}
-
-.table_card3{
-	background-image: url("images/bg_icons/table_icon.png");
-}
-
-.table_card4{
-	background-image: url("images/bg_icons/cash_icon.png");
-	background-size: 140px !important;
-	background-position: 66% 80px !important;
-}
-
-.table_card5{
-	background-image: url("images/bg_icons/calendar_icon.png");
-	background-size: 140px !important;
-}
-
-.table_card6{
-	background-image: url("images/bg_icons/food_icon.png");
-	background-position: 66% 80px !important;
-}
-
-.card-text{width: 80%;}
-.card-naglowek_cor{background:none;}
-.card-naglowek{background:FFF;}
-
-#app_table {
-	background-color: white;
-    border-collapse: collapse;
-    width: 100%;
-	max-width: 2500px;
-	color: black;
-	margin: 0 auto;
-	font-size: 15px;
-	table-layout: fixed;
-	margin-bottom: 20px;
-}
-
-#app_table tr:hover
-{
-	background-color: #ededed;
-}
-
-#app_table td{
-	position: relative;
-	border: 1px solid #dddddd;
-}
-
-.reservation_table td{
-	padding: 10px;
-	height:50px; 
-	text-align: center;  
-}
-
-.grafik_table td{
-	padding: 10px;
-	height:50px; 
-	text-align: center;
-}
-
-.cash_table td{
-	padding: 5px;
-	text-align: left; 
-}
-
-.reservation_table td p {
-	margin: 0;
-   font-size:10px;
-   font-weight: bold;
-}
-
-.cash_table td p {
-	margin: 0;
-}
-
-.ingredients_table {
-	width:50% !important;
-	margin: 0 !important;
-}
-
-#app_table th {
-	padding: 10px; 
-	text-align: center;
-	border: 1px solid #dddddd;
-}
-
-#tablenav {
-    background-color: #f74b5c !important;
-	color:white;
-}
-
-#tablenav td, th{
-	padding: 8px;
-	border:none;
-}
-
-.table_reserved{
-	background-color:rgba(74, 195, 55, 0.6);
-}
-
-.table_reserved:hover{
-	cursor: pointer;
-}
-
-#table_date_picker input
-{
-	width:20%;
-}
-
-#table_date_picker > * 
-{
-	margin:5px;
-	float:right;
-}
-
-#No_data_msg
-{
-	clear: both;
-	text-align: center;
-	font-weight: bold;
-	font-size: 72px;
-	padding: 30px 0;
-}
 
 
-/*Karta informacyjna*/
-#ICC{
-	font: 'Lato';
-	width:100%;
-	height:100vh;
-	position:fixed;
-	top:0;
-	left:0;
-	z-index:12;
-	display:none;
-	transition: all .3s ease-in-out;
-}
-
-.ICC_active{
-	
-	display:block !important;
-	background: rgba(0,0,0,.5)!important;
-	transition: all .5s ease-in-out;
-}
-
-.infoCard{
-	position:absolute;
-	top: calc(50% - 150px);
-	left: calc(50% - 225px);
-	width:450px;
-	overflow:hidden;
-	padding: 20px 10px;
-	background: white;
-	border-radius: 15px 0 15px 0;
-	transition: all .3s ease-in-out;
-	border-top: 15px #ff4961 solid;
-}
-
-.infoCard h2
-{
-	font-size:20px;
-}
-
-.infoCard button
-{
-	float:right;
-	margin-right:30px;
-	margin: 5px;
-}
-
-/*Karta: rezeracje*/
-#infoCard_0 > ul
-{
-	margin-bottom:10px;
-	margin-top:10px;
-}
-
-/*Karta: powodzenie w zÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡oÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼eniu rezerwacji*/
-#infoCard_1 > h2{
-	font-weight: bold;
-	text-align:center;
-	margin-bottom:20px;
-}
-
-#infoCard_1 > i
-{
-	font-size:100px;
-	margin: 10px auto;
-	display: table;
-}
-
-#infoCard_1 > i.ft-alert-triangle
-{
-	color: red;
-}
-
-#infoCard_1 > i.ft-check-circle
-{
-	color:green;
-}
-
-
-
-/*RESPONSYWNOÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â  APLIKACJI*/
+/*RESPONSYWNOŚĆ APLIKACJI*/
+/*Tablet*/
 @media screen and (min-width:767px) and (max-width: 1365px){
 .bgLoggin {background-size: cover;}
 .navbar-container h3{font-size: 1.4rem;}
 }
 
-
+/*Telefon*/
 @media screen and (max-width: 767px){
 
 .bgLoggin {background-size: cover;}
@@ -405,150 +234,4 @@ img.display-logo{width:200px;}
 	width: 100%;
 	margin: 8px 0 2px 0;
 }
-	
-	.card-title{font-weight:700 !important;}
-	.card-text{font-size:1rem !important; width:75%;}
-	#table_date_picker{margin-top:10px;}
-	#table_date_picker input {width:60%;}
-	#table_card{background-position: right 100px !important; background-size:120px !important;}
-	
-.ingredients_table {
-	width:100% !important;
-}	
-	
-  #app_table tr {
-    border-bottom: 20px solid #ededed;
-  }
-  
-  #app_table td {
-    border-bottom: 1px solid #ddd;
-    display: block;
-  }
-  
-  .order_details_table tr{
-	  border-bottom: none !important;
-  }
-  
-  .cash_table td{
-	  height: 45px;
-  }
-  
-  .reservation_table td::before {
-    float: left;
-	font-size: 12px;
-	font-weight: bold;
-  }
-  
-  .grafik_table td::before {
-	   margin-top: 5px;
-	  font:45px;
-	  font-weight: bold;
-  }
-  
-  .cash_table td::before{
-	   float: left;
-	font-size: 12px;
-	font-weight: bold;
-  }
-  
-  #app_table td h4
-  {
-	  margin-top: 5px;
-	  font:45px;
-	  font-weight: bold;
-	  color: white;
-  }
-  
-  .reservation_table td p
-  {
-	 position: relative;
-	 font-size: 18px;
-	 rigth:0;
-	 top:2px;
-	 left:-5%;
-  }
-  
-  .ingredients_table td p {
-	  font-weight: bold;
-	  margin:5px;
-	font-size: 12px;
-  }
-  
-  .cash_table td p{
-	 clear: both;
-	font-size: 12px;
-  }
-  
-  .reservation_table td:nth-of-type(1) {background-color:#f74b5c;}
-  .reservation_table td:nth-of-type(1) h4:before { content: "#"; }
-  .reservation_table td:nth-of-type(2):before { content: "6:00"; }
-  .reservation_table td:nth-of-type(3):before { content: "7:00"; }
-  .reservation_table td:nth-of-type(4):before { content: "8:00";}
-  .reservation_table td:nth-of-type(5):before { content: "9:00";}
-  .reservation_table td:nth-of-type(6):before { content: "10:00";}
-  .reservation_table td:nth-of-type(7):before { content: "11:00";}
-  .reservation_table td:nth-of-type(8):before { content: "12:00";}
-  .reservation_table td:nth-of-type(9):before { content: "13:00";}
-  .reservation_table td:nth-of-type(10):before { content: "14:00";}
-  .reservation_table td:nth-of-type(11):before { content: "15:00";}
-  .reservation_table td:nth-of-type(12):before { content: "16:00";}
-  .reservation_table td:nth-of-type(13):before { content: "17:00";}
-  .reservation_table td:nth-of-type(14):before { content: "18:00";}
-  .reservation_table td:nth-of-type(15):before { content: "19:00";}
-  .reservation_table td:nth-of-type(16):before { content: "20:00";}
-  .reservation_table td:nth-of-type(17):before { content: "21:00";}
-  
-  .grafik_table td:nth-of-type(1) {background-color:#f74b5c;}
-  .grafik_table td:nth-of-type(1) h4:before { content: "#"; }
-  .grafik_table td:nth-of-type(2):before { content: "5:00"; }
-  .grafik_table td:nth-of-type(3):before { content: "6:00"; }
-  .grafik_table td:nth-of-type(4):before { content: "7:00"; }
-  .grafik_table td:nth-of-type(5):before { content: "8:00";}
-  .grafik_table td:nth-of-type(6):before { content: "9:00";}
-  .grafik_table td:nth-of-type(7):before { content: "10:00";}
-  .grafik_table td:nth-of-type(8):before { content: "11:00";}
-  .grafik_table td:nth-of-type(9):before { content: "12:00";}
-  .grafik_table td:nth-of-type(10):before { content: "13:00";}
-  .grafik_table td:nth-of-type(11):before { content: "14:00";}
-  .grafik_table td:nth-of-type(12):before { content: "15:00";}
-  .grafik_table td:nth-of-type(13):before { content: "16:00";}
-  .grafik_table td:nth-of-type(14):before { content: "17:00";}
-  .grafik_table td:nth-of-type(15):before { content: "18:00";}
-  .grafik_table td:nth-of-type(16):before { content: "19:00";}
-  .grafik_table td:nth-of-type(17):before { content: "20:00";}
-  .grafik_table td:nth-of-type(18):before { content: "21:00";}
-  .grafik_table td:nth-of-type(19):before { content: "22:00";}
-
-  .cash_table td:nth-of-type(1):before { content: "Nazwa:"; }
-  .cash_table td:nth-of-type(2):before { content: "Cena:"; }
-  
-  .order_table td:nth-of-type(1):before { content: "ID:"; }
-  .order_table td:nth-of-type(2):before { content: "Dane:"; }
-  .order_table td:nth-of-type(3):before { content: "Cena:"; }
-  
-  .order_details_table td:nth-of-type(1):before { content: "ID:"; }
-  .order_details_table td:nth-of-type(2):before { content: "Dane:"; }
-  .order_details_table td:nth-of-type(3):before { content: "Adres:"; }
-  .order_details_table td:nth-of-type(4):before { content: "Telefon:"; }
-
-	#tablenav{display:none;}
-	
-	.infoCard{
-	top: 25%;
-	left: 10%;
-	width:80%;
-	padding: 10px 0;
 }
-
-.infoCard h2
-{
-	font-size:15px;
-}
-
-.infoCard button
-{
-	float:right;
-	margin-right:30px !important;
-}
-}
-

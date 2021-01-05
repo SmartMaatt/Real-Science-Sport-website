@@ -1,4 +1,9 @@
 <?php
+
+	if (session_status() == PHP_SESSION_NONE) {
+		header('Location: ../../logowanie.php');
+	}
+
 	$plec = "";
 	if($_SESSION['plec'] == "m"){
 		$plec = '<i class="fas fa-mars"></i>';
@@ -15,7 +20,7 @@
 
 
 <section id="user-profile-cards" class="row mt-2">
-          <div class="col-6">
+          <div class="col-10 col-md-6">
             <h1 class="text-bold-600">Profil Rss - <?php echo $_SESSION['imie']. " " .$_SESSION['nazwisko']; ?></h1>
 			<p>Analizuj swoje statystyki oraz wprowadź zmiany w profilu</p>
             <hr>
@@ -30,7 +35,8 @@
           
           <div class="col-lg-5 col-md-12">
               <div class="card" style="">
-                <div class="card-content">
+                <div class="card-content profile-card">
+						<img src="app-assets/images/logoCard.png" />
                   <div class="card-body profile-card-border">
                     <h2 class="card-title"><?php echo $_SESSION['imie']." ".$_SESSION['nazwisko']."  ".$plec; ?></h2>
                     <p class="card-text">Standardowy użytkownik RSS</p>
@@ -62,8 +68,8 @@
                           <form class="form" method="post" action="">
 							<div class="form-body">
 								<div class="form-group">
-								  <label for="issueinput1">Wprowadź nową wagę</label></br>
-								  <input type="text" name="waga" maxlength="3" required />
+								  <label for="issueinput1">Wprowadź nową wagę [kg]</label></br>
+								  <input type="number" name="waga" max="170" pattern="[0-9.]+" required />
 								</div>
 								<button type="submit" class="btn btn-warning">Zmień wagę</button>
 							</div>
@@ -83,8 +89,8 @@
                           <form class="form" method="post" action="">
 							<div class="form-body">
 								<div class="form-group">
-								  <label for="issueinput1">Wprowadź nowy wzrost</label></br>
-								  <input type="text" name="waga" maxlength="3" oninput='onlyNumber(this)' required />
+								  <label for="issueinput2">Wprowadź nowy wzrost [cm]</label></br>
+								  <input type="number" name="wzrost" max="210" pattern="[0-9.]+" required />
 								</div>
 								<button type="submit" class="btn btn-warning">Zmień wzrost</button>
 							</div>

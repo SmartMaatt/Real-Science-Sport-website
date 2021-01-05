@@ -6,7 +6,7 @@
 		header('Location: panel.php');
 	}
 	elseif(isset($_SESSION['error'])){
-		$error_msg = $_SESSION['error'];
+		$error_msg = "onload=\"".$_SESSION['error']."\"";
 		unset($_SESSION['error']);
 	}
 ?>
