@@ -1,6 +1,6 @@
 <?php
 	if (session_status() == PHP_SESSION_NONE) {
-		header('Location: ../../logowanie.php');
+		header('Location: logowanie.php');
 	}
 ?>
 
@@ -66,59 +66,205 @@
 		<li class="navigation-header">
           <span data-i18n="nav.category.ui">Twoje badania</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Twoje badania"></i>
         </li>
-		<li class="nav-item <?php activateMenu("1","0"); ?>">
-			<a href="#" onclick="nowaOpcja(1,0)">
-				<i class="fas fa-brain"></i>
-				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Biofeedback EEG</span>
-			</a>
-        </li>
-		<li class="nav-item <?php activateMenu("2","0"); ?>">
-			<a href="#" onclick="nowaOpcja(2,0)">
-				<i class="fas fa-weight"></i>
-				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Analiza składu ciała</span>
-			</a>
-        </li>
-	   <li class="nav-item has-sub <?php activateMenu("3","0"); ?>"><a href="#"><i class="la la-rocket"></i><span class="menu-title" data-i18n="nav.event_calendars.main">Fotokomórki</span></a>
-          <ul class="menu-content" style="height: 122.297px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px; overflow: hidden;">
-            <ul class="menu-content" style="">
-			<li class='is-shown <?php activateMenu("3","1"); ?>'><a onclick="nowaOpcja(3,1)" class='menu-item' href='#'>Test szybkości</a></li>
-			<li class='is-shown <?php activateMenu("3","2"); ?>'><a onclick="nowaOpcja(3,2)" class='menu-item' href='#'>Rast test</a></li>
-			<li class='is-shown <?php activateMenu("3","3"); ?>'><a onclick="nowaOpcja(3,3)" class='menu-item' href='#'>Prowadzenia piłki</a></li>
-            </ul>
-          </ul>
-        </li>
-		<li class="nav-item <?php activateMenu("4","0"); ?>">
-			<a href="#" onclick="nowaOpcja(4,0)">
-				<i class="ft-bar-chart"></i>
-				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Analizator kwasu mlekowego</span>
-			</a>
-        </li>
-		<li class="nav-item <?php activateMenu("5","0"); ?>">
-			<a href="#" onclick="nowaOpcja(5,0)">
-				<i class="fas fa-ruler-vertical"></i>
-				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Wzrostomierz</span>
-			</a>
-        </li>
-		<li class="nav-item <?php activateMenu("6","0"); ?>">
-			<a href="#" onclick="nowaOpcja(6,0)">
-				<i class="ft-activity"></i>
-				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Beep test</span>
-			</a>
-        </li>
-		<li class="nav-item <?php activateMenu("7","0"); ?>">
-			<a href="#" onclick="nowaOpcja(7,0)">
-				<i class="fas fa-stopwatch-20"></i>
-				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Opto jump next</span>
-			</a>
-        </li>
-		
-		
+		<?php
+			require_once 'rozchodniaczki/connect.php';
+			$connection = @new mysqli($host, $db_user, $db_password, $db_name);
+
+			if ($connection->connect_errno == 0) 
+			{
+				$id_klienta = $_SESSION['id_klienta'];
+				$sql = "SELECT * FROM wszystkie_badania where id_klienta = '$id_klienta'";
+				$result = @$connection->query($sql);
+				if($result) 
+				{
+					$row = $result->fetch_assoc();
+					if($row['biofeedback_eeg'])
+					{
+						echo
+							'<li class="nav-item activateMenu("1","0")">
+								<a href="#" onclick="nowaOpcja(1,0)">
+									<i class="fas fa-brain"></i>
+									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Biofeedback EEG</span>
+								</a>
+							</li>';
+					}
+					if($row['analiza_skladu_ciala'])
+					{
+						echo
+							'<li class="nav-item activateMenu("2","0")">
+								<a href="#" onclick="nowaOpcja(2,0)">
+									<i class="fas fa-weight"></i>
+									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Analiza składu ciała</span>
+								</a>
+							</li>';
+					}
+					$wysokosc = 0;
+					if($row['test_szybkosci'])
+						$wysokosc += 40.0;
+					if($row['rast_test'])
+						$wysokosc += 40.0;
+					if($row['prowadzenie_pilki'])
+						$wysokosc += 40.0;
+					if($wysokosc)
+					{
+						echo
+							'<li class="nav-item has-sub activateMenu("3","0")"><a href="#"><i class="la la-rocket"></i><span class="menu-title" data-i18n="nav.event_calendars.main">Fotokomórki</span></a>
+							  <ul class="menu-content" style="height: '.$wysokosc.'px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px; overflow: hidden;">
+								<ul class="menu-content" style="">';
+								
+								if($row['test_szybkosci'])
+									echo "<li class='is-shown activateMenu('3','1')'><a onclick='nowaOpcja(3,1)' class='menu-item' href='#'>Test szybkości</a></li>";
+								if($row['rast_test'])
+									echo "<li class='is-shown activateMenu('3','2')'><a onclick='nowaOpcja(3,2)' class='menu-item' href='#'>Rast test</a></li>";
+								if($row['prowadzenie_pilki'])
+									echo "<li class='is-shown activateMenu('3','3')'><a onclick='nowaOpcja(3,3)' class='menu-item' href='#'>Prowadzenia piłki</a></li>";
+						echo		
+								'</ul>
+							  </ul>
+							</li>';
+					}
+					if($row['analizator_kwasu_mlekowego'])
+					{
+						echo
+							'<li class="nav-item activateMenu("4","0")">
+								<a href="#" onclick="nowaOpcja(4,0)">
+									<i class="ft-bar-chart"></i>
+									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Analizator kwasu mlekowego</span>
+								</a>
+							</li>';
+					}
+					if($row['wzrostomierz'])
+					{
+						echo
+							'<li class="nav-item activateMenu("5","0")">
+								<a href="#" onclick="nowaOpcja(5,0)">
+									<i class="fas fa-ruler-vertical"></i>
+									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Wzrostomierz</span>
+								</a>
+							</li>';
+					}
+					if($row['beep_test'])
+					{
+						echo
+							'<li class="nav-item activateMenu("6","0")">
+								<a href="#" onclick="nowaOpcja(6,0)">
+									<i class="ft-activity"></i>
+									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Beep test</span>
+								</a>
+							</li>';
+					}
+					if($row['opto_jump_next'])
+					{
+						echo
+							'<li class="nav-item activateMenu("7","0")">
+								<a href="#" onclick="nowaOpcja(7,0)">
+									<i class="fas fa-stopwatch-20"></i>
+									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Opto jump next</span>
+								</a>
+							</li>';
+					}
+				}
+			}
+		?>
 		
 		<!--DOSTĘPNE BADANIA -->
 		<li class="navigation-header">
           <span data-i18n="nav.category.ui">Dostępne badania</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Dostępne badania"></i>
         </li>
-		<li class="nav-item <?php activateMenu("1","0"); ?>">
+		<?php
+			if ($connection->connect_errno == 0) 
+			{
+				if($result) 
+				{
+					if(!$row['biofeedback_eeg'])
+					{
+						echo
+							'<li class="nav-item activateMenu("1","0")">
+								<a href="#" onclick="nowaOpcja(1,0)">
+									<i class="fas fa-brain"></i>
+									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Biofeedback EEG</span>
+								</a>
+							</li>';
+					}
+					if(!$row['analiza_skladu_ciala'])
+					{
+						echo
+							'<li class="nav-item activateMenu("2","0")">
+								<a href="#" onclick="nowaOpcja(2,0)">
+									<i class="fas fa-weight"></i>
+									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Analiza składu ciała</span>
+								</a>
+							</li>';
+					}
+					$wysokosc = 0;
+					if(!$row['test_szybkosci'])
+						$wysokosc += 40.0;
+					if(!$row['rast_test'])
+						$wysokosc += 40.0;
+					if(!$row['prowadzenie_pilki'])
+						$wysokosc += 40.0;
+					if($wysokosc)
+					{
+						echo
+							'<li class="nav-item has-sub activateMenu("3","0")"><a href="#"><i class="la la-rocket"></i><span class="menu-title" data-i18n="nav.event_calendars.main">Fotokomórki</span></a>
+							  <ul class="menu-content" style="height: '.$wysokosc.'px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px; overflow: hidden;">
+								<ul class="menu-content" style="">';
+								
+								if(!$row['test_szybkosci'])
+									echo "<li class='is-shown activateMenu('3','1')'><a onclick='nowaOpcja(3,1)' class='menu-item' href='#'>Test szybkości</a></li>";
+								if(!$row['rast_test'])
+									echo "<li class='is-shown activateMenu('3','2')'><a onclick='nowaOpcja(3,2)' class='menu-item' href='#'>Rast test</a></li>";
+								if(!$row['prowadzenie_pilki'])
+									echo "<li class='is-shown activateMenu('3','3')'><a onclick='nowaOpcja(3,3)' class='menu-item' href='#'>Prowadzenia piłki</a></li>";
+						echo		
+								'</ul>
+							  </ul>
+							</li>';
+					}
+					if(!$row['analizator_kwasu_mlekowego'])
+					{
+						echo
+							'<li class="nav-item activateMenu("4","0")">
+								<a href="#" onclick="nowaOpcja(4,0)">
+									<i class="ft-bar-chart"></i>
+									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Analizator kwasu mlekowego</span>
+								</a>
+							</li>';
+					}
+					if(!$row['wzrostomierz'])
+					{
+						echo
+							'<li class="nav-item activateMenu("5","0")">
+								<a href="#" onclick="nowaOpcja(5,0)">
+									<i class="fas fa-ruler-vertical"></i>
+									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Wzrostomierz</span>
+								</a>
+							</li>';
+					}
+					if(!$row['beep_test'])
+					{
+						echo
+							'<li class="nav-item activateMenu("6","0")">
+								<a href="#" onclick="nowaOpcja(6,0)">
+									<i class="ft-activity"></i>
+									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Beep test</span>
+								</a>
+							</li>';
+					}
+					if(!$row['opto_jump_next'])
+					{
+						echo
+							'<li class="nav-item activateMenu("7","0")">
+								<a href="#" onclick="nowaOpcja(7,0)">
+									<i class="fas fa-stopwatch-20"></i>
+									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Opto jump next</span>
+								</a>
+							</li>';
+					}
+				}
+			}
+		?>
+		<!--<li class="nav-item <?php activateMenu("1","0"); ?>">
 			<a href="#" onclick="nowaOpcja(1,0)">
 				<i class="fas fa-brain"></i>
 				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Biofeedback EEG</span>
@@ -163,7 +309,7 @@
 				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Opto jump next</span>
 			</a>
         </li>
-      </ul>
+      </ul>-->
     </div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////-->

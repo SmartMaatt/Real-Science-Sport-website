@@ -63,12 +63,6 @@
 				}
 				else 
 				{
-					//Odczyt ilości klientów w bazie
-					$sql2 = "SELECT COUNT(id_klienta) as ile FROM klient";
-					$result2 = @$connection->query($sql2);
-					$liczba_klientow = $result2->fetch_assoc();
-					$result2->free_result();
-					
 					//Pobranie listy id
 					$sql2 = "SELECT id_klienta as id_klienta FROM klient";
 					$result2 = @$connection->query($sql2);
