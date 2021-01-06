@@ -33,16 +33,19 @@
 			$data = $row['data'];
 			$wzrost_tulowia = $row['wzrost_tulowia'];	
 			$result->free_result();
+			
+			$id_klienta = $_SESSION['id_klienta'];
+			$sql = "SELECT wartosc FROM wzrost WHERE id_klienta = '$id_klienta' AND data = '$data'";
+			if($result = @$connection->query($sql))
+			{
+				$row = $result->fetch_assoc();
+				$wzrost = $row['wartosc'];
+				echo '<tr><td>'.$wzrost.'</td><td>'.$wzrost_tulowia.'</td></tr></table>';			
+				$result->free_result();
+			}
 		}
-		$id_klienta = $_SESSION['id_klienta'];
-		$sql = "SELECT wartosc FROM wzrost WHERE id_klienta = '$id_klienta AND data = '$data'";
-		if($result = @$connection->query($sql))
-		{
-			$row = $result->fetch_assoc();
-			$wzrost= $row['wartosc'];	
-			$result->free_result();
-		}
-		echo '<tr><td>$wzrost</td><td>$wzrost_tulowia</td></tr></table>';
+		
+		echo '<a href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_opcji'].'&p='.$_SESSION['id_podopcji'].'&b=-1" class="btn btn-danger">Wróć</a>';
 		
 		$connection->close();
 	}

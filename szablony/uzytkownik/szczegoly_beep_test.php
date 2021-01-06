@@ -39,6 +39,7 @@
 			$result->free_result();
 		}
 		echo '</table>';
+		echo '<a href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_opcji'].'&p='.$_SESSION['id_podopcji'].'&b=-1" class="btn btn-danger">Wróć</a>';
 		
 		$connection->close();
 	}

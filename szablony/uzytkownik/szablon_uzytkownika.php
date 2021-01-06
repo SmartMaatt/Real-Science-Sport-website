@@ -40,14 +40,14 @@
 				<i class="ficon ft-user"></i>
               </a>
 			  <div class="dropdown-menu dropdown-menu-right">
-				<a class="dropdown-item" href="#" onclick="nowaOpcja(<?php echo $_SESSION['id_opcji'] ?>,11)"><i class="ft-user"></i>Pokaż profil</a>
-				<a class="dropdown-item" href="#" onclick="nowaOpcja(<?php echo $_SESSION['id_opcji'] ?>,12)"><i class="ft-settings"></i>Ustawienia</a>
+				<a class="dropdown-item" href="rozchodniaczki/id_opcji.php?o=<?php echo $_SESSION['id_podopcji'];?>&p=11&b=-1"><i class="ft-user"></i>Pokaż profil</a>
+				<a class="dropdown-item" href="rozchodniaczki/id_opcji.php?o=<?php echo $_SESSION['id_podopcji'];?>&p=12&b=-1"><i class="ft-settings"></i>Ustawienia</a>
                 <div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="rozchodniaczki/wyloguj.php"><i class="ft-power"></i> Wyloguj</a>
               </div>
             </li>
             <li class="dropdown dropdown-notification nav-item">
-              <a class="nav-link nav-link-label iconsRss" href="#" onclick="nowaOpcja(<?php echo $_SESSION['id_opcji'] ?>,13)" data-toggle="dropdown"><i class="ficon ft-mail"></i></a>
+              <a class="nav-link nav-link-label iconsRss" href="rozchodniaczki/id_opcji.php?o=<?php echo $_SESSION['id_podopcji'];?>&p=13&b=-1"><i class="ficon ft-mail"></i></a>
              
             </li>
           </ul>
@@ -81,8 +81,8 @@
 					if($row['biofeedback_eeg'])
 					{
 						echo
-							'<li class="nav-item activateMenu("1","0")">
-								<a href="#" onclick="nowaOpcja(1,0)">
+							'<li class="nav-item '; activateMenu(1,0); echo'">
+								<a href="rozchodniaczki/id_opcji.php?o=1&p=0&b=-1">
 									<i class="fas fa-brain"></i>
 									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Biofeedback EEG</span>
 								</a>
@@ -91,8 +91,8 @@
 					if($row['analiza_skladu_ciala'])
 					{
 						echo
-							'<li class="nav-item activateMenu("2","0")">
-								<a href="#" onclick="nowaOpcja(2,0)">
+							'<li class="nav-item '; activateMenu(2,0); echo'">
+								<a href="rozchodniaczki/id_opcji.php?o=2&p=0&b=-1"">
 									<i class="fas fa-weight"></i>
 									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Analiza składu ciała</span>
 								</a>
@@ -108,16 +108,16 @@
 					if($wysokosc)
 					{
 						echo
-							'<li class="nav-item has-sub activateMenu("3","0")"><a href="#"><i class="la la-rocket"></i><span class="menu-title" data-i18n="nav.event_calendars.main">Fotokomórki</span></a>
+							'<li class="nav-item has-sub"><a href="#"><i class="la la-rocket"></i><span class="menu-title" data-i18n="nav.event_calendars.main">Fotokomórki</span></a>
 							  <ul class="menu-content" style="height: '.$wysokosc.'px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px; overflow: hidden;">
 								<ul class="menu-content" style="">';
 								
-								if($row['test_szybkosci'])
-									echo "<li class='is-shown activateMenu('3','1')'><a onclick='nowaOpcja(3,1)' class='menu-item' href='#'>Test szybkości</a></li>";
-								if($row['rast_test'])
-									echo "<li class='is-shown activateMenu('3','2')'><a onclick='nowaOpcja(3,2)' class='menu-item' href='#'>Rast test</a></li>";
-								if($row['prowadzenie_pilki'])
-									echo "<li class='is-shown activateMenu('3','3')'><a onclick='nowaOpcja(3,3)' class='menu-item' href='#'>Prowadzenia piłki</a></li>";
+								if($row['test_szybkosci']){
+									echo "<li class='is-shown "; activateMenu('3','1'); echo "'><a class='menu-item' href='rozchodniaczki/id_opcji.php?o=3&p=1&b=-1'>Test szybkości</a></li>";}
+								if($row['rast_test']){
+									echo "<li class='is-shown "; activateMenu('3','2'); echo "'><a class='menu-item' href='rozchodniaczki/id_opcji.php?o=3&p=2&b=-1'>Rast test</a></li>";}
+								if($row['prowadzenie_pilki']){
+									echo "<li class='is-shown "; activateMenu('3','3'); echo "'><a class='menu-item' href='rozchodniaczki/id_opcji.php?o=3&p=3&b=-1'>Prowadzenia piłki</a></li>";}
 						echo		
 								'</ul>
 							  </ul>
@@ -126,8 +126,8 @@
 					if($row['analizator_kwasu_mlekowego'])
 					{
 						echo
-							'<li class="nav-item activateMenu("4","0")">
-								<a href="#" onclick="nowaOpcja(4,0)">
+							'<li class="nav-item '; activateMenu(4,0); echo'">
+								<a href="rozchodniaczki/id_opcji.php?o=4&p=0&b=-1">
 									<i class="ft-bar-chart"></i>
 									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Analizator kwasu mlekowego</span>
 								</a>
@@ -136,8 +136,8 @@
 					if($row['wzrostomierz'])
 					{
 						echo
-							'<li class="nav-item activateMenu("5","0")">
-								<a href="#" onclick="nowaOpcja(5,0)">
+							'<li class="nav-item '; activateMenu(5,0); echo'">
+								<a href="rozchodniaczki/id_opcji.php?o=5&p=0&b=-1">
 									<i class="fas fa-ruler-vertical"></i>
 									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Wzrostomierz</span>
 								</a>
@@ -146,8 +146,8 @@
 					if($row['beep_test'])
 					{
 						echo
-							'<li class="nav-item activateMenu("6","0")">
-								<a href="#" onclick="nowaOpcja(6,0)">
+							'<li class="nav-item '; activateMenu(6,0); echo'">
+								<a href="rozchodniaczki/id_opcji.php?o=6&p=0&b=-1">
 									<i class="ft-activity"></i>
 									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Beep test</span>
 								</a>
@@ -156,8 +156,8 @@
 					if($row['opto_jump_next'])
 					{
 						echo
-							'<li class="nav-item activateMenu("7","0")">
-								<a href="#" onclick="nowaOpcja(7,0)">
+							'<li class="nav-item '; activateMenu(7,0); echo'">
+								<a href="rozchodniaczki/id_opcji.php?o=7&p=0&b=-1">
 									<i class="fas fa-stopwatch-20"></i>
 									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Opto jump next</span>
 								</a>
@@ -179,8 +179,8 @@
 					if(!$row['biofeedback_eeg'])
 					{
 						echo
-							'<li class="nav-item activateMenu("1","0")">
-								<a href="#" onclick="nowaOpcja(1,0)">
+							'<li class="nav-item '; activateMenu(1,0); echo'">
+								<a href="rozchodniaczki/id_opcji.php?o=1&p=0&b=-1">
 									<i class="fas fa-brain"></i>
 									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Biofeedback EEG</span>
 								</a>
@@ -189,8 +189,8 @@
 					if(!$row['analiza_skladu_ciala'])
 					{
 						echo
-							'<li class="nav-item activateMenu("2","0")">
-								<a href="#" onclick="nowaOpcja(2,0)">
+							'<li class="nav-item '; activateMenu(2,0); echo'">
+								<a href="rozchodniaczki/id_opcji.php?o=2&p=0&b=-1">
 									<i class="fas fa-weight"></i>
 									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Analiza składu ciała</span>
 								</a>
@@ -206,16 +206,16 @@
 					if($wysokosc)
 					{
 						echo
-							'<li class="nav-item has-sub activateMenu("3","0")"><a href="#"><i class="la la-rocket"></i><span class="menu-title" data-i18n="nav.event_calendars.main">Fotokomórki</span></a>
+							'<li class="nav-item has-sub"><a href="#"><i class="la la-rocket"></i><span class="menu-title" data-i18n="nav.event_calendars.main">Fotokomórki</span></a>
 							  <ul class="menu-content" style="height: '.$wysokosc.'px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px; overflow: hidden;">
 								<ul class="menu-content" style="">';
 								
-								if(!$row['test_szybkosci'])
-									echo "<li class='is-shown activateMenu('3','1')'><a onclick='nowaOpcja(3,1)' class='menu-item' href='#'>Test szybkości</a></li>";
-								if(!$row['rast_test'])
-									echo "<li class='is-shown activateMenu('3','2')'><a onclick='nowaOpcja(3,2)' class='menu-item' href='#'>Rast test</a></li>";
-								if(!$row['prowadzenie_pilki'])
-									echo "<li class='is-shown activateMenu('3','3')'><a onclick='nowaOpcja(3,3)' class='menu-item' href='#'>Prowadzenia piłki</a></li>";
+								if(!$row['test_szybkosci']){
+									echo "<li class='is-shown "; activateMenu('3','1'); echo "'><a class='menu-item' href='rozchodniaczki/id_opcji.php?o=3&p=1&b=-1'>Test szybkości</a></li>";}
+								if(!$row['rast_test']){
+									echo "<li class='is-shown "; activateMenu('3','2'); echo "'><a class='menu-item' href='rozchodniaczki/id_opcji.php?o=3&p=2&b=-1'>Rast test</a></li>";}
+								if(!$row['prowadzenie_pilki']){
+									echo "<li class='is-shown "; activateMenu('3','3'); echo "'><a class='menu-item' href='rozchodniaczki/id_opcji.php?o=3&p=3&b=-1'>Prowadzenia piłki</a></li>";}
 						echo		
 								'</ul>
 							  </ul>
@@ -224,8 +224,8 @@
 					if(!$row['analizator_kwasu_mlekowego'])
 					{
 						echo
-							'<li class="nav-item activateMenu("4","0")">
-								<a href="#" onclick="nowaOpcja(4,0)">
+							'<li class="nav-item '; activateMenu(4,0); echo'">
+								<a href="rozchodniaczki/id_opcji.php?o=4&p=0&b=-1">
 									<i class="ft-bar-chart"></i>
 									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Analizator kwasu mlekowego</span>
 								</a>
@@ -234,8 +234,8 @@
 					if(!$row['wzrostomierz'])
 					{
 						echo
-							'<li class="nav-item activateMenu("5","0")">
-								<a href="#" onclick="nowaOpcja(5,0)">
+							'<li class="nav-item '; activateMenu(5,0); echo'">
+								<a href="rozchodniaczki/id_opcji.php?o=5&p=0&b=-1">
 									<i class="fas fa-ruler-vertical"></i>
 									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Wzrostomierz</span>
 								</a>
@@ -244,8 +244,8 @@
 					if(!$row['beep_test'])
 					{
 						echo
-							'<li class="nav-item activateMenu("6","0")">
-								<a href="#" onclick="nowaOpcja(6,0)">
+							'<li class="nav-item '; activateMenu(6,0); echo'">
+								<a href="rozchodniaczki/id_opcji.php?o=6&p=0&b=-1">
 									<i class="ft-activity"></i>
 									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Beep test</span>
 								</a>
@@ -254,8 +254,8 @@
 					if(!$row['opto_jump_next'])
 					{
 						echo
-							'<li class="nav-item activateMenu("7","0")">
-								<a href="#" onclick="nowaOpcja(7,0)">
+							'<li class="nav-item '; activateMenu(7,0); echo'">
+								<a href="rozchodniaczki/id_opcji.php?o=7&p=0&b=-1">
 									<i class="fas fa-stopwatch-20"></i>
 									<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Opto jump next</span>
 								</a>
@@ -264,52 +264,6 @@
 				}
 			}
 		?>
-		<!--<li class="nav-item <?php activateMenu("1","0"); ?>">
-			<a href="#" onclick="nowaOpcja(1,0)">
-				<i class="fas fa-brain"></i>
-				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Biofeedback EEG</span>
-			</a>
-        </li>
-		<li class="nav-item <?php activateMenu("2","0"); ?>">
-			<a href="#" onclick="nowaOpcja(2,0)">
-				<i class="fas fa-weight"></i>
-				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Analiza składu ciała</span>
-			</a>
-        </li>
-	   <li class="nav-item has-sub <?php activateMenu("3","0"); ?>"><a href="#"><i class="la la-rocket"></i><span class="menu-title" data-i18n="nav.event_calendars.main">Fotokomórki</span></a>
-          <ul class="menu-content" style="height: 122.297px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px; overflow: hidden;">
-            <ul class="menu-content" style="">
-			<li class='is-shown <?php activateMenu("3","1"); ?>'><a onclick="nowaOpcja(3,1)" class='menu-item' href='#'>Test szybkości</a></li>
-			<li class='is-shown <?php activateMenu("3","2"); ?>'><a onclick="nowaOpcja(3,2)" class='menu-item' href='#'>Rast test</a></li>
-			<li class='is-shown <?php activateMenu("3","3"); ?>'><a onclick="nowaOpcja(3,3)" class='menu-item' href='#'>Prowadzenia piłki</a></li>
-            </ul>
-          </ul>
-        </li>
-		<li class="nav-item <?php activateMenu("4","0"); ?>">
-			<a href="#" onclick="nowaOpcja(4,0)">
-				<i class="ft-bar-chart"></i>
-				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Analizator kwasu mlekowego</span>
-			</a>
-        </li>
-		<li class="nav-item <?php activateMenu("5","0"); ?>">
-			<a href="#" onclick="nowaOpcja(5,0)">
-				<i class="fas fa-ruler-vertical"></i>
-				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Wzrostomierz</span>
-			</a>
-        </li>
-		<li class="nav-item <?php activateMenu("6","0"); ?>">
-			<a href="#" onclick="nowaOpcja(6,0)">
-				<i class="ft-activity"></i>
-				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Beep test</span>
-			</a>
-        </li>
-		<li class="nav-item <?php activateMenu("7","0"); ?>">
-			<a href="#" onclick="nowaOpcja(7,0)">
-				<i class="fas fa-stopwatch-20"></i>
-				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Opto jump next</span>
-			</a>
-        </li>
-      </ul>-->
     </div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////-->

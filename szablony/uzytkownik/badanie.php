@@ -12,7 +12,7 @@
 		if($_SESSION['id_podopcji'] == 1)
 			$badanie = "test_szybkosci";
 		elseif($_SESSION['id_podopcji'] == 2)
-			$badanie = "rest_test";
+			$badanie = "rast_test";
 		else
 			$badanie = "prowadzenie_pilki";
 	}
@@ -43,6 +43,8 @@
 		echo $sql;
 		if($result = @$connection->query($sql))
 		{
+			$id_opcji = $_SESSION['id_opcji'];
+			$id_podopcji = $_SESSION['id_podopcji'];
 			for($i=0; $i < $result->num_rows; $i++)
 			{
 				$row = $result->fetch_assoc();
@@ -50,9 +52,10 @@
 				$data = $row['data'];
 				echo '<tr>';
 				echo "<td>$data</td>";
-				echo '<td><form action="szablony/uzytkownik/szczegoly_'.$badanie.'.php" method="post">
-					  <input type="submit" class="btn btn-danger" value="Wyświetl szczegóły" name='.$id_badania.'/>
-					  </form></td>';
+				echo '<td>
+						<a href="rozchodniaczki/id_opcji.php?o='.$id_opcji.'&p='.$id_podopcji.'&b='.$id_badania.'" class="btn btn-danger">Wyświetl szczegóły</a>
+					 </td>';
+				
 				echo '</tr>';
 			}		
 			$result->free_result();

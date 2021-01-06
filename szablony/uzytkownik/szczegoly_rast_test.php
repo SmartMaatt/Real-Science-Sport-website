@@ -45,7 +45,7 @@
 				$pomiar5 = $row['pomiar5'];
 				$pomiar6 = $row['pomiar6'];
 				$pomiar7 = $row['pomiar7'];
-				$srednia = ($pomiar1 + $pomiar2 + $pomiar3 + $pomiar4 + $pomiar5 + $pomiar6 + $pomiar7)/7
+				$srednia = ($pomiar1 + $pomiar2 + $pomiar3 + $pomiar4 + $pomiar5 + $pomiar6 + $pomiar7)/7;
 				echo "<tr><td>$pomiar1</td>
 					<td>$pomiar2</td>
 					<td>$pomiar3</td>
@@ -58,6 +58,7 @@
 			$result->free_result();
 		}
 		echo '</table>';
+		echo '<a href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_opcji'].'&p='.$_SESSION['id_podopcji'].'&b=-1" class="btn btn-danger">Wróć</a>';
 		
 		$connection->close();
 	}

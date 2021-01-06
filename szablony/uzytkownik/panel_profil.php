@@ -21,7 +21,7 @@
 
 <section id="user-profile-cards" class="row mt-2">
           <div class="col-10 col-md-6">
-            <h1 class="text-bold-600">Profil Rss - <?php echo $_SESSION['imie']. " " .$_SESSION['nazwisko']; ?></h1>
+            <h1 class="text-bold-600">Profil RSS - <?php echo $_SESSION['imie']. " " .$_SESSION['nazwisko']; ?></h1>
 			<p>Analizuj swoje statystyki oraz wprowadź zmiany w profilu</p>
             <hr>
           </div>
