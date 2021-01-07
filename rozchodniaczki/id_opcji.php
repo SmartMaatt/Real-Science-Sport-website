@@ -1,9 +1,11 @@
 <?php 
 
-	if(isset($_POST['nowe_id_opcji']) && isset($_POST['nowe_id_podopcji'])){
+	if(isset($_GET['o']) && isset($_GET['p']) && isset($_GET['b'])){
 		session_start();
-		$_SESSION['id_opcji'] = $_POST['nowe_id_opcji'];
-		$_SESSION['id_podopcji'] = $_POST['nowe_id_podopcji'];
+		$_SESSION['id_opcji'] = $_GET['o'];
+		$_SESSION['id_podopcji'] = $_GET['p'];
+		$_SESSION['id_badania'] = $_GET['b'];
 	}
+	
 	header('Location: ../panel.php');
 ?>

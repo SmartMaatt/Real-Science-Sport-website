@@ -38,6 +38,7 @@
 					$_SESSION['data'] 		= date("Y-m-d");
 					$_SESSION['id_opcji'] 	= 1;
 					$_SESSION['id_podopcji'] = 0;
+					$_SESSION['id_badania'] = -1;
 					unset($_SESSION['error']);
 					header('Location: ../panel.php');
 				} else {
