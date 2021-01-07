@@ -96,10 +96,7 @@
 							mysqli_real_escape_string($connection, $data),
 							$vkey
 						);
-						//echo $sql;
-						
 						$result3 = @$connection->query($sql3);
-
 
 						//Wysyłanie maila weryfikacyjnego na podany adres e-mail
 						if ($result3) 
@@ -118,16 +115,26 @@
 
 							mail($to,$subject,$message,$headers);
 							
-							//Pomyślna rejestracja!
-							jump_to_page('0','Rejestracja przebiegła pomyślnie','Uwierzytelnij swoje konto mailem aktywacyjnym<br/>'.$mail);
-							$connection->close();
+							$sql4 = "INSERT INTO wszystkie_badania (id_klienta) VALUES ('$new_index')";
+							$result4 = @$connection->query($sql4);
+							if ($result3) 
+							{
+								//Pomyślna rejestracja!
+								jump_to_page('0','Rejestracja przebiegła pomyślnie','Uwierzytelnij swoje konto mailem aktywacyjnym<br/>'.$mail);
+								$connection->close();
+							}
+							else
+							{
+								ump_to_page('3','Błąd bazy danych', 'Niepowodzenie w wykonaniu zapytania sql<br/>Command: INSERT badania<br/>'.$new_index);
+								$connection->close();
+							}
+							
 						} 
 						else 
 						{
-							jump_to_page('3','Błąd bazy danych', 'Niepowodzenie w wykonaniu zapytania sql<br/>Command: INSERT<br/>'.$new_index);
+							jump_to_page('3','Błąd bazy danych', 'Niepowodzenie w wykonaniu zapytania sql<br/>Command: INSERT klient<br/>'.$new_index);
 							$connection->close();
 						}
-						$result3->free_result();
 					}
 					else
 					{
@@ -141,12 +148,12 @@
 		else 
 		{
 			//Nie udało się połączyć z bazą
-			jump_to_page('3','Błąd bazy danych','Niepowodzenie w połączeniu z bazą');
+			//jump_to_page('3','Błąd bazy danych','Niepowodzenie w połączeniu z bazą');
 		}
 	}
 	else
 	{
 		//Brak parametrów POST
-		jump_to_page('3','Błąd logiczny','Nie podano wszystkich parametrów wymaganych do rejestracji');
+		//jump_to_page('3','Błąd logiczny','Nie podano wszystkich parametrów wymaganych do rejestracji');
 	}
 ?>

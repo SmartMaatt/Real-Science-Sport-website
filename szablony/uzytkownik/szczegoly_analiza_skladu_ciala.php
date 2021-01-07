@@ -47,10 +47,20 @@
 				echo "<tr><td>$x3</td><td>$y3</td></tr>";
 				echo "<tr><td>$x4</td><td>$y4</td></tr>";
 				echo "<tr><td>$x5</td><td>$y5</td></tr>";
+				//JSON do wyświetlenia na wykresie
+				$name = "Analiza składu ciała";
+				$date = $row['data'];
+				$chart_type = "bar";
+				$labels = array('delta','theta','alpha','smr','beta1','beta2','hibeta','gamma');
+				$data = array($row['pomiar1x'],$row['pomiar1y'],$row['pomiar2x'],$row['pomiar2y'],$row['pomiar3x'],$row['pomiar3y'],$row['pomiar4x'],$row['pomiar4y'],$row['pomiar4x'],$row['pomiar4y']);
+					
+				$dane_badania = array($name, $date, $chart_type, $labels, $data);		
+				$result->free_result();
 			}		
 			$result->free_result();
 		}
 		echo '</table>';
+		echo "<canvas id='RSS_chart'></canvas>";
 		echo '<a href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_opcji'].'&p='.$_SESSION['id_podopcji'].'&b=-1" class="btn btn-danger">Wróć</a>';
 		
 		$connection->close();

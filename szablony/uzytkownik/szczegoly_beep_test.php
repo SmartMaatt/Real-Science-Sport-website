@@ -15,12 +15,6 @@
 	else
 	{
 		$id_klienta = $_SESSION['id_klienta'];
-
-		echo '<table>';
-		echo '<tr>';
-		echo '<td>level</td>';
-		echo '<td>hr_max</td>';
-		echo '</tr>';
 		
 		foreach($_POST as $key => $name)
 		{
@@ -32,13 +26,17 @@
 			for($i=0; $i < $result->num_rows; $i++)
 			{
 				$row = $result->fetch_assoc();
-				$level = $row['level'];
-				$hr_max = $row['hr_max'];
-				echo "<tr><td>$level</td><td>$hr_max</td></tr>";
+				$name = "Beep test";
+				$date = $row['data'];
+				$chart_type = "bar";
+				$labels = array('level','hr_max');
+				$data = array($row['level'],$row['hr_max']);
+					
+				$dane_badania = array($name, $date, $chart_type, $labels, $data);	
 			}		
 			$result->free_result();
 		}
-		echo '</table>';
+		echo "<canvas id='RSS_chart'></canvas>";
 		echo '<a href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_opcji'].'&p='.$_SESSION['id_podopcji'].'&b=-1" class="btn btn-danger">Wróć</a>';
 		
 		$connection->close();
