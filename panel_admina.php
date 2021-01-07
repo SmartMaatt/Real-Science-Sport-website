@@ -2,7 +2,7 @@
 	session_start();
 	
 	//Czy sesja istnieje, jeśli nie do logowania
-	 if (!isset($_SESSION['id_admina'])){
+	 if (!isset($_SESSION['id_klienta'])){
 		 header('Location: logowanie.php');
 	 }
 	 
@@ -13,6 +13,8 @@
 		unset($_SESSION['error']);
 	}
 	
+	require_once 'rozchodniaczki/connect.php';
+	
 	 // if(isset($_POST['global_date']))
 	 // {
 		 // $_SESSION['data'] = $_POST['global_date'];
@@ -21,51 +23,100 @@
 	//Zmienne w zależności od id_opcji i id_podopcji
 	$page_info="Page info undefined";
 	$page_header="Page info undefined";
+	$page_location ="";
 	
 	
 	//Odczyt opcji i podopcji z sesji
 	$id_opcji = $_SESSION['id_opcji']; 
 	$id_podopcji = $_SESSION['id_podopcji']; 
+	$id_badania = $_SESSION['id_badania'];
+	$badanie = "";
 	
 	
 	//Przypisanie do zmiennych informacyjnych odpowiednich treści
-	if($id_podopcji == 11){
+	if($id_podopcji == 11)
+	{
 		$page_info = "Profil użytkownika";
-		$page_header = "Profil- RSS panel";
+		$page_header = "Profil - RSS admin";
+		$page_location = "szablony/uzytkownik/panel_profil.php";
 	}
-	elseif($id_podopcji == 12){
-		//$page_info = "Ustawienia";
-		//page_header = "Ustawienia- RSS panel";
-		
+	elseif($id_podopcji == 12)
+	{
 		$page_info = "Profil użytkownika";
-		$page_header = "Profil- RSS panel";
+		$page_header = "Profil - RSS admin";
+		$page_location = "szablony/uzytkownik/panel_profil.php";
 		$error_msg = 'onload="loadToast(\'0\',\'Przekierowanie do profilu\',\'Panel ustawień oraz profilu zostały tymczasowo połączone ze względu na poprawienie przejrzystości strony.\')"';
 	}
-	elseif($id_podopcji == 13){
-		$page_info = "Kontakt";
-		$page_header = "Kontakt- RSS panel";
-	}
-	elseif($id_opcji  == 1) 
+	elseif($id_podopcji == 13)
 	{
-		$page_info = "Info karta 1";
+		$page_info = "Kontakt";
+		$page_header = "Kontakt - RSS admin";
+		$page_location = "szablony/uzytkownik/panel_kontakt.php";
+	}
+	elseif($id_opcji  == 1)
+	{
+		$page_info = "Biofeedback EEG";
+		$page_header = "Biofeedback EEG - RSS admin";
+		$page_location = "szablony/admin/dodaj_biofeedback_eeg.php";
 	}
 	elseif($id_opcji  == 2) 
 	{
-		$page_info = "Info karta 2";
+		$page_info = "Analiza składu ciała";
+		$page_header = "Analiza składu ciała - RSS admin";
+		$page_location = "szablony/admin/dodaj_analiza_skladu_ciala.php";
 	}
 	elseif($id_opcji  == 3) 
 	{
 		if($_SESSION['id_podopcji'] == 1)
-		 $page_info = "Info karta 3.1";
+		{
+			$page_info = "Test szybkości";
+			$page_header = "Test szybkości - RSS admin";
+			$page_location = "szablony/admin/dodaj_test_szybkosci.php";
+		}
+		elseif($_SESSION['id_podopcji'] == 2)
+		{
+			$page_info = "Rast test";
+			$page_header = "Rast test - RSS admin";
+			$page_location = "szablony/admin/dodaj_rast_test.php";
+		}
 		else
-			$page_info = "dupa";
+		{
+			$page_info = "Prowadzenie piłki";
+			$page_header = "Prowadzenie piłki - RSS admin";
+			$page_location = "szablony/admin/dodaj_prowadzenie_pilki.php";
+		}
 	}
-	elseif($id_opcji  == 4) $page_info = "Info karta 4";
-	elseif($id_opcji  == 5) $page_info = "Info karta 5";
-	elseif($id_opcji  == 6) $page_info = "Info karta 6";
-	elseif($id_opcji  == 7) $page_info = "Info karta 7";
-	
-	
+	elseif($id_opcji  == 4)
+	{
+		$page_info = "Analizator kwasu mlekowego";
+		$page_header = "Analizator kwasu mlekowego - RSS admin";
+		$page_location = "szablony/admin/dodaj_analizator_kwasu_mlekowego.php";
+	}
+	elseif($id_opcji  == 5)
+	{
+		$page_info = "Wzrostomierz";
+		$page_header = "Wzrostomierz - RSS admin";
+		$page_location = "szablony/admin/dodaj_wzrostomierz.php";
+	}
+	elseif($id_opcji  == 6)
+	{
+		$page_info = "Beep test";
+		$page_header = "Beep test - RSS admin";
+		$page_location = "szablony/admin/dodaj_deep_test.php";
+	}
+	elseif($id_opcji  == 7)
+	{
+		$page_info = "Opto jump next";
+		$page_header = "Opto jump next - RSS admin";
+		$page_location = "szablony/admin/dodaj_opto_jump_next.php";
+	}
+	elseif($id_opcji  == 101)
+	{
+		$page_info = "Wyświetl klientów";
+		$page_header = "Klienci - RSS admin";
+		$page_location = "szablony/admin/pokaz_klientow.php";
+	}
+
 	//Podświetlanie aktualnie wybranej karty w bocznym menu
 	function activateMenu($opcja, $podopcja) {
 		
@@ -95,7 +146,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-   <meta name="author" content="DeVision303" />
+  <meta name="author" content="DeVision303" />
   <meta name="description" content="Official website of Real Science Sport" />
   
   <title><?php echo $page_header; ?></title>
@@ -119,8 +170,12 @@
   
   <!-- WŁASNE STYLE CSS -->
    <link rel="stylesheet" type="text/css" href="app-assets/ownCss.css">
+   
    <!-- TOASTR PLUGIN -->
   <link rel="stylesheet" type="text/css" href="app-assets/ModernAdminCss/plugins/toastr.css">
+  
+  <!-- CHART.JS -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
    
 </head>
 
@@ -129,29 +184,15 @@
 	class="vertical-layout vertical-menu-modern 2-columns menu-expanded fixed-navbar" 
 	data-open="click" 
 	data-menu="vertical-menu-modern" 
-	data-col="2-columns" 
-	<?php
-		if (isset($_SESSION['correct_reservation']))
-		{
-			if($_SESSION['correct_reservation'])
-			{
-				echo "onload=\"infoCardDataBase('Dokonano rezerwacji', ".$_SESSION['correct_reservation'].")\"";
-			}
-			else
-			{
-				echo "onload=\"infoCardDataBase('Nie udało się dokonać rezerwacji', ".$_SESSION['correct_reservation'].")\"";
-			}
-			unset($_SESSION['correct_reservation']);
-		}
-		echo $error_msg;
-	?>
+	data-col="2-columns"
+	<?php echo $error_msg;?>	
 >
 
 	<?php
 
-	if (isset($_SESSION['id_klienta'])) {
+	if (isset($_SESSION['id_admina'])) {
 		
-		include('szablony/uzytkownik/szablon_uzytkownika.php');
+		include('szablony/admin/szablon_admina.php');
 	}
 	else
 		header('Location: logowanie.php');
@@ -163,23 +204,7 @@
 	
 		<!-- TU KONTENT AKTUALNEJ STRONY WEDŁUG SESJI -->
 	<?php
-		//if($id_opcji  < 10){
-			//include("szablony/uzytkownik/badanie.php");
-		//}
-
-		if($id_podopcji == 11){
-			include("szablony/uzytkownik/panel_profil.php");
-		}
-		elseif($id_podopcji == 12){
-			include("szablony/uzytkownik/panel_profil.php");
-		}
-		elseif($id_podopcji == 13){
-			include("szablony/uzytkownik/panel_kontakt.php");
-		}
-		else{
-			include("szablony/uzytkownik/badanie.php");
-		}
-		
+		include($page_location);
 	?>
 
 	 </div>
@@ -195,15 +220,15 @@
     </p>
   </footer>
   
-  <!-- POJEMNIK POWIADOMIEŃ -->
-  <div id="ICC">	
-  </div>
-  
-  <!-- FORMULARZE ZMIANY OPCJI -->
-  <form id="nowyIdOpcji" action="rozchodniaczki/id_opcji.php" method="post">
-	<input id="nowyIdOpcjiInput" type="hidden" value="0" name="nowe_id_opcji">
-	<input id="nowyIdPodopcjiInput" type="hidden" value="0" name="nowe_id_podopcji">
-  </form>
+  <script>var dane_badania = 
+	<?php
+		if(isset($dane_badania) && $id_badania != -1){
+			echo json_encode($dane_badania);}
+		else{
+			echo '\'nope\'';
+		}
+	?>;
+	</script>
   
   <!-- BEGIN VENDOR JS-->
   <script src="app-assets/ModernAdminJs/vendors.min.js" type="text/javascript"></script>
@@ -216,8 +241,12 @@
   <script src="app-assets/ModernAdminJs/app.js" type="text/javascript"></script>
   <script src="app-assets/ModernAdminJs/customizer.js" type="text/javascript"></script>
 
+	<!-- CHART.JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
 	<!-- WŁASNE SKRYPTY JS-->
   <script src="app-assets/ownJs.js" type="text/javascript"></script>
+  <script src="app-assets/charts.js" type="text/javascript"></script>
   <script src="https://kit.fontawesome.com/9b863fbae2.js"></script>
   
   <!-- TOASTR PLUGIN -->
