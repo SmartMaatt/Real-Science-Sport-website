@@ -68,10 +68,6 @@
 						<button type="reset" class="btn btn-warning mr-1">Wyczyść</button>
                       </div>
                     </form>
-					
-					
-					
-					
                   </div>
                 </div>
               </div>

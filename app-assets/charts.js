@@ -7,19 +7,27 @@ if(dane_badania != 'nope'){
 			labels: dane_badania[3],
 			datasets:[{
 				label: dane_badania[1],
-				data:dane_badania[4]
+				data:dane_badania[4],
+				backgroundColor: 'rgba(247, 172, 37, 0.7)'
 			}]
 		},
 		options:{
 			title:{
-				display: true,
+				display: false,
 				text:dane_badania[0] + " - badanie " + dane_badania[1],
 				fontSize: 22
 			},
 			legend:{
 				display:false,
 				position: 'right'
-			}
+			},
+			scales: {
+            yAxes: [{
+                ticks: {
+                    suggestedMin: 0
+                }
+            }]
+        }
 		}
 	});
 	

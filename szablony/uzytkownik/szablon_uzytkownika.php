@@ -64,7 +64,7 @@
 	  
 		<!--TWOJE BADANIA -->
 		<li class="navigation-header">
-          <span data-i18n="nav.category.ui">Twoje badania</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Twoje badania"></i>
+          <span class="side_menu_divider" data-i18n="nav.category.ui">Twoje badania</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Twoje badania"></i>
         </li>
 		<?php
 			require_once 'rozchodniaczki/connect.php';
@@ -169,7 +169,7 @@
 		
 		<!--DOSTĘPNE BADANIA -->
 		<li class="navigation-header">
-          <span data-i18n="nav.category.ui">Dostępne badania</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Dostępne badania"></i>
+          <span class="side_menu_divider" data-i18n="nav.category.ui">Dostępne badania</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Dostępne badania"></i>
         </li>
 		<?php
 			if ($connection->connect_errno == 0) 
