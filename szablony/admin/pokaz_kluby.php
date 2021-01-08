@@ -81,7 +81,12 @@
 				echo '<td>
 						<a href="rozchodniaczki/id_opcji.php?o=102&p=1&b='.$id_klubu.'" class="btn btn-rss">Wyświetl szczegóły</a>
 					 </td>';
-				
+				echo '<td>
+						<form method="POST" action="rozchodniaczki/usun_klub.php">
+							<input type="hidden" name="id_klubu" value="'.$id_klubu.'" />
+							<input value="Usun klub" class="btn btn-rss" type="submit" />
+						</form>
+					 </td>';
 				echo '</tr>';
 			}		
 			$result->free_result();
