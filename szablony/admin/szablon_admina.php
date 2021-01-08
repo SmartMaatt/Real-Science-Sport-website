@@ -125,6 +125,12 @@
 				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Wyświetl klientów</span>
 			</a>
 		</li>
+		<li class="nav-item <?php echo activateMenu(102,0); ?>">
+			<a href="rozchodniaczki/id_opcji.php?o=102&p=0&b=-1">
+				<i class="fas fa-brain"></i>
+				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Dodaj klub</span>
+			</a>
+		</li>
     </div>
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////-->

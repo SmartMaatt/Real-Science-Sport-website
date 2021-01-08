@@ -125,7 +125,7 @@
 							}
 							else
 							{
-								ump_to_page('3','Błąd bazy danych', 'Niepowodzenie w wykonaniu zapytania sql<br/>Command: INSERT badania<br/>'.$new_index);
+								jump_to_page('3','Błąd bazy danych', 'Niepowodzenie w wykonaniu zapytania sql<br/>Command: INSERT badania<br/>'.$new_index);
 								$connection->close();
 							}
 							
@@ -148,12 +148,12 @@
 		else 
 		{
 			//Nie udało się połączyć z bazą
-			//jump_to_page('3','Błąd bazy danych','Niepowodzenie w połączeniu z bazą');
+			jump_to_page('3','Błąd bazy danych','Niepowodzenie w połączeniu z bazą');
 		}
 	}
 	else
 	{
 		//Brak parametrów POST
-		//jump_to_page('3','Błąd logiczny','Nie podano wszystkich parametrów wymaganych do rejestracji');
+		jump_to_page('3','Błąd logiczny','Nie podano wszystkich parametrów wymaganych do rejestracji');
 	}
 ?>

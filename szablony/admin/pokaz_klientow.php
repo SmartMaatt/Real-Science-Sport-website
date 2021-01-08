@@ -76,15 +76,15 @@
 				$mail = $row['mail'];
 				$plec = $row['plec'];
 				$data_urodzenia = $row['data_urodzenia'];
-				if(isset($row['klub']))
+				if(isset($row['id_klubu']))
 				{
-					$id_klubu = $row['klub'];
+					$id_klubu = $row['id_klubu'];
 					$sql = "SELECT nazwa FROM klub WHERE id_klubu = '$id_klubu'";
 					$result2 = @$connection->query($sql);
 					if($result2)
 					{
-						$row = $result->fetch_assoc();
-						$klub = $row['nazwa'];
+						$row2 = $result2->fetch_assoc();
+						$klub = $row2['nazwa'];
 					}
 					else
 					{
