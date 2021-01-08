@@ -2,7 +2,7 @@
     session_start();
 
     function jump_to_page($mode,$top,$bottom) {
-        header('Location: ../rejestracja.php');
+        header('Location: ../panel_admina.php');
 		$_SESSION['error'] = 'loadToast(\''.$mode.'\',\''.$top.'\',\''.$bottom.'\')';
         exit(0);
     }
