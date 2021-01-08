@@ -5,7 +5,16 @@
 	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 	if ($connection->connect_errno == 0)
 	{
-		$sql = "SELECT COUNT(id_klubu) as ile FROM klub";
+		if(isset($_POST['nazwa']))
+		{
+			$nazwa_post = $_POST['nazwa'];
+			$sql = "SELECT COUNT(id_klubu) as ile FROM klub WHERE nazwa LIKE '%$nazwa_post%'";
+		}
+		else
+		{
+			$sql = "SELECT COUNT(id_klubu) as ile FROM klub";
+		}
+
 		$result = @$connection->query($sql);
 		if($result)
 		{
@@ -37,20 +46,26 @@
 		$strona_k = $strona*10+10;
 		if(isset($_POST['nazwa']))
 		{
-			$nazwa = $_POST['nazwa'];
-			$sql = "SELECT * FROM klub WHERE nazwa = '$nazwa' LIMIT $strona_p, $strona_k";	
+			$sql = "SELECT * FROM klub WHERE nazwa LIKE '%$nazwa_post%' LIMIT $strona_p, $strona_k";	
 		}
 		else
 		{
 			$sql = "SELECT * FROM klub LIMIT $strona_p, $strona_k";	
 		}
+		
+		echo'Znajdź klub</br>
+			<form method="POST" action="panel_admina.php">
+			  nazwa klubu bądź jej fragment<input type="text" name="nazwa"></br>
+			  <input type="submit" value="Znajdź" class="btn btn-rss">
+			</form>';
+		
 		echo '<table class="table table-bordered">';
 		echo '<tr>';
 		echo '<td>Id klubu</td>';
 		echo '<td>Nazwa</td>';
 		echo '<td></td>';
 		echo '</tr>';
-		
+
 		$result = @$connection->query($sql);
 		if($result)
 		{
@@ -71,18 +86,34 @@
 			}		
 			$result->free_result();
 		}
-		
 		echo '</table>';
 		
-		echo '<form method="POST" action="panel_admina.php">';
-		echo '<input type="hidden" name="strona" value="'.($strona-1).'" />';
-		echo '<input value="Poprzednia strona" class="btn btn-rss" type="submit" />';
-		echo '</form>';
+		if(isset($_POST['nazwa']))
+		{
+			echo '<form method="POST" action="panel_admina.php">
+					<input type="hidden" name="nazwa" value="'.$nazwa_post.'" />
+					<input type="hidden" name="strona" value="'.($strona-1).'" />
+					<input value="Poprzednia strona" class="btn btn-rss" type="submit" />
+				</form>';
 		
-		echo '<form method="POST" action="panel_admina.php">';
-		echo '<input type="hidden" name="strona" value="'.($strona+1).'" />';
-		echo '<input value="Następna strona" class="btn btn-rss" type="submit" />';
-		echo '</form>';
+			echo '<form method="POST" action="panel_admina.php">
+					<input type="hidden" name="nazwa" value="'.$nazwa_post.'" />
+					<input type="hidden" name="strona" value="'.($strona+1).'" />
+					<input value="Następna strona" class="btn btn-rss" type="submit" />
+				</form>';
+		}
+		else
+		{
+			echo '<form method="POST" action="panel_admina.php">
+					<input type="hidden" name="strona" value="'.($strona-1).'" />
+					<input value="Poprzednia strona" class="btn btn-rss" type="submit" />
+				</form>';
+			
+			echo '<form method="POST" action="panel_admina.php">
+					<input type="hidden" name="strona" value="'.($strona+1).'" />
+					<input value="Następna strona" class="btn btn-rss" type="submit" />
+				</form>';
+		}
 	}
 	
 	
@@ -93,6 +124,4 @@
 			  <input type="text" name="nazwa_klubu"></br>
 			  <input type="submit" value="Dodaj" class="btn btn-rss">
 			</form>';
-		
-		
 ?>

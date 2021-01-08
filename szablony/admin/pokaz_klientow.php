@@ -2,16 +2,26 @@
 	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 	if ($connection->connect_errno == 0)
 	{
-		if(isset($_POST['imie']) && isset($_POST['nazwisko']))
+		if(isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['mail']))
 		{
 			$imie_post = $_POST['imie'];
 			$nazwisko_post = $_POST['nazwisko'];
-			if($imie_post != "" && $nazwisko_post != "")
+			$mail_post = $_POST['mail'];
+			
+			if($imie_post != "" && $nazwisko_post != "" && $mail_post != "")
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE imie = '$imie_post' AND nazwisko = '$nazwisko_post' AND mail = '$mail_post'";	
+			elseif($imie_post != "" && $nazwisko_post)
 				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE imie = '$imie_post' AND nazwisko = '$nazwisko_post'";
+			elseif($imie_post != "" && $mail_post)
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE imie = '$imie_post' AND mail = '$mail_post'";
+			elseif($nazwisko_post != "" && $mail_post != "")
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE nazwisko = '$nazwisko_post' AND mail = '$mail_post'";
 			elseif($imie_post != "")
 				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE imie = '$imie_post'";
 			elseif($nazwisko_post != "")
 				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE nazwisko = '$nazwisko_post'";
+			elseif($mail_post != "")
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE mail = '$mail_post'";
 		}
 		else
 		{
@@ -46,14 +56,22 @@
 		}
 		$strona_p = $strona*10;
 		$strona_k = $strona*10+10;
-		if(isset($_POST['imie']) && isset($_POST['nazwisko']))
+		if(isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['mail']))
 		{
-			if($imie_post != "" && $nazwisko_post != "")
-				$sql = "SELECT * FROM klient WHERE imie = '$imie_post' AND nazwisko = '$nazwisko_post' LIMIT $strona_p, $strona_k";	
+			if($imie_post != "" && $nazwisko_post != "" && $mail_post != "")
+				$sql = "SELECT * FROM klient WHERE imie = '$imie_post' AND nazwisko = '$nazwisko_post' AND mail = '$mail_post' LIMIT $strona_p, $strona_k";	
+			elseif($imie_post != "" && $nazwisko_post)
+				$sql = "SELECT * FROM klient WHERE imie = '$imie_post' AND nazwisko = '$nazwisko_post' LIMIT $strona_p, $strona_k";
+			elseif($imie_post != "" && $mail_post)
+				$sql = "SELECT * FROM klient WHERE imie = '$imie_post' AND mail = '$mail_post' LIMIT $strona_p, $strona_k";
+			elseif($nazwisko_post != "" && $mail_post != "")
+				$sql = "SELECT * FROM klient WHERE nazwisko = '$nazwisko_post' AND mail = '$mail_post' LIMIT $strona_p, $strona_k";
 			elseif($imie_post != "")
 				$sql = "SELECT * FROM klient WHERE imie = '$imie_post' LIMIT $strona_p, $strona_k";
 			elseif($nazwisko_post != "")
 				$sql = "SELECT * FROM klient WHERE nazwisko = '$nazwisko_post' LIMIT $strona_p, $strona_k";
+			elseif($mail_post != "")
+				$sql = "SELECT * FROM klient WHERE mail = '$mail_post' LIMIT $strona_p, $strona_k";
 		}
 		else
 		{
@@ -64,6 +82,7 @@
 			<form method="POST" action="panel_admina.php">
 			  imie <input type="text" name="imie"></br>
 			  nazwisko <input type="text" name="nazwisko"></br>
+			  mail <input type="text" name="mail"></br>
 			  <input type="submit" value="Znajdź" class="btn btn-rss">
 			</form>';
 		
@@ -134,6 +153,7 @@
 			echo '<form method="POST" action="panel_admina.php">
 					<input type="hidden" name="imie" value="'.$imie_post.'" />
 					<input type="hidden" name="nazwisko" value="'.$nazwisko_post.'" />
+					<input type="hidden" name="mail" value="'.$mail_post.'" />
 					<input type="hidden" name="strona" value="'.($strona-1).'" />
 					<input value="Poprzednia strona" class="btn btn-rss" type="submit" />
 				</form>';
@@ -141,6 +161,7 @@
 			echo '<form method="POST" action="panel_admina.php">
 					<input type="hidden" name="imie" value="'.$imie_post.'" />
 					<input type="hidden" name="nazwisko" value="'.$nazwisko_post.'" />
+					<input type="hidden" name="mail" value="'.$mail_post.'" />
 					<input type="hidden" name="strona" value="'.($strona+1).'" />
 					<input value="Następna strona" class="btn btn-rss" type="submit" />
 				</form>';
