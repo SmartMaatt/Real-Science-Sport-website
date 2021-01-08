@@ -121,6 +121,12 @@
 				echo '<td>
 						<a href="rozchodniaczki/id_opcji.php?o='.$id_opcji.'&p='.$id_podopcji.'&b='.$id_badania.'" class="btn btn-rss">Wyświetl szczegóły</a>
 					 </td>';
+				echo '<td>
+						<form method="POST" action="rozchodniaczki/usun_klienta.php">
+							<input type="hidden" name="id_klienta" value="'.$id_klienta.'" />
+							<input value="Usun klienta" class="btn btn-rss" type="submit" />
+						</form>
+					 </td>';
 				
 				echo '</tr>';
 			}		
