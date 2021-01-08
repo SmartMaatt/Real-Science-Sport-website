@@ -118,9 +118,18 @@
 	}
 	elseif($id_opcji  == 102)
 	{
-		$page_info = "Wyświetl klientów";
-		$page_header = "Klienci - RSS admin";
-		$page_location = "szablony/admin/pokaz_kluby.php";
+		if($id_podopcji == 0)
+		{
+			$page_info = "Wyświetl kluby";
+			$page_header = "Kluby - RSS admin";
+			$page_location = "szablony/admin/pokaz_kluby.php";
+		}
+		else
+		{
+			$page_info = "Wyświetl klientów klubu";
+			$page_header = "Kluby - RSS admin";
+			$page_location = "szablony/admin/szczegoly_klubu.php";
+		}
 	}
 
 	//Podświetlanie aktualnie wybranej karty w bocznym menu

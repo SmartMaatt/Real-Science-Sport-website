@@ -38,7 +38,7 @@
 		if(isset($_POST['nazwa']))
 		{
 			$nazwa = $_POST['nazwa'];
-			$sql = "SELECT * FROM klub WHERE nazwa = '$nazwa' LIMIT '$strona_p', '$strona_k'";	
+			$sql = "SELECT * FROM klub WHERE nazwa = '$nazwa' LIMIT $strona_p, $strona_k";	
 		}
 		else
 		{
@@ -64,7 +64,7 @@
 				echo "<td>$id_klubu</td>";
 				echo "<td>$nazwa</td>";
 				echo '<td>
-						<a href="rozchodniaczki/id_opcji.php?o='.$id_opcji.'&p='.$id_podopcji.'&b='.$id_badania.'" class="btn btn-rss">Wyświetl szczegóły</a>
+						<a href="rozchodniaczki/id_opcji.php?o=102&p=1&b='.$id_klubu.'" class="btn btn-rss">Wyświetl szczegóły</a>
 					 </td>';
 				
 				echo '</tr>';
