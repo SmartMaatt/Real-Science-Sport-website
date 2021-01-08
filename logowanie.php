@@ -3,7 +3,12 @@
 	$error_msg = "";
 
 	if (isset($_SESSION['id_klienta'])) {
-		header('Location: panel.php');
+		if(isset($_SESSION['id_admina'])){
+			header('Location: panel_admina.php');
+		}
+		else{
+			header('Location: panel.php');
+		}
 	}
 	elseif(isset($_SESSION['error'])){
 		$error_msg = "onload=\"".$_SESSION['error']."\"";
