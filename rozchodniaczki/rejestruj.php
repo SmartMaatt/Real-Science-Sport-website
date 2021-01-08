@@ -64,7 +64,7 @@
 				else 
 				{
 					//Pobranie listy id
-					$sql2 = "SELECT id_klienta as id_klienta FROM klient";
+					$sql2 = "SELECT id_klienta FROM klient ORDER BY id_klienta";
 					$result2 = @$connection->query($sql2);
 					
 					if($result2)
@@ -72,6 +72,7 @@
 						//Znalezienie najbliższego wolnego indeksu
 						$new_index = '0';
 						while($row2 = $result2->fetch_row()){
+							echo $new_index.' / '.$row2[0].'</br>';
 							if($new_index != $row2[0]){
 								echo "dupa ".$new_index;
 								break;
@@ -97,6 +98,7 @@
 							$vkey
 						);
 						$result3 = @$connection->query($sql3);
+						echo $sql3;
 
 						//Wysyłanie maila weryfikacyjnego na podany adres e-mail
 						if ($result3) 
@@ -132,7 +134,7 @@
 						} 
 						else 
 						{
-							jump_to_page('3','Błąd bazy danych', 'Niepowodzenie w wykonaniu zapytania sql<br/>Command: INSERT klient<br/>'.$new_index);
+							//jump_to_page('3','Błąd bazy danych', 'Niepowodzenie w wykonaniu zapytania sql<br/>Command: INSERT klient<br/>'.$new_index);
 							$connection->close();
 						}
 					}

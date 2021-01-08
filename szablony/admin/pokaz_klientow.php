@@ -2,13 +2,27 @@
 	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 	if ($connection->connect_errno == 0)
 	{
-		$sql = "SELECT COUNT(id_klienta) as ile FROM klient";
+		if(isset($_POST['imie']) && isset($_POST['nazwisko']))
+		{
+			$imie_post = $_POST['imie'];
+			$nazwisko_post = $_POST['nazwisko'];
+			if($imie_post != "" && $nazwisko_post != "")
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE imie = '$imie_post' AND nazwisko = '$nazwisko_post'";
+			elseif($imie_post != "")
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE imie = '$imie_post'";
+			elseif($nazwisko_post != "")
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE nazwisko = '$nazwisko_post'";
+		}
+		else
+		{
+			$sql = "SELECT COUNT(id_klienta) as ile FROM klient";
+		}
 		$result = @$connection->query($sql);
 		if($result)
 		{
 			$row = $result->fetch_assoc();
 			$strona_max = (int)($row['ile']/10);
-			if($row['ile']%10 == 0)
+			if($row['ile']%10 == 0 && $strona_max != 0)
 			{
 				$strona_max --;
 			}
@@ -34,24 +48,25 @@
 		$strona_k = $strona*10+10;
 		if(isset($_POST['imie']) && isset($_POST['nazwisko']))
 		{
-			$imie = $_POST['imie'];
-			$nazwisko = $_POST['nazwisko'];
-			$sql = "SELECT * FROM klient WHERE imie = '$imie' AND nazwisko = '$nazwisko' LIMIT '$strona_p', '$strona_k'";	
-		}
-		elseif(isset($_POST['imie']) && !isset($_POST['nazwisko']))
-		{
-			$imie = $_POST['imie'];
-			$sql = "SELECT * FROM klient WHERE imie = '$imie' LIMIT '$strona_p', '$strona_k'";	
-		}
-		elseif(!isset($_POST['imie']) && isset($_POST['nazwisko']))
-		{
-			$nazwisko = $_POST['nazwisko'];
-			$sql = "SELECT * FROM klient WHERE imie = '$nazwisko' LIMIT '$strona_p', '$strona_k'";	
+			if($imie_post != "" && $nazwisko_post != "")
+				$sql = "SELECT * FROM klient WHERE imie = '$imie_post' AND nazwisko = '$nazwisko_post' LIMIT $strona_p, $strona_k";	
+			elseif($imie_post != "")
+				$sql = "SELECT * FROM klient WHERE imie = '$imie_post' LIMIT $strona_p, $strona_k";
+			elseif($nazwisko_post != "")
+				$sql = "SELECT * FROM klient WHERE nazwisko = '$nazwisko_post' LIMIT $strona_p, $strona_k";
 		}
 		else
 		{
 			$sql = "SELECT * FROM klient LIMIT $strona_p, $strona_k";	
 		}
+		
+		echo'Znajdź klienta</br>
+			<form method="POST" action="panel_admina.php">
+			  imie <input type="text" name="imie"></br>
+			  nazwisko <input type="text" name="nazwisko"></br>
+			  <input type="submit" value="Znajdź" class="btn btn-rss">
+			</form>';
+		
 		echo '<table class="table table-bordered">';
 		echo '<tr>';
 		echo '<td>Id klienta</td>';
@@ -63,7 +78,7 @@
 		echo '<td>Klub</td>';
 		echo '<td></td>';
 		echo '</tr>';
-		
+
 		$result = @$connection->query($sql);
 		if($result)
 		{
@@ -114,14 +129,33 @@
 		
 		echo '</table>';
 		
-		echo '<form method="POST" action="panel_admina.php">';
-		echo '<input type="hidden" name="strona" value="'.($strona-1).'" />';
-		echo '<input value="Poprzednia strona" class="btn btn-rss" type="submit" />';
-		echo '</form>';
-		
-		echo '<form method="POST" action="panel_admina.php">';
-		echo '<input type="hidden" name="strona" value="'.($strona+1).'" />';
-		echo '<input value="Następna strona" class="btn btn-rss" type="submit" />';
-		echo '</form>';
+		if(isset($_POST['imie']) && isset($_POST['nazwisko']))
+		{
+			echo '<form method="POST" action="panel_admina.php">
+					<input type="hidden" name="imie" value="'.$imie_post.'" />
+					<input type="hidden" name="nazwisko" value="'.$nazwisko_post.'" />
+					<input type="hidden" name="strona" value="'.($strona-1).'" />
+					<input value="Poprzednia strona" class="btn btn-rss" type="submit" />
+				</form>';
+			
+			echo '<form method="POST" action="panel_admina.php">
+					<input type="hidden" name="imie" value="'.$imie_post.'" />
+					<input type="hidden" name="nazwisko" value="'.$nazwisko_post.'" />
+					<input type="hidden" name="strona" value="'.($strona+1).'" />
+					<input value="Następna strona" class="btn btn-rss" type="submit" />
+				</form>';
+		}
+		else
+		{
+			echo '<form method="POST" action="panel_admina.php">
+					<input type="hidden" name="strona" value="'.($strona-1).'" />
+					<input value="Poprzednia strona" class="btn btn-rss" type="submit" />
+				</form>';
+			
+			echo '<form method="POST" action="panel_admina.php">
+					<input type="hidden" name="strona" value="'.($strona+1).'" />
+					<input value="Następna strona" class="btn btn-rss" type="submit" />
+				</form>';
+		}
 	}
 ?>
