@@ -120,7 +120,7 @@
 	{
 		$page_info = "Wyświetl klientów";
 		$page_header = "Klienci - RSS admin";
-		$page_location = "szablony/admin/dodawanie_klubu.php";
+		$page_location = "szablony/admin/pokaz_kluby.php";
 	}
 
 	//Podświetlanie aktualnie wybranej karty w bocznym menu
