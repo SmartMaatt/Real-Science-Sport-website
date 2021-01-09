@@ -1,10 +1,11 @@
 <?php
-    session_start();
+	/*SECURED*/
+	session_start();
 
-   function jump_to_page($location,$mode,$top,$bottom) {
+	function jump_to_page($location,$mode,$top,$bottom)
+	{
         header('Location: ../'.$location);
 		$_SESSION['error'] = 'loadToast(\''.$mode.'\',\''.$top.'\',\''.$bottom.'\')';
-        exit(0);
     }
 	
     $incorrect_data = 'Brak takiego konta!';
@@ -65,14 +66,28 @@
 					//Sprawdź czy poprawnie zmieniono hasło
 					if($result2)
 					{
+						//Pomyślnie wygenerowano hasło
+						$to = $_SESSION['mail'];
+						$subject = "Nowe hasło - Panel RSS";
+						$message = "<p>Twoje nowe hasło ".$_SESSION['imie']." to:<br/><b>".$nowe_haslo1."</b></p>";
+
+						// Always set content-type when sending HTML email
+						$headers = "MIME-Version: 1.0" . "\r\n";
+						$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+						$headers .= 'From: RSS Panel' . "\r\n";
+
+						mail($to,$subject,$message,$headers);
+						
 						//Poprawna aktualizacja
 						jump_to_page('panel.php','0','Hasło zostało zmienione poprawnie','');
 						$connection->close();
 					}
 					else
+					{
 						//Niepowodzenie wykonania zapytania sql
 						jump_to_page('panel.php','3','Błąd bazy danych!','Niepowodzenie wykonania zapytania sql!<br/>Command: UPDATE');
 						$connection->close();
+					}
 				}
 				else 
 				{

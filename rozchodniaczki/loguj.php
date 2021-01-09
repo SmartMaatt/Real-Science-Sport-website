@@ -1,10 +1,10 @@
 <?php
+	/*SECURED*/
     session_start();
 
     function return_to_login_page($reason) {
         header('Location: ../logowanie.php');
 		$_SESSION['error'] = 'loadToast(\'2\',\''.$reason.'\',\'\')';
-        exit(0);
     }
     $incorrect_login_or_password = 'Nieprawidłowy mail lub hasło!';
 
@@ -71,7 +71,7 @@
 						$_SESSION['plec']       = $row['plec'];
 						$_SESSION['data_urodzenia']       = $row['data_urodzenia'];
 						$_SESSION['data'] 		= date("Y-m-d");
-						$_SESSION['id_klienta'] = 0;
+						$_SESSION['id_klienta'] = -1;
 						$_SESSION['id_opcji'] 	= 1;
 						$_SESSION['id_podopcji'] = 0;
 						unset($_SESSION['error']);

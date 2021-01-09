@@ -1,5 +1,5 @@
 ﻿<?php
-
+	/*SECURED*/
 	session_start();
 
 	//Session exists	

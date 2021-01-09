@@ -1,13 +1,13 @@
 <?php
+	/*SECURED*/
     session_start();
 
     function jump_to_page($mode,$top,$bottom) {
         header('Location: ../panel_admina.php');
 		$_SESSION['error'] = 'loadToast(\''.$mode.'\',\''.$top.'\',\''.$bottom.'\')';
-        exit(0);
     }
 	
-	if(isset($_POST['nazwa_klubu']))
+	if(isset($_POST['nazwa_klubu']) && isset($_SESSION['id_admina']))
 	{
 		require_once 'connect.php';
 		$connection = @new mysqli($host, $db_user, $db_password, $db_name);
@@ -21,10 +21,12 @@
 			if($result) 
 			{
 				jump_to_page('0','Pomyślnie dodano klub do bazy danych','');
+				$connection->close();
 			}
 			else
 			{
 				jump_to_page('3','Błąd bazy danych', 'Niepowodzenie w wykonaniu zapytania sql<br/>Command: INSERT klub<br/>'.$new_index);
+				$connection->close();
 			}
 		}
 		else

@@ -1,4 +1,7 @@
 <?php
+
+	/*SECURED*/
+	
     session_start();
 
      function jump_to_page($mode,$top,$bottom) {
