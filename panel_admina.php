@@ -1,23 +1,25 @@
 <?php
 	session_start();
 	
-	//Czy sesja istnieje, jeśli nie do logowania
-	 if (!isset($_SESSION['id_klienta'])){
-		 header('Location: logowanie.php');
-	 }
+	//Czy sesja istnieje, jeśli nie do logowanie
 	 
-	//Czy wyświetlić error
-	$error_msg = "";	
-	if(isset($_SESSION['error'])){
-		$error_msg = "onload=\"".$_SESSION['error']."\"";
-		unset($_SESSION['error']);
+	 if (!isset($_SESSION['id_admina'])) {
+		header('Location: panel.php');
 	}
-	
-	//Czy wyświetlić ask_msg
-	$ask_msg = "";
-	if(isset($_SESSION['askMe'])){
-		$ask_msg = "onload=\"".$_SESSION['askMe']."\"";
-		unset($_SESSION['askMe']);
+	else{
+		//Czy wyświetlić error
+		$error_msg = "";	
+		if(isset($_SESSION['error'])){
+			$error_msg = "onload=\"".$_SESSION['error']."\"";
+			unset($_SESSION['error']);
+		}
+		
+		//Czy wyświetlić ask_msg
+		$ask_msg = "";
+		if(isset($_SESSION['askMe'])){
+			$ask_msg = "onload=\"".$_SESSION['askMe']."\"";
+			unset($_SESSION['askMe']);
+		}
 	}
 
 	
@@ -213,7 +215,7 @@
 		include('szablony/admin/szablon_admina.php');
 	}
 	else
-		header('Location: logowanie.php');
+		//header('Location: logowanie.php');
 	?>
 
 	<!-- GŁÓWNY KONTENER -->

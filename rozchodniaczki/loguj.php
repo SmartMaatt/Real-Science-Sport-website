@@ -74,6 +74,7 @@
 						$_SESSION['id_klienta'] = -1;
 						$_SESSION['id_opcji'] 	= 1;
 						$_SESSION['id_podopcji'] = 0;
+						$_SESSION['id_badania'] = -1;
 						unset($_SESSION['error']);
 						header('Location: ../panel_admina.php');
 					} else 

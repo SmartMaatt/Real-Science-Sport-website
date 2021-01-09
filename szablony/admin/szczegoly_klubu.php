@@ -1,4 +1,15 @@
 <?php
+
+	/*SECURED*/
+	if (session_status() == PHP_SESSION_NONE) {
+		header('Location: ../../logowanie.php');
+	}
+	else{
+		if(!isset($_SESSION['id_admina'])){
+			header('Location: ../../logowanie.php');
+		}
+	}
+
 	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 	if ($connection->connect_errno == 0)
 	{

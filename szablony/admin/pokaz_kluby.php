@@ -1,4 +1,16 @@
-<div class="row">
+<?php
+
+	/*SECURED*/
+	if (session_status() == PHP_SESSION_NONE) {
+		header('Location: ../../logowanie.php');
+	}
+	else{
+		if(!isset($_SESSION['id_admina'])){
+			header('Location: ../../logowanie.php');
+		}
+	}
+	
+	echo '<div class="row">
             <div class="col-lg-3 col-md-12">
               <div class="card">
                 <div class="card-header">
@@ -7,8 +19,7 @@
                 </div>
                 <div class="card-content">
                   <div class="card-body pt-0">
-
-<?php
+				';
 
 		
 	// Pokaz kluby
@@ -173,6 +184,7 @@
 				</form>';
 		}
 		$connection->close();
-	}	
+	}
+
+		echo '</div></div></div></div></div>';
 ?>
-</div></div></div></div></div>

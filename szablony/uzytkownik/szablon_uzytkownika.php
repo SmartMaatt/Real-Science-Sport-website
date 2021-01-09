@@ -1,4 +1,5 @@
 <?php
+	/*SECURED*/
 	if (session_status() == PHP_SESSION_NONE) {
 		header('Location: logowanie.php');
 	}
@@ -70,7 +71,7 @@
 			require_once 'rozchodniaczki/connect.php';
 			$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 
-			if ($connection->connect_errno == 0) 
+			if (($connection->connect_errno == 0) && (isset($_SESSION['id_klienta']))) 
 			{
 				$id_klienta = $_SESSION['id_klienta'];
 				$sql = "SELECT * FROM wszystkie_badania where id_klienta = '$id_klienta'";

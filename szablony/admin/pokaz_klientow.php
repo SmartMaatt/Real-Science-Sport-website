@@ -1,4 +1,16 @@
-<div class="row">
+<?php
+
+	/*SECURED*/
+	if (session_status() == PHP_SESSION_NONE) {
+		header('Location: ../../logowanie.php');
+	}
+	else{
+		if(!isset($_SESSION['id_admina'])){
+			header('Location: ../../logowanie.php');
+		}
+	}
+	
+	echo '<div class="row">
             <div class="col-lg-3 col-md-12">
               <div class="card">
                 <div class="card-header">
@@ -6,13 +18,7 @@
                   <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 </div>
                 <div class="card-content">
-                  <div class="card-body pt-0">
-
-<?php
-
-	if (session_status() == PHP_SESSION_NONE) {
-		header('Location: ../../logowanie.php');
-	}
+                  <div class="card-body pt-0">';
 
 	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 	if ($connection->connect_errno == 0)
@@ -232,5 +238,5 @@
 		}
 		$connection->close();
 	}
+	echo '</div></div></div></div></div>';
 ?>
-</div></div></div></div></div>

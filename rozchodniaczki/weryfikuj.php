@@ -1,10 +1,10 @@
 <?php
+	/*SECURED*/
 	session_start();
 	
 	 function jump_to_page($mode,$top,$bottom) {
         header('Location: ../logowanie.php');
 		$_SESSION['error'] = 'loadToast(\''.$mode.'\',\''.$top.'\',\''.$bottom.'\')';
-        exit(0);
     }
 
 	//Czy istnieje parametr

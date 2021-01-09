@@ -1,6 +1,12 @@
 <?php
+	/*SECURED*/
 	if (session_status() == PHP_SESSION_NONE) {
-		header('Location: logowanie.php');
+		header('Location: ../../logowanie.php');
+	}
+	else{
+		if(!isset($_SESSION['id_admina'])){
+			header('Location: ../../logowanie.php');
+		}
 	}
 ?>
 
