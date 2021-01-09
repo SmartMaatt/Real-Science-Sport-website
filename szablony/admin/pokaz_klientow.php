@@ -1,4 +1,19 @@
+<div class="row">
+            <div class="col-lg-3 col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title" id="basic-layout-tooltip">Wyszukaj klienta</h2>
+                  <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                </div>
+                <div class="card-content">
+                  <div class="card-body pt-0">
+
 <?php
+
+	if (session_status() == PHP_SESSION_NONE) {
+		header('Location: ../../logowanie.php');
+	}
+
 	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 	if ($connection->connect_errno == 0)
 	{
@@ -22,9 +37,14 @@
 				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE nazwisko = '$nazwisko_post'";
 			elseif($mail_post != "")
 				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE mail = '$mail_post'";
+			else
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient";
 		}
 		else
 		{
+			$imie_post = "";
+			$nazwisko_post = "";
+			$mail_post = "";
 			$sql = "SELECT COUNT(id_klienta) as ile FROM klient";
 		}
 		$result = @$connection->query($sql);
@@ -72,117 +92,145 @@
 				$sql = "SELECT * FROM klient WHERE nazwisko = '$nazwisko_post' LIMIT $strona_p, $strona_k";
 			elseif($mail_post != "")
 				$sql = "SELECT * FROM klient WHERE mail = '$mail_post' LIMIT $strona_p, $strona_k";
+			else
+				$sql = "SELECT * FROM klient LIMIT $strona_p, $strona_k";
 		}
 		else
 		{
 			$sql = "SELECT * FROM klient LIMIT $strona_p, $strona_k";	
 		}
+		echo'
+			<form class="form" method="POST" action="panel_admina.php">
+				<div class="form-body form-admin">
+					<div class="form-group">
+					  <label for="issueinput1">Imie</label>
+					  <input type="text" class="form-control" placeholder="Imie klienta" name="imie" value="'.$imie_post.'">
+					</div>
+					<div class="form-group">
+					  <label for="issueinput2">Nazwisko</label>
+					  <input type="text" class="form-control" placeholder="Nazwisko klienta" name="nazwisko" value="'.$nazwisko_post.'">
+					</div>
+					<div class="form-group">
+					  <label for="issueinput3">Mail</label>
+					  <input type="text" class="form-control" placeholder="Mail klienta" name="mail" value="'.$mail_post.'">
+					</div>
+					<input type="submit" value="Znajdź" class="btn btn-info">
+				</div>
+			</form>
+			</div></div></div></div>';
 		
-		echo'Znajdź klienta</br>
-			<form method="POST" action="panel_admina.php">
-			  imie <input type="text" name="imie"></br>
-			  nazwisko <input type="text" name="nazwisko"></br>
-			  mail <input type="text" name="mail"></br>
-			  <input type="submit" value="Znajdź" class="btn btn-rss">
-			</form>';
-		
-		echo '<table class="table table-bordered">';
-		echo '<tr>';
-		echo '<td>Id klienta</td>';
-		echo '<td>Imie</td>';
-		echo '<td>Nazwisko</td>';
-		echo '<td>Mail</td>';
-		echo '<td>Płeć</td>';
-		echo '<td>Data Urodzenia</td>';
-		echo '<td>Klub</td>';
-		echo '<td></td>';
-		echo '</tr>';
+		echo '<div class="col-lg-9 col-md-12">';
+		echo '<div class="card">';
+		echo '<div class="card-content">';
+		echo '<div class="card-body table-responsive">';
 
 		$result = @$connection->query($sql);
 		if($result)
 		{
-			for($i=0; $i < $result->num_rows; $i++)
-			{
-				$row = $result->fetch_assoc();
-				$id_klienta = $row['id_klienta'];
-				$imie = $row['imie'];
-				$nazwisko = $row['nazwisko'];
-				$mail = $row['mail'];
-				$plec = $row['plec'];
-				$data_urodzenia = $row['data_urodzenia'];
-				if(isset($row['id_klubu']))
+			if($result->num_rows > 0){
+				
+				echo '<table class="table table-bordered table-admin bg-white">';
+				echo '<thead class="thead-dark">';
+				echo '<tr>';
+				echo '<th>#</th>';
+				echo '<th>Imie</th>';
+				echo '<th>Nazwisko</th>';
+				echo '<th>Mail</th>';
+				echo '<th>Płeć</th>';
+				echo '<th>Data Urodzenia</th>';
+				echo '<th>Klub</th>';
+				echo '<th></th>';
+				echo '</tr>';
+				echo '</thread>';
+				
+				for($i=0; $i < $result->num_rows; $i++)
 				{
-					$id_klubu = $row['id_klubu'];
-					$sql = "SELECT nazwa FROM klub WHERE id_klubu = '$id_klubu'";
-					$result2 = @$connection->query($sql);
-					if($result2)
+					$row = $result->fetch_assoc();
+					$id_klienta = $row['id_klienta'];
+					$imie = $row['imie'];
+					$nazwisko = $row['nazwisko'];
+					$mail = $row['mail'];
+					$plec = $row['plec'];
+					$data_urodzenia = $row['data_urodzenia'];
+					if(isset($row['id_klubu']))
 					{
-						$row2 = $result2->fetch_assoc();
-						$klub = $row2['nazwa'];
+						$id_klubu = $row['id_klubu'];
+						$sql = "SELECT nazwa FROM klub WHERE id_klubu = '$id_klubu'";
+						$result2 = @$connection->query($sql);
+						if($result2)
+						{
+							$row2 = $result2->fetch_assoc();
+							$klub = $row2['nazwa'];
+						}
+						else
+						{
+							$klub = 'błąd';
+						}
 					}
 					else
 					{
-						$klub = 'błąd';
+						$klub = "";
 					}
+					echo '<tr>';
+					echo "<td>$id_klienta</td>";
+					echo "<td>$imie</td>";
+					echo "<td>$nazwisko</td>";
+					echo "<td>$mail</td>";
+					echo "<td>$plec</td>";
+					echo "<td>$data_urodzenia</td>";
+					echo "<td>$klub</td>";
+					echo'
+					<td>
+					  <span class="dropdown">
+						<button id="btnSearchDrop" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-info dropdown-toggle dropdown-menu-right"><i class="ft-settings"></i></button>
+						<span aria-labelledby="btnSearchDrop" class="dropdown-menu mt-1 dropdown-menu-right" x-placement="top-end" style="position: absolute; transform: translate3d(-138px, -119px, 0px); top: 0px; left: 0px; will-change: transform;">
+						  <a href="#" class="dropdown-item"><i class="ft-edit-2"></i> Szczegóły</a>
+						  <a href="rozchodniaczki/daddy_im_shy.php?m=0&msg=Czy na pewno chcesz usunąć klienta?&p='.$id_klienta.'" class="dropdown-item"><i class="ft-trash-2"></i> Usuń</a>
+						</span>
+					  </span>
+					</td>';
+
+					echo '</tr>';
 				}
-				else
-				{
-					$klub = "";
-				}
-				echo '<tr>';
-				echo "<td>$id_klienta</td>";
-				echo "<td>$imie</td>";
-				echo "<td>$nazwisko</td>";
-				echo "<td>$mail</td>";
-				echo "<td>$plec</td>";
-				echo "<td>$data_urodzenia</td>";
-				echo "<td>$klub</td>";
-				echo '<td>
-						<a href="rozchodniaczki/id_opcji.php?o='.$id_opcji.'&p='.$id_podopcji.'&b='.$id_badania.'" class="btn btn-rss">Wyświetl szczegóły</a>
-					 </td>';
-				echo '<td>
-						<form method="POST" action="rozchodniaczki/usun_klienta.php">
-							<input type="hidden" name="id_klienta" value="'.$id_klienta.'" />
-							<input value="Usun klienta" class="btn btn-rss" type="submit" />
-						</form>
-					 </td>';
+						echo '</table>';
 				
-				echo '</tr>';
-			}		
+						if(isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['mail']))
+						{
+							echo '<form class="admin-form" method="POST" action="panel_admina.php">
+									<input type="hidden" name="imie" value="'.$imie_post.'" />
+									<input type="hidden" name="nazwisko" value="'.$nazwisko_post.'" />
+									<input type="hidden" name="mail" value="'.$mail_post.'" />
+									<input type="hidden" name="strona" value="'.($strona-1).'" />
+									<input value="Poprzednia strona" class="btn btn-info" type="submit" />
+								</form>';
+							
+							echo '<form class="admin-form" method="POST" action="panel_admina.php">
+									<input type="hidden" name="imie" value="'.$imie_post.'" />
+									<input type="hidden" name="nazwisko" value="'.$nazwisko_post.'" />
+									<input type="hidden" name="mail" value="'.$mail_post.'" />
+									<input type="hidden" name="strona" value="'.($strona+1).'" />
+									<input value="Następna strona" class="btn btn-info" type="submit" />
+								</form>';
+						}
+						else
+						{
+							echo '<form class="admin-form" method="POST" action="panel_admina.php">
+									<input type="hidden" name="strona" value="'.($strona-1).'" />
+									<input value="Poprzednia strona" class="btn btn-info" type="submit" />
+								</form>';
+							
+							echo '<form class="admin-form" method="POST" action="panel_admina.php">
+									<input type="hidden" name="strona" value="'.($strona+1).'" />
+									<input value="Następna strona" class="btn btn-info" type="submit" />
+								</form>';
+						}
+			}
+			else{
+				echo '<h1 class="no_data_msg">Brak zarejestrowanych danych klientów!</h1>';
+			}
 			$result->free_result();
 		}
-		
-		echo '</table>';
-		
-		if(isset($_POST['imie']) && isset($_POST['nazwisko']))
-		{
-			echo '<form method="POST" action="panel_admina.php">
-					<input type="hidden" name="imie" value="'.$imie_post.'" />
-					<input type="hidden" name="nazwisko" value="'.$nazwisko_post.'" />
-					<input type="hidden" name="mail" value="'.$mail_post.'" />
-					<input type="hidden" name="strona" value="'.($strona-1).'" />
-					<input value="Poprzednia strona" class="btn btn-rss" type="submit" />
-				</form>';
-			
-			echo '<form method="POST" action="panel_admina.php">
-					<input type="hidden" name="imie" value="'.$imie_post.'" />
-					<input type="hidden" name="nazwisko" value="'.$nazwisko_post.'" />
-					<input type="hidden" name="mail" value="'.$mail_post.'" />
-					<input type="hidden" name="strona" value="'.($strona+1).'" />
-					<input value="Następna strona" class="btn btn-rss" type="submit" />
-				</form>';
-		}
-		else
-		{
-			echo '<form method="POST" action="panel_admina.php">
-					<input type="hidden" name="strona" value="'.($strona-1).'" />
-					<input value="Poprzednia strona" class="btn btn-rss" type="submit" />
-				</form>';
-			
-			echo '<form method="POST" action="panel_admina.php">
-					<input type="hidden" name="strona" value="'.($strona+1).'" />
-					<input value="Następna strona" class="btn btn-rss" type="submit" />
-				</form>';
-		}
+		$connection->close();
 	}
 ?>
+</div></div></div></div></div>

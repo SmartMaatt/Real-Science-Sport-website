@@ -56,13 +56,13 @@ img.sideBar-logo-collapsed{
     padding: 0 10px 0 0;
 }
 
-/*Hiperłącze z przyciskiem*/
+/*HiperÃ…â€šÃ„â€¦cze z przyciskiem*/
 a.knefel{
 	display: block;
     margin: 10px auto;
 }
 
-/*Kolor przycisków w stylu rrs*/
+/*Kolor przyciskÃƒÂ³w w stylu rrs*/
 .btn-rss{
 	color: white;
 	background: #f7ac25;
@@ -169,6 +169,9 @@ div.profile-card img:hover{
 .profile-card-border{
 	border-bottom: 2px solid #f7ac25;
 }
+.profile-card-border-admin{
+	border-bottom: 2px solid #17a2b8;
+}
 
 .profile-card:hover{
 	background: #fafafa;
@@ -188,7 +191,7 @@ div.profile-card img:hover{
 	background: #eee;
 }
 
-a.settings-link{
+a.settings-link, a.settings-link-admin{
 	color: #333 !important;
 }
 
@@ -196,44 +199,166 @@ a.settings-link.active{
 	color: #f7ac25 !important;
 }
 
+a.settings-link-admin.active{
+	color: #17a2b8 !important;
+}
 
 
 
 
 /*BADANIE*/
 .table th, .table td{
-	padding: 0.75rem; !important;
+	padding: 0.75rem;
 }
 
-.brak_badan{
+.no_data_msg{
 	font-weight: 600;
 	text-align: center;
 }
 
 
+/*PANEL ADMIN*/
+.table-admin th, .table-admin td{
+	padding: 0.4rem ;
+}
 
+.table-admin td{
+	vertical-align: middle;
+}
 
+.table-admin td:nth-child(1){
+	width:40px;
+}
 
-/*DODATKOWE STYLE GÓRNEGO NAV BARA*/
-/*Dodatkowa stylizacja nazwiska w górnym nav barze*/
+form.admin-form{
+	display: inline-block;
+	margin: 5px;
+}
+
+form.admin-form .btn{
+	font-size:12px;
+	padding: 0.5rem 0.75rem;
+}
+
+div.form-admin .form-control{
+	padding: 0.6rem;
+	width:90%;
+}
+
+div.form-admin .btn-info{
+	padding: 0.5rem 0.75rem;
+}
+
+.table-admin-clubs td:nth-child(3){
+	width:50px;
+}
+
+/*DODATKOWE STYLE GÃƒâ€œRNEGO NAV BARA*/
+/*Dodatkowa stylizacja nazwiska w gÃƒÂ³rnym nav barze*/
 .surNavBar{
 	margin-top:7px;
 }
 
-/*Podświetlenie ikon po najechaniu*/
+/*PodÃ…â€ºwietlenie ikon po najechaniu*/
 a.iconsRss > i:hover{
 	color: #f7ac25;
 	pointer: cursor;
 	animation-delay: .6s;
 }
 
+a.iconsRss-admin > i:hover{
+	color: #17a2b8;
+	pointer: cursor;
+	animation-delay: .6s;
+}
 
+/*Ask msg*/
+/*Karta informacyjna*/
+#ICC{
+	font: 'Lato';
+	width:100%;
+	height:100vh;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:12;
+	display:none;
+	transition: all .3s ease-in-out;
+}
 
-/*RESPONSYWNOŚĆ APLIKACJI*/
+.ICC_active{
+	
+	display:block !important;
+	background: rgba(0,0,0,.5)!important;
+	transition: all .5s ease-in-out;
+}
+
+.infoCard{
+	position:absolute;
+	top: calc(50% - 150px);
+	left: calc(50% - 225px);
+	width:450px;
+	overflow:hidden;
+	padding: 20px 10px;
+	background: white;
+	border-radius: 15px 0 15px 0;
+	transition: all .3s ease-in-out;
+	border-top: 15px #ff4961 solid;
+}
+
+.infoCard-admin{
+	border-top: 15px #17a2b8 solid !important;
+}
+
+.infoCard h2
+{
+	font-size:20px;
+}
+
+.infoCard button, .infoCard a
+{
+	float:right;
+	margin-right:30px;
+	margin: 5px;
+}
+
+/*Karta: rezeracje*/
+#infoCard_0 > ul
+{
+	margin-bottom:10px;
+	margin-top:10px;
+}
+
+/*Karta: powodzenie w zÅ‚oÅ¼eniu rezerwacji*/
+#infoCard_1 > h2{
+	font-weight: bold;
+	text-align:center;
+	margin-bottom:20px;
+}
+
+#infoCard_1 > i
+{
+	font-size:100px;
+	margin: 10px auto;
+	display: table;
+}
+
+#infoCard_1 > i.ft-alert-triangle
+{
+	color: #f7ac25;
+}
+
+#infoCard_1 > i.ft-check-circle
+{
+	color:green;
+}
+
+/*RESPONSYWNOÃ…Å¡Ã„â€ Ã‚Â APLIKACJI*/
 /*Tablet*/
-@media screen and (min-width:767px) and (max-width: 1365px){
+@media screen and (min-width:767px) and (max-width: 992px){
 .bgLoggin {background-size: cover;}
 .navbar-container h3{font-size: 1.4rem;}
+div.form-admin .form-group{display:inline-block; width:48%;}	
 }
 
 /*Telefon*/
@@ -256,5 +381,24 @@ img.display-logo{width:200px;}
 	font-size: 2rem;
 	width: 100%;
 	margin: 8px 0 2px 0;
+}
+div.form-admin .form-group{display:inline-block; width:100%;}	
+
+.infoCard{
+	top: 25%;
+	left: 10%;
+	width:80%;
+	padding: 10px 0;
+}
+
+.infoCard h2
+{
+	font-size:15px;
+}
+
+.infoCard button, .infoCard a
+{
+	float:right;
+	margin-right:30px !important;
 }
 }

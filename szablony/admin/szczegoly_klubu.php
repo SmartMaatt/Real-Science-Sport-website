@@ -55,85 +55,107 @@
 		
 		$sql = "SELECT * FROM klient WHERE id_klubu = '$id_klubu' LIMIT $strona_p, $strona_k";
 		
-		echo '<table class="table table-bordered">';
-		echo '<tr>';
-		echo '<td>Id klienta</td>';
-		echo '<td>Imie</td>';
-		echo '<td>Nazwisko</td>';
-		echo '<td>Mail</td>';
-		echo '<td>Płeć</td>';
-		echo '<td>Data Urodzenia</td>';
-		echo '<td>Klub</td>';
-		echo '<td></td>';
-		echo '</tr>';
+		echo'<div class="row">
+				<div class="col-12">
+				  <div class="card">
+					<div class="card-header">
+					  <h2 class="card-title" id="basic-layout-tooltip">Członkowie klubu</h2>
+					  <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+					</div>
+					<div class="card-content">
+					  <div class="card-body table-responsive pt-0">';
 
 		$result = @$connection->query($sql);
 		if($result)
 		{
-			for($i=0; $i < $result->num_rows; $i++)
-			{
-				$row = $result->fetch_assoc();
-				$id_klienta = $row['id_klienta'];
-				$imie = $row['imie'];
-				$nazwisko = $row['nazwisko'];
-				$mail = $row['mail'];
-				$plec = $row['plec'];
-				$data_urodzenia = $row['data_urodzenia'];
-				if(isset($row['id_klubu']))
+			if($result->num_rows > 0){
+				
+				echo '<table class="table table-bordered table-admin table-admin-clubs bg-white">';
+				echo '<thead class="thead-dark">';
+				echo '<tr>';
+				echo '<th>Id klienta</th>';
+				echo '<th>Imie</th>';
+				echo '<th>Nazwisko</th>';
+				echo '<th>Mail</th>';
+				echo '<th>Płeć</th>';
+				echo '<th>Data Urodzenia</th>';
+				echo '<th>Nazwa klubu</th>';
+				echo '<th></th>';
+				echo '</tr>';
+				echo '</thred>';
+				
+				for($i=0; $i < $result->num_rows; $i++)
 				{
-					$id_klubu = $row['id_klubu'];
-					$sql = "SELECT nazwa FROM klub WHERE id_klubu = '$id_klubu'";
-					$result2 = @$connection->query($sql);
-					if($result2)
+					$row = $result->fetch_assoc();
+					$id_klienta = $row['id_klienta'];
+					$imie = $row['imie'];
+					$nazwisko = $row['nazwisko'];
+					$mail = $row['mail'];
+					$plec = $row['plec'];
+					$data_urodzenia = $row['data_urodzenia'];
+					if(isset($row['id_klubu']))
 					{
-						$row2 = $result2->fetch_assoc();
-						$klub = $row2['nazwa'];
+						$id_klubu = $row['id_klubu'];
+						$sql = "SELECT nazwa FROM klub WHERE id_klubu = '$id_klubu'";
+						$result2 = @$connection->query($sql);
+						if($result2)
+						{
+							$row2 = $result2->fetch_assoc();
+							$klub = $row2['nazwa'];
+						}
+						else
+						{
+							$klub = 'błąd';
+						}
 					}
 					else
 					{
-						$klub = 'błąd';
+						$klub = "";
 					}
+					echo '<tr>';
+					echo "<td>$id_klienta</td>";
+					echo "<td>$imie</td>";
+					echo "<td>$nazwisko</td>";
+					echo "<td>$mail</td>";
+					echo "<td>$plec</td>";
+					echo "<td>$data_urodzenia</td>";
+					echo "<td>$klub</td>";
+					echo'
+					<td>
+					  <span class="dropdown">
+						<button id="btnSearchDrop" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-info dropdown-toggle dropdown-menu-right"><i class="ft-settings"></i></button>
+						<span aria-labelledby="btnSearchDrop" class="dropdown-menu mt-1 dropdown-menu-right" x-placement="top-end" style="position: absolute; transform: translate3d(-138px, -119px, 0px); top: 0px; left: 0px; will-change: transform;">
+						  <a href="#" class="dropdown-item"><i class="ft-edit-2"></i> Szczegóły</a>
+						  <a href="rozchodniaczki/daddy_im_shy.php?m=0&msg=Czy na pewno chcesz usunąć klienta?&p='.$id_klienta.'" class="dropdown-item"><i class="ft-trash-2"></i> Usuń</a>
+						</span>
+					  </span>
+					</td>';
+					echo '</tr>';
 				}
-				else
-				{
-					$klub = "";
-				}
-				echo '<tr>';
-				echo "<td>$id_klienta</td>";
-				echo "<td>$imie</td>";
-				echo "<td>$nazwisko</td>";
-				echo "<td>$mail</td>";
-				echo "<td>$plec</td>";
-				echo "<td>$data_urodzenia</td>";
-				echo "<td>$klub</td>";
-				echo '<td>
-						<a href="rozchodniaczki/id_opcji.php?o='.$id_opcji.'&p='.$id_podopcji.'&b='.$id_badania.'" class="btn btn-rss">Wyświetl szczegóły</a>
-					 </td>';
-				echo '<td>
-						<form method="POST" action="rozchodniaczki/usun_klienta.php">
-							<input type="hidden" name="id_klienta" value="'.$id_klienta.'" />
-							<input value="Usun klienta" class="btn btn-rss" type="submit" />
-						</form>
-					 </td>';
-				echo '</tr>';
-			}		
-			$result->free_result();
+					
+				echo '</table>';
+			
+				echo '<form class="admin-form" method="POST" action="panel_admina.php">';
+				echo '<input type="hidden" name="strona" value="'.($strona-1).'" />';
+				echo '<input type="hidden" name="id_klubu" value="'.$id_klubu.'" />';
+				echo '<input value="Poprzednia strona" class="btn btn-info" type="submit" />';
+				echo '</form>';
+				
+				echo '<form class="admin-form" method="POST" action="panel_admina.php">';
+				echo '<input type="hidden" name="strona" value="'.($strona+1).'" />';
+				echo '<input type="hidden" name="id_klubu" value="'.$id_klubu.'" />';
+				echo '<input value="Następna strona" class="btn btn-info" type="submit" />';
+				echo '</form>';
+				
+				//echo "Strona: ".($strona+1)." / ".($strona_max+1)."";
+			}
+			else {
+				echo '<h1 class="no_data_msg">Brak zarejestrowanych danych klubów!</h1>';
+			}
+			
 		}
-		
-		echo '</table>';
-		
-		echo '<form method="POST" action="panel_admina.php">';
-		echo '<input type="hidden" name="strona" value="'.($strona-1).'" />';
-		echo '<input type="hidden" name="id_klubu" value="'.$id_klubu.'" />';
-		echo '<input value="Poprzednia strona" class="btn btn-rss" type="submit" />';
-		echo '</form>';
-		
-		echo '<form method="POST" action="panel_admina.php">';
-		echo '<input type="hidden" name="strona" value="'.($strona+1).'" />';
-		echo '<input type="hidden" name="id_klubu" value="'.$id_klubu.'" />';
-		echo '<input value="Następna strona" class="btn btn-rss" type="submit" />';
-		echo '</form>';
-		
-		echo "Strona: ".($strona+1)." / ".($strona_max+1)."";
+		$result->free_result();
+		$connection->close();
 	}
+	echo '</div></div></div></div></div>';
 ?>

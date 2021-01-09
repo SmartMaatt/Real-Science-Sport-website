@@ -44,6 +44,9 @@ html {
       background-size: cover; }
     html body .pace .pace-progress {
       background: #f7ac25; }
+    body.body-admin .pace .pace-progress{
+      background: #17a2b8;
+    }
 
 /*
 * Blank page
@@ -342,6 +345,11 @@ footer.footer-dark {
           color: #c3c3c3;
           background: #23262f;
           border-right: 4px solid #f7ac25;
+          }
+          .main-menu.menu-dark.main-menu-admin .navigation > li.open > a {
+          color: #c3c3c3;
+          background: #23262f;
+          border-right: 4px solid #17a2b8;
           }
         .main-menu.menu-dark .navigation > li.open .hover > a {
           transform: translateX(-4px); }

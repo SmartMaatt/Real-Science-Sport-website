@@ -76,7 +76,7 @@
 				if($result = @$connection->query($sql))
 				{
 					
-					echo '<table class="table table-bordered">';
+					echo '<table class="table table-bordered bg-white">';
 					echo '<thead class="thead-dark">';
 					echo '<tr>';
 					echo '<th scope="col">Data</th>';
@@ -104,7 +104,7 @@
 				}
 				
 				if($i == 0){
-					echo '<h1 class="brak_badan">Brak zarejestrowanych badań</h1>';
+					echo '<h1 class="no_data_msg">Brak zarejestrowanych badań</h1>';
 				}
 				
 				$connection->close();
