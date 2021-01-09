@@ -22,7 +22,7 @@
 						</p>
                     </div>
                 </div>
-                <div class="card-content collapse show">
+                <div class="card-content">
                   <div class="card-body pt-0">
                    
 					

@@ -12,7 +12,7 @@
           <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
           <li class="nav-item mr-auto">
             <a class="navbar-brand" href="index.php">
-              <img class="sideBar-logo-revieved" alt="Real Science Sport logo" src="app-assets/images/logoWhite.png">
+              <img class="sideBar-logo-revieved admin_bar" alt="Real Science Sport logo" src="app-assets/images/logoWhite-admin.png">
             </a>
           </li>
           <li class="nav-item d-none d-md-block float-right"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="toggle-icon ft-toggle-right font-medium-3 white" data-ticon="ft-toggle-right"></i></a></li>
@@ -36,7 +36,7 @@
             </li>
 			
 			<li class="dropdown dropdown-notification nav-item">
-              <a class="dropdown-toggle nav-link dropdown-user-link nav-link-label iconsRss" href="#" data-toggle="dropdown">
+              <a class="dropdown-toggle nav-link dropdown-user-link nav-link-label iconsRss-admin" href="#" data-toggle="dropdown">
 				<i class="ficon ft-user"></i>
               </a>
 			  <div class="dropdown-menu dropdown-menu-right">
@@ -46,10 +46,6 @@
 				<a class="dropdown-item" href="rozchodniaczki/wyloguj.php"><i class="ft-power"></i> Wyloguj</a>
               </div>
             </li>
-            <li class="dropdown dropdown-notification nav-item">
-              <a class="nav-link nav-link-label iconsRss" href="rozchodniaczki/id_opcji.php?o=<?php echo $_SESSION['id_podopcji'];?>&p=13&b=-1"><i class="ficon ft-mail"></i></a>
-             
-            </li>
           </ul>
         </div>
       </div>
@@ -58,7 +54,7 @@
   <!-- ////////////////////////////////////////////////////////////////////////////-->
   
   <!-- 	BOCZNE MENU -->
-  <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+  <div class="main-menu main-menu-admin menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="main-menu-content">
       <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 	  
@@ -121,13 +117,13 @@
         </li>
 		<li class="nav-item <?php echo activateMenu(101,0); ?>">
 			<a href="rozchodniaczki/id_opcji.php?o=101&p=0&b=-1">
-				<i class="fas fa-brain"></i>
+				<i class="ft-user"></i>
 				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Klienci</span>
 			</a>
 		</li>
 		<li class="nav-item <?php echo activateMenu(102,0); ?>">
 			<a href="rozchodniaczki/id_opcji.php?o=102&p=0&b=-1">
-				<i class="fas fa-brain"></i>
+				<i class="ft-users"></i>
 				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Kluby</span>
 			</a>
 		</li>

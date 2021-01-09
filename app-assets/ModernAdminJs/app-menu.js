@@ -444,8 +444,16 @@
           .removeClass('ft-toggle-right').addClass('ft-toggle-left');
 
           if(defMenu == "collapsed" || defMenu == "mediumScr"){
-            $('.sideBar-logo-revieved').attr('src','app-assets/images/logoCard.png');
-              $('.sideBar-logo-revieved').attr('class','sideBar-logo-collapsed');
+			
+			var tmp = $('.sideBar-logo-revieved');
+			if(tmp.hasClass('admin_bar')){
+				tmp.attr('src','app-assets/images/logoCard-admin.png');
+				tmp.attr('class','sideBar-logo-collapsed admin_bar');
+			}
+			else{
+				tmp.attr('src','app-assets/images/logoCard.png');
+				tmp.attr('class','sideBar-logo-collapsed');
+			}
           }
           
           // Code for localStorage
@@ -799,8 +807,16 @@
       function modernMenuExpand(){
         if( $body.data('menu') == 'vertical-menu-modern'){
           $('.main-menu, .navbar-header').addClass('expanded');
-          $('.sideBar-logo-collapsed').attr('src','app-assets/images/logoWhite.png');
-          $('.sideBar-logo-collapsed').attr('class','sideBar-logo-revieved');
+		  
+		  if($('.sideBar-logo-collapsed').hasClass('admin_bar')){
+			  $('.sideBar-logo-collapsed').attr('src','app-assets/images/logoWhite-admin.png');
+			  $('.sideBar-logo-collapsed').attr('class','sideBar-logo-revieved admin_bar');
+		  }
+		  else{
+			  $('.sideBar-logo-collapsed').attr('src','app-assets/images/logoWhite.png');
+			  $('.sideBar-logo-collapsed').attr('class','sideBar-logo-revieved');
+		  }
+		  
           if($body.hasClass('menu-collapsed')){
             var $listItem = $('.main-menu li.menu-collapsed-open'),
             $subList = $listItem.children('ul');
@@ -822,8 +838,17 @@
             if($('.main-menu:hover').length === 0 && $('.navbar-header:hover').length === 0){
 
               $('.main-menu, .navbar-header').removeClass('expanded');
-              $('.sideBar-logo-revieved').attr('src','app-assets/images/logoCard.png');
-              $('.sideBar-logo-revieved').attr('class','sideBar-logo-collapsed');
+			  
+			  
+			  if($('.sideBar-logo-revieved').hasClass('admin_bar')){
+				$('.sideBar-logo-revieved').attr('src','app-assets/images/logoCard-admin.png');
+				$('.sideBar-logo-revieved').attr('class','sideBar-logo-collapsed admin_bar');
+			  }
+			  else{
+				$('.sideBar-logo-revieved').attr('src','app-assets/images/logoCard.png');
+				$('.sideBar-logo-revieved').attr('class','sideBar-logo-collapsed');
+			  }
+ 
               if($body.hasClass('menu-collapsed')){
                 var $listItem = $('.main-menu li.open'),
                 $subList = $listItem.children('ul');

@@ -13,6 +13,14 @@
 		unset($_SESSION['error']);
 	}
 	
+	//Czy wyświetlić ask_msg
+	$ask_msg = "";
+	if(isset($_SESSION['askMe'])){
+		$ask_msg = "onload=\"".$_SESSION['askMe']."\"";
+		unset($_SESSION['askMe']);
+	}
+
+	
 	require_once 'rozchodniaczki/connect.php';
 	
 	 // if(isset($_POST['global_date']))
@@ -38,20 +46,14 @@
 	{
 		$page_info = "Profil użytkownika";
 		$page_header = "Profil - RSS admin";
-		$page_location = "szablony/uzytkownik/panel_profil.php";
+		$page_location = "szablony/admin/panel_profil.php";
 	}
 	elseif($id_podopcji == 12)
 	{
 		$page_info = "Profil użytkownika";
 		$page_header = "Profil - RSS admin";
-		$page_location = "szablony/uzytkownik/panel_profil.php";
+		$page_location = "szablony/admin/panel_profil.php";
 		$error_msg = 'onload="loadToast(\'0\',\'Przekierowanie do profilu\',\'Panel ustawień oraz profilu zostały tymczasowo połączone ze względu na poprawienie przejrzystości strony.\')"';
-	}
-	elseif($id_podopcji == 13)
-	{
-		$page_info = "Kontakt";
-		$page_header = "Kontakt - RSS admin";
-		$page_location = "szablony/uzytkownik/panel_kontakt.php";
 	}
 	elseif($id_opcji  == 1)
 	{
@@ -167,7 +169,7 @@
   <title><?php echo $page_header; ?></title>
   
   <!-- Ikony i animacje -->
-  <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/logoCard.png">
+  <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/logoCard-admin.png">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700" rel="stylesheet">
   <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -196,11 +198,12 @@
 
 
 <body 
-	class="vertical-layout vertical-menu-modern 2-columns menu-expanded fixed-navbar" 
+	class="vertical-layout vertical-menu-modern 2-columns menu-expanded fixed-navbar body-admin" 
 	data-open="click" 
 	data-menu="vertical-menu-modern" 
 	data-col="2-columns"
-	<?php echo $error_msg;?>	
+	<?php echo $error_msg;?>
+	<?php echo $ask_msg;?>
 >
 
 	<?php
@@ -234,6 +237,9 @@
       <span class="float-md-right d-block d-md-inline-blockd-none d-lg-block">Zaprojektowane i zakodowane z <i class="ft-heart pink"></i></span>
     </p>
   </footer>
+  
+  <!-- Kontener zapytań i powiadomień -->
+  <div id="ICC"></div>
   
   <script>var dane_badania = 
 	<?php

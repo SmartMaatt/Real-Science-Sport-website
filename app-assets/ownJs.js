@@ -20,3 +20,34 @@ function loadToast(type, header, bottom){
 	}
 }
 
+/**
+*Asking/informing pop-updateCommands
+*message - Additional msg
+*mode - type of msg box or closage (-1)
+*/
+function infoCard(mode, message, ...params){
+	let body= document.body;
+	let ICC= document.getElementById("ICC");
+		
+		//Zamknij kartę
+		if(mode==-1)
+		{
+			body.style.overflow= "visible";
+			ICC.className="";
+			ICC.innerHTML = "";
+		}
+		//Usuwanie klienta
+		else if(mode==0)
+		{
+			body.style.overflow= "hidden";
+			ICC.className="ICC_active";
+			ICC.innerHTML = "<div id='infoCard_1' class='infoCard infoCard-admin animate__animated animate__fadeInDown'><i class='ft-alert-triangle'></i><h2>" + message + "</h2><button type='button' class='btn btn-dark btn-min-width mx-auto' onclick='infoCard(\"-1\",\"\")'>Wyjdź</button><a href='rozchodniaczki/usun_klienta.php?id_klienta="+params[0]+"' class='btn btn-danger'>Usuń klienta</a></div>";
+		}
+		//Usuwanie klubu
+		else if(mode==1)
+		{
+			body.style.overflow= "hidden";
+			ICC.className="ICC_active";
+			ICC.innerHTML = "<div id='infoCard_1' class='infoCard infoCard-admin animate__animated animate__fadeInDown'><i class='ft-alert-triangle'></i><h2>" + message + "</h2><button type='button' class='btn btn-dark btn-min-width mx-auto' onclick='infoCard(\"-1\",\"\")'>Wyjdź</button><a href='rozchodniaczki/usun_klub.php?id_klubu="+params[0]+"' class='btn btn-danger'>Usuń klub</a></div>";
+		}
+}

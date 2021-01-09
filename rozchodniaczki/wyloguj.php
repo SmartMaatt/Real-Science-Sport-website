@@ -10,6 +10,9 @@
 		unset($_SESSION['data']);
 		unset($_SESSION['id_opcji']);
 		unset($_SESSION['id_podopcji']); 
+		unset($_SESSION['id_admina']);
+
+		session_destroy();
 	 }
 
     header('Location: ../logowanie.php');

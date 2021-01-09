@@ -36,9 +36,27 @@
 			}		
 			$result->free_result();
 		}
-		echo "<canvas id='RSS_chart'></canvas>";
-		echo '<a href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_opcji'].'&p='.$_SESSION['id_podopcji'].'&b=-1" class="btn btn-danger">Wróć</a>';
 		
 		$connection->close();
 	}
 ?>
+
+<div class="row">
+		<div class="col-12">
+			<div class="card" >
+				<div class="card-header">
+				  <h2 class="card-title" id="basic-layout-tooltip"><?php echo $name." - badanie ".$date;?></h2>
+					<div class="card-text">
+						<p>Brak dodatkowych informacji na temat badania.</p>
+					</div>
+				</div>
+				<div style="padding-top:0;" class="card-body">
+					<?php
+						//Canvas wykresu i przycisk powrotny
+						echo "<canvas id='RSS_chart'></canvas>";
+						echo '<a href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_opcji'].'&p='.$_SESSION['id_podopcji'].'&b=-1" class="btn btn-rss">Wróć</a>';
+					?>
+				</div>
+			</div>
+		</div>
+	</div>

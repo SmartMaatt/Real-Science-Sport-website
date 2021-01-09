@@ -4,7 +4,6 @@
     function return_to_login_page($reason) {
         header('Location: ../logowanie.php');
 		$_SESSION['error'] = 'loadToast(\'2\',\''.$reason.'\',\'\')';
-        exit(0);
     }
     $incorrect_login_or_password = 'Nieprawidłowy mail lub hasło!';
 
