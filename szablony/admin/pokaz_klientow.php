@@ -30,19 +30,19 @@
 			$mail_post = $_POST['mail'];
 			
 			if($imie_post != "" && $nazwisko_post != "" && $mail_post != "")
-				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE imie = '$imie_post' AND nazwisko = '$nazwisko_post' AND mail = '$mail_post'";	
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE imie LIKE '%$imie_post%' AND nazwisko LIKE '%$nazwisko_post%' AND mail LIKE '%$mail_post%'";	
 			elseif($imie_post != "" && $nazwisko_post)
-				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE imie = '$imie_post' AND nazwisko = '$nazwisko_post'";
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE imie LIKE '%$imie_post%' AND nazwisko LIKE '%$nazwisko_post%'";
 			elseif($imie_post != "" && $mail_post)
-				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE imie = '$imie_post' AND mail = '$mail_post'";
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE imie LIKE '%$imie_post%'AND mail LIKE '%$mail_post%'";
 			elseif($nazwisko_post != "" && $mail_post != "")
-				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE nazwisko = '$nazwisko_post' AND mail = '$mail_post'";
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE nazwisko '%$nazwisko_post%' AND mail LIKE '%$mail_post%'";
 			elseif($imie_post != "")
-				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE imie = '$imie_post'";
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE imie LIKE '%$imie_post%'";
 			elseif($nazwisko_post != "")
-				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE nazwisko = '$nazwisko_post'";
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE nazwisko LIKE '%$nazwisko_post%'";
 			elseif($mail_post != "")
-				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE mail = '$mail_post'";
+				$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE mail LIKE '%$mail_post%'";
 			else
 				$sql = "SELECT COUNT(id_klienta) as ile FROM klient";
 		}
@@ -85,19 +85,19 @@
 		if(isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['mail']))
 		{
 			if($imie_post != "" && $nazwisko_post != "" && $mail_post != "")
-				$sql = "SELECT * FROM klient WHERE imie = '$imie_post' AND nazwisko = '$nazwisko_post' AND mail = '$mail_post' LIMIT $strona_p, $strona_k";	
+				$sql = "SELECT * FROM klient WHERE imie LIKE '%$imie_post%' AND nazwisko LIKE '%$nazwisko_post%' AND mail LIKE '%$mail_post%' LIMIT $strona_p, $strona_k";	
 			elseif($imie_post != "" && $nazwisko_post)
-				$sql = "SELECT * FROM klient WHERE imie = '$imie_post' AND nazwisko = '$nazwisko_post' LIMIT $strona_p, $strona_k";
+				$sql = "SELECT * FROM klient WHERE imie LIKE '%$imie_post%' AND nazwisko LIKE '%$nazwisko_post%' LIMIT $strona_p, $strona_k";
 			elseif($imie_post != "" && $mail_post)
-				$sql = "SELECT * FROM klient WHERE imie = '$imie_post' AND mail = '$mail_post' LIMIT $strona_p, $strona_k";
+				$sql = "SELECT * FROM klient WHERE imie LIKE '%$imie_post%' AND mail LIKE '%$mail_post%' LIMIT $strona_p, $strona_k";
 			elseif($nazwisko_post != "" && $mail_post != "")
-				$sql = "SELECT * FROM klient WHERE nazwisko = '$nazwisko_post' AND mail = '$mail_post' LIMIT $strona_p, $strona_k";
+				$sql = "SELECT * FROM klient WHERE nazwisko LIKE '%$nazwisko_post%' AND mail LIKE '%$mail_post%' LIMIT $strona_p, $strona_k";
 			elseif($imie_post != "")
-				$sql = "SELECT * FROM klient WHERE imie = '$imie_post' LIMIT $strona_p, $strona_k";
+				$sql = "SELECT * FROM klient WHERE imie LIKE '%$imie_post%' LIMIT $strona_p, $strona_k";
 			elseif($nazwisko_post != "")
-				$sql = "SELECT * FROM klient WHERE nazwisko = '$nazwisko_post' LIMIT $strona_p, $strona_k";
+				$sql = "SELECT * FROM klient WHERE nazwisko LIKE '%$nazwisko_post%' LIMIT $strona_p, $strona_k";
 			elseif($mail_post != "")
-				$sql = "SELECT * FROM klient WHERE mail = '$mail_post' LIMIT $strona_p, $strona_k";
+				$sql = "SELECT * FROM klient WHERE mail LIKE '%$mail_post%' LIMIT $strona_p, $strona_k";
 			else
 				$sql = "SELECT * FROM klient LIMIT $strona_p, $strona_k";
 		}

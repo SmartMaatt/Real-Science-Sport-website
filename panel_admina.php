@@ -106,7 +106,7 @@
 	{
 		$page_info = "Beep test";
 		$page_header = "Beep test - RSS admin";
-		$page_location = "szablony/admin/dodaj_deep_test.php";
+		$page_location = "szablony/admin/dodaj_beep_test.php";
 	}
 	elseif($id_opcji  == 7)
 	{
@@ -195,6 +195,9 @@
   
   <!-- CHART.JS -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
+  
+  <!-- DROPZONE.JS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css" />
    
 </head>
 
@@ -258,6 +261,9 @@
   
   <!-- BEGIN PAGE VENDOR JS-->
   <script src="app-assets/ModernAdminJs/moment.min.js" type="text/javascript"></script>
+  
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
   <!-- BEGIN MODERN JS-->
   <script src="app-assets/ModernAdminJs/app-menu.js" type="text/javascript"></script>
@@ -266,15 +272,19 @@
 
 	<!-- CHART.JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-
-	<!-- WŁASNE SKRYPTY JS-->
-  <script src="app-assets/ownJs.js" type="text/javascript"></script>
-  <script src="app-assets/charts.js" type="text/javascript"></script>
-  <script src="https://kit.fontawesome.com/9b863fbae2.js"></script>
   
   <!-- TOASTR PLUGIN -->
   <script src="app-assets/ModernAdminJs/toastrConfig.js" type="text/javascript"></script>
   <script src="app-assets/ModernAdminJs/toastrPlugin.js" type="text/javascript"></script>
   
+  <!-- DROPZONE.JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
+  
+  <!-- WŁASNE SKRYPTY JS-->
+  <script src="app-assets/ownJs.js" type="text/javascript"></script>
+  <script src="app-assets/charts.js" type="text/javascript"></script>
+  <script src="app-assets/dropzone.js" type="text/javascript"></script>
+  <script src="https://kit.fontawesome.com/9b863fbae2.js"></script>
+   
 </body>
 </html>

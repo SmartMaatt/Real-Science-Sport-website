@@ -1,4 +1,0 @@
-﻿recaptacha
-mail z haslem
-mail z aktywacja
-bug z menu bocznym z potrojną opcją

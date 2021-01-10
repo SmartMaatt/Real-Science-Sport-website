@@ -33,13 +33,13 @@
 			}
 		}
 		
-		$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE id_klubu = '$id_klubu'";
+		$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE id_klubu LIKE '%$id_klubu%'";
 		$result = @$connection->query($sql);
 		if($result)
 		{
 			$row = $result->fetch_assoc();
 			$strona_max = (int)($row['ile']/10);
-			if($row['ile']%10 == 0)
+			if($row['ile']%10 == 0 && $strona_max != 0)
 			{
 				$strona_max --;
 			}
@@ -63,9 +63,9 @@
 		}
 		$strona_p = $strona*10;
 		$strona_k = $strona*10+10;
-		
-		$sql = "SELECT * FROM klient WHERE id_klubu = '$id_klubu' LIMIT $strona_p, $strona_k";
-		
+
+		$sql = "SELECT * FROM klient WHERE id_klubu LIKE '%$id_klubu%' LIMIT $strona_p, $strona_k";
+
 		echo'<div class="row">
 				<div class="col-12">
 				  <div class="card">
@@ -163,9 +163,8 @@
 			else {
 				echo '<h1 class="no_data_msg">Brak zarejestrowanych danych klubów!</h1>';
 			}
-			
+			$result->free_result();
 		}
-		$result->free_result();
 		$connection->close();
 	}
 	echo '</div></div></div></div></div>';

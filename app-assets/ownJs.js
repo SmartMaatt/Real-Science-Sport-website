@@ -51,3 +51,7 @@ function infoCard(mode, message, ...params){
 			ICC.innerHTML = "<div id='infoCard_1' class='infoCard infoCard-admin animate__animated animate__fadeInDown'><i class='ft-alert-triangle'></i><h2>" + message + "</h2><button type='button' class='btn btn-dark btn-min-width mx-auto' onclick='infoCard(\"-1\",\"\")'>Wyjdź</button><a href='rozchodniaczki/usun_klub.php?id_klubu="+params[0]+"' class='btn btn-danger'>Usuń klub</a></div>";
 		}
 }
+
+
+
+
