@@ -24,6 +24,9 @@
 		unset($_SESSION['error']);
 		unset($_SESSION['askMe']);
 		
+		unset($_SESSION['imie_klienta']);
+		unset($_SESSION['naziwsko_klienta']);
+		
 		session_destroy();
 	}
 	

@@ -190,8 +190,9 @@
 					  <span class="dropdown">
 						<button id="btnSearchDrop" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-info dropdown-toggle dropdown-menu-right"><i class="ft-settings"></i></button>
 						<span aria-labelledby="btnSearchDrop" class="dropdown-menu mt-1 dropdown-menu-right" x-placement="top-end" style="position: absolute; transform: translate3d(-138px, -119px, 0px); top: 0px; left: 0px; will-change: transform;">
-						  <a href="rozchodniaczki/zmiana_klienta.php?id_klienta='.$id_klienta.'&imie='.$imie.'&nazwisko='.$nazwisko.'" class="dropdown-item"><i class="ft-edit-2"></i> Szczegóły</a>
+						  <a href="rozchodniaczki/podglad_admina.php?id_klienta='.$id_klienta.'&imie='.$imie.'&nazwisko='.$nazwisko.'" class="dropdown-item"><i class="ft-edit-2"></i> Szczegóły</a>
 						  <a href="rozchodniaczki/daddy_im_shy.php?m=0&msg=Czy na pewno chcesz usunąć klienta?&p='.$id_klienta.'" class="dropdown-item"><i class="ft-trash-2"></i> Usuń</a>
+						  <a href="rozchodniaczki/daddy_im_shy.php?m=2&msg=Wybierz klub, który chcesz przypisać zawodnikowi&p='.$id_klienta.'" class="dropdown-item"><i class="fas fa-shield-alt"></i> Zmień klub</a>
 						</span>
 					  </span>
 					</td>';

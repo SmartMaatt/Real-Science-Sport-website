@@ -17,7 +17,7 @@ i.m-corr{
 	height:100%;
 	background: black;
 	opacity: 0.2;
-	position: absolute;
+	position: fixed;
 }
 
 .bgLoggin
@@ -56,20 +56,31 @@ img.sideBar-logo-collapsed{
     padding: 0 10px 0 0;
 }
 
-/*HiperÃ…â€šÃ„â€¦cze z przyciskiem*/
+/*HiperÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¾ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦cze z przyciskiem*/
 a.knefel{
 	display: block;
     margin: 10px auto;
 }
 
-a.admin_powrot{
+div.admin_powrot{
+	width: 250px;
 	z-index:9999999;
 	position:fixed;
-	bottom:30px;
-	right:30px;
+	bottom: 15px;
+	right: 15px;
+	text-align: center;
+	background: white;
+	padding: 20px;
+	border-top: 20px solid #17a2b8;
+	border-radius: 10px 0 0 0;
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
 }
 
-/*Kolor przyciskÃƒÂ³w w stylu rrs*/
+div.admin_powrot > a{
+	margin-top: 5px;
+}
+
+/*Kolor przyciskÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³w w stylu rrs*/
 .btn-rss{
 	color: white;
 	background: #f7ac25;
@@ -260,13 +271,13 @@ div.form-admin .btn-info{
 	width:50px;
 }
 
-/*DODATKOWE STYLE GÃƒâ€œRNEGO NAV BARA*/
-/*Dodatkowa stylizacja nazwiska w gÃƒÂ³rnym nav barze*/
+/*DODATKOWE STYLE GÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œRNEGO NAV BARA*/
+/*Dodatkowa stylizacja nazwiska w gÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³rnym nav barze*/
 .surNavBar{
 	margin-top:7px;
 }
 
-/*PodÃ…â€ºwietlenie ikon po najechaniu*/
+/*PodÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã‚Âºwietlenie ikon po najechaniu*/
 a.iconsRss > i:hover{
 	color: #f7ac25;
 	pointer: cursor;
@@ -336,7 +347,7 @@ a.iconsRss-admin > i:hover{
 	margin-top:10px;
 }
 
-/*Karta: powodzenie w zÅ‚oÅ¼eniu rezerwacji*/
+/*Karta: powodzenie w zÃƒâ€¦Ã¢â‚¬Å¡oÃƒâ€¦Ã‚Â¼eniu rezerwacji*/
 #infoCard_1 > h2{
 	font-weight: bold;
 	text-align:center;
@@ -360,12 +371,34 @@ a.iconsRss-admin > i:hover{
 	color:green;
 }
 
-/*RESPONSYWNOÃ…Å¡Ã„â€ Ã‚Â APLIKACJI*/
+/*RESPONSYWNOÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¾ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â APLIKACJI*/
 /*Tablet*/
 @media screen and (min-width:767px) and (max-width: 992px){
 .bgLoggin {background-size: cover;}
 .navbar-container h3{font-size: 1.4rem;}
-div.form-admin .form-group{display:inline-block; width:48%;}	
+div.form-admin .form-group{display:inline-block; width:48%;}
+
+div.admin_powrot{
+	width: 250px;
+	z-index:9999999;
+	position:fixed;
+	bottom: 10px;
+	right: 10px;
+	text-align: right;
+	padding: 10px;
+	border-top: 15px solid #17a2b8;
+	border-radius: 10px 0 0 0;
+	box-shadow: 5px 5px 10px 10px rgba(0,0,0,0.2);
+}
+
+div.admin_powrot > h3{
+	font-size:20px;
+}
+
+div.admin_powrot > a{
+	margin-top: 0;
+	font-size:12px;
+}
 }
 
 /*Telefon*/
@@ -408,4 +441,34 @@ div.form-admin .form-group{display:inline-block; width:100%;}
 	float:right;
 	margin-right:30px !important;
 }
+
+div.admin_powrot{
+	width: 100%;
+	z-index:9999999;
+	position:fixed;
+	bottom: 0px;
+	right: 0px;
+	text-align: left;
+	padding: 10px;
+	border-top: 15px solid #17a2b8;
+	border-radius: 10px 0 0 0;
+	box-shadow: 5px 5px 10px 10px rgba(0,0,0,0.2);
+}
+
+div.admin_powrot *{
+	float: left;
+}
+
+div.admin_powrot > h3{
+	font-size:14px;
+	width:50%;
+}
+
+div.admin_powrot > a{
+	width:50%;
+	height:100%;
+	margin-top: 0;
+	font-size:10px;
+}
+
 }

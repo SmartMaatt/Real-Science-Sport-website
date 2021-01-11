@@ -9,6 +9,47 @@
 		$error_msg = "onload=\"".$_SESSION['error']."\"";
 		unset($_SESSION['error']);
 	}
+	
+	
+	//Otwieranie bazy danych w celu pobrania aktualnej listy klubów
+	require_once 'rozchodniaczki/connect.php';
+	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
+	$slider = "";
+
+
+	if ($connection->connect_errno == 0) {
+		$sql = "SELECT * FROM klub";
+		$result = @$connection->query($sql);
+
+		if ($result) {
+			
+			//Slider list do wyświetlenia w formularzu rejestracji
+			$slider = "<label>Klub</label><fieldset class=\"form-group register-field position-relative has-icon-left\"><select class=\"custom-select\" id=\"custom_select\" name=\"id_klubu\" required><option value=\"\">Klient indywidualny</option>";
+			
+			while($row = $result->fetch_assoc())
+			{
+				$slider = $slider."<option value=\"".$row['id_klubu']."\">".$row['nazwa']."</option>";
+			}
+			
+			$slider = $slider."</select></fieldset>";
+			$connection->close();
+			
+		}
+		else
+		{
+			header('Location: ../panel_admina.php');
+			$_SESSION['error'] = 'loadToast(\'3\',\'Błąd wykonania polecenia SQL!\',\'Command: SELECT * FROM klub\')';
+			$connection->close();
+		}
+	}
+	else
+	{
+		header('Location: ../panel_admina.php');
+		$_SESSION['error'] = 'loadToast(\'3\',\'Błąd bazy danych\',\'Error '.$connection->connect_errno.'\')';
+	}
+	
+	
+	
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
@@ -60,7 +101,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
     <div class="content-wrapper">
 	  <div class="blackBlind"></div>
       <div class="content-body register-body">
-        <section style="height:auto;" class="flexbox-container">
+        <section>
           <div class="col-12 d-flex align-items-center justify-content-center">
             <div class="col-lg-6 col-md-10 col-12 box-shadow-2 p-0">
               <div class="card border-grey border-lighten-3 m-0">
@@ -124,6 +165,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
                           <i class="fas fa-birthday-cake"></i>
                         </div>
                       </fieldset>
+					  
+					  <?php echo $slider; ?>
 					  
 					  <label>Hasło</label>
                       <fieldset class="form-group register-field position-relative has-icon-left">
