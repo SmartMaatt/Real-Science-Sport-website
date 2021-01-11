@@ -61,13 +61,13 @@
 	{
 		$page_info = "Biofeedback EEG";
 		$page_header = "Biofeedback EEG - RSS admin";
-		$page_location = "szablony/admin/dodaj_biofeedback_eeg.php";
+		$page_location = "szablony/admin/dodawanie_badania.php";
 	}
 	elseif($id_opcji  == 2) 
 	{
 		$page_info = "Analiza składu ciała";
 		$page_header = "Analiza składu ciała - RSS admin";
-		$page_location = "szablony/admin/dodaj_analiza_skladu_ciala.php";
+		$page_location = "szablony/admin/dodawanie_badania.php";
 	}
 	elseif($id_opcji  == 3) 
 	{
@@ -75,44 +75,44 @@
 		{
 			$page_info = "Test szybkości";
 			$page_header = "Test szybkości - RSS admin";
-			$page_location = "szablony/admin/dodaj_test_szybkosci.php";
+			$page_location = "szablony/admin/dodawanie_badania.php";
 		}
 		elseif($_SESSION['id_podopcji'] == 2)
 		{
 			$page_info = "Rast test";
 			$page_header = "Rast test - RSS admin";
-			$page_location = "szablony/admin/dodaj_rast_test.php";
+			$page_location = "szablony/admin/dodawanie_badania.php";
 		}
 		else
 		{
 			$page_info = "Prowadzenie piłki";
 			$page_header = "Prowadzenie piłki - RSS admin";
-			$page_location = "szablony/admin/dodaj_prowadzenie_pilki.php";
+			$page_location = "szablony/admin/dodawanie_badania.php";
 		}
 	}
 	elseif($id_opcji  == 4)
 	{
 		$page_info = "Analizator kwasu mlekowego";
 		$page_header = "Analizator kwasu mlekowego - RSS admin";
-		$page_location = "szablony/admin/dodaj_analizator_kwasu_mlekowego.php";
+		$page_location = "szablony/admin/dodawanie_badania.php";
 	}
 	elseif($id_opcji  == 5)
 	{
 		$page_info = "Wzrostomierz";
 		$page_header = "Wzrostomierz - RSS admin";
-		$page_location = "szablony/admin/dodaj_wzrostomierz.php";
+		$page_location = "szablony/admin/dodawanie_badania.php";
 	}
 	elseif($id_opcji  == 6)
 	{
 		$page_info = "Beep test";
 		$page_header = "Beep test - RSS admin";
-		$page_location = "szablony/admin/dodaj_beep_test.php";
+		$page_location = "szablony/admin/dodawanie_badania.php";
 	}
 	elseif($id_opcji  == 7)
 	{
 		$page_info = "Opto jump next";
 		$page_header = "Opto jump next - RSS admin";
-		$page_location = "szablony/admin/dodaj_opto_jump_next.php";
+		$page_location = "szablony/admin/dodawanie_badania.php";
 	}
 	elseif($id_opcji  == 101)
 	{

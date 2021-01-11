@@ -116,7 +116,7 @@
 		$page_info = "Opto jump next";
 		$page_header = "Opto jump next - RSS panel";
 		$page_location = "szablony/uzytkownik/badanie.php";
-		$badanie = "opto_jump_test";
+		$badanie = "opto_jump_next";
 	}
 	
 	if($id_badania != -1)

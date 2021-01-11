@@ -74,8 +74,9 @@
 	{
 		header('Location: ../panel_admina.php');
 	}
-	else{
-		jump_to_page('3', 'Wykrycie potencjalnie szkodliwego pliku!','Odrzucenie polecenia przesyłania!'); 
+	else
+	{
+		jump_to_page('3', 'Sprawdź czy wrzucany plik jest zamknięty!',''); 
 		header('Location: ../panel_admina.php');
 	}
 	

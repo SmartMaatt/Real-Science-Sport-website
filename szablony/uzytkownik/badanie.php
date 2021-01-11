@@ -20,7 +20,7 @@
 	elseif($id_opcji  == 4) {$badanie = "analizator_kwasu_mlekowego"; $nazwa_badania = "Analizator kwasu mlekowego";}
 	elseif($id_opcji  == 5) {$badanie = "wzrostomierz"; $nazwa_badania = "Wzrostomierz";}
 	elseif($id_opcji  == 6) {$badanie = "beep_test"; $nazwa_badania = "Beep test";}
-	elseif($id_opcji  == 7) {$badanie = "opto_jump_test"; $nazwa_badania = "Opto jump test";}
+	elseif($id_opcji  == 7) {$badanie = "opto_jump_next"; $nazwa_badania = "Opto jump next";}
 	
 ?>
 
