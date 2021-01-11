@@ -14,7 +14,14 @@
 	
 	if(isset($_SESSION['id_admina']))
 	{
-		header('Location: ../panel_admina.php');
+		if(isset($_SESSION['id_klienta']) && $_SESSION['id_klienta'] == -1)
+		{
+			header('Location: ../panel_admina.php');
+		}
+		else if(isset($_SESSION['id_klienta']) && $_SESSION['id_klienta'] != -1)
+		{
+			header('Location: ../panel.php');
+		}
 	}
 	else
 	{

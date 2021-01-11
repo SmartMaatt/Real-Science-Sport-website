@@ -1,6 +1,8 @@
 <?php
 	session_start();
 	
+	$_SESSION['id_klienta'] = -1;
+	
 	//Czy sesja istnieje, jeśli nie do logowanie
 	 
 	 if (!isset($_SESSION['id_admina'])) {
