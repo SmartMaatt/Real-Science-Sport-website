@@ -10,25 +10,27 @@
 			$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 
 			if ($connection->connect_errno == 0) {
-				$sql = sprintf("SELECT * FROM klub",
-								mysqli_real_escape_string($connection, $mail));
-
+				$sql = "SELECT * FROM klub";
 				$result = @$connection->query($sql);
 
 				if ($result) {
 					
-					$moja_tablica_xd = array();
+					$moja_tablica_xd = ',\''.$_GET['p'].'\'';
 					while($row = $result->fetch_assoc())
 					{
-						array_push($moja_tablica_xd, $row['id_klubu'], $row['nazwa']);	
+						$moja_tablica_xd = $moja_tablica_xd.',\''.$row['id_klubu'].'\',\''.$row['nazwa'].'\'';
 					}
 					
+					$_SESSION['askMe'] = 'infoCard(\''.$_GET['m'].'\',\''.$_GET['msg'].'\''.$moja_tablica_xd.')';
+					echo $_SESSION['askMe'];
+					$connection->close();
 					
 				}
 				else
 				{
 					header('Location: ../panel_admina.php');
 					$_SESSION['error'] = 'loadToast(\'3\',\'Błąd wykonania polecenia SQL!\',\'Command: SELECT * FROM klub\')';
+					$connection->close();
 				}
 			}
 			else
@@ -38,10 +40,12 @@
 			}
 					
 		}
-		$_SESSION['askMe'] = 'infoCard(\''.$_GET['m'].'\',\''.$_GET['msg'].'\',\''.json_encode($moja_tablica_xd).'\')';
-		echo $_SESSION['askMe'];
+		else
+		{
+			$_SESSION['askMe'] = 'infoCard(\''.$_GET['m'].'\',\''.$_GET['msg'].'\',\''.$_GET['p'].'\')';
+			echo $_SESSION['askMe'];
+		}
 	}
 	
-	header('Location: ../logowanie.php');
-	
+	header('Location: ../panel_admina.php');
 ?>
