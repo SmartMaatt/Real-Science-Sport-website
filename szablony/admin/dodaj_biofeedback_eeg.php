@@ -13,26 +13,19 @@
 		  <h2 class="card-title" id="basic-layout-tooltip">Biofeedback EEG</h2>
 		  <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
 		   <div class="card-text">
-				<p>Załącz arkusz excel w celu dodania badań Biofeedback EEG</p>
+				<p>Załącz arkusz excel w celu dodania badań "Biofeedback EEG"</p>
 			</div>
 		</div>
 		<div class="card-content">
 		  <div class="card-body pt-0">
-		   
 			
-			<div class="container">
-			
+			<div class="px-2">
 				<h1>Drop zone</h1>
-				<form action="rozchodniaczki/upload_excel.php" class="dropzone" id="dropzoneFrom">
-
+				<form action="rozchodniaczki/upload_excel.php" method="POST" class="dropzone" id="dropzoneFrom" enctype="multipart/form-data">
+					<input type="hidden" name='badanie' value="biofeedback_eeg" />
 				</form>
-			  
-				<div>
-					<button type="button" class="btn btn-info mt-1" id="submit-all">Upload</button>
-				</div>
-			
+				<input type="submit" class="btn btn-info mt-1" id="submit-all" value="Dodaj" />
 			</div>
-			
 			
 		  </div>
 		</div>

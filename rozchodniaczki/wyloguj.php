@@ -18,7 +18,12 @@
 		if(isset($_SESSION['id_admina']))
 		{
 			unset($_SESSION['id_admina']);
+			unset($_SESSION['excel_plik']);
 		}
+		
+		unset($_SESSION['error']);
+		unset($_SESSION['askMe']);
+		
 		session_destroy();
 	}
 	

@@ -262,13 +262,13 @@
   <!-- BEGIN PAGE VENDOR JS-->
   <script src="app-assets/ModernAdminJs/moment.min.js" type="text/javascript"></script>
   
-  <!-- jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-
   <!-- BEGIN MODERN JS-->
   <script src="app-assets/ModernAdminJs/app-menu.js" type="text/javascript"></script>
   <script src="app-assets/ModernAdminJs/app.js" type="text/javascript"></script>
   <script src="app-assets/ModernAdminJs/customizer.js" type="text/javascript"></script>
+
+	<!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 	<!-- CHART.JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
