@@ -62,6 +62,13 @@ a.knefel{
     margin: 10px auto;
 }
 
+a.admin_powrot{
+	z-index:9999999;
+	position:fixed;
+	bottom:30px;
+	right:30px;
+}
+
 /*Kolor przyciskÃƒÂ³w w stylu rrs*/
 .btn-rss{
 	color: white;

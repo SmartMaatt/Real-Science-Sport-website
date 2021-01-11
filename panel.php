@@ -196,12 +196,20 @@
 
 	<?php
 
-	if (isset($_SESSION['id_klienta'])) {
+		if (isset($_SESSION['id_klienta'])) {
+			
+			include('szablony/uzytkownik/szablon_uzytkownika.php');
+		}
+		else
+			header('Location: logowanie.php');
 		
-		include('szablony/uzytkownik/szablon_uzytkownika.php');
-	}
-	else
-		header('Location: logowanie.php');
+		
+		//Wyświetlenie podglądu dla admina
+		if(isset($_SESSION['id_admina']))
+		{
+			echo '<a href="panel_admina.php" class="btn btn-danger admin_powrot">Powrót do</br>panelu admina</a>';
+		}
+  
 	?>
 
 	<!-- GŁÓWNY KONTENER -->
