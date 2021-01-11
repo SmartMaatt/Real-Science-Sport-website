@@ -6,21 +6,50 @@
 	
 	$badanie = "";
 	$nazwa_badania = "";
-	if($id_opcji  == 1) {$badanie = "biofeedback_eeg"; $nazwa_badania = "Biofeedback EEG";}
-	elseif($id_opcji  == 2) {$badanie= "analiza_skladu_ciala"; $nazwa_badania = "Analiza składu ciała";}
-	elseif($id_opcji  == 3) 
+	switch ($id_opcji)
 	{
+	case 1:
+		$badanie = "biofeedback_eeg";
+		$nazwa_badania = "Biofeedback EEG";
+		break;
+	case 2:
+		$badanie= "analiza_skladu_ciala";
+		$nazwa_badania = "Analiza składu ciała";
+		break;
+	case 3:
 		if($_SESSION['id_podopcji'] == 1)
-			{$badanie = "test_szybkosci"; $nazwa_badania = "Test szybkości";}
+		{
+			$badanie = "test_szybkosci"; 
+			$nazwa_badania = "Test szybkości";
+		}
 		elseif($_SESSION['id_podopcji'] == 2)
-			{$badanie = "rast_test"; $nazwa_badania = "Rast test";}
+		{
+			$badanie = "rast_test"; 
+			$nazwa_badania = "Rast test";
+		}
 		else
-			{$badanie = "prowadzenie_pilki"; $nazwa_badania = "Prowadzenie piłki";}
+		{
+			$badanie = "prowadzenie_pilki";
+			$nazwa_badania = "Prowadzenie piłki";
+		}
+		break;
+	case 4:
+		$badanie = "analizator_kwasu_mlekowego";
+		$nazwa_badania = "Analizator kwasu mlekowego";
+		break;
+	case 5:
+		$badanie = "wzrostomierz";
+		$nazwa_badania = "Wzrostomierz";
+		break;
+	case 6:
+		$badanie = "beep_test";
+		$nazwa_badania = "Beep test";
+		break;
+	case 7:
+		$badanie = "opto_jump_next";
+		$nazwa_badania = "Opto jump next";
+		break;
 	}
-	elseif($id_opcji  == 4) {$badanie = "analizator_kwasu_mlekowego"; $nazwa_badania = "Analizator kwasu mlekowego";}
-	elseif($id_opcji  == 5) {$badanie = "wzrostomierz"; $nazwa_badania = "Wzrostomierz";}
-	elseif($id_opcji  == 6) {$badanie = "beep_test"; $nazwa_badania = "Beep test";}
-	elseif($id_opcji  == 7) {$badanie = "opto_jump_next"; $nazwa_badania = "Opto jump next";}
 	
 ?>
 
@@ -109,6 +138,72 @@
 				
 				$connection->close();
 			}
+			/*
+			switch ($_SESSION['id_opcji'])
+						{
+						case 1:
+							$name = "Biofeedback EEG";
+							$date = $row['data'];
+							$chart_type = "bar";
+							$labels = array('delta','theta','alpha','smr','beta1','beta2','hibeta','gamma');
+							$data = array($row['delta'],$row['theta'],$row['theta'],$row['smr'],$row['beta1'],$row['beta2'],$row['hibeta'],$row['gamma']);
+							break;
+						case 2:
+							$tytul = "Analiza składu ciała";
+							$badanie = "analiza_skladu_ciala";
+							break;
+						case 3:
+							if($_SESSION['id_podopcji'] == 1)
+							{
+								$tytul = "Test szybkości";
+								$badanie = "test_szybkosci";
+							}
+							elseif($_SESSION['id_podopcji'] == 2)
+							{
+								$pomiar1 = $row['pomiar1'];
+								$pomiar2 = $row['pomiar2'];
+								$pomiar3 = $row['pomiar3'];
+								$pomiar4 = $row['pomiar4'];
+								$pomiar5 = $row['pomiar5'];
+								$pomiar6 = $row['pomiar6'];
+								$pomiar7 = $row['pomiar7'];
+								$srednia = ($pomiar1 + $pomiar2 + $pomiar3 + $pomiar4 + $pomiar5 + $pomiar6 + $pomiar7)/7;
+								
+								$name = "Rast test";
+								$date = $row['data'];
+								$chart_type = "bar";
+								$labels = array('1','2','3','4','5','6','7','średnia');
+							}
+							else
+							{
+								$tytul = "Prowadzenie piłki";
+								$badanie = "prowadzenie_pilki";
+							}
+							break;
+						case 4:
+							$tytul = "Analizator kwasu mlekowego";
+							$badanie = "analizator_kwasu_mlekowego";
+							break;
+						case 5:
+							$wzrost = $row['wartosc'];
+							$name = "Wzrostomierz";
+							$chart_type = "bar";
+							$labels = array('wzrost','wzrost tułowia');
+							$data = array($wzrost,$wzrost_tulowia);
+							break;
+						case 6:
+							$name = "Beep test";
+							$date = $row['data'];
+							$chart_type = "bar";
+							$labels = array('level','hr_max');
+							$data = array($row['level'],$row['hr_max']);
+							break;
+						case 7:
+							$tytul = "Opto jump next";
+							$badanie = "opto_jump_next";
+							break;
+						}	
+						*/
 		?>
 
 		</div>

@@ -4,6 +4,7 @@
 	//Czy sesja istnieje, jeśli nie do logowania
 	 if (!isset($_SESSION['id_klienta'])){
 		 header('Location: logowanie.php');
+		 exit(0);
 	 }
 	 
 	//Czy wyświetlić error
@@ -51,72 +52,70 @@
 		$page_header = "Kontakt - RSS panel";
 		$page_location = "szablony/uzytkownik/panel_kontakt.php";
 	}
-	elseif($id_opcji  == 1)
+	else
 	{
-		$page_info = "Biofeedback EEG";
-		$page_header = "Biofeedback EEG - RSS panel";
-		$page_location = "szablony/uzytkownik/badanie.php";
-		$badanie = "biofeedback_eeg";
-	}
-	elseif($id_opcji  == 2) 
-	{
-		$page_info = "Analiza składu ciała";
-		$page_header = "Analiza składu ciała - RSS panel";
-		$page_location = "szablony/uzytkownik/badanie.php";
-		$badanie= "analiza_skladu_ciala";
-	}
-	elseif($id_opcji  == 3) 
-	{
-		if($_SESSION['id_podopcji'] == 1)
+		switch ($_SESSION['id_opcji'])
 		{
-			$page_info = "Test szybkości";
-			$page_header = "Test szybkości - RSS panel";
+		case 1:
+			$page_info = "Biofeedback EEG";
+			$page_header = "Biofeedback EEG - RSS panel";
 			$page_location = "szablony/uzytkownik/badanie.php";
-			$badanie = "test_szybkosci";
-		}
-		elseif($_SESSION['id_podopcji'] == 2)
-		{
-			$page_info = "Rast test";
-			$page_header = "Rast test - RSS panel";
+			$badanie = "biofeedback_eeg";
+			break;
+		case 2: 
+			$page_info = "Analiza składu ciała";
+			$page_header = "Analiza składu ciała - RSS panel";
 			$page_location = "szablony/uzytkownik/badanie.php";
-			$badanie = "rast_test";
-		}
-		else
-		{
-			$page_info = "Prowadzenie piłki";
-			$page_header = "Prowadzenie piłki - RSS panel";
+			$badanie= "analiza_skladu_ciala";
+			break;
+		case 3: 
+			if($_SESSION['id_podopcji'] == 1)
+			{
+				$page_info = "Test szybkości";
+				$page_header = "Test szybkości - RSS panel";
+				$page_location = "szablony/uzytkownik/badanie.php";
+				$badanie = "test_szybkosci";
+			}
+			elseif($_SESSION['id_podopcji'] == 2)
+			{
+				$page_info = "Rast test";
+				$page_header = "Rast test - RSS panel";
+				$page_location = "szablony/uzytkownik/badanie.php";
+				$badanie = "rast_test";
+			}
+			else
+			{
+				$page_info = "Prowadzenie piłki";
+				$page_header = "Prowadzenie piłki - RSS panel";
+				$page_location = "szablony/uzytkownik/badanie.php";
+				$badanie = "prowadzenie_pilki";
+			}
+			break;
+		case 4:
+			$page_info = "Analizator kwasu mlekowego";
+			$page_header = "Analizator kwasu mlekowego - RSS panel";
 			$page_location = "szablony/uzytkownik/badanie.php";
-			$badanie = "prowadzenie_pilki";
+			$badanie = "analizator_kwasu_mlekowego";
+			break;
+		case 5:
+			$page_info = "Wzrostomierz";
+			$page_header = "Wzrostomierz - RSS panel";
+			$page_location = "szablony/uzytkownik/badanie.php";
+			$badanie = "wzrostomierz";
+			break;
+		case 6:
+			$page_info = "Beep test";
+			$page_header = "Beep test - RSS panel";
+			$page_location = "szablony/uzytkownik/badanie.php";
+			$badanie = "beep_test";
+			break;
+		case 7:
+			$page_info = "Opto jump next";
+			$page_header = "Opto jump next - RSS panel";
+			$page_location = "szablony/uzytkownik/badanie.php";
+			$badanie = "opto_jump_next";
+			break;
 		}
-	}
-	elseif($id_opcji  == 4)
-	{
-		$page_info = "Analizator kwasu mlekowego";
-		$page_header = "Analizator kwasu mlekowego - RSS panel";
-		$page_location = "szablony/uzytkownik/badanie.php";
-		$badanie = "analizator_kwasu_mlekowego";
-	
-	}
-	elseif($id_opcji  == 5)
-	{
-		$page_info = "Wzrostomierz";
-		$page_header = "Wzrostomierz - RSS panel";
-		$page_location = "szablony/uzytkownik/badanie.php";
-		$badanie = "wzrostomierz";
-	}
-	elseif($id_opcji  == 6)
-	{
-		$page_info = "Beep test";
-		$page_header = "Beep test - RSS panel";
-		$page_location = "szablony/uzytkownik/badanie.php";
-		$badanie = "beep_test";
-	}
-	elseif($id_opcji  == 7)
-	{
-		$page_info = "Opto jump next";
-		$page_header = "Opto jump next - RSS panel";
-		$page_location = "szablony/uzytkownik/badanie.php";
-		$badanie = "opto_jump_next";
 	}
 	
 	if($id_badania != -1)
@@ -209,7 +208,6 @@
 		{
 			echo '<a href="panel_admina.php" class="btn btn-danger admin_powrot">Powrót do</br>panelu admina</a>';
 		}
-  
 	?>
 
 	<!-- GŁÓWNY KONTENER -->

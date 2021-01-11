@@ -18,6 +18,7 @@
 		$haslo2 = $_POST['haslo2'];
 		$plec = htmlentities($_POST['plec']);
 		$data = htmlentities($_POST['data']);
+		$id_klubu = htmlentities($_POST['id_klubu']);
 		
 		/*PRAWDOPODOBNIE CAPTCHA*/
 		//bot or not?
@@ -87,18 +88,34 @@
 
 
 						//Zapytanie sql złożone ze wszystkich odczytanych wartości
-						$sql3 = sprintf("INSERT INTO klient (id_klienta, imie, nazwisko, mail, haslo, plec, data_urodzenia, vkey) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
-							$new_index,
-							mysqli_real_escape_string($connection, $imie),
-							mysqli_real_escape_string($connection, $nazwisko),
-							mysqli_real_escape_string($connection, $mail),
-							$pw_hash,
-							mysqli_real_escape_string($connection, $plec),
-							mysqli_real_escape_string($connection, $data),
-							$vkey
-						);
+						if($id_klubu == "")
+						{
+							$sql3 = sprintf("INSERT INTO klient (id_klienta, imie, nazwisko, mail, haslo, plec, data_urodzenia, vkey) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+								$new_index,
+								mysqli_real_escape_string($connection, $imie),
+								mysqli_real_escape_string($connection, $nazwisko),
+								mysqli_real_escape_string($connection, $mail),
+								$pw_hash,
+								mysqli_real_escape_string($connection, $plec),
+								mysqli_real_escape_string($connection, $data),
+								$vkey
+							);
+						}
+						else
+						{
+							$sql3 = sprintf("INSERT INTO klient (id_klienta, imie, nazwisko, mail, haslo, plec, data_urodzenia, id_klubu, vkey) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+								$new_index,
+								mysqli_real_escape_string($connection, $imie),
+								mysqli_real_escape_string($connection, $nazwisko),
+								mysqli_real_escape_string($connection, $mail),
+								$pw_hash,
+								mysqli_real_escape_string($connection, $plec),
+								mysqli_real_escape_string($connection, $data),
+								mysqli_real_escape_string($connection, $id_klubu),
+								$vkey
+							);
+						}
 						$result3 = @$connection->query($sql3);
-						echo $sql3;
 
 						//Wysyłanie maila weryfikacyjnego na podany adres e-mail
 						if ($result3) 

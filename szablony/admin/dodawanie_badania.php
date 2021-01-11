@@ -41,7 +41,7 @@
 		$badanie = "analizator_kwasu_mlekowego";
         break;
 	case 5:
-         $tytul = "Wzrostomierz";
+        $tytul = "Wzrostomierz";
 		$badanie = "wzrostomierz";
         break;
 	case 6:

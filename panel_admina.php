@@ -1,12 +1,11 @@
 <?php
 	session_start();
 	
-	$_SESSION['id_klienta'] = -1;
-	
 	//Czy sesja istnieje, jeśli nie do logowanie
 	 
 	 if (!isset($_SESSION['id_admina'])) {
 		header('Location: panel.php');
+		exit(0);
 	}
 	else{
 		//Czy wyświetlić error
@@ -24,6 +23,7 @@
 		}
 	}
 
+	$_SESSION['id_klienta'] = -1;
 	
 	require_once 'rozchodniaczki/connect.php';
 	
@@ -59,82 +59,79 @@
 		$page_location = "szablony/admin/panel_profil.php";
 		$error_msg = 'onload="loadToast(\'0\',\'Przekierowanie do profilu\',\'Panel ustawień oraz profilu zostały tymczasowo połączone ze względu na poprawienie przejrzystości strony.\')"';
 	}
-	elseif($id_opcji  == 1)
+	else
 	{
-		$page_info = "Biofeedback EEG";
-		$page_header = "Biofeedback EEG - RSS admin";
-		$page_location = "szablony/admin/dodawanie_badania.php";
-	}
-	elseif($id_opcji  == 2) 
-	{
-		$page_info = "Analiza składu ciała";
-		$page_header = "Analiza składu ciała - RSS admin";
-		$page_location = "szablony/admin/dodawanie_badania.php";
-	}
-	elseif($id_opcji  == 3) 
-	{
-		if($_SESSION['id_podopcji'] == 1)
+		switch ($_SESSION['id_opcji'])
 		{
-			$page_info = "Test szybkości";
-			$page_header = "Test szybkości - RSS admin";
+		case 1:
+			$page_info = "Biofeedback EEG";
+			$page_header = "Biofeedback EEG - RSS admin";
 			$page_location = "szablony/admin/dodawanie_badania.php";
-		}
-		elseif($_SESSION['id_podopcji'] == 2)
-		{
-			$page_info = "Rast test";
-			$page_header = "Rast test - RSS admin";
+			break;
+		case 2: 
+			$page_info = "Analiza składu ciała";
+			$page_header = "Analiza składu ciała - RSS admin";
 			$page_location = "szablony/admin/dodawanie_badania.php";
-		}
-		else
-		{
-			$page_info = "Prowadzenie piłki";
-			$page_header = "Prowadzenie piłki - RSS admin";
+			break;
+		case 3: 
+			if($_SESSION['id_podopcji'] == 1)
+			{
+				$page_info = "Test szybkości";
+				$page_header = "Test szybkości - RSS admin";
+				$page_location = "szablony/admin/dodawanie_badania.php";
+			}
+			elseif($_SESSION['id_podopcji'] == 2)
+			{
+				$page_info = "Rast test";
+				$page_header = "Rast test - RSS admin";
+				$page_location = "szablony/admin/dodawanie_badania.php";
+			}
+			else
+			{
+				$page_info = "Prowadzenie piłki";
+				$page_header = "Prowadzenie piłki - RSS admin";
+				$page_location = "szablony/admin/dodawanie_badania.php";
+			}
+			break;
+		case 4:
+			$page_info = "Analizator kwasu mlekowego";
+			$page_header = "Analizator kwasu mlekowego - RSS admin";
 			$page_location = "szablony/admin/dodawanie_badania.php";
-		}
-	}
-	elseif($id_opcji  == 4)
-	{
-		$page_info = "Analizator kwasu mlekowego";
-		$page_header = "Analizator kwasu mlekowego - RSS admin";
-		$page_location = "szablony/admin/dodawanie_badania.php";
-	}
-	elseif($id_opcji  == 5)
-	{
-		$page_info = "Wzrostomierz";
-		$page_header = "Wzrostomierz - RSS admin";
-		$page_location = "szablony/admin/dodawanie_badania.php";
-	}
-	elseif($id_opcji  == 6)
-	{
-		$page_info = "Beep test";
-		$page_header = "Beep test - RSS admin";
-		$page_location = "szablony/admin/dodawanie_badania.php";
-	}
-	elseif($id_opcji  == 7)
-	{
-		$page_info = "Opto jump next";
-		$page_header = "Opto jump next - RSS admin";
-		$page_location = "szablony/admin/dodawanie_badania.php";
-	}
-	elseif($id_opcji  == 101)
-	{
-		$page_info = "Wyświetl klientów";
-		$page_header = "Klienci - RSS admin";
-		$page_location = "szablony/admin/pokaz_klientow.php";
-	}
-	elseif($id_opcji  == 102)
-	{
-		if($id_podopcji == 0)
-		{
-			$page_info = "Wyświetl kluby";
-			$page_header = "Kluby - RSS admin";
-			$page_location = "szablony/admin/pokaz_kluby.php";
-		}
-		else
-		{
-			$page_info = "Wyświetl klientów klubu";
-			$page_header = "Kluby - RSS admin";
-			$page_location = "szablony/admin/szczegoly_klubu.php";
+			break;
+		case 5:
+			$page_info = "Wzrostomierz";
+			$page_header = "Wzrostomierz - RSS admin";
+			$page_location = "szablony/admin/dodawanie_badania.php";
+			break;
+		case 6:
+			$page_info = "Beep test";
+			$page_header = "Beep test - RSS admin";
+			$page_location = "szablony/admin/dodawanie_badania.php";
+			break;
+		case 7:
+			$page_info = "Opto jump next";
+			$page_header = "Opto jump next - RSS admin";
+			$page_location = "szablony/admin/dodawanie_badania.php";
+			break;
+		case 101:
+			$page_info = "Wyświetl klientów";
+			$page_header = "Klienci - RSS admin";
+			$page_location = "szablony/admin/pokaz_klientow.php";
+			break;
+		case 102:
+			if($id_podopcji == 0)
+			{
+				$page_info = "Wyświetl kluby";
+				$page_header = "Kluby - RSS admin";
+				$page_location = "szablony/admin/pokaz_kluby.php";
+			}
+			else
+			{
+				$page_info = "Wyświetl klientów klubu";
+				$page_header = "Kluby - RSS admin";
+				$page_location = "szablony/admin/szczegoly_klubu.php";
+			}
+			break;
 		}
 	}
 

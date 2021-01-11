@@ -23,17 +23,14 @@
 		$sql = "SELECT * FROM beep_test WHERE id_badania = '$id_badania'";
 		if($result = @$connection->query($sql))
 		{
-			for($i=0; $i < $result->num_rows; $i++)
-			{
-				$row = $result->fetch_assoc();
-				$name = "Beep test";
-				$date = $row['data'];
-				$chart_type = "bar";
-				$labels = array('level','hr_max');
-				$data = array($row['level'],$row['hr_max']);
-					
-				$dane_badania = array($name, $date, $chart_type, $labels, $data);	
-			}		
+			$row = $result->fetch_assoc();
+			$name = "Beep test";
+			$date = $row['data'];
+			$chart_type = "bar";
+			$labels = array('level','hr_max');
+			$data = array($row['level'],$row['hr_max']);
+				
+			$dane_badania = array($name, $date, $chart_type, $labels, $data);			
 			$result->free_result();
 		}
 		
