@@ -1,6 +1,41 @@
+function changeLegend(sourceChart){ 
+	var w = window.innerWidth;
+	console.log(w);
+	
+	if(w > 992){
+		sourceChart.options.legend.display = true;
+		sourceChart.options.legend.position = 'left';
+	}
+	else if((w > 766) && (w < 992)){
+		sourceChart.options.legend.display = true;
+		sourceChart.options.legend.position = 'bottom';
+	}
+	else if(w < 766){
+		sourceChart.options.legend.display = false;
+		sourceChart.options.legend.position = 'bottom';
+	}
+}
+
+
+
 if(dane_badania != 'nope'){
 	
 	if(dane_badania[0] == "wykres_porownawczy"){
+		
+		var w = window.innerWidth;
+		var d = true;
+		var p = 'left';
+		
+		if((w > 766) && (w < 992)){
+			d = true;
+			p = 'bottom';
+		}
+		else if(w < 766){
+			d = false;
+			p = 'bottom';
+		}
+		
+		
 		
 		let myChart = document.getElementById('RSS_chart').getContext('2d');
 		let sourceChart = new Chart(myChart, {
@@ -12,12 +47,12 @@ if(dane_badania != 'nope'){
 			options:{
 				title:{
 					display: false,
-					text:dane_badania[1] + " - badanie " + dane_badania[1],
+					text:dane_badania[1],
 					fontSize: 22
 				},
 				legend:{
-					display: true,
-					position: 'left'
+					display: d,
+					position: p
 				},
 				scales: {
 				yAxes: [{
@@ -28,6 +63,8 @@ if(dane_badania != 'nope'){
 			}
 			}
 		});	
+		
+		setInterval(function() { changeLegend(sourceChart); }, 1000);
 	}
 	else if(dane_badania[0] == "wykres_szczegolowy"){
 
@@ -45,7 +82,7 @@ if(dane_badania != 'nope'){
 			options:{
 				title:{
 					display: false,
-					text:dane_badania[1] + " - badanie " + dane_badania[1],
+					text:dane_badania[1] + " - badanie " + dane_badania[2],
 					fontSize: 22
 				},
 				legend:{

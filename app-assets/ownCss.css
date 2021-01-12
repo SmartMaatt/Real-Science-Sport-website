@@ -242,10 +242,6 @@ a.settings-link-admin.active{
 	margin: 0;
 }
 
-.badanie_main table.first{
-	width: calc(100% - 25px);
-}
-
 .badanie_main table tr td:first-child, .badanie_main table tr th:first-child{
 	width:40%;
 }
@@ -254,14 +250,13 @@ a.settings-link-admin.active{
 	width:60%;
 }
 
-.badanie_scroll_cont{
-	width: calc(100% - 5px);
+#badanie_scroll_cont{
 	height:300px;
 	overflow-y:auto; 
     overflow-x:hidden; 
 }
 
-.badanie_scroll_cont table{
+#badanie_scroll_cont table{
 	overflow:visible;
 }
 
@@ -303,6 +298,9 @@ div.form-admin .btn-info{
 .table-admin-clubs td:nth-child(3){
 	width:50px;
 }
+
+
+
 
 /*DODATKOWE STYLE GÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œRNEGO NAV BARA*/
 /*Dodatkowa stylizacja nazwiska w gÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³rnym nav barze*/
