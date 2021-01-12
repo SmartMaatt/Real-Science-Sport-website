@@ -29,6 +29,9 @@
 			$hr_max = new Dataset();
 			$hr_max->label = "hr_max";
 			$hr_max_dane = array();
+			
+			$suma_level = 0;
+			$suma_hr_max = 0;
 
 			for($i = 0; $i < $result->num_rows; $i++)
 			{
@@ -37,7 +40,10 @@
 				
 				array_push($daty, $row['data']);
 				array_push($level_dane, $row['level']);
-				array_push($hr_max_dane, $row['hr_max']);				
+				array_push($hr_max_dane, $row['hr_max']);
+				
+				$suma_level += $row['level'];
+				$suma_hr_max += $row['hr_max'];
 			}
 			$level->data = $level_dane;
 			$hr_max->data = $hr_max_dane;
@@ -57,6 +63,8 @@
 
 			$dane_badania = array($display_type, $name, $date, $chart_type, $data_sets);
 
+			$suma_level = round ( $suma_level / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_hr_max = round ( $suma_hr_max / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
 			
 			$result->free_result();
 		}
@@ -65,4 +73,6 @@
 	
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
+	echo "Średni level: ".$suma_level."</br>"; 
+	echo "Średnie hr max: ".$suma_hr_max; 
 ?>

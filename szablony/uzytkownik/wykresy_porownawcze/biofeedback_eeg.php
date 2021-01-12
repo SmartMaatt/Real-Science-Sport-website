@@ -53,6 +53,15 @@
 			$gamma = new Dataset();
 			$gamma->label = "gamma";
 			$gamma_dane = array();
+			
+			$suma_delta = 0;
+			$suma_theta = 0;
+			$suma_alpha = 0;
+			$suma_smr = 0;
+			$suma_beta1 = 0;
+			$suma_beta2 = 0;
+			$suma_hibeta = 0;
+			$suma_gamma = 0;
 
 			for($i = 0; $i < $result->num_rows; $i++)
 			{
@@ -69,6 +78,14 @@
 				array_push($hibeta_dane, $row['hibeta']);
 				array_push($gamma_dane, $row['gamma']);
 				
+				$suma_delta += $row['delta'];
+				$suma_theta += $row['theta'];
+				$suma_alpha += $row['alpha'];
+				$suma_smr += $row['smr'];
+				$suma_beta1 += $row['beta1'];
+				$suma_beta2 += $row['beta2'];
+				$suma_hibeta += $row['hibeta'];
+				$suma_gamma += $row['gamma'];				
 			}
 			$delta->data = $delta_dane;
 			$theta->data = $theta_dane;
@@ -94,6 +111,14 @@
 
 			$dane_badania = array($display_type, $name, $date, $chart_type, $data_sets);
 
+			$suma_delta = round ( $suma_delta / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_theta = round ( $suma_theta / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_alpha = round ( $suma_alpha / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_smr = round ( $suma_smr / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_beta1 = round ( $suma_beta1 / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_beta2 = round ( $suma_beta2 / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_hibeta = round ( $suma_hibeta / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_gamma = round ( $suma_gamma / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
 			
 			$result->free_result();
 		}
@@ -102,4 +127,12 @@
 	
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
+	echo "Średnia delta : ".$suma_delta."</br>"; 
+	echo "Średnia theta: ".$suma_theta."</br>"; 
+	echo "Średnia alpha: ".$suma_alpha."</br>"; 
+	echo "Średni smr: ".$suma_smr."</br>"; 
+	echo "Średnia beta1: ".$suma_beta1."</br>"; 
+	echo "Średnie beta2: ".$suma_beta2."</br>"; 
+	echo "Średnia hibeta: ".$suma_hibeta."</br>"; 
+	echo "Średnia gamma: ".$suma_gamma;  
 ?>

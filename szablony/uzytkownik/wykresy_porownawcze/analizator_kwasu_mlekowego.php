@@ -26,13 +26,18 @@
 			$stezenie->label = "stezenie";
 			$stezenie_dane = array();
 			
+			$suma_stezenie = 0;
+			
 			for($i = 0; $i < $result->num_rows; $i++)
 			{
 				//Odczytaj wartości z wiersza bazy
 				$row = $result->fetch_assoc();
 				
 				array_push($daty, $row['data']);
-				array_push($stezenie_dane, $row['stezenie']);				
+				array_push($stezenie_dane, $row['stezenie']);
+				
+				$suma_stezenie += $row['stezenie'];
+				
 			}
 			$stezenie->data = $stezenie_dane;
 			
@@ -50,6 +55,9 @@
 
 			$dane_badania = array($display_type, $name, $date, $chart_type, $data_sets);
 
+			$suma_stezenie = round ( $suma_stezenie / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			
+			
 			$result->free_result();
 		}
 		$connection->close();
@@ -57,4 +65,5 @@
 	
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
+	echo "Średnie steżenie: ".$suma_stezenie; 
 ?>

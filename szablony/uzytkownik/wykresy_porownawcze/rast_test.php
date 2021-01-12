@@ -53,6 +53,15 @@
 			$srednia = new Dataset();
 			$srednia->label = "srednia";
 			$srednia_dane = array();
+			
+			$suma_pomiar1 = 0;
+			$suma_pomiar2 = 0;
+			$suma_pomiar3 = 0;
+			$suma_pomiar4 = 0;
+			$suma_pomiar5 = 0;
+			$suma_pomiar6 = 0;
+			$suma_pomiar7 = 0;
+			$suma_srednia = 0;
 
 			for($i = 0; $i < $result->num_rows; $i++)
 			{
@@ -69,6 +78,15 @@
 				array_push($pomiar7_dane, $row['pomiar7']);
 				$srednia_pom = ($row['pomiar1'] + $row['pomiar2'] + $row['pomiar3'] + $row['pomiar4'] + $row['pomiar5'] + $row['pomiar6'] + $row['pomiar7'])/7;
 				array_push($srednia_dane, $srednia_pom);
+				
+				$suma_pomiar1 += $row['pomiar1'];
+				$suma_pomiar2 += $row['pomiar2'];
+				$suma_pomiar3 += $row['pomiar3'];
+				$suma_pomiar4 += $row['pomiar4'];
+				$suma_pomiar5 += $row['pomiar5'];
+				$suma_pomiar6 += $row['pomiar6'];
+				$suma_pomiar7 += $row['pomiar7'];
+				$suma_srednia += $srednia_pom;
 			}
 			$pomiar1->data = $pomiar1_dane;
 			$pomiar2->data = $pomiar2_dane;
@@ -94,6 +112,14 @@
 
 			$dane_badania = array($display_type, $name, $date, $chart_type, $data_sets);
 
+			$suma_pomiar1 = round ( $suma_pomiar1 / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_pomiar2 = round ( $suma_pomiar2 / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_pomiar3 = round ( $suma_pomiar3 / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_pomiar4 = round ( $suma_pomiar4 / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_pomiar5 = round ( $suma_pomiar5 / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_pomiar6 = round ( $suma_pomiar6 / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_pomiar7 = round ( $suma_pomiar7 / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_srednia = round ( $suma_srednia / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
 			
 			$result->free_result();
 		}
@@ -102,4 +128,12 @@
 	
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
+	echo "Średnia pomiaru 1 : ".$suma_pomiar1."</br>"; 
+	echo "Średnia pomiaru 2: ".$suma_pomiar2."</br>"; 
+	echo "Średnia pomiaru 3: ".$suma_pomiar3."</br>"; 
+	echo "Średnia pomiaru 4: ".$suma_pomiar4."</br>"; 
+	echo "Średnia pomiaru 5: ".$suma_pomiar5."</br>"; 
+	echo "Średnia pomiaru 6: ".$suma_pomiar6."</br>"; 
+	echo "Średnia pomiaru 6: ".$suma_pomiar7."</br>"; 
+	echo "Średnia średnich: ".$suma_srednia;  
 ?>
