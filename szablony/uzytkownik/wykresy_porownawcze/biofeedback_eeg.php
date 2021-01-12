@@ -15,7 +15,7 @@
 	else
 	{	
 		//Pobierz potrzebne badanie
-		$sql = "SELECT * FROM biofeedback_eeg WHERE id_klienta = '$id_klienta'";
+		$sql = "SELECT * FROM biofeedback_eeg WHERE id_klienta = '$id_klienta' ORDER BY data";
 		if($result = @$connection->query($sql))
 		{
 			$daty = array();
@@ -86,7 +86,8 @@
 			$chart_type = "line";
 			$data_sets = array($delta, $theta, $alpha, $smr, $beta1, $beta2, $hibeta, $gamma);
 
-			for($j = 0; $j < count($data_sets); $j++){
+			for($j = 0; $j < count($data_sets); $j++)
+			{
 				$data_sets[$j]->borderColor = 'rgba(247, 172, 37, 0.7)';
 				$data_sets[$j]->fill = false;
 			}
