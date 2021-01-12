@@ -107,7 +107,7 @@
 					echo '<table class="badanie_main"><tr><td>';
 					
 					
-					echo '<table class="table table-bordered bg-white first">';
+					echo '<table class="table bg-white">';
 					echo '<thead class="thead-dark">';
 					echo '<tr>';
 					echo '<th scope="col">Data</th>';
@@ -118,7 +118,7 @@
 					
 					
 					
-					echo '</td></tr><tr><td><div class="badanie_scroll_cont"><table class="table table-bordered bg-white second">';
+					echo '</td></tr><tr><td><div id="badanie_scroll_cont"><table class="table table-bordered bg-white">';
 					
 					
 					$id_opcji = $_SESSION['id_opcji'];
