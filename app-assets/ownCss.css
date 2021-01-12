@@ -234,6 +234,39 @@ a.settings-link-admin.active{
 	text-align: center;
 }
 
+.badanie_main{
+	width:100%;
+}
+
+.badanie_main table{
+	margin: 0;
+}
+
+.badanie_main table.first{
+	width: calc(100% - 25px);
+}
+
+.badanie_main table tr td:first-child, .badanie_main table tr th:first-child{
+	width:40%;
+}
+
+.badanie_main table tr td:last-child, .badanie_main table tr th:last-child{
+	width:60%;
+}
+
+.badanie_scroll_cont{
+	width: calc(100% - 5px);
+	height:300px;
+	overflow-y:auto; 
+    overflow-x:hidden; 
+}
+
+.badanie_scroll_cont table{
+	overflow:visible;
+}
+
+
+
 
 /*PANEL ADMIN*/
 .table-admin th, .table-admin td{
@@ -469,6 +502,10 @@ div.admin_powrot > a{
 	height:100%;
 	margin-top: 0;
 	font-size:10px;
+}
+
+div.badanie_box{
+	width:100wh;
 }
 
 }

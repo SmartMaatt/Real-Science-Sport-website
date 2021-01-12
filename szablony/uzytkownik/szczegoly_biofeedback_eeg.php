@@ -34,13 +34,14 @@
 			$row = $result->fetch_assoc();
 			
 			//JSON do wyświetlenia na wykresie
+			$display_type = "wykres_szczegolowy";
 			$name = "Biofeedback EEG";
 			$date = $row['data'];
 			$chart_type = "bar";
 			$labels = array('delta','theta','alpha','smr','beta1','beta2','hibeta','gamma');
 			$data = array($row['delta'],$row['theta'],$row['theta'],$row['smr'],$row['beta1'],$row['beta2'],$row['hibeta'],$row['gamma']);
 
-			$dane_badania = array($name, $date, $chart_type, $labels, $data);	
+			$dane_badania = array($display_type, $name, $date, $chart_type, $labels, $data);	
 				
 			$result->free_result();
 		}

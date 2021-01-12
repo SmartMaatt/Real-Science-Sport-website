@@ -31,12 +31,13 @@
 				$row = $result->fetch_assoc();
 				$wzrost = $row['wartosc'];
 
-				$name = "Rast test";
+				$display_type = "wykres_szczegolowy";
+				$name = "Wzrostomierz";
 				$chart_type = "bar";
 				$labels = array('wzrost','wzrost tułowia');
 				$data = array($wzrost,$wzrost_tulowia);
 					
-				$dane_badania = array($name, $date, $chart_type, $labels, $data);
+				$dane_badania = array($display_type, $name, $date, $chart_type, $labels, $data);
 				$result->free_result();
 			}
 		}

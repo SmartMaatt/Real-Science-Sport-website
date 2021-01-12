@@ -22,13 +22,14 @@
 			$row = $result->fetch_assoc();
 			
 			//JSON do wyświetlenia na wykresie
+			$display_type = "wykres_szczegolowy";
 			$name = "Analizator kwasu mlekowego";
 			$date = $row['data'];
 			$chart_type = "bar";
 			$labels = array('steżenie');
 			$data = array($row['stezenie']);
 				
-			$dane_badania = array($name, $date, $chart_type, $labels, $data);	
+			$dane_badania = array($display_type, $name, $date, $chart_type, $labels, $data);	
 			$result->free_result();
 		}
 		

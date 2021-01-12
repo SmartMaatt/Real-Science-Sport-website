@@ -33,13 +33,14 @@
 			$pomiar7 = $row['pomiar7'];
 			$srednia = ($pomiar1 + $pomiar2 + $pomiar3 + $pomiar4 + $pomiar5 + $pomiar6 + $pomiar7)/7;
 			
+			$display_type = "wykres_szczegolowy";
 			$name = "Rast test";
 			$date = $row['data'];
 			$chart_type = "bar";
 			$labels = array('1','2','3','4','5','6','7','średnia');
 			$data = array($pomiar1,$pomiar2,$pomiar3,$pomiar4,$pomiar5,$pomiar6,$pomiar7,$srednia);
 				
-			$dane_badania = array($name, $date, $chart_type, $labels, $data);	
+			$dane_badania = array($display_type, $name, $date, $chart_type, $labels, $data);	
 
 
 			$result->free_result();

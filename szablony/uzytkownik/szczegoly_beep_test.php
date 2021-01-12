@@ -24,13 +24,14 @@
 		if($result = @$connection->query($sql))
 		{
 			$row = $result->fetch_assoc();
+			$display_type = "wykres_szczegolowy";
 			$name = "Beep test";
 			$date = $row['data'];
 			$chart_type = "bar";
 			$labels = array('level','hr_max');
 			$data = array($row['level'],$row['hr_max']);
 				
-			$dane_badania = array($name, $date, $chart_type, $labels, $data);			
+			$dane_badania = array($display_type, $name, $date, $chart_type, $labels, $data);			
 			$result->free_result();
 		}
 		
