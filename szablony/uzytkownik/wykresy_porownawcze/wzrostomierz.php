@@ -15,7 +15,7 @@
 	else
 	{	
 		//Pobierz potrzebne badanie
-		$sql = "SELECT wzrostomierz.data, wzrost.wartosc, wzrostomierz.wzrost_tulowia FROM wzrostomierz INNER JOIN wzrost ON wzrostomierz.data=wzrost.data ORDER BY wzrostomierz.data";
+		$sql = "SELECT wzrostomierz.data, wzrost.wartosc, wzrostomierz.wzrost_tulowia, wzrostomierz.stopien_dojrzalosci, wzrostomierz.PHV FROM wzrostomierz INNER JOIN wzrost ON wzrostomierz.data=wzrost.data ORDER BY wzrostomierz.data";
 		if($result = @$connection->query($sql))
 		{
 			$daty = array();
@@ -30,8 +30,18 @@
 			$wzrost_tulowia->label = "wzrost_tulowia";
 			$wzrost_tulowia_dane = array();
 			
+			$stopien_dojrzalosci = new Dataset();
+			$stopien_dojrzalosci->label = "stopien_dojrzalosci";
+			$stopien_dojrzalosci_dane = array();
+			
+			$PHV = new Dataset();
+			$PHV->label = "PHV";
+			$PHV_dane = array();
+			
 			$suma_wzrost = 0;
 			$suma_wzrost_tulowia = 0;
+			$suma_stopien_dojrzalosci = 0;
+			$suma_PHV = 0;
 			
 			for($i = 0; $i < $result->num_rows; $i++)
 			{
@@ -41,20 +51,25 @@
 				array_push($daty, $row['data']);
 				array_push($wzrost_dane, $row['wartosc']);	
 				array_push($wzrost_tulowia_dane, $row['wzrost_tulowia']);
+				array_push($stopien_dojrzalosci_dane, $row['stopien_dojrzalosci']);	
+				array_push($PHV_dane, $row['PHV']);
 				
 				$suma_wzrost += $row['wartosc'];
-				$suma_wzrost_tulowia += $row['wzrost_tulowia'];				
+				$suma_wzrost_tulowia += $row['wzrost_tulowia'];
+				$suma_stopien_dojrzalosci += $row['stopien_dojrzalosci'];
+				$suma_PHV +=$row['PHV'];				
 			}
 			$wzrost->data = $wzrost_dane;
 			$wzrost_tulowia->data = $wzrost_tulowia_dane;
+			$stopien_dojrzalosci->data = $stopien_dojrzalosci_dane;
+			$PHV->data = $PHV_dane;
 			
 			//JSON do wyświetlenia na wykresie
 			$display_type = "wykres_porownawczy";
 			$name = "Wzrostomierz";
 			$date = $daty;
 			$chart_type = "line";
-			$data_sets = array($wzrost);
-			$data_sets = array($wzrost_tulowia);
+			$data_sets = array($wzrost, $wzrost_tulowia, $stopien_dojrzalosci, $PHV);
 
 			for($j = 0; $j < count($data_sets); $j++){
 				$data_sets[$j]->borderColor = 'rgba(247, 172, 37, 0.7)';
@@ -65,6 +80,8 @@
 			
 			$suma_wzrost = round ( $suma_wzrost / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
 			$suma_wzrost_tulowia = round ( $suma_wzrost_tulowia / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_stopien_dojrzalosci = round ( $suma_stopien_dojrzalosci / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
+			$suma_PHV = round ( $suma_PHV / $result->num_rows , 2 , PHP_ROUND_HALF_UP );
 			
 			$result->free_result();
 		}

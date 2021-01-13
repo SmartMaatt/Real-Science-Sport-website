@@ -21,7 +21,9 @@
 		{
 			$row = $result->fetch_assoc();
 			$date = $row['data'];
-			$wzrost_tulowia = $row['wzrost_tulowia'];	
+			$wzrost_tulowia = $row['wzrost_tulowia'];
+			$stopien_dojrzalosci = $row['stopien_dojrzalosci'];
+			$PHV = $row['PHV'];
 			$result->free_result();
 			
 			$id_klienta = $_SESSION['id_klienta'];
@@ -34,8 +36,8 @@
 				$display_type = "wykres_szczegolowy";
 				$name = "Wzrostomierz";
 				$chart_type = "bar";
-				$labels = array('wzrost','wzrost tułowia');
-				$data = array($wzrost,$wzrost_tulowia);
+				$labels = array('wzrost','wzrost tułowia', 'stopien_dojrzalosci', 'PHV');
+				$data = array($wzrost, $wzrost_tulowia, $stopien_dojrzalosci, $PHV);
 					
 				$dane_badania = array($display_type, $name, $date, $chart_type, $labels, $data);
 				$result->free_result();
