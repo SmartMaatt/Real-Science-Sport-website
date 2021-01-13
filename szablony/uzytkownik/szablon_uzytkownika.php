@@ -24,34 +24,53 @@
       </div>
       <div class="navbar-container content">
         <div class="collapse navbar-collapse text-center" id="navbar-mobile">
-          <h3 class="content-header-title mb-0 d-inline-block"> 
-				<?php echo "$page_info" ?>
+			<h3 class="content-header-title mb-0 d-inline-block"> 
+				<?php echo "$page_info"; ?>
 			</h3>
-          <ul class="nav navbar-nav ml-auto float-right">
-            <li class="dropdown dropdown-user nav-item">
-              <a class="dropdown-toggle nav-link dropdown-user-link surNavBar" href="#">
-                <span>Witaj,
-                  <span class="text-bold-700"><?php  echo $_SESSION['imie']." ".$_SESSION['nazwisko']; ?></span>
-                </span>
-              </a>
-            </li>
 			
-			<li class="dropdown dropdown-notification nav-item">
-              <a class="dropdown-toggle nav-link dropdown-user-link nav-link-label iconsRss" href="#" data-toggle="dropdown">
-				<i class="ficon ft-user"></i>
-              </a>
-			  <div class="dropdown-menu dropdown-menu-right">
-				<a class="dropdown-item" href="rozchodniaczki/id_opcji.php?o=<?php echo $_SESSION['id_podopcji'];?>&p=11&b=-1"><i class="ft-user"></i>Pokaż profil</a>
-				<a class="dropdown-item" href="rozchodniaczki/id_opcji.php?o=<?php echo $_SESSION['id_podopcji'];?>&p=12&b=-1"><i class="ft-settings"></i>Ustawienia</a>
-                <div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="rozchodniaczki/wyloguj.php"><i class="ft-power"></i> Wyloguj</a>
-              </div>
-            </li>
-            <li class="dropdown dropdown-notification nav-item">
-              <a class="nav-link nav-link-label iconsRss" href="rozchodniaczki/id_opcji.php?o=<?php echo $_SESSION['id_podopcji'];?>&p=13&b=-1"><i class="ficon ft-mail"></i></a>
-             
-            </li>
-          </ul>
+		<?php
+		
+			if(isset($_SESSION['id_admina']) && isset($_SESSION['imie_klienta']) && isset($_SESSION['nazwisko_klienta'])){
+			
+				echo '<ul class="nav navbar-nav ml-auto float-right">
+						<li class="dropdown dropdown-user nav-item">
+						  <a class="dropdown-toggle nav-link dropdown-user-link surNavBar" href="#">
+							<span>Witaj,
+							  <span class="text-bold-700">'.$_SESSION['imie_klienta'].' '.$_SESSION['nazwisko_klienta'].'</span>
+							</span>
+						  </a>
+						</li>
+						</ul>';
+			}
+			else {
+				echo '
+				  <ul class="nav navbar-nav ml-auto float-right">
+					<li class="dropdown dropdown-user nav-item">
+					  <a class="dropdown-toggle nav-link dropdown-user-link surNavBar" href="#">
+						<span>Witaj,
+						  <span class="text-bold-700">'.$_SESSION['imie'].' '.$_SESSION['nazwisko'].'</span>
+						</span>
+					  </a>
+					</li>
+					
+					<li class="dropdown dropdown-notification nav-item">
+					  <a class="dropdown-toggle nav-link dropdown-user-link nav-link-label iconsRss" href="#" data-toggle="dropdown">
+						<i class="ficon ft-user"></i>
+					  </a>
+					  <div class="dropdown-menu dropdown-menu-right">
+						<a class="dropdown-item" href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_podopcji'].'&p=11&b=-1"><i class="ft-user"></i>Pokaż profil</a>
+						<a class="dropdown-item" href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_podopcji'].'&p=12&b=-1"><i class="ft-settings"></i>Ustawienia</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="rozchodniaczki/wyloguj.php"><i class="ft-power"></i> Wyloguj</a>
+					  </div>
+					</li>
+					<li class="dropdown dropdown-notification nav-item">
+					  <a class="nav-link nav-link-label iconsRss" href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_podopcji'].'&p=13&b=-1"><i class="ficon ft-mail"></i></a>
+					 
+					</li>
+				  </ul>';
+			}
+		?>
         </div>
       </div>
     </div>

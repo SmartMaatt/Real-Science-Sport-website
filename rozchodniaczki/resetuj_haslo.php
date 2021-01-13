@@ -1,7 +1,6 @@
 <?php
 
 	/*SECURED*/
-	
     session_start();
 
      function jump_to_page($mode,$top,$bottom) {
@@ -42,8 +41,8 @@
 	}
 	
 	//Czy zostały podane parametry GET
-	if(isset($_GET['imie']) && isset($_GET['nazwisko']) && isset($_GET['mail']))
-	{
+	if(isset($_GET['imie']) && isset($_GET['nazwisko']) && isset($_GET['mail'])){
+		
 		//Odczyt parametrów
 		$imie = htmlentities($_GET['imie']);
 		$nazwisko = htmlentities($_GET['nazwisko']);
@@ -54,8 +53,8 @@
 		$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 
 		//Sprawdzenie poprawnego połączenia z bazą
-		if ($connection->connect_errno == 0) 
-		{
+		if ($connection->connect_errno == 0) {
+			
 			//Wyszukanie odpowiedniego klienta
 			$sql = sprintf("SELECT * FROM klient WHERE imie = '%s' AND nazwisko = '%s' AND mail = '%s'",
 							mysqli_real_escape_string($connection, $imie),
@@ -64,11 +63,10 @@
 			$result = @$connection->query($sql);
 			
 			//Sprawdzenie wykonania zapytania SQL
-			if ($result && $result->num_rows > 0) 
-			{
+			if ($result && $result->num_rows > 0) {
 				
-				if(isset($_GET['mailAccept']) && $_GET['mailAccept'] == 'yep')
-				{
+				if(isset($_GET['mailAccept']) && $_GET['mailAccept'] == 'yep'){
+					
 					//Pobieranie klienta
 					$row = $result->fetch_assoc();
 					$result->free_result();
@@ -81,8 +79,8 @@
 					$result2 = @$connection->query($sql2);
 					
 					//Sprawdzenie czy zapytanie sql zostało wykonane poprawnie
-					if($result2)
-					{
+					if($result2){
+						
 						//Pomyślnie wygenerowano hasło
 						$to = $mail;
 						$subject = "Nowe hasło - Panel RSS";
@@ -99,16 +97,16 @@
 						$result2->free_result();
 						$connection->close();
 					}
-					else
-					{
+					else{
+						
 						//Brak takiego konta
 						jump_to_page('3','Błąd bazy danych!','Niepowodzenie podczas wykonania polecenia SQL<br/>Command: UPDATE');
 						$result2->free_result();
 						$connection->close();
 					}
 				}
-				else
-				{
+				else{
+					
 					$to = $mail;
 					$subject = "Reset hasła - Panel RSS";
 					$message = "<p>Kliknij jeśli chcesz zmienić hasło.</p><a href='localhost/RSS/rozchodniaczki/resetuj_haslo.php?imie=".$imie."&nazwisko=".$nazwisko."&mail=".$mail."&mailAccept=yep'>Click me ^^</a>";
@@ -123,21 +121,21 @@
 					$connection->close();
 				}
 			} 
-			else 
-			{	
+			else {
+				
 				//Brak takiego konta
 				jump_to_page('2','Brak konta o podanych parametrach!','');
 				$connection->close();
 			}
 		} 
-		else 
-		{
+		else {
+			
 			//Niepowodzenie połącznie z bazą danych
 			jump_to_page('3','Błąd bazy danych!','Nieudane połącznie z bazą danych!');
 		}
 	}
-	else
-	{
+	else{
+		
 		//Brak parametrów POST
 		jump_to_page('3','Błąd logiczny','Nie podano wszystkich parametrów wymaganych do rejestracji');
 	}

@@ -307,7 +307,7 @@
 				
 				<div class="box box_right">
 				
-				<form id="formularzKontaktowy" action="mail.php" method="post">
+				<form id="formularzKontaktowy" action="main_page_assets/mail.php" method="post">
 						<ul class="form">
 							<li>
 								<p>Imie</p>

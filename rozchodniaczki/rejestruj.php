@@ -8,8 +8,8 @@
     }
 
 	//Wymagane jest istnienie wszystkich zmiennych w POST
-	if(isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['mail']) && isset($_POST['haslo1']) && isset($_POST['haslo2']) && isset($_POST['plec']) && isset($_POST['data']))
-	{
+	if(isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['mail']) && isset($_POST['haslo1']) && isset($_POST['haslo2']) && isset($_POST['plec']) && isset($_POST['data'])){
+		
 		//Odczyt danych z formularza
 		$imie = htmlentities($_POST['imie']);
 		$nazwisko = htmlentities($_POST['nazwisko']);
@@ -48,28 +48,27 @@
 		require_once 'connect.php';
 		$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 
-		if ($connection->connect_errno == 0) 
-		{
+		if ($connection->connect_errno == 0) {
+			
 			//Zapytanie sql o ilość klientów o podanym adresie e-mail
 			$sql = "SELECT COUNT(id_klienta) as ile FROM klient where mail = '$mail'";
 			$result = @$connection->query($sql);
-			if($result) 
-			{
+			if($result) {
+				
 				$row = $result->fetch_assoc();
-				if($row['ile'] > 0)
-				{
+				if($row['ile'] > 0){
+					
 					//Użytkownik o podanym mailu już istnieje
 					jump_to_page('2','Konto o podanym mailu już istnieje','');
 					$connection->close();
 				}
-				else 
-				{
+				else {
 					//Pobranie listy id
 					$sql2 = "SELECT id_klienta FROM klient ORDER BY id_klienta";
 					$result2 = @$connection->query($sql2);
 					
-					if($result2)
-					{	
+					if($result2){	
+					
 						//Znalezienie najbliższego wolnego indeksu
 						$new_index = '0';
 						while($row2 = $result2->fetch_row()){
@@ -86,10 +85,9 @@
 						$vkey = md5(time().$mail);
 						$pw_hash = password_hash($haslo1, PASSWORD_BCRYPT);
 
-
 						//Zapytanie sql złożone ze wszystkich odczytanych wartości
-						if($id_klubu == "")
-						{
+						if($id_klubu == ""){
+							
 							$sql3 = sprintf("INSERT INTO klient (id_klienta, imie, nazwisko, mail, haslo, plec, data_urodzenia, vkey) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
 								$new_index,
 								mysqli_real_escape_string($connection, $imie),
@@ -101,8 +99,8 @@
 								$vkey
 							);
 						}
-						else
-						{
+						else{
+
 							$sql3 = sprintf("INSERT INTO klient (id_klienta, imie, nazwisko, mail, haslo, plec, data_urodzenia, id_klubu, vkey) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
 								$new_index,
 								mysqli_real_escape_string($connection, $imie),
@@ -118,45 +116,41 @@
 						$result3 = @$connection->query($sql3);
 
 						//Wysyłanie maila weryfikacyjnego na podany adres e-mail
-						if ($result3) 
-						{
+						if ($result3){
+							
 							$to = $mail;
 							$subject = "Weryfikacja - Panel RSS";
-
 							$message = "<a href='localhost/RSS/rozchodniaczki/weryfikuj.php?vkey=".$vkey."'>Click here!</a>";
 
 							// Always set content-type when sending HTML email
 							$headers = "MIME-Version: 1.0" . "\r\n";
 							$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-							// More headers
 							$headers .= 'From: RSS Panel' . "\r\n";
 
 							mail($to,$subject,$message,$headers);
 							
 							$sql4 = "INSERT INTO wszystkie_badania (id_klienta) VALUES ('$new_index')";
 							$result4 = @$connection->query($sql4);
-							if ($result3) 
-							{
+							
+							if ($result3) {
 								//Pomyślna rejestracja!
 								jump_to_page('0','Rejestracja przebiegła pomyślnie','Uwierzytelnij swoje konto mailem aktywacyjnym<br/>'.$mail);
 								$connection->close();
 							}
-							else
-							{
+							else {
+								//Błąd wykonania zapytania SQL
 								jump_to_page('3','Błąd bazy danych', 'Niepowodzenie w wykonaniu zapytania sql<br/>Command: INSERT badania<br/>'.$new_index);
 								$connection->close();
 							}
 							
 						} 
-						else 
-						{
+						else {
 							//jump_to_page('3','Błąd bazy danych', 'Niepowodzenie w wykonaniu zapytania sql<br/>Command: INSERT klient<br/>'.$new_index);
 							$connection->close();
 						}
 					}
-					else
-					{
+					else {
+						//Błąd wykonania zapytania SQL
 						jump_to_page('3','Błąd bazy danych', 'Niepowodzenie w wykonaniu zapytania sql<br/>Command: SELECT COUNT');
 						$connection->close();
 					}
@@ -164,14 +158,12 @@
 			}
 			$result->free_result();
 		} 
-		else 
-		{
+		else {
 			//Nie udało się połączyć z bazą
 			jump_to_page('3','Błąd bazy danych','Niepowodzenie w połączeniu z bazą');
 		}
 	}
-	else
-	{
+	else {
 		//Brak parametrów POST
 		jump_to_page('3','Błąd logiczny','Nie podano wszystkich parametrów wymaganych do rejestracji');
 	}

@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html lang="pl">
 <head>
 	<meta charset="utf-8" />
@@ -17,46 +16,30 @@
 	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap&subset=latin-ext" rel="stylesheet">
 	
-	 <script src="https://kit.fontawesome.com/9b863fbae2.js"></script>
-	
+	 <script src="https://kit.fontawesome.com/9b863fbae2.js"></script>	
 </head>
 
 
 <body>
-
-	  
-
-<div id="home_screan" class="mainPage_home">
-	
-
-	<div class="home_screan_part" style="text-align:center;">
-	
-		<?php
+	<div id="home_screan" class="mainPage_home">
+		<div class="home_screan_part" style="text-align:center;">
+			<?php	
+				if(isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['e-mail']) && isset($_POST['message']))
+				{
 					$to      = 'mateuszplonka.tg@gmail.com';
 					$subject = $_POST['name'] . ' ' . $_POST['surname'];
 					$message = "Imie: " . $_POST['name'] . "<BR />Nazwisko: " . $_POST['surname'] . "<BR />E-mail: " . $_POST['e-mail'] . "<BR /><BR />" . $_POST['message'];
-					$headers = 'From: ' . $_POST['e-mail'] . "\r\n" .
-						'Content-type: text/html; charset=utf-8';
+					$headers = 'From: ' . $_POST['e-mail'] . "\r\n" .'Content-type: text/html; charset=utf-8';
 
 					mail($to, $subject, $message, $headers)
 					 or die('<h1 class="animated fadeInUp" >Coś poszło nie tak ;/</h1>');
 					 
 					 echo('<h1 class="animated fadeInUp" >Wiadomość została wysłana!</h1>');
-				?>
-			
-		
-		<a href="StronaGlowna" class="btn center_btn home_screan animated fadeInRight" style="margin:30px auto;">Powrót</a>
-		
-	</div>	
-
-	
-
-		
-</div>  
-	
-
-		<script src="script.js"></script>
-		
-
+				}
+			?>
+			<a href="../index.php" class="btn center_btn home_screan animated fadeInRight" style="margin:30px auto;">Powrót</a>
+		</div>	
+	</div>  
+	<script src="script.js"></script>
 </body>
 </html>

@@ -1,27 +1,28 @@
-function changeLegend(sourceChart){ 
+//Funkcja zarządza wyświetlaniem wykresów w zależności od wielkości ekranu
+function zmienLegende(glownyWykres){ 
 	var w = window.innerWidth;
-	console.log(w);
 	
 	if(w > 992){
-		sourceChart.options.legend.display = true;
-		sourceChart.options.legend.position = 'left';
+		glownyWykres.options.legend.display = true;
+		glownyWykres.options.legend.position = 'left';
 	}
 	else if((w > 766) && (w < 992)){
-		sourceChart.options.legend.display = true;
-		sourceChart.options.legend.position = 'bottom';
+		glownyWykres.options.legend.display = true;
+		glownyWykres.options.legend.position = 'bottom';
 	}
 	else if(w < 766){
-		sourceChart.options.legend.display = false;
-		sourceChart.options.legend.position = 'bottom';
+		glownyWykres.options.legend.display = false;
+		glownyWykres.options.legend.position = 'bottom';
 	}
 }
 
-
-
+//Czy plik otrzymał JSON?
 if(dane_badania != 'nope'){
 	
 	if(dane_badania[0] == "wykres_porownawczy"){
 		
+		
+		//Responsywaność wykresów porównawczych
 		var w = window.innerWidth;
 		var d = true;
 		var p = 'left';
@@ -35,10 +36,8 @@ if(dane_badania != 'nope'){
 			p = 'bottom';
 		}
 		
-		
-		
-		let myChart = document.getElementById('RSS_chart').getContext('2d');
-		let sourceChart = new Chart(myChart, {
+		let mojWykres = document.getElementById('RSS_chart').getContext('2d');
+		let glownyWykres = new Chart(mojWykres, {
 			type: dane_badania[3],
 			data:{
 				labels: dane_badania[2],
@@ -64,12 +63,13 @@ if(dane_badania != 'nope'){
 			}
 		});	
 		
-		setInterval(function() { changeLegend(sourceChart); }, 1000);
+		//Odświeżanie statusu co sekundę
+		setInterval(function(){zmienLegende(glownyWykres);}, 1000);
 	}
 	else if(dane_badania[0] == "wykres_szczegolowy"){
 
-		let myChart = document.getElementById('RSS_chart').getContext('2d');
-		let sourceChart = new Chart(myChart, {
+		let mojWykres = document.getElementById('RSS_chart').getContext('2d');
+		let glownyWykres = new Chart(mojWykres, {
 			type: dane_badania[3],
 			data:{
 				labels: dane_badania[4],
@@ -100,30 +100,3 @@ if(dane_badania != 'nope'){
 		});
 	}
 }
-
-
-
-
-/*
-JSON template - porownawczy
-{
-"Jaki wykres?"	
-"Nazwa",
-"Data",
-"Typ wykresu",
-{"labels","tutaj"},
-{8,5,4,3,2}
-}
-
-
-JSON template - szczegółowe
-{
-0"Jaki wykres?"	
-1"Nazwa",
-2 [data, data, data],
-3"Typ wykresu",
-4[{jaka fala, [dane,dane,dane]},{jaka fala, [dane,dane,dane]}]
-}
-
-length 2 = length 4
-*/

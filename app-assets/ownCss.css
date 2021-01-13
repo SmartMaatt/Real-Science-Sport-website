@@ -1,3 +1,4 @@
+/*Bez etykiety*/
 label{
 	margin-bottom:2px;
 }
@@ -6,12 +7,15 @@ i.m-corr{
 	font-size:1rem;
 }
 
-.navbar-container h3
-{
+.navbar-container h3{
 	font-weight: bold;
 	margin-left: 20px;
 }
 
+
+
+
+/*Rejestracja i logowanie*/
 .blackBlind{
 	width:100vw;
 	height:100%;
@@ -56,49 +60,10 @@ img.sideBar-logo-collapsed{
     padding: 0 10px 0 0;
 }
 
-/*HiperÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¾ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦cze z przyciskiem*/
-a.knefel{
-	display: block;
-    margin: 10px auto;
-}
 
-div.admin_powrot{
-	width: 250px;
-	z-index:9999999;
-	position:fixed;
-	bottom: 15px;
-	right: 15px;
-	text-align: center;
-	background: white;
-	padding: 20px;
-	border-top: 20px solid #17a2b8;
-	border-radius: 10px 0 0 0;
-	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
-}
 
-div.admin_powrot > a{
-	margin-top: 5px;
-}
-
-/*Kolor przyciskÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³w w stylu rrs*/
-.btn-rss{
-	color: white;
-	background: #f7ac25;
-}
-
-.btn-rss:hover{
-	background: #f6bd55;
-	color: white;
-}
-
-.side_menu_divider{
-	display: block;
-    padding-bottom: 8px;
-	border-bottom: 1px solid white;
-}
 
 /*Rejestracja*/
-
 .register-body input{
 	padding: 0.6rem 1rem;
     font-size: 0.75rem;
@@ -121,6 +86,50 @@ div.admin_powrot > a{
 .register-body li{
 	list-style-type: disc;
 }
+
+
+
+
+/*Pogląd administratora*/
+div.admin_powrot{
+	width: 250px;
+	z-index:9999999;
+	position:fixed;
+	bottom: 15px;
+	right: 15px;
+	text-align: center;
+	background: white;
+	padding: 20px;
+	border-top: 20px solid #17a2b8;
+	border-radius: 10px 0 0 0;
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.2);
+}
+
+div.admin_powrot > a{
+	margin-top: 5px;
+}
+
+
+
+
+/*Kolor przycisków w stylu rrs*/
+.btn-rss{
+	color: white;
+	background: #f7ac25;
+}
+
+.btn-rss:hover{
+	background: #f6bd55;
+	color: white;
+}
+
+.side_menu_divider{
+	display: block;
+    padding-bottom: 8px;
+	border-bottom: 1px solid white;
+}
+
+
 
 
 /*Panel kontakt*/
@@ -158,6 +167,7 @@ div.admin_powrot > a{
     border: 1px solid #2b2b2b !important;
     color: #2b2b2b;
 }
+
 
 
 
@@ -264,6 +274,7 @@ a.settings-link-admin.active{
 
 
 /*PANEL ADMIN*/
+/*tabela badań*/
 .table-admin th, .table-admin td{
 	padding: 0.4rem ;
 }
@@ -302,13 +313,13 @@ div.form-admin .btn-info{
 
 
 
-/*DODATKOWE STYLE GÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œRNEGO NAV BARA*/
-/*Dodatkowa stylizacja nazwiska w gÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³rnym nav barze*/
+/*DODATKOWE STYLE GÓRNEGO NAV BARA*/
+/*Dodatkowa stylizacja nazwiska w górnym nav barze*/
 .surNavBar{
 	margin-top:7px;
 }
 
-/*PodÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã‚Âºwietlenie ikon po najechaniu*/
+/*Podświetlenie ikon po najechaniu*/
 a.iconsRss > i:hover{
 	color: #f7ac25;
 	pointer: cursor;
@@ -321,7 +332,10 @@ a.iconsRss-admin > i:hover{
 	animation-delay: .6s;
 }
 
-/*Ask msg*/
+
+
+
+/*ASK_ME MSG*/
 /*Karta informacyjna*/
 #ICC{
 	font: 'Lato';
@@ -359,151 +373,168 @@ a.iconsRss-admin > i:hover{
 	border-top: 15px #17a2b8 solid !important;
 }
 
-.infoCard h2
-{
+.infoCard h2{
 	font-size:20px;
 }
 
-.infoCard button, .infoCard a
-{
+.infoCard button, .infoCard a{
 	float:right;
 	margin-right:30px;
 	margin: 5px;
 }
 
-/*Karta: rezeracje*/
-#infoCard_0 > ul
-{
+#infoCard_0 > ul{
 	margin-bottom:10px;
 	margin-top:10px;
 }
 
-/*Karta: powodzenie w zÃƒâ€¦Ã¢â‚¬Å¡oÃƒâ€¦Ã‚Â¼eniu rezerwacji*/
 #infoCard_1 > h2{
 	font-weight: bold;
 	text-align:center;
 	margin-bottom:20px;
 }
 
-#infoCard_1 > i
-{
+#infoCard_1 > i{
 	font-size:100px;
 	margin: 10px auto;
 	display: table;
 }
 
-#infoCard_1 > i.ft-alert-triangle
-{
+#infoCard_1 > i.ft-alert-triangle{
 	color: #f7ac25;
 }
 
-#infoCard_1 > i.ft-check-circle
-{
+#infoCard_1 > i.ft-check-circle{
 	color:green;
 }
 
-/*RESPONSYWNOÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¾ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â APLIKACJI*/
+
+
+
+/*RESPONSYWNOŚĆ*/
 /*Tablet*/
 @media screen and (min-width:767px) and (max-width: 992px){
-.bgLoggin {background-size: cover;}
-.navbar-container h3{font-size: 1.4rem;}
-div.form-admin .form-group{display:inline-block; width:48%;}
+	
+	.bgLoggin{
+		background-size: cover;
+	}
 
-div.admin_powrot{
-	width: 250px;
-	z-index:9999999;
-	position:fixed;
-	bottom: 10px;
-	right: 10px;
-	text-align: right;
-	padding: 10px;
-	border-top: 15px solid #17a2b8;
-	border-radius: 10px 0 0 0;
-	box-shadow: 5px 5px 10px 10px rgba(0,0,0,0.2);
+	.navbar-container h3{
+		font-size: 1.4rem;
+	}
+
+	div.form-admin .form-group{
+		display:inline-block; 
+		width:48%;
+	}
+
+	div.admin_powrot{
+		width: 250px;
+		z-index:9999999;
+		position:fixed;
+		bottom: 10px;
+		right: 10px;
+		text-align: right;
+		padding: 10px;
+		border-top: 15px solid #17a2b8;
+		border-radius: 10px 0 0 0;
+		box-shadow: 5px 5px 10px 10px rgba(0,0,0,0.2);
+	}
+
+	div.admin_powrot > h3{
+		font-size:20px;
+	}
+
+	div.admin_powrot > a{
+		margin-top: 0;
+		font-size:12px;
+	}
 }
 
-div.admin_powrot > h3{
-	font-size:20px;
-}
 
-div.admin_powrot > a{
-	margin-top: 0;
-	font-size:12px;
-}
-}
+
 
 /*Telefon*/
 @media screen and (max-width: 767px){
 
-.bgLoggin {background-size: cover;}
-img.brand-logo{width:200px;}
-img.display-logo{width:200px;}
+	.bgLoggin{
+		background-size: cover;
+	}
 
-.form-group.register-field{
-	margin-bottom:3px;
-}
+	img.brand-logo{
+		width:200px;
+	}
 
-.navbar-nav{
-	margin-top: 5px;
-}
-	
-.navbar-container h3
-{
-	font-size: 2rem;
-	width: 100%;
-	margin: 8px 0 2px 0;
-}
-div.form-admin .form-group{display:inline-block; width:100%;}	
+	img.display-logo{
+		width:200px;
+	}
 
-.infoCard{
-	top: 25%;
-	left: 10%;
-	width:80%;
-	padding: 10px 0;
-}
+	.form-group.register-field{
+		margin-bottom:3px;
+	}
 
-.infoCard h2
-{
-	font-size:15px;
-}
+	.navbar-nav{
+		margin-top: 5px;
+	}
+		
+	.navbar-container h3{
+		font-size: 2rem;
+		width: 100%;
+		margin: 8px 0 2px 0;
+	}
 
-.infoCard button, .infoCard a
-{
-	float:right;
-	margin-right:30px !important;
-}
+	div.form-admin .form-group{
+		display:inline-block; 
+		width:100%;
+	}	
 
-div.admin_powrot{
-	width: 100%;
-	z-index:9999999;
-	position:fixed;
-	bottom: 0px;
-	right: 0px;
-	text-align: left;
-	padding: 10px;
-	border-top: 15px solid #17a2b8;
-	border-radius: 10px 0 0 0;
-	box-shadow: 5px 5px 10px 10px rgba(0,0,0,0.2);
-}
+	.infoCard{
+		top: 25%;
+		left: 10%;
+		width:80%;
+		padding: 10px 0;
+	}
 
-div.admin_powrot *{
-	float: left;
-}
+	.infoCard h2{
+		font-size:15px;
+	}
 
-div.admin_powrot > h3{
-	font-size:14px;
-	width:50%;
-}
+	.infoCard button, .infoCard a{
+		float:right;
+		margin-right:30px !important;
+	}
 
-div.admin_powrot > a{
-	width:50%;
-	height:100%;
-	margin-top: 0;
-	font-size:10px;
-}
+	div.admin_powrot{
+		width: 100%;
+		z-index:9999999;
+		position:fixed;
+		bottom: 0px;
+		right: 0px;
+		text-align: left;
+		padding: 10px;
+		border-top: 15px solid #17a2b8;
+		border-radius: 10px 0 0 0;
+		box-shadow: 5px 5px 10px 10px rgba(0,0,0,0.2);
+	}
 
-div.badanie_box{
-	width:100wh;
-}
+	div.admin_powrot *{
+		float: left;
+	}
+
+	div.admin_powrot > h3{
+		font-size:14px;
+		width:50%;
+	}
+
+	div.admin_powrot > a{
+		width:50%;
+		height:100%;
+		margin-top: 0;
+		font-size:10px;
+	}
+
+	div.badanie_box{
+		width:100wh;
+	}
 
 }

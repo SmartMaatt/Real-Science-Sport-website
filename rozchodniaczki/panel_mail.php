@@ -2,18 +2,17 @@
 	/*SECURED*/
 	session_start();
 
-	//Session exists	
-	 if (isset($_SESSION['id_klienta'])){
+	//Sesja istnieje	
+	if (isset($_SESSION['id_klienta'])){
 		 
-		//All data is set 
+		//Wszystkie dane są podane
 		if(isset($_POST['tematyka_maila']) && isset($_POST['tytul_maila']) && isset($_POST['tresc_maila'])){
 			
-			//Pull all post vars
 			$tematyka = $_POST['tematyka_maila'];
 			$tytul = $_POST['tytul_maila'];
 			$tresc = $_POST['tresc_maila'];
 			
-			//Choose correct recevier
+			//Dane do wysładania
 			$to = "";
 			if($tematyka == "Pytanie do działu technicznego"){
 				$to = 'mateuszplonka.tg@gmail.com';
@@ -34,15 +33,17 @@
 			echo "</br>Message: </br>".$message."</br>";
 			echo "Headers:".$headers."</br>";*/
 			
+			//Wykonanie wysłania
 			if(!mail($to, $subject, $message, $headers)){
 				header('Location: ../panel.php');
 				$_SESSION['error'] = 'loadToast(\'3\',\'Błąd formularza wiadomości!\',\'Próba wysłania maila nie powiodła się. Skontaktuj się z działem technicznym!\')';
 			}
 			
-			 header('Location: ../panel.php');
-				$_SESSION['error'] = 'loadToast(\'0\',\'Formularz wiadomości!\',\'Mail o temacie <b>'.$tematyka.'</b> został wysłany pomyślnie!\')';
+			header('Location: ../panel.php');
+			$_SESSION['error'] = 'loadToast(\'0\',\'Formularz wiadomości!\',\'Mail o temacie <b>'.$tematyka.'</b> został wysłany pomyślnie!\')';
 		}
 		else{
+			//Brak parametrów POST
 			header('Location: ../panel.php');
 			$_SESSION['error'] = 'loadToast(\'3\',\'Błąd formularza wiadomości!\',\'Próba wysłania maila bez danych nie powiodła się.\')';
 		}  

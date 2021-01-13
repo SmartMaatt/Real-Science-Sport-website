@@ -2,10 +2,10 @@
 	session_start();
 	
 	//Czy sesja istnieje, jeśli nie do logowania
-	 if (!isset($_SESSION['id_klienta'])){
-		 header('Location: logowanie.php');
-		 exit(0);
-	 }
+	if (!isset($_SESSION['id_klienta'])){
+		header('Location: logowanie.php');
+		exit(0);
+	}
 	 
 	//Czy wyświetlić error
 	$error_msg = "";	
@@ -14,16 +14,10 @@
 		unset($_SESSION['error']);
 	}
 	
-	 // if(isset($_POST['global_date']))
-	 // {
-		 // $_SESSION['data'] = $_POST['global_date'];
-	 // }
-	
 	//Zmienne w zależności od id_opcji i id_podopcji
 	$page_info="Page info undefined";
 	$page_header="Page info undefined";
 	$page_location ="";
-	
 	
 	//Odczyt opcji i podopcji z sesji
 	$id_opcji = $_SESSION['id_opcji']; 
@@ -31,84 +25,89 @@
 	$id_badania = $_SESSION['id_badania'];
 	$badanie = "";
 	
-	
 	//Przypisanie do zmiennych informacyjnych odpowiednich treści
-	if($id_podopcji == 11)
-	{
+	if($id_podopcji == 11){
+		
 		$page_info = "Profil użytkownika";
 		$page_header = "Profil - RSS panel";
 		$page_location = "szablony/uzytkownik/panel_profil.php";
 	}
-	elseif($id_podopcji == 12)
-	{
+	elseif($id_podopcji == 12){
+		
 		$page_info = "Profil użytkownika";
 		$page_header = "Profil - RSS panel";
 		$page_location = "szablony/uzytkownik/panel_profil.php";
 		$error_msg = 'onload="loadToast(\'0\',\'Przekierowanie do profilu\',\'Panel ustawień oraz profilu zostały tymczasowo połączone ze względu na poprawienie przejrzystości strony.\')"';
 	}
-	elseif($id_podopcji == 13)
-	{
+	elseif($id_podopcji == 13){
+		
 		$page_info = "Kontakt";
 		$page_header = "Kontakt - RSS panel";
 		$page_location = "szablony/uzytkownik/panel_kontakt.php";
 	}
-	else
-	{
-		switch ($_SESSION['id_opcji'])
-		{
+	else{
+		
+		switch ($_SESSION['id_opcji']){
+			
 		case 1:
 			$page_info = "Biofeedback EEG";
 			$page_header = "Biofeedback EEG - RSS panel";
 			$page_location = "szablony/uzytkownik/badanie.php";
 			$badanie = "biofeedback_eeg";
 			break;
+			
 		case 2: 
 			$page_info = "Analiza składu ciała";
 			$page_header = "Analiza składu ciała - RSS panel";
 			$page_location = "szablony/uzytkownik/badanie.php";
 			$badanie= "analiza_skladu_ciala";
 			break;
+			
 		case 3: 
-			if($_SESSION['id_podopcji'] == 1)
-			{
+			if($_SESSION['id_podopcji'] == 1){
+				
 				$page_info = "Test szybkości";
 				$page_header = "Test szybkości - RSS panel";
 				$page_location = "szablony/uzytkownik/badanie.php";
 				$badanie = "test_szybkosci";
 			}
-			elseif($_SESSION['id_podopcji'] == 2)
-			{
+			elseif($_SESSION['id_podopcji'] == 2){
+				
 				$page_info = "Rast test";
 				$page_header = "Rast test - RSS panel";
 				$page_location = "szablony/uzytkownik/badanie.php";
 				$badanie = "rast_test";
 			}
-			else
-			{
+			else{
+				
 				$page_info = "Prowadzenie piłki";
 				$page_header = "Prowadzenie piłki - RSS panel";
 				$page_location = "szablony/uzytkownik/badanie.php";
 				$badanie = "prowadzenie_pilki";
 			}
 			break;
+			
 		case 4:
 			$page_info = "Analizator kwasu mlekowego";
 			$page_header = "Analizator kwasu mlekowego - RSS panel";
 			$page_location = "szablony/uzytkownik/badanie.php";
 			$badanie = "analizator_kwasu_mlekowego";
 			break;
+			
 		case 5:
 			$page_info = "Wzrostomierz";
 			$page_header = "Wzrostomierz - RSS panel";
 			$page_location = "szablony/uzytkownik/badanie.php";
 			$badanie = "wzrostomierz";
 			break;
+			
 		case 6:
 			$page_info = "Beep test";
 			$page_header = "Beep test - RSS panel";
 			$page_location = "szablony/uzytkownik/badanie.php";
 			$badanie = "beep_test";
 			break;
+			
 		case 7:
 			$page_info = "Opto jump next";
 			$page_header = "Opto jump next - RSS panel";
@@ -118,12 +117,12 @@
 		}
 	}
 	
-	if($id_badania != -1)
-	{
+	if($id_badania != -1){
 		$page_location = "szablony/uzytkownik/szczegoly_".$badanie.".php";
 	}
+	
 	//Podświetlanie aktualnie wybranej karty w bocznym menu
-	function activateMenu($opcja, $podopcja) {
+	function activateMenu($opcja, $podopcja){
 		
 		if($podopcja == "0"){
 			if($opcja == $_SESSION['id_opcji']){
@@ -194,83 +193,77 @@
 >
 
 	<?php
-
-		if (isset($_SESSION['id_klienta'])) {
-			
+		//Dołączenie menu górnego i bocznego
+		if (isset($_SESSION['id_klienta'])){
 			include('szablony/uzytkownik/szablon_uzytkownika.php');
 		}
-		else
+		else{
 			header('Location: logowanie.php');
-		
+		}
 		
 		//Wyświetlenie podglądu dla admina
-		if(isset($_SESSION['id_admina']))
-		{
-			if(isset($_SESSION['imie_klienta']) && isset($_SESSION['nazwisko_klienta']))
-			{
+		if(isset($_SESSION['id_admina'])){
+			if(isset($_SESSION['imie_klienta']) && isset($_SESSION['nazwisko_klienta'])){
 				echo '  
 					<div class="admin_powrot">
 						<h3>Przeglądasz jako:</br><b>'.$_SESSION['imie_klienta'].' '.$_SESSION['nazwisko_klienta'].'</b></h3>
-						<a href="rozchodniaczki/podglad_admina.php?wyjscie" class="btn btn-info btn-min-width">Powrót do panelu admina</a>
+						<a href="rozchodniaczki/admin/podglad_admina.php?wyjscie" class="btn btn-info btn-min-width">Powrót do panelu admina</a>
 					</div>';
 			}
 		}
 	?>
 
 	<!-- GŁÓWNY KONTENER -->
-  <div class="app-content content">
-    <div class="content-wrapper">
-	
-		<!-- TU KONTENT AKTUALNEJ STRONY WEDŁUG SESJI -->
-	<?php
-		include($page_location);
-	?>
-
-	 </div>
+	<div class="app-content content">
+		<div class="content-wrapper">
+			<!-- TU KONTENT AKTUALNEJ STRONY WEDŁUG SESJI -->
+			<?php include($page_location);?>
+		</div>
 	</div>
 
-  <!-- ////////////////////////////////////////////////////////////////////////////-->
+	<!-- ////////////////////////////////////////////////////////////////////////////-->
   
-  <!-- STOPKA -->
-  <footer class="footer footer-static footer-light navbar-border navbar-shadow">
-    <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
-      <span class="float-md-left d-block d-md-inline-block">DeVision303 coding company</span>
-      <span class="float-md-right d-block d-md-inline-blockd-none d-lg-block">Zaprojektowane i zakodowane z <i class="ft-heart pink"></i></span>
-    </p>
-  </footer>
+	<!-- STOPKA -->
+	<footer class="footer footer-static footer-light navbar-border navbar-shadow">
+		<p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
+		  <span class="float-md-left d-block d-md-inline-block">DeVision303 coding company</span>
+		  <span class="float-md-right d-block d-md-inline-blockd-none d-lg-block">Zaprojektowane i zakodowane z <i class="ft-heart pink"></i></span>
+		</p>
+	</footer>
   
-  <script>var dane_badania = 
-	<?php
-		if(isset($dane_badania) && $id_badania != -1){
-			echo json_encode($dane_badania);}
-		else{
-			echo '\'nope\'';
-		}
-	?>;
+	<script>
+		var dane_badania = 
+		<?php
+			if(isset($dane_badania) && $id_badania != -1){
+				echo json_encode($dane_badania);}
+			else{
+				echo '\'nope\'';
+			}
+		?>;
 	</script>
   
-  <!-- BEGIN VENDOR JS-->
-  <script src="app-assets/ModernAdminJs/vendors.min.js" type="text/javascript"></script>
-  
-  <!-- BEGIN PAGE VENDOR JS-->
-  <script src="app-assets/ModernAdminJs/moment.min.js" type="text/javascript"></script>
+	<!-- BEGIN VENDOR JS-->
+	<script src="app-assets/ModernAdminJs/vendors.min.js" type="text/javascript"></script>
+	  
+	<!-- BEGIN PAGE VENDOR JS-->
+	<script src="app-assets/ModernAdminJs/moment.min.js" type="text/javascript"></script>
 
-  <!-- BEGIN MODERN JS-->
-  <script src="app-assets/ModernAdminJs/app-menu.js" type="text/javascript"></script>
-  <script src="app-assets/ModernAdminJs/app.js" type="text/javascript"></script>
-  <script src="app-assets/ModernAdminJs/customizer.js" type="text/javascript"></script>
+	<!-- BEGIN MODERN JS-->
+	<script src="app-assets/ModernAdminJs/app-menu.js" type="text/javascript"></script>
+	<script src="app-assets/ModernAdminJs/app.js" type="text/javascript"></script>
+	<script src="app-assets/ModernAdminJs/customizer.js" type="text/javascript"></script>
 
 	<!-- CHART.JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 
 	<!-- WŁASNE SKRYPTY JS-->
-  <script src="app-assets/ownJs.js" type="text/javascript"></script>
-  <script src="app-assets/charts.js" type="text/javascript"></script>
-  <script src="https://kit.fontawesome.com/9b863fbae2.js"></script>
-  
-  <!-- TOASTR PLUGIN -->
-  <script src="app-assets/ModernAdminJs/toastrConfig.js" type="text/javascript"></script>
-  <script src="app-assets/ModernAdminJs/toastrPlugin.js" type="text/javascript"></script>
+	<script src="app-assets/ownJs.js" type="text/javascript"></script>
+	<script src="app-assets/charts.js" type="text/javascript"></script>
+	<script src="https://kit.fontawesome.com/9b863fbae2.js"></script>
+	  
+	<!-- TOASTR PLUGIN -->
+	<script src="app-assets/ModernAdminJs/toastrConfig.js" type="text/javascript"></script>
+	<script src="app-assets/ModernAdminJs/toastrPlugin.js" type="text/javascript"></script>
   
 </body>
 </html>

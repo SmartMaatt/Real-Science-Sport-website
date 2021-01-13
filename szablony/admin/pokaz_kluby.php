@@ -97,7 +97,7 @@
 
 		
 		echo'
-			<form class="form" method="POST" action="rozchodniaczki/dodaj_klub.php">
+			<form class="form" method="POST" action="rozchodniaczki/admin/dodaj_klub.php">
 				<div class="form-body form-admin">
 					<div class="form-group">
 					  <label for="issueinput1">Nazwa klubu</label>

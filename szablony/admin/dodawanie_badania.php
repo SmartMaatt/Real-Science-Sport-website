@@ -71,7 +71,7 @@
 			
 			<div class="px-2">
 				<h1>Drop zone</h1>
-				<form action="rozchodniaczki/upload_excel.php" method="POST" class="dropzone" id="dropzoneFrom" enctype="multipart/form-data">
+				<form action="rozchodniaczki/admin/przeslij_excel.php" method="POST" class="dropzone" id="dropzoneFrom" enctype="multipart/form-data">
 					<input type="hidden" name='badanie' value="<?php echo $badanie; ?>" />
 				</form>
 				<input type="submit" class="btn btn-info mt-1" id="submit-all" value="Dodaj" />

@@ -2,7 +2,7 @@
 	session_start();
 	$error_msg = "";
 
-	if (isset($_SESSION['id_klienta'])) {
+	if (isset($_SESSION['id_klienta'])){
 		header('Location: panel.php');
 	}
 	elseif(isset($_SESSION['error'])){
@@ -10,47 +10,41 @@
 		unset($_SESSION['error']);
 	}
 	
-	
 	//Otwieranie bazy danych w celu pobrania aktualnej listy klubów
 	require_once 'rozchodniaczki/connect.php';
 	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 	$slider = "";
 
-
-	if ($connection->connect_errno == 0) {
+	if ($connection->connect_errno == 0){
+		
 		$sql = "SELECT * FROM klub";
 		$result = @$connection->query($sql);
 
-		if ($result) {
+		if ($result){
 			
 			//Slider list do wyświetlenia w formularzu rejestracji
 			$slider = "<label>Klub</label><fieldset class=\"form-group register-field position-relative has-icon-left\"><select class=\"custom-select\" id=\"custom_select\" name=\"id_klubu\" required><option value=\"\">Klient indywidualny</option>";
 			
-			while($row = $result->fetch_assoc())
-			{
+			while($row = $result->fetch_assoc()){
 				$slider = $slider."<option value=\"".$row['id_klubu']."\">".$row['nazwa']."</option>";
 			}
-			
 			$slider = $slider."</select></fieldset>";
-			$connection->close();
 			
 		}
-		else
-		{
+		else{
+			//Niepowodzenie wykonania zapytania SQL
 			header('Location: ../panel_admina.php');
 			$_SESSION['error'] = 'loadToast(\'3\',\'Błąd wykonania polecenia SQL!\',\'Command: SELECT * FROM klub\')';
-			$connection->close();
 		}
+		$connection->close();
 	}
-	else
-	{
+	else{
+		//Nieudane połączenie z bazą
 		header('Location: ../panel_admina.php');
 		$_SESSION['error'] = 'loadToast(\'3\',\'Błąd bazy danych\',\'Error '.$connection->connect_errno.'\')';
-	}
-	
-	
-	
+	}	
 ?>
+
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <head>

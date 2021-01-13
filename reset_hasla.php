@@ -10,6 +10,7 @@
 		unset($_SESSION['error']);
 	}
 ?>
+
 <!DOCTYPE html>
 <html class="loading" lang="pl" data-textdirection="ltr">
 <head>

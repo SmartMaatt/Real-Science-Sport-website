@@ -2,8 +2,7 @@
 	/*SECURED*/
 	session_start();
 
-	function jump_to_page($location,$mode,$top,$bottom)
-	{
+	function jump_to_page($location,$mode,$top,$bottom){
         header('Location: ../'.$location);
 		$_SESSION['error'] = 'loadToast(\''.$mode.'\',\''.$top.'\',\''.$bottom.'\')';
     }
@@ -12,8 +11,8 @@
 	$incorrect_conection = 'Nie udało się zresetować hasła spróbuj ponownie!';
 
 	//Parametry wymagane do przeprowadzenia algorytmu
-	if(isset($_POST['stare_haslo']) && isset($_POST['nowe_haslo1']) && isset($_POST['nowe_haslo2']))
-	{	
+	if(isset($_POST['stare_haslo']) && isset($_POST['nowe_haslo1']) && isset($_POST['nowe_haslo2'])){
+		
 		//Pobranie wartości z POST
 		$stare_haslo = htmlentities($_POST['stare_haslo']);
 		$nowe_haslo1 = htmlentities($_POST['nowe_haslo1']);
@@ -50,22 +49,22 @@
 			$result = @$connection->query($sql);
 
 			//Sprawdzenie wykonania powyższego zapytania sql
-			if ($result && $result->num_rows > 0) 
-			{
+			if ($result && $result->num_rows > 0) {
+				
 				$row = $result->fetch_assoc();
 				$db_pass = $row['haslo'];
 				$old_pw_hash = password_hash($stare_haslo, PASSWORD_BCRYPT);
 				
 				//Sprawdź czy podane stare hasło jest poprawne
-				if(password_verify($stare_haslo, $db_pass))
-				{
+				if(password_verify($stare_haslo, $db_pass)){
+					
 					$pw_hash = password_hash($nowe_haslo1, PASSWORD_BCRYPT);
 					$sql2 = "UPDATE klient SET haslo = '$pw_hash' WHERE id_klienta = '$id_klienta'";
 					$result2 = @$connection->query($sql2);
 					
 					//Sprawdź czy poprawnie zmieniono hasło
-					if($result2)
-					{
+					if($result2){
+						
 						//Pomyślnie wygenerowano hasło
 						$to = $_SESSION['mail'];
 						$subject = "Nowe hasło - Panel RSS";
@@ -82,36 +81,36 @@
 						jump_to_page('panel.php','0','Hasło zostało zmienione poprawnie','');
 						$connection->close();
 					}
-					else
-					{
+					else{
+						
 						//Niepowodzenie wykonania zapytania sql
 						jump_to_page('panel.php','3','Błąd bazy danych!','Niepowodzenie wykonania zapytania sql!<br/>Command: UPDATE');
 						$connection->close();
 					}
 				}
-				else 
-				{
+				else {
+					
 					//Podane stare hasło jest niepoprawne
 					jump_to_page('panel.php','2','Błąd logiczny!','Stare hasło jest niepoprawne!');
 					$connection->close();
 				}
 			} 
-			else 
-			{
+			else{
+				
 				//Niepowodzenie wykonania zapytania sql
 				jump_to_page('panel.php','3','Błąd bazy danych!','Niepowodzenie wykonania zapytania sql!<br/>Command: SELECT');
 				$connection->close();
 			}
 			$result->free_result();
 		} 
-		else 
-		{
+		else {
+			
 			//Nieudane połącznie z bazą danych
 			jump_to_page('panel.php', '3', 'Błąd bazy danych', 'Nieudane połączenie z bazą danych!');
 		}
 	}
-	else
-	{
+	else{
+		
 		//Brak parametrów POST
 		jump_to_page('logowanie.php','3','Błąd logiczny','Nie podano wszystkich parametrów wymaganych do rejestracji');
 	}

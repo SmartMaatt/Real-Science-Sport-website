@@ -15,6 +15,7 @@
 		unset($_SESSION['id_opcji']);
 		unset($_SESSION['id_podopcji']);
 		unset($_SESSION['id_badania']);
+		
 		if(isset($_SESSION['id_admina']))
 		{
 			unset($_SESSION['id_admina']);
