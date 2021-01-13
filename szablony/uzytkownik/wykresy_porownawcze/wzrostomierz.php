@@ -90,6 +90,23 @@
 	
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
-	echo "Średnia wzrostu : ".$suma_wzrost."</br>"; 
-	echo "Średnia wzrostu tułowia: ".$suma_wzrost_tulowia;
+	
+	echo "<table class='table table-bordered mt-3'>
+			<thead class='thead-dark'>
+			<tr>
+				<th>Średnia</th>
+				<th>Wzrostu</th>
+				<th>Wzrostu tułowia</th>
+				<th>Stopień dojrzałości</th>
+				<th>PHV</th>
+			</tr>
+			</thead>
+			<tr>
+				<td>Wartości</td>
+				<td>".$suma_wzrost."</td>
+				<td>".$suma_wzrost_tulowia."</td>
+				<td>".$suma_stopien_dojrzalosci."</td>
+				<td>".$suma_PHV."</td>
+			</tr>
+			</table>";	
 ?>

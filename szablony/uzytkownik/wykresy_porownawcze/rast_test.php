@@ -128,12 +128,31 @@
 	
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
-	echo "Średnia pomiaru 1 : ".$suma_pomiar1."</br>"; 
-	echo "Średnia pomiaru 2: ".$suma_pomiar2."</br>"; 
-	echo "Średnia pomiaru 3: ".$suma_pomiar3."</br>"; 
-	echo "Średnia pomiaru 4: ".$suma_pomiar4."</br>"; 
-	echo "Średnia pomiaru 5: ".$suma_pomiar5."</br>"; 
-	echo "Średnia pomiaru 6: ".$suma_pomiar6."</br>"; 
-	echo "Średnia pomiaru 6: ".$suma_pomiar7."</br>"; 
-	echo "Średnia średnich: ".$suma_srednia;  
+	
+	echo "<table class='table table-bordered mt-3'>
+			<thead class='thead-dark'>
+			<tr>
+				<th>Średnia</th>
+				<th>Pomiaru 1</th>
+				<th>Pomiaru 2</th>
+				<th>Pomiaru 3</th>
+				<th>Pomiaru 4</th>
+				<th>Pomiaru 5</th>
+				<th>Pomiaru 6</th>
+				<th>Pomiaru 7</th>
+				<th>Suma</th>
+			</tr>
+			</thead>
+			<tr>
+				<td>Wartości</td>
+				<td>".$suma_pomiar1."</td>
+				<td>".$suma_pomiar2."</td>
+				<td>".$suma_pomiar3."</td>
+				<td>".$suma_pomiar4."</td>
+				<td>".$suma_pomiar5."</td>
+				<td>".$suma_pomiar6."</td>
+				<td>".$suma_pomiar7."</td>
+				<td>".$suma_srednia."</td>
+			</tr>
+			</table>";	
 ?>
