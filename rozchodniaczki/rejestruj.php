@@ -86,7 +86,7 @@
 						$pw_hash = password_hash($haslo1, PASSWORD_BCRYPT);
 
 						//Zapytanie sql złożone ze wszystkich odczytanych wartości
-						if($id_klubu == ""){
+						if($id_klubu == "-1"){
 							
 							$sql3 = sprintf("INSERT INTO klient (id_klienta, imie, nazwisko, mail, haslo, plec, data_urodzenia, vkey) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
 								$new_index,

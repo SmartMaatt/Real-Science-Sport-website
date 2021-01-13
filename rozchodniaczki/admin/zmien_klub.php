@@ -21,7 +21,10 @@
 			
 			$id_klubu = $_POST['id_klubu'];
 			$id_klienta = $_POST['id_klienta'];
-			$sql = "UPDATE klient SET id_klubu='$id_klubu' WHERE id_klienta='$id_klienta'";
+			if($id_klubu == "-1")
+				$sql = "UPDATE klient SET id_klubu= NULL WHERE id_klienta='$id_klienta'";
+			else
+				$sql = "UPDATE klient SET id_klubu='$id_klubu' WHERE id_klienta='$id_klienta'";
 			
 			$result = @$connection->query($sql);
 			if($result){
