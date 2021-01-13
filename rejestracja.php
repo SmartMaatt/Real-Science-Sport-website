@@ -23,7 +23,7 @@
 		if ($result){
 			
 			//Slider list do wyświetlenia w formularzu rejestracji
-			$slider = "<label>Klub</label><fieldset class=\"form-group register-field position-relative has-icon-left\"><select class=\"custom-select\" id=\"custom_select\" name=\"id_klubu\" required><option value=\"\">Klient indywidualny</option>";
+			$slider = "<label>Klub</label><fieldset class=\"form-group register-field position-relative has-icon-left\"><select class=\"custom-select\" id=\"custom_select\" name=\"id_klubu\" required><option value=\"-1\">Klient indywidualny</option>";
 			
 			while($row = $result->fetch_assoc()){
 				$slider = $slider."<option value=\"".$row['id_klubu']."\">".$row['nazwa']."</option>";
@@ -54,8 +54,7 @@
   <meta name="author" content="DeVision303" />
   <meta name="description" content="Official website of Real Science Sport" />
   <title>Rejestracja-Real Science Sport</title>
-  <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
-  <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">
+
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
   rel="stylesheet">
   <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
@@ -154,7 +153,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
 					  
 					  <label>Data urodzenia</label>
 					  <fieldset class="form-group register-field position-relative has-icon-left">
-                        <input type="date" class="form-control" id="user-birth-date" value="<?php echo date('Y-m-d'); ?>" name="data" required>
+                        <input type="date" class="form-control" id="user-birth-date" value="<?php echo date('Y-m-d'); ?>" name="data" onfocusout="correctDate(this)" required>
                         <div class="form-control-position">
                           <i class="fas fa-birthday-cake"></i>
                         </div>
@@ -221,6 +220,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
   
   <!-- WŁASNE SKRYPTY JS-->
   <script src="app-assets/ownJs.js" type="text/javascript"></script>
+  <script src="app-assets/registerValidation.js" type="text/javascript"></script>
   <script src="https://kit.fontawesome.com/9b863fbae2.js"></script>
 </body>
 </html>

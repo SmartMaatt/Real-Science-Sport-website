@@ -31,7 +31,7 @@ function infoCard(mode, message, ...params){
 		//Zmiana klubu
 		else if(mode==2)
 		{
-			var slider = "<form id=\"form-id\" action=\"rozchodniaczki/admin/zmien_klub.php\" method=\"POST\"><fieldset class=\"form-group\"><select class=\"custom-select\" id=\"custom_select\" name=\"id_klubu\" required>";
+			var slider = "<form id=\"form-id\" action=\"rozchodniaczki/admin/zmien_klub.php\" method=\"POST\"><fieldset class=\"form-group\"><select class=\"custom-select\" id=\"custom_select\" name=\"id_klubu\" required><option value=\"-1\">Klient indywidualny</option>";
 
 			for(var i = 1; i < params.length; i=(i+2)){
 				slider = slider + "<option value=\"" + params[i] + "\">" + params[i+1] + "</option>";
