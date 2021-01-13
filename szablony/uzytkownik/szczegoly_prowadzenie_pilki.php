@@ -3,7 +3,7 @@
 	if (session_status() == PHP_SESSION_NONE) {
 		header('Location: ../../logowanie.php');
 	}
-
+	
 	require_once "rozchodniaczki/connect.php";
 	
 	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
@@ -15,12 +15,6 @@
 	else
 	{
 		$id_klienta = $_SESSION['id_klienta'];
-
-		echo '<table>';
-		echo '<tr>';
-		echo '<td>x</td>';
-		echo '<td>y</td>';
-		echo '</tr>';
 		
 		foreach($_POST as $key => $name)
 		{
@@ -28,26 +22,60 @@
 		}
 		$sql = "SELECT * FROM prowadzenie_pilki WHERE id_badania = '$id_badania'";
 		if($result = @$connection->query($sql))
-		{
-			for($i=0; $i < $result->num_rows; $i++)
+		{			
+			//Odczytaj wartości z wiersza bazy
+			$row = $result->fetch_assoc();
+			$pomiar1_1 = $row['pomiar1_1'];
+			$pomiar1_2 = $row['pomiar1_2'];
+			$pomiar1_3 = $row['pomiar1_3'];
+			$pomiar2_1 = $row['pomiar2_1'];
+			$pomiar2_2 = $row['pomiar2_2'];
+			$pomiar2_3 = $row['pomiar2_3'];
+			$pomiar3_1 = $row['pomiar3_1'];
+			$pomiar3_2 = $row['pomiar3_2'];
+			$pomiar3_3 = $row['pomiar3_3'];
+			$srednia1 = ($pomiar1_1 + $pomiar2_1 + $pomiar3_1)/3;
+			$srednia2 = ($pomiar1_2 + $pomiar2_2 + $pomiar3_2)/3;
+			$srednia3 = ($pomiar1_3 + $pomiar2_3 + $pomiar3_3)/3;
+			$data_badania = $row['data'];
+			
+			class Dataset{}
+			
+			$proba1 = new Dataset();
+			$proba1->label = "proba1";
+			$proba1_dane = array($pomiar1_1, $pomiar1_2, $pomiar1_3);
+			$proba1->data = $proba1_dane;
+			
+			$proba2 = new Dataset();
+			$proba2->label = "proba2";
+			$proba2_dane = array($pomiar2_1, $pomiar2_2, $pomiar2_3);
+			$proba2->data = $proba2_dane;
+			
+			$proba3 = new Dataset();
+			$proba3->label = "proba3";
+			$proba3_dane = array($pomiar3_1, $pomiar3_2, $pomiar3_3);
+			$proba3->data = $proba3_dane;
+			
+			$srednia = new Dataset();
+			$srednia->label = "srednia";
+			$srednia_dane = array($srednia1, $srednia2, $srednia3);
+			$srednia->data = $srednia_dane;
+			
+			$odleglosci = array($row['odleglosc1'], $row['odleglosc2'], $row['odleglosc3']);
+			
+			//JSON do wyświetlenia na wykresie
+			$display_type = "wykres_porownawczy";
+			$name = "Test szybkości";
+			$date = $odleglosci;
+			$chart_type = "line";
+			$data_sets = array($proba1, $proba2, $proba3, $srednia);
+			for($j = 0; $j < count($data_sets); $j++)
 			{
-				$row = $result->fetch_assoc();
-				$x1 = $row['pomiar1x'];
-				$y1 = $row['pomiar1y'];
-				$x2 = $row['pomiar2x'];
-				$y2 = $row['pomiar2y'];
-				$x3 = $row['pomiar3x'];
-				$y3 = $row['pomiar3y'];
-				$x4 = $row['pomiar4x'];
-				$y4 = $row['pomiar4y'];
-				$x5 = $row['pomiar5x'];
-				$y5 = $row['pomiar5y'];
-				echo "<tr><td>$x1</td><td>$y1</td></tr>";
-				echo "<tr><td>$x2</td><td>$y2</td></tr>";
-				echo "<tr><td>$x3</td><td>$y3</td></tr>";
-				echo "<tr><td>$x4</td><td>$y4</td></tr>";
-				echo "<tr><td>$x5</td><td>$y5</td></tr>";
-			}		
+				$data_sets[$j]->borderColor = 'rgba(247, 172, 37, 0.7)';
+				$data_sets[$j]->fill = false;
+			}
+			
+			$dane_badania = array($display_type, $name, $date, $chart_type, $data_sets);	
 			$result->free_result();
 		}
 		
@@ -60,7 +88,7 @@
 		<div class="col-12">
 			<div class="card" >
 				<div class="card-header">
-				  <h2 class="card-title" id="basic-layout-tooltip"><?php echo $name." - badanie ".$date;?></h2>
+				  <h2 class="card-title" id="basic-layout-tooltip"><?php echo $name." - badanie ".$data_badania;?></h2>
 					<div class="card-text">
 						<p>Brak dodatkowych informacji na temat badania.</p>
 					</div>

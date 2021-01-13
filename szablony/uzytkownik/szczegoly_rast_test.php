@@ -23,6 +23,7 @@
 		$sql = "SELECT * FROM rast_test WHERE id_badania = '$id_badania'";
 		if($result = @$connection->query($sql))
 		{
+			//Odczytaj wartości z wiersza bazy
 			$row = $result->fetch_assoc();
 			$pomiar1 = $row['pomiar1'];
 			$pomiar2 = $row['pomiar2'];
@@ -33,6 +34,7 @@
 			$pomiar7 = $row['pomiar7'];
 			$srednia = ($pomiar1 + $pomiar2 + $pomiar3 + $pomiar4 + $pomiar5 + $pomiar6 + $pomiar7)/7;
 			
+			//JSON do wyświetlenia na wykresie
 			$display_type = "wykres_szczegolowy";
 			$name = "Rast test";
 			$date = $row['data'];
@@ -41,7 +43,6 @@
 			$data = array($pomiar1,$pomiar2,$pomiar3,$pomiar4,$pomiar5,$pomiar6,$pomiar7,$srednia);
 				
 			$dane_badania = array($display_type, $name, $date, $chart_type, $labels, $data);	
-
 
 			$result->free_result();
 		}
