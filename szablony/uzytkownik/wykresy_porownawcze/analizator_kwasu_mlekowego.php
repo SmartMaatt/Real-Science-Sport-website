@@ -65,5 +65,17 @@
 	
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
-	echo "Średnie steżenie: ".$suma_stezenie; 
+	
+	echo "<table class='table table-bordered mt-3'>
+			<thead class='thead-dark'>
+			<tr>
+				<th>Średnia</th>
+				<th>Stężenie</th>
+			</tr>
+			</thead>
+			<tr>
+				<td>Wartości</td>
+				<td>".$suma_stezenie."</td>
+			</tr>
+			</table>";	
 ?>

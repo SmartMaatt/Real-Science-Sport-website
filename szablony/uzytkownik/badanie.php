@@ -6,6 +6,7 @@
 	
 	$badanie = "";
 	$nazwa_badania = "";
+	$ile_badan = 0;
 	switch ($id_opcji)
 	{
 	case 1:
@@ -104,9 +105,9 @@
 				$sql = "SELECT id_badania, data FROM $badanie WHERE id_klienta = '$id_klienta'";
 				if($result = @$connection->query($sql))
 				{
+					
+					$ile_badan = $result->num_rows;
 					echo '<table class="badanie_main"><tr><td>';
-					
-					
 					echo '<table class="table bg-white">';
 					echo '<thead class="thead-dark">';
 					echo '<tr>';
@@ -155,20 +156,27 @@
 	  </div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-12">
-		<div class="card">
-			<div class="card-header">
-			  <h4 class="card-title">Porównanie badań</h4>
-				<div class="card-text">
-					<p>Wykres zawiera zmianę wartości wyników badań przedstawionych w powyższej tabeli.</p>
+
+<?php
+
+if($ile_badan > 1){
+	echo '<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-header">
+					<h4 class="card-title">Porównanie badań</h4>
+						<div class="card-text">
+							<p>Wykres zawiera zmianę wartości wyników badań przedstawionych w powyższej tabeli.</p>
+						</div>
+					</div>
+					<div style="padding-top:0;" class="card-body">';
+					
+						include("wykresy_porownawcze/".$badanie.".php");
+	echo '					
 				</div>
 			</div>
-			<div style="padding-top:0;" class="card-body">
-			<?php
-				include("wykresy_porownawcze/".$badanie.".php");
-			?>
-			</div>
 		</div>
-	</div>
-</div>
+	</div>';
+}
+
+?>

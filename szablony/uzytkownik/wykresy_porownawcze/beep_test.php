@@ -73,6 +73,19 @@
 	
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
-	echo "Średni level: ".$suma_level."</br>"; 
-	echo "Średnie hr max: ".$suma_hr_max; 
+	
+	echo "<table class='table table-bordered mt-3'>
+			<thead class='thead-dark'>
+			<tr>
+				<th>Średnia</th>
+				<th>Level</th>
+				<th>Hr max</th>
+			</tr>
+			</thead>
+			<tr>
+				<td>Wartości</td>
+				<td>".$suma_level."</td>
+				<td>".$suma_hr_max."</td>
+			</tr>
+			</table>";	
 ?>

@@ -105,7 +105,7 @@
 
 			for($j = 0; $j < count($data_sets); $j++)
 			{
-				$data_sets[$j]->borderColor = 'rgba(247, 172, 37, 0.7)';
+				$data_sets[$j]->borderColor = 'rgba('.rand(0,255).','.rand(0,255).','.rand(0,255).', 0.7)';
 				$data_sets[$j]->fill = false;
 			}
 
@@ -127,12 +127,31 @@
 	
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
-	echo "Średnia delta : ".$suma_delta."</br>"; 
-	echo "Średnia theta: ".$suma_theta."</br>"; 
-	echo "Średnia alpha: ".$suma_alpha."</br>"; 
-	echo "Średni smr: ".$suma_smr."</br>"; 
-	echo "Średnia beta1: ".$suma_beta1."</br>"; 
-	echo "Średnie beta2: ".$suma_beta2."</br>"; 
-	echo "Średnia hibeta: ".$suma_hibeta."</br>"; 
-	echo "Średnia gamma: ".$suma_gamma;  
+	
+	echo "<table class='table table-bordered mt-3'>
+			<thead class='thead-dark'>
+			<tr>
+				<th>Średnia</th>
+				<th>Delta</th>
+				<th>Theta</th>
+				<th>Alpha</th>
+				<th>Smr</th>
+				<th>Beta1</th>
+				<th>Beta2</th>
+				<th>Hibeta</th>
+				<th>Gamma</th>
+			</tr>
+			</thead>
+			<tr>
+				<td>Wartości</td>
+				<td>".$suma_delta."</td>
+				<td>".$suma_theta."</td>
+				<td>".$suma_alpha."</td>
+				<td>".$suma_smr."</td>
+				<td>".$suma_beta1."</td>
+				<td>".$suma_beta2."</td>
+				<td>".$suma_hibeta."</td>
+				<td>".$suma_gamma."</td>
+			</tr>
+			</table>";	
 ?>
