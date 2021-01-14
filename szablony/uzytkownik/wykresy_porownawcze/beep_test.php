@@ -57,7 +57,7 @@
 
 			for($j = 0; $j < count($data_sets); $j++)
 			{
-				$data_sets[$j]->borderColor = 'rgba(247, 172, 37, 0.7)';
+				$data_sets[$j]->borderColor = 'rgba('.rand(0,255).','.rand(0,255).','.rand(0,255).', 0.7)';
 				$data_sets[$j]->fill = false;
 			}
 
@@ -68,16 +68,28 @@
 			
 			$result->free_result();
 		}
+		//stworzenie danych dla grupy wiekowej
+		include("wiek.php");
+		
+		//pobranie z bazy danych srednich dla danej grupy wiekowej
+		$sql = "SELECT AVG(b.level), AVG(b.hr_max) FROM beep_test b, klient k WHERE b.id_klienta = k.id_klienta AND k.data_urodzenia BETWEEN '$between_down' AND '$between_up'";
+		if($result = @$connection->query($sql))
+		{
+			$row = $result->fetch_assoc();
+			$grupa_level = round ($row['AVG(b.level)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_hr_max = round ($row['AVG(b.hr_max)'], 2, PHP_ROUND_HALF_UP);
+		}
 		$connection->close();
 	}
 	
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
 	
-	echo "<table class='table table-bordered mt-3'>
+	echo '<h3 class="card-title mt-2">Średnia Twoich badań</h3>';	
+	echo "<table class='table table-bordered'>
 			<thead class='thead-dark'>
 			<tr>
-				<th>Średnia</th>
+				<th></th>
 				<th>Level</th>
 				<th>Hr max</th>
 			</tr>
@@ -88,4 +100,20 @@
 				<td>".$suma_hr_max."</td>
 			</tr>
 			</table>";	
+			
+	echo '<h3 class="card-title mt-2">Średnia w Twojej grupie wiekowej '.$wiadomosc.'</h3>';	
+	echo "<table class='table table-bordered'>
+			<thead class='thead-dark'>
+			<tr>
+				<th></th>
+				<th>Level</th>
+				<th>Hr max</th>
+			</tr>
+			</thead>
+			<tr>
+				<td>Wartości</td>
+				<td>".$grupa_level."</td>
+				<td>".$grupa_hr_max."</td>
+			</tr>
+			</table>";		
 ?>

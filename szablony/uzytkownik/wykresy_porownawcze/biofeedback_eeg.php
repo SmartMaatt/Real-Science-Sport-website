@@ -146,7 +146,7 @@
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
 	
-	echo '<h3 class="card-title mt-2">Średnia twoich badań</h3>';	
+	echo '<h3 class="card-title mt-2">Średnia Twoich badań</h3>';	
 	echo "<table class='table table-bordered'>
 			<thead class='thead-dark'>
 			<tr>

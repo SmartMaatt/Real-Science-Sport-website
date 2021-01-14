@@ -65,7 +65,7 @@
 
 			for($j = 0; $j < count($data_sets); $j++)
 			{
-				$data_sets[$j]->borderColor = 'rgba(247, 172, 37, 0.7)';
+				$data_sets[$j]->borderColor = 'rgba('.rand(0,255).','.rand(0,255).','.rand(0,255).', 0.7)';
 				$data_sets[$j]->fill = false;
 			}
 
@@ -77,16 +77,30 @@
 			
 			$result->free_result();
 		}
+		//stworzenie danych dla grupy wiekowej
+		include("wiek.php");
+		
+		//pobranie z bazy danych srednich dla danej grupy wiekowej
+		$sql = "SELECT AVG(b.minimum), AVG(b.maksimum), AVG(b.srednio) FROM opto_jump_next b, klient k WHERE b.id_klienta = k.id_klienta AND k.data_urodzenia BETWEEN '$between_down' AND '$between_up'";
+
+		if($result = @$connection->query($sql))
+		{
+			$row = $result->fetch_assoc();
+			$grupa_minimum = round ($row['AVG(b.minimum)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_maksimum = round ($row['AVG(b.maksimum)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_srednio = round ($row['AVG(b.srednio)'], 2, PHP_ROUND_HALF_UP);
+		}
 		$connection->close();
 	}
 	
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
 	
-	echo "<table class='table table-bordered mt-3'>
+	echo '<h3 class="card-title mt-2">Średnia Twoich badań</h3>';	
+	echo "<table class='table table-bordered'>
 			<thead class='thead-dark'>
 			<tr>
-				<th>Średnia</th>
+				<th></th>
 				<th>Minimum</th>
 				<th>Maksimum</th>
 				<th>Średnio</th>
@@ -98,5 +112,23 @@
 				<td>".$suma_maksimum."</td>
 				<td>".$suma_srednio."</td>
 			</tr>
-			</table>";	
+			</table>";
+
+	echo '<h3 class="card-title mt-2">Średnia w Twojej grupie wiekowej '.$wiadomosc.'</h3>';	
+	echo "<table class='table table-bordered'>
+			<thead class='thead-dark'>
+			<tr>
+				<th></th>
+				<th>Minimum</th>
+				<th>Maksimum</th>
+				<th>Średnio</th>
+			</tr>
+			</thead>
+			<tr>
+				<td>Wartości</td>
+				<td>".$grupa_minimum."</td>
+				<td>".$grupa_maksimum."</td>
+				<td>".$grupa_srednio."</td>
+			</tr>
+			</table>";
 ?>

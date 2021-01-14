@@ -72,7 +72,7 @@
 			$data_sets = array($wzrost, $wzrost_tulowia, $stopien_dojrzalosci, $PHV);
 
 			for($j = 0; $j < count($data_sets); $j++){
-				$data_sets[$j]->borderColor = 'rgba(247, 172, 37, 0.7)';
+				$data_sets[$j]->borderColor = 'rgba('.rand(0,255).','.rand(0,255).','.rand(0,255).', 0.7)';
 				$data_sets[$j]->fill = false;
 			}
 

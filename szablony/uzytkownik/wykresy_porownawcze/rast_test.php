@@ -91,11 +91,6 @@
 			$pomiar1->data = $pomiar1_dane;
 			$pomiar2->data = $pomiar2_dane;
 			$pomiar3->data = $pomiar3_dane;
-			$pomiar4->data = $pomiar4_dane;
-			$pomiar5->data = $pomiar5_dane;
-			$pomiar6->data = $pomiar6_dane;
-			$pomiar7->data = $pomiar7_dane;
-			$srednia->data = $srednia_dane;
 			
 			//JSON do wyświetlenia na wykresie
 			$display_type = "wykres_porownawczy";
@@ -106,7 +101,7 @@
 
 			for($j = 0; $j < count($data_sets); $j++)
 			{
-				$data_sets[$j]->borderColor = 'rgba(247, 172, 37, 0.7)';
+				$data_sets[$j]->borderColor = 'rgba('.rand(0,255).','.rand(0,255).','.rand(0,255).', 0.7)';
 				$data_sets[$j]->fill = false;
 			}
 
@@ -123,24 +118,42 @@
 			
 			$result->free_result();
 		}
+		include("wiek.php");
+		
+		//pobranie z bazy danych srednich dla danej grupy wiekowej
+		$sql = "SELECT AVG(b.pomiar1), AVG(b.pomiar2), AVG(b.pomiar3), AVG(b.pomiar4), AVG(b.pomiar5), AVG(b.pomiar6), AVG(b.pomiar7) FROM rast_test b, klient k WHERE b.id_klienta = k.id_klienta AND k.data_urodzenia BETWEEN '$between_down' AND '$between_up'";
+
+		if($result = @$connection->query($sql))
+		{
+			$row = $result->fetch_assoc();
+			$grupa_pomiar1 = round ($row['AVG(b.pomiar1)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_pomiar2 = round ($row['AVG(b.pomiar2)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_pomiar3 = round ($row['AVG(b.pomiar3)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_pomiar4 = round ($row['AVG(b.pomiar4)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_pomiar5 = round ($row['AVG(b.pomiar5)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_pomiar6 = round ($row['AVG(b.pomiar6)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_pomiar7 = round ($row['AVG(b.pomiar7)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_srednia = round (($grupa_pomiar1 + $grupa_pomiar2 + $grupa_pomiar3 + $grupa_pomiar4 + $grupa_pomiar5 + $grupa_pomiar6 + $grupa_pomiar7)/7, 2, PHP_ROUND_HALF_UP);
+		}
 		$connection->close();
 	}
 	
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
 	
-	echo "<table class='table table-bordered mt-3'>
+	echo '<h3 class="card-title mt-2">Średnia Twoich badań</h3>';	
+	echo "<table class='table table-bordered'>
 			<thead class='thead-dark'>
 			<tr>
+				<th></th>
+				<th>Pomiar 1</th>
+				<th>Pomiar 2</th>
+				<th>Pomiar 3</th>
+				<th>Pomiar 4</th>
+				<th>Pomiar 5</th>
+				<th>Pomiar 6</th>
+				<th>Pomiar 7</th>
 				<th>Średnia</th>
-				<th>Pomiaru 1</th>
-				<th>Pomiaru 2</th>
-				<th>Pomiaru 3</th>
-				<th>Pomiaru 4</th>
-				<th>Pomiaru 5</th>
-				<th>Pomiaru 6</th>
-				<th>Pomiaru 7</th>
-				<th>Suma</th>
 			</tr>
 			</thead>
 			<tr>
@@ -153,6 +166,34 @@
 				<td>".$suma_pomiar6."</td>
 				<td>".$suma_pomiar7."</td>
 				<td>".$suma_srednia."</td>
+			</tr>
+			</table>";	
+			
+	echo '<h3 class="card-title mt-2">Średnia w Twojej grupie wiekowej '.$wiadomosc.'</h3>';	
+	echo "<table class='table table-bordered'>
+			<thead class='thead-dark'>
+			<tr>
+				<th></th>
+				<th>Pomiar 1</th>
+				<th>Pomiar 2</th>
+				<th>Pomiar 3</th>
+				<th>Pomiar 4</th>
+				<th>Pomiar 5</th>
+				<th>Pomiar 6</th>
+				<th>Pomiar 7</th>
+				<th>Średnia</th>
+			</tr>
+			</thead>
+			<tr>
+				<td>Wartości</td>
+				<td>".$grupa_pomiar1."</td>
+				<td>".$grupa_pomiar2."</td>
+				<td>".$grupa_pomiar3."</td>
+				<td>".$grupa_pomiar4."</td>
+				<td>".$grupa_pomiar5."</td>
+				<td>".$grupa_pomiar6."</td>
+				<td>".$grupa_pomiar7."</td>
+				<td>".$grupa_srednia."</td>
 			</tr>
 			</table>";	
 ?>

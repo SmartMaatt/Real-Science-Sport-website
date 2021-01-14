@@ -137,7 +137,7 @@
 								if($row['rast_test']){
 									echo "<li class='is-shown "; activateMenu('3','2'); echo "'><a class='menu-item' href='rozchodniaczki/id_opcji.php?o=3&p=2&b=-1'>Rast test</a></li>";}
 								if($row['prowadzenie_pilki']){
-									echo "<li class='is-shown "; activateMenu('3','3'); echo "'><a class='menu-item' href='rozchodniaczki/id_opcji.php?o=3&p=3&b=-1'>Prowadzenia piłki</a></li>";}
+									echo "<li class='is-shown "; activateMenu('3','3'); echo "'><a class='menu-item' href='rozchodniaczki/id_opcji.php?o=3&p=3&b=-1'>Prowadzenie piłki</a></li>";}
 						echo		
 								'</ul>
 							  </ul>
