@@ -27,7 +27,11 @@ if(isset($_SESSION['excel_plik']))
 				$data = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(1, $excel_row)->getValue());
 				$wzrost_tulowia = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(2, $excel_row)->getValue());
 				$wartosc = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(3, $excel_row)->getValue());
-				if($data != null && $id_klienta != null && $wzrost_tulowia != null)
+				$waga = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(4, $excel_row)->getValue());
+				$stopien_dojrzalosci = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(5, $excel_row)->getValue());
+				$PHV = mysqli_real_escape_string($connect, $worksheet->getCellByColumnAndRow(6, $excel_row)->getValue());
+				
+				if($data != null && $id_klienta != null && $wzrost_tulowia != null && $wartosc != null && $waga != null && $stopien_dojrzalosci != null && $PHV != null)
 				{
 					$sql = "SELECT COUNT(id_klienta) as ile FROM klient WHERE id_klienta = '$id_klienta'";
 					$result = @$connection->query($sql);
@@ -36,7 +40,7 @@ if(isset($_SESSION['excel_plik']))
 						$row = $result->fetch_assoc();
 						if($row['ile'] == 1)
 						{
-							$sql = "SELECT COUNT(id_badania) as powtorzenie FROM wzrostomierz WHERE id_klienta = '$id_klienta' AND data = '$data' AND wzrost_tulowia = '$wzrost_tulowia'";
+							$sql = "SELECT COUNT(id_badania) as powtorzenie FROM wzrostomierz WHERE id_klienta = '$id_klienta' AND data = '$data' AND wzrost_tulowia = '$wzrost_tulowia' AND stopien_dojrzalosci = '$stopien_dojrzalosci' AND PHV = '$PHV'";
 							$result = @$connection->query($sql);
 							if($result)
 							{
@@ -44,14 +48,19 @@ if(isset($_SESSION['excel_plik']))
 								if($row['powtorzenie'] == 0)
 								{
 									echo("<tr>");
-									$query = "INSERT INTO wzrostomierz(data, id_klienta, wzrost_tulowia) VALUES ('".$data."', '".$id_klienta."','".$wzrost_tulowia."')";
+									$query = "INSERT INTO wzrostomierz(data, id_klienta, wzrost_tulowia, stopien_dojrzalosci, PHV) VALUES ('".$data."', '".$id_klienta."','".$wzrost_tulowia."','".$stopien_dojrzalosci."','".$PHV."')";
 									mysqli_query($connect, $query);
 									$query = "INSERT INTO wzrost(wartosc, data, id_klienta) VALUES ('".$wartosc."','".$data."', '".$id_klienta."')";
+									mysqli_query($connect, $query);
+									$query = "INSERT INTO waga(wartosc, data, id_klienta) VALUES ('".$waga."','".$data."', '".$id_klienta."')";
 									mysqli_query($connect, $query);
 									echo("<td>".$id_klienta."</td>");
 									echo("<td>".$data."</td>");
 									echo("<td>".$wzrost_tulowia."</td>");
 									echo("<td>".$wartosc."</td>");
+									echo("<td>".$waga."</td>");
+									echo("<td>".$stopien_dojrzalosci."</td>");
+									echo("<td>".$PHV."</td>");
 									echo('</tr>');
 									$sql = "UPDATE wszystkie_badania SET wzrostomierz = 1 WHERE id_klienta = '$id_klienta'";
 									$result = @$connection->query($sql);
@@ -64,7 +73,7 @@ if(isset($_SESSION['excel_plik']))
 							echo "Brak klienta o id: ".$id_klienta.". Excel linia: ".$excel_row.".";
 					}
 				}
-				else if($data == null && $id_klienta == null && $wzrost_tulowia == null)
+				else if($data == null && $id_klienta == null && $wzrost_tulowia == null && $wartosc == null && $waga == null && $stopien_dojrzalosci == null && $PHV == null)
 					break;
 				else 
 					echo "Brak wszystkich danych w linii: ".$excel_row.".";
