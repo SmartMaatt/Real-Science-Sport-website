@@ -147,6 +147,8 @@
 					
 				echo '</table>';
 			
+				echo "<p class='ilosc_stron_klientow'>Strona: ".($strona+1)." / ".($strona_max+1)."</p>";
+				
 				echo '<form class="admin-form" method="POST" action="panel_admina.php">';
 				echo '<input type="hidden" name="strona" value="'.($strona-1).'" />';
 				echo '<input type="hidden" name="id_klubu" value="'.$id_klubu.'" />';
@@ -158,13 +160,14 @@
 				echo '<input type="hidden" name="id_klubu" value="'.$id_klubu.'" />';
 				echo '<input value="Następna strona" class="btn btn-info" type="submit" />';
 				echo '</form>';
-				
-				//echo "Strona: ".($strona+1)." / ".($strona_max+1)."";
+
 			}
 			else {
 				echo '<h1 class="no_data_msg">Brak zarejestrowanych danych klubów!</h1>';
 			}
 			$result->free_result();
+			
+			echo '<div><a href="rozchodniaczki/id_opcji.php?o=102&p=0&b=-1" class="btn btn-info szczegoly_klubu">Powrót</a></div>';
 		}
 		$connection->close();
 	}

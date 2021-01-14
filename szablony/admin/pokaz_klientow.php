@@ -53,6 +53,7 @@
 			$mail_post = "";
 			$sql = "SELECT COUNT(id_klienta) as ile FROM klient";
 		}
+		
 		$result = @$connection->query($sql);
 		if($result)
 		{
@@ -200,7 +201,8 @@
 					echo '</tr>';
 				}
 						echo '</table>';
-				
+		
+						echo "<p class='ilosc_stron_klientow'>Strona: ".($strona+1)." / ".($strona_max+1)."</p>";
 						if(isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['mail']))
 						{
 							echo '<form class="admin-form" method="POST" action="panel_admina.php">
@@ -218,9 +220,11 @@
 									<input type="hidden" name="strona" value="'.($strona+1).'" />
 									<input value="Następna strona" class="btn btn-info" type="submit" />
 								</form>';
+
 						}
 						else
 						{
+
 							echo '<form class="admin-form" method="POST" action="panel_admina.php">
 									<input type="hidden" name="strona" value="'.($strona-1).'" />
 									<input value="Poprzednia strona" class="btn btn-info" type="submit" />
@@ -230,6 +234,7 @@
 									<input type="hidden" name="strona" value="'.($strona+1).'" />
 									<input value="Następna strona" class="btn btn-info" type="submit" />
 								</form>';
+
 						}
 			}
 			else{

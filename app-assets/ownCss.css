@@ -289,7 +289,7 @@ a.settings-link-admin.active{
 
 form.admin-form{
 	display: inline-block;
-	margin: 5px;
+	margin-right: 10px;
 }
 
 form.admin-form .btn{
@@ -308,6 +308,19 @@ div.form-admin .btn-info{
 
 .table-admin-clubs td:nth-child(3){
 	width:50px;
+}
+
+.ilosc_stron_klientow{
+	display:inline-block;
+	border: 1px solid grey;
+	border-radius: 7px;
+	padding: 5px;
+	font-size: 12px;
+	margin-right :10px;
+}
+
+a.szczegoly_klubu{
+	float:right;
 }
 
 
@@ -535,6 +548,11 @@ a.iconsRss-admin > i:hover{
 
 	div.badanie_box{
 		width:100wh;
+	}
+	
+	form.admin-form .btn{
+		font-size: 10px;
+		overflow-wrap: break-word;
 	}
 
 }

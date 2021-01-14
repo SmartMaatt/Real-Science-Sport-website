@@ -150,6 +150,7 @@
 					
 				}
 				echo '</table>';
+				echo "<p class='ilosc_stron_klientow'>Strona: ".($strona+1)." / ".($strona_max+1)."</p>";
 			}
 			else {
 				echo '<h1 class="no_data_msg">Brak zarejestrowanych danych klubów!</h1>';
