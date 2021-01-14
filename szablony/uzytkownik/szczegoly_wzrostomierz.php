@@ -27,17 +27,18 @@
 			$result->free_result();
 			
 			$id_klienta = $_SESSION['id_klienta'];
-			$sql = "SELECT wartosc FROM wzrost WHERE id_klienta = '$id_klienta' AND data = '$date'";
+			$sql = "SELECT wt.wartosc AS wzrost, wa.wartosc AS waga FROM wzrost wt, waga wa WHERE wt.id_klienta = '$id_klienta' AND wa.id_klienta = '$id_klienta' AND wt.data = '$date' AND wa.data = '$date'";
 			if($result = @$connection->query($sql))
 			{
 				$row = $result->fetch_assoc();
-				$wzrost = $row['wartosc'];
+				$wzrost = $row['wzrost'];
+				$waga = $row['waga'];
 
 				$display_type = "wykres_szczegolowy";
 				$name = "Wzrostomierz";
 				$chart_type = "bar";
-				$labels = array('wzrost','wzrost tułowia', 'stopien_dojrzalosci', 'PHV');
-				$data = array($wzrost, $wzrost_tulowia, $stopien_dojrzalosci, $PHV);
+				$labels = array('wzrost', 'waga','wzrost tułowia', 'stopien_dojrzalosci', 'PHV');
+				$data = array($wzrost, $waga, $wzrost_tulowia, $stopien_dojrzalosci, $PHV);
 					
 				$dane_badania = array($display_type, $name, $date, $chart_type, $labels, $data);
 				$result->free_result();
