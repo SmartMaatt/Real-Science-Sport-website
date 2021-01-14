@@ -15,6 +15,38 @@
 	
 	$waga = "80kg";
 	$wzrost = "180cm";
+	$id_klienta = $_SESSION["id_klienta"];
+	
+	require_once 'rozchodniaczki/connect.php';
+	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
+
+	//Czy połącznie z bazą zostało nawiązane?
+	if ($connection->connect_errno == 0) 
+	{
+		
+		$sql = "SELECT wartosc FROM waga where id_klienta = $id_klienta ORDER BY id_wagi DESC LIMIT 1";
+		$result = @$connection->query($sql);
+
+		//Sprawdzenie wykonania powyższego zapytania sql
+		if ($result && $result->num_rows > 0) 
+		{
+			
+			$row = $result->fetch_assoc();
+			$waga = $row['wartosc'];
+		}
+		$sql = "SELECT wartosc FROM wzrost where id_klienta = $id_klienta ORDER BY id_wzrostu DESC LIMIT 1";
+		$result = @$connection->query($sql);
+
+		//Sprawdzenie wykonania powyższego zapytania sql
+		if ($result && $result->num_rows > 0) 
+		{
+			
+			$row = $result->fetch_assoc();
+			$wzrost = $row['wartosc'];
+		}
+
+	$connection->close();
+	}
 	
  ?>
 

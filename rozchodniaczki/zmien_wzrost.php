@@ -27,6 +27,7 @@
 			$sql = "INSERT INTO wzrost(data, id_klienta, wartosc) VALUES (date("Y-m-d"),$id_klienta,$wzrost)";
 			$result = @$connection->query($sql);
 			jump_to_page('panel.php','0','Zmieniono wzrost','Poprawnie zmieniono wzrost');
+			$connection->close();
 		}
 	}
 	else{

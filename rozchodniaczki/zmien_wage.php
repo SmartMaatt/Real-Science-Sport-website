@@ -27,6 +27,7 @@
 			$sql = "INSERT INTO waga(data, id_klienta, wartosc) VALUES (date("Y-m-d"),$id_klienta,$waga)";
 			$result = @$connection->query($sql);
 			jump_to_page('panel.php','0','Zmieniono wagę','Poprawnie zmieniono wagę');
+			$connection->close();
 		}
 	}
 	else{
