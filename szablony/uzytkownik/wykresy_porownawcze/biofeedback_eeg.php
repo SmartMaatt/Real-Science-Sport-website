@@ -122,16 +122,35 @@
 			
 			$result->free_result();
 		}
+		//stworzenie danych dla grupy wiekowej
+		include("wiek.php");
+		
+		//pobranie z bazy danych srednich dla danej grupy wiekowej
+		$sql = "SELECT AVG(b.delta), AVG(b.theta), AVG(b.alpha), AVG(b.smr), AVG(b.beta1), AVG(b.beta2), AVG(b.hibeta), AVG(b.gamma) FROM biofeedback_eeg b, klient k WHERE b.id_klienta = k.id_klienta AND k.data_urodzenia BETWEEN '$between_down' AND '$between_up'";
+
+		if($result = @$connection->query($sql))
+		{
+			$row = $result->fetch_assoc();
+			$grupa_delta = round ($row['AVG(b.delta)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_theta = round ($row['AVG(b.theta)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_alpha = round ($row['AVG(b.alpha)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_smr = round ($row['AVG(b.smr)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_beta1 = round ($row['AVG(b.beta1)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_beta2 = round ($row['AVG(b.beta2)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_hibeta = round ($row['AVG(b.hibeta)'], 2, PHP_ROUND_HALF_UP);
+			$grupa_gamma = round ($row['AVG(b.gamma)'], 2, PHP_ROUND_HALF_UP);
+		}
 		$connection->close();
 	}
 	
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
 	
-	echo "<table class='table table-bordered mt-3'>
+	echo '<h3 class="card-title mt-2">Średnia twoich badań</h3>';	
+	echo "<table class='table table-bordered'>
 			<thead class='thead-dark'>
 			<tr>
-				<th>Średnia</th>
+				<th></th>
 				<th>Delta</th>
 				<th>Theta</th>
 				<th>Alpha</th>
@@ -153,5 +172,34 @@
 				<td>".$suma_hibeta."</td>
 				<td>".$suma_gamma."</td>
 			</tr>
-			</table>";	
+		</table>";
+	
+	
+	echo '<h3 class="card-title mt-2">Średnia w Twojej grupie wiekowej '.$wiadomosc.'</h3>';	
+	echo "<table class='table table-bordered'>
+			<thead class='thead-dark'>
+			<tr>
+				<th></th>
+				<th>Delta</th>
+				<th>Theta</th>
+				<th>Alpha</th>
+				<th>Smr</th>
+				<th>Beta1</th>
+				<th>Beta2</th>
+				<th>Hibeta</th>
+				<th>Gamma</th>
+			</tr>
+			</thead>
+			<tr>
+				<td>Wartości</td>
+				<td>".$grupa_delta."</td>
+				<td>".$grupa_theta."</td>
+				<td>".$grupa_alpha."</td>
+				<td>".$grupa_smr."</td>
+				<td>".$grupa_beta1."</td>
+				<td>".$grupa_beta2."</td>
+				<td>".$grupa_hibeta."</td>
+				<td>".$grupa_gamma."</td>
+			</tr>
+		</table>";	
 ?>

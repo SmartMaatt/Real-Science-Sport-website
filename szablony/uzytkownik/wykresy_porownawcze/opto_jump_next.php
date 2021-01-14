@@ -82,7 +82,21 @@
 	
 	//Canvas wykresu i przycisk powrotny
 	echo "<canvas id='RSS_chart'></canvas>";
-	echo "Średnia delta : ".$suma_minimum."</br>"; 
-	echo "Średnia theta: ".$suma_maksimum."</br>"; 
-	echo "Średnia alpha: ".$suma_srednio."</br>"; 
+	
+	echo "<table class='table table-bordered mt-3'>
+			<thead class='thead-dark'>
+			<tr>
+				<th>Średnia</th>
+				<th>Minimum</th>
+				<th>Maksimum</th>
+				<th>Średnio</th>
+			</tr>
+			</thead>
+			<tr>
+				<td>Wartości</td>
+				<td>".$suma_minimum."</td>
+				<td>".$suma_maksimum."</td>
+				<td>".$suma_srednio."</td>
+			</tr>
+			</table>";	
 ?>

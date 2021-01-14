@@ -34,9 +34,9 @@
 			$pomiar3_1 = $row['pomiar3_1'];
 			$pomiar3_2 = $row['pomiar3_2'];
 			$pomiar3_3 = $row['pomiar3_3'];
-			$srednia1 = ($pomiar1_1 + $pomiar2_1 + $pomiar3_1)/3;
-			$srednia2 = ($pomiar1_2 + $pomiar2_2 + $pomiar3_2)/3;
-			$srednia3 = ($pomiar1_3 + $pomiar2_3 + $pomiar3_3)/3;
+			$srednia1 = round ( ($pomiar1_1 + $pomiar2_1 + $pomiar3_1)/3 , 2 , PHP_ROUND_HALF_UP );
+			$srednia2 = round ( ($pomiar1_2 + $pomiar2_2 + $pomiar3_2)/3 , 2 , PHP_ROUND_HALF_UP );
+			$srednia3 = round ( ($pomiar1_3 + $pomiar2_3 + $pomiar3_3)/3 , 2 , PHP_ROUND_HALF_UP );
 			$data_badania = $row['data'];
 			
 			class Dataset{}
@@ -71,7 +71,7 @@
 			$data_sets = array($proba1, $proba2, $proba3, $srednia);
 			for($j = 0; $j < count($data_sets); $j++)
 			{
-				$data_sets[$j]->borderColor = 'rgba(247, 172, 37, 0.7)';
+				$data_sets[$j]->borderColor = 'rgba('.rand(0,255).','.rand(0,255).','.rand(0,255).', 0.7)';
 				$data_sets[$j]->fill = false;
 			}
 			
