@@ -99,36 +99,38 @@
                         <div class="card-body">
 						
 						<!-- DODAWANIE WAGI!!! -->
-                          <form class="form" method="post" action="">
+                          <form id="waga_form" class="form" method="post" action="rozchodniaczki/zmien_wage.php">
 							<div class="form-body">
 								<div class="form-group">
 								  <label for="issueinput1">Wprowadź nową wagę [kg]</label></br>
 								  <input type="number" name="waga" max="170" pattern="[0-9.]+" required />
-								</div>
-								<button type="submit" class="btn btn-warning">Zmień wagę</button>
+								</div>								
 							</div>
 						  </form>
+						  <a href="#" class="btn btn-rss" onclick="document.getElementById('waga_form').submit()">Zmień wagę</a>
+						  <a href="rozchodniaczki/id_opcji.php?o=<?php echo $_SESSION['id_opcji'].'&p=14&b=-1';?>" class="btn btn-rss">Historia wagi</a>
                         </div>
                       </div>
 					  
 					  
 					  <div id="heading4" role="tab" class="card-header border-bottom-blue-grey border-bottom-lighten-4 profile-card">
 						<a data-toggle="collapse" href="#accordion4" class="h6 collapsed">
-						<i class="fas fa-ruler-vertical"></i><b> Wzrost:</b> <?php echo $wzrost; ?></a>
+						<i class="fas fa-ruler-vertical"></i><b> Wzrost:</b> <?php echo $wzrost; ?>cm</a>
                       </div>
                       <div id="accordion4" class="collapse profile-subcard"  style="">
                         <div class="card-body">
 						
 						<!-- DODAWANIE WZROSTU!!! -->
-                          <form class="form" method="post" action="">
+                          <form id="wzrost_form" class="form" method="post" action="rozchodniaczki/zmien_wzrost.php">
 							<div class="form-body">
 								<div class="form-group">
 								  <label for="issueinput2">Wprowadź nowy wzrost [cm]</label></br>
 								  <input type="number" name="wzrost" max="210" pattern="[0-9.]+" required />
 								</div>
-								<button type="submit" class="btn btn-warning">Zmień wzrost</button>
 							</div>
 						  </form>
+						  <a href="#" class="btn btn-rss" onclick="document.getElementById('wzrost_form').submit()">Zmień wzrost</a>
+						  <a href="rozchodniaczki/id_opcji.php?o=<?php echo $_SESSION['id_opcji'].'&p=15&b=-1';?>" class="btn btn-rss">Historia wzrostu</a>
                         </div>
                       </div>
                       
@@ -176,7 +178,7 @@
 								  <label for="issueinput3">Wprowadź nowe hasło</label></br>
 								  <input type="password" name="nowe_haslo2" required />
 								</div>
-								<button type="submit" class="btn btn-warning">Zmień hasło</button>
+								<button type="submit" class="btn btn-rss">Zmień hasło</button>
 							</div>
 						  </form>
                     </div>

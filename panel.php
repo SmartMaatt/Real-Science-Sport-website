@@ -45,6 +45,16 @@
 		$page_header = "Kontakt - RSS panel";
 		$page_location = "szablony/uzytkownik/panel_kontakt.php";
 	}
+	elseif($id_podopcji == 14){
+		$page_info = "Historia wagi";
+		$page_header = "Waga - RSS panel";
+		$page_location = "szablony/uzytkownik/wykres_wagi.php";
+	}
+	elseif($id_podopcji == 15){
+		$page_info = "Historia wzrostu";
+		$page_header = "Wzrost - RSS panel";
+		$page_location = "szablony/uzytkownik/wykres_wzrostu.php";
+	}
 	else{
 		
 		switch ($_SESSION['id_opcji']){
@@ -234,7 +244,7 @@
 	<script>
 		var dane_badania = 
 		<?php
-			if(isset($dane_badania) && $id_badania != -1){
+			if(isset($dane_badania)){
 				echo json_encode($dane_badania);}
 			else{
 				echo '\'nope\'';

@@ -26,7 +26,7 @@
 			$wartosc->label = "wartosc";
 			$wartosc_dane = array();
 			
-			$suma_wzrost = 0;
+			$suma_wartosc = 0;
 			
 			for($i = 0; $i < $result->num_rows; $i++)
 			{
@@ -38,11 +38,11 @@
 				
 				$suma_wartosc += $row['wartosc'];			
 			}
-			$wartosc->data = $wzrost_dane;
+			$wartosc->data = $wartosc_dane;
 			
 			//JSON do wyświetlenia na wykresie
 			$display_type = "wykres_porownawczy";
-			$name = "Wzrost";
+			$name = "Waga";
 			$date = $daty;
 			$chart_type = "line";
 			$data_sets = array($wartosc);
@@ -62,19 +62,59 @@
 	}
 	
 	//Canvas wykresu i przycisk powrotny
+	echo '<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-header">
+						<h2 class="card-title">Historia wagi</h2>
+						<div class="card-text">
+							<p>Poniżej znajdziesz historię zmiany twojej wagi na podstawie wprowadzonych rekordów oraz inne przydatne informacje</p>
+						</div>
+					</div>
+					<div class="card-body" style="padding-top:0;">';
+					
 	echo "<canvas id='RSS_chart'></canvas>";
+	echo '<a href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_opcji'].'&p=11&b=-1" class="btn btn-rss float-right mt-2">Powrót</a>';	
+	echo "</div></div></div>";
 	
-	echo "<table class='table table-bordered mt-3'>
+	
+	
+	echo '<div class="col-lg-6 col-12">
+				<div class="card">
+					<div class="card-header">
+						<h2 class="card-title">Informacje dodatkowe</h2>
+					</div>
+					<div class="card-body" style="padding-top:0;">';
+					
+	echo "<table class='table table-bordered'>
 			<thead class='thead-dark'>
 			<tr>
 				<th>Średnia</th>
-				<th>Wagi</th>
-				<th>PHV</th>
+				<th>Waga</th>
 			</tr>
 			</thead>
 			<tr>
 				<td>Wartości</td>
-				<td>".$wartosc."</td>
+				<td>".$suma_wartosc."</td>
 			</tr>
 			</table>";	
+	echo "</div></div></div>";
+	
+	echo '<div class="col-lg-6 col-12">
+				<div class="card">
+					<div class="card-header">
+						<h2 class="card-title">Aktualizuj wagę</h2>
+					</div>
+					<div class="card-body" style="padding-top:0;">';
+					
+	echo '<form id="waga_form" class="form" method="post" action="rozchodniaczki/zmien_wage.php">
+			<div class="form-body">
+				<div class="form-group">
+					<label for="issueinput2">Wprowadź nową wage [kg]</label></br>
+					<input type="number" name="waga" max="170" pattern="[0-9.]+" required />
+				</div>
+			</div>
+		  </form>
+		  <a href="#" class="btn btn-rss" onclick="document.getElementById(\'waga_form\').submit()">Zmień wagę</a>';
+	echo "</div></div></div></div>";
 ?>

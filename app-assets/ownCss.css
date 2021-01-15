@@ -120,7 +120,7 @@ div.admin_powrot > a{
 
 .btn-rss:hover{
 	background: #f6bd55;
-	color: white;
+	color: white !important;
 }
 
 .side_menu_divider{
@@ -229,6 +229,10 @@ a.settings-link.active{
 
 a.settings-link-admin.active{
 	color: #17a2b8 !important;
+}
+
+.card-body a.btn-rss{
+	margin-right: 10px;
 }
 
 

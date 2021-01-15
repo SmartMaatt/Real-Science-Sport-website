@@ -58,14 +58,14 @@
 						<i class="ficon ft-user"></i>
 					  </a>
 					  <div class="dropdown-menu dropdown-menu-right">
-						<a class="dropdown-item" href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_podopcji'].'&p=11&b=-1"><i class="ft-user"></i>Pokaż profil</a>
-						<a class="dropdown-item" href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_podopcji'].'&p=12&b=-1"><i class="ft-settings"></i>Ustawienia</a>
+						<a class="dropdown-item" href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_opcji'].'&p=11&b=-1"><i class="ft-user"></i>Pokaż profil</a>
+						<a class="dropdown-item" href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_opcji'].'&p=12&b=-1"><i class="ft-settings"></i>Ustawienia</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="rozchodniaczki/wyloguj.php"><i class="ft-power"></i> Wyloguj</a>
 					  </div>
 					</li>
 					<li class="dropdown dropdown-notification nav-item">
-					  <a class="nav-link nav-link-label iconsRss" href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_podopcji'].'&p=13&b=-1"><i class="ficon ft-mail"></i></a>
+					  <a class="nav-link nav-link-label iconsRss" href="rozchodniaczki/id_opcji.php?o='.$_SESSION['id_opcji'].'&p=13&b=-1"><i class="ficon ft-mail"></i></a>
 					 
 					</li>
 				  </ul>';
