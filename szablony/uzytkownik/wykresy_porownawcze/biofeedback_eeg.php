@@ -144,9 +144,28 @@
 	}
 	
 	//Canvas wykresu i przycisk powrotny
+	echo '<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-header">
+					<h4 class="card-title">Porównanie badań</h4>
+						<div class="card-text">
+							<p>Wykres zawiera zmianę wartości wyników badań przedstawionych w powyższej tabeli.</p>
+						</div>
+					</div>
+					<div style="padding-top:0;" class="card-body">';
 	echo "<canvas id='RSS_chart'></canvas>";
+	echo '</div></div></div>';
 	
-	echo '<h3 class="card-title mt-2">Średnia Twoich badań</h3>';	
+	
+	echo '<div class="col-12">
+				<div class="card">
+					<div class="card-header">
+					<h4 class="card-title">Informacje dodatkowe</h4>
+					</div>
+					<div style="padding-top:0;" class="card-body">';
+	
+	echo '<hr><h3 class="card-title mt-2">Średnia Twoich badań</h3>';	
 	echo "<table class='table table-bordered'>
 			<thead class='thead-dark'>
 			<tr>
@@ -175,7 +194,7 @@
 		</table>";
 	
 	
-	echo '<h3 class="card-title mt-2">Średnia w Twojej grupie wiekowej '.$wiadomosc.'</h3>';	
+	echo '<hr><h3 class="card-title mt-2">Średnia w Twojej grupie wiekowej '.$wiadomosc.'</h3>';	
 	echo "<table class='table table-bordered'>
 			<thead class='thead-dark'>
 			<tr>
@@ -201,5 +220,11 @@
 				<td>".$grupa_hibeta."</td>
 				<td>".$grupa_gamma."</td>
 			</tr>
-		</table>";	
+		</table>";
+
+	echo '					
+				</div>
+			</div>
+		</div>
+	</div>';
 ?>

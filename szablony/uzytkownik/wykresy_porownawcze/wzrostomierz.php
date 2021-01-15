@@ -98,9 +98,28 @@
 	}
 	
 	//Canvas wykresu i przycisk powrotny
+	echo '<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-header">
+					<h4 class="card-title">Porównanie badań</h4>
+						<div class="card-text">
+							<p>Wykres zawiera zmianę wartości wyników badań przedstawionych w powyższej tabeli.</p>
+						</div>
+					</div>
+					<div style="padding-top:0;" class="card-body">';
 	echo "<canvas id='RSS_chart'></canvas>";
+	echo '</div></div></div>';
 	
-	echo "<table class='table table-bordered mt-3'>
+	
+	echo '<div class="col-12">
+				<div class="card">
+					<div class="card-header">
+					<h4 class="card-title">Informacje dodatkowe</h4>
+					</div>
+					<div style="padding-top:0;" class="card-body">';
+	
+	echo "<hr><table class='table table-bordered mt-3'>
 			<thead class='thead-dark'>
 			<tr>
 				<th>Średnia</th>
@@ -119,5 +138,7 @@
 				<td>".$suma_stopien_dojrzalosci."</td>
 				<td>".$suma_PHV."</td>
 			</tr>
-			</table>";	
+			</table>";
+
+	echo '</div></div></div></div>';
 ?>

@@ -26,105 +26,113 @@
 	$badanie = "";
 	
 	//Przypisanie do zmiennych informacyjnych odpowiednich treści
-	if($id_podopcji == 11){
+	switch($id_podopcji){
 		
-		$page_info = "Profil użytkownika";
-		$page_header = "Profil - RSS panel";
-		$page_location = "szablony/uzytkownik/panel_profil.php";
-	}
-	elseif($id_podopcji == 12){
+		case 11:
+			$page_info = "Profil użytkownika";
+			$page_header = "Profil - RSS panel";
+			$page_location = "szablony/uzytkownik/panel_profil.php";
+		break;
 		
-		$page_info = "Profil użytkownika";
-		$page_header = "Profil - RSS panel";
-		$page_location = "szablony/uzytkownik/panel_profil.php";
-		$error_msg = 'onload="loadToast(\'0\',\'Przekierowanie do profilu\',\'Panel ustawień oraz profilu zostały tymczasowo połączone ze względu na poprawienie przejrzystości strony.\')"';
-	}
-	elseif($id_podopcji == 13){
+		case 12:
+			$page_info = "Profil użytkownika";
+			$page_header = "Profil - RSS panel";
+			$page_location = "szablony/uzytkownik/panel_profil.php";
+			$error_msg = 'onload="loadToast(\'0\',\'Przekierowanie do profilu\',\'Panel ustawień oraz profilu zostały tymczasowo połączone ze względu na poprawienie przejrzystości strony.\')"';
+		break;
 		
-		$page_info = "Kontakt";
-		$page_header = "Kontakt - RSS panel";
-		$page_location = "szablony/uzytkownik/panel_kontakt.php";
-	}
-	elseif($id_podopcji == 14){
-		$page_info = "Historia wagi";
-		$page_header = "Waga - RSS panel";
-		$page_location = "szablony/uzytkownik/wykres_wagi.php";
-	}
-	elseif($id_podopcji == 15){
-		$page_info = "Historia wzrostu";
-		$page_header = "Wzrost - RSS panel";
-		$page_location = "szablony/uzytkownik/wykres_wzrostu.php";
-	}
-	else{
-		
-		switch ($_SESSION['id_opcji']){
-			
-		case 1:
-			$page_info = "Biofeedback EEG";
-			$page_header = "Biofeedback EEG - RSS panel";
-			$page_location = "szablony/uzytkownik/badanie.php";
-			$badanie = "biofeedback_eeg";
-			break;
-			
-		case 2: 
-			$page_info = "Analiza składu ciała";
-			$page_header = "Analiza składu ciała - RSS panel";
-			$page_location = "szablony/uzytkownik/badanie.php";
-			$badanie= "analiza_skladu_ciala";
-			break;
-			
-		case 3: 
-			if($_SESSION['id_podopcji'] == 1){
+		case 13:
+			$page_info = "Kontakt";
+			$page_header = "Kontakt - RSS panel";
+			$page_location = "szablony/uzytkownik/panel_kontakt.php";
+		break;
+	
+		case 14:
+			$page_info = "Historia wagi";
+			$page_header = "Waga - RSS panel";
+			$page_location = "szablony/uzytkownik/wykres_wagi.php";
+		break;
+	
+		case 15:
+			$page_info = "Historia wzrostu";
+			$page_header = "Wzrost - RSS panel";
+			$page_location = "szablony/uzytkownik/wykres_wzrostu.php";
+		break;
+	
+		default:
+			switch ($id_opcji){
 				
-				$page_info = "Test szybkości";
-				$page_header = "Test szybkości - RSS panel";
+			case 1:
+				$page_info = "Biofeedback EEG";
+				$page_header = "Biofeedback EEG - RSS panel";
 				$page_location = "szablony/uzytkownik/badanie.php";
-				$badanie = "test_szybkosci";
-			}
-			elseif($_SESSION['id_podopcji'] == 2){
+				$badanie = "biofeedback_eeg";
+				break;
 				
-				$page_info = "Rast test";
-				$page_header = "Rast test - RSS panel";
+			case 2: 
+				$page_info = "Analiza składu ciała";
+				$page_header = "Analiza składu ciała - RSS panel";
 				$page_location = "szablony/uzytkownik/badanie.php";
-				$badanie = "rast_test";
-			}
-			else{
+				$badanie= "analiza_skladu_ciala";
+				break;
 				
-				$page_info = "Prowadzenie piłki";
-				$page_header = "Prowadzenie piłki - RSS panel";
+			case 3: 
+				if($_SESSION['id_podopcji'] == 1){
+					
+					$page_info = "Test szybkości";
+					$page_header = "Test szybkości - RSS panel";
+					$page_location = "szablony/uzytkownik/badanie.php";
+					$badanie = "test_szybkosci";
+				}
+				elseif($_SESSION['id_podopcji'] == 2){
+					
+					$page_info = "Rast test";
+					$page_header = "Rast test - RSS panel";
+					$page_location = "szablony/uzytkownik/badanie.php";
+					$badanie = "rast_test";
+				}
+				else{
+					
+					$page_info = "Prowadzenie piłki";
+					$page_header = "Prowadzenie piłki - RSS panel";
+					$page_location = "szablony/uzytkownik/badanie.php";
+					$badanie = "prowadzenie_pilki";
+				}
+				break;
+				
+			case 4:
+				$page_info = "Analizator kwasu mlekowego";
+				$page_header = "Analizator kwasu mlekowego - RSS panel";
 				$page_location = "szablony/uzytkownik/badanie.php";
-				$badanie = "prowadzenie_pilki";
+				$badanie = "analizator_kwasu_mlekowego";
+				break;
+				
+			case 5:
+				$page_info = "Wzrostomierz";
+				$page_header = "Wzrostomierz - RSS panel";
+				$page_location = "szablony/uzytkownik/badanie.php";
+				$badanie = "wzrostomierz";
+				break;
+				
+			case 6:
+				$page_info = "Beep test";
+				$page_header = "Beep test - RSS panel";
+				$page_location = "szablony/uzytkownik/badanie.php";
+				$badanie = "beep_test";
+				break;
+				
+			case 7:
+				$page_info = "Opto jump next";
+				$page_header = "Opto jump next - RSS panel";
+				$page_location = "szablony/uzytkownik/badanie.php";
+				$badanie = "opto_jump_next";
+				break;
+				
+			default:
+				$page_info = "How did we get here? Error 404";
+				$page_header = "Error 404 - RSS panel";
+				$page_location = "szablony/error_404.php";
 			}
-			break;
-			
-		case 4:
-			$page_info = "Analizator kwasu mlekowego";
-			$page_header = "Analizator kwasu mlekowego - RSS panel";
-			$page_location = "szablony/uzytkownik/badanie.php";
-			$badanie = "analizator_kwasu_mlekowego";
-			break;
-			
-		case 5:
-			$page_info = "Wzrostomierz";
-			$page_header = "Wzrostomierz - RSS panel";
-			$page_location = "szablony/uzytkownik/badanie.php";
-			$badanie = "wzrostomierz";
-			break;
-			
-		case 6:
-			$page_info = "Beep test";
-			$page_header = "Beep test - RSS panel";
-			$page_location = "szablony/uzytkownik/badanie.php";
-			$badanie = "beep_test";
-			break;
-			
-		case 7:
-			$page_info = "Opto jump next";
-			$page_header = "Opto jump next - RSS panel";
-			$page_location = "szablony/uzytkownik/badanie.php";
-			$badanie = "opto_jump_next";
-			break;
-		}
 	}
 	
 	if($id_badania != -1){

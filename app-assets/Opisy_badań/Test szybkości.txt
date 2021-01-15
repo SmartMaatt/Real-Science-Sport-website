@@ -1,0 +1,3 @@
+﻿Fotokomórki wykorzystywane w testach prędkości w sporcie określają potencjał zawodnika, obliczając jego CZAS, PRĘDKOŚĆ, MOC i ZUŻYCIE INDEKSU. 
+
+W badaniu mierzymy 3 dobrolnie wybrane odległośći (zazwyczaj jest to 5m,30m, 50m).

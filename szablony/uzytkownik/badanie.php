@@ -65,7 +65,7 @@
 						<?php
 						if(file_exists("app-assets/Opisy_badań/$nazwa_badania.txt")){
 							$myfile = fopen("app-assets/Opisy_badań/$nazwa_badania.txt", "r");						
-							echo fread($myfile,filesize("app-assets/Opisy_badań/$nazwa_badania.txt"));
+							echo nl2br(fread($myfile,filesize("app-assets/Opisy_badań/$nazwa_badania.txt")));
 							fclose($myfile);
 						}
 						else{
@@ -160,23 +160,7 @@
 <?php
 
 if($ile_badan > 1){
-	echo '<div class="row">
-			<div class="col-12">
-				<div class="card">
-					<div class="card-header">
-					<h4 class="card-title">Porównanie badań</h4>
-						<div class="card-text">
-							<p>Wykres zawiera zmianę wartości wyników badań przedstawionych w powyższej tabeli.</p>
-						</div>
-					</div>
-					<div style="padding-top:0;" class="card-body">';
-					
-						include("wykresy_porownawcze/".$badanie.".php");
-	echo '					
-				</div>
-			</div>
-		</div>
-	</div>';
+	include("wykresy_porownawcze/".$badanie.".php");
 }
 
 ?>

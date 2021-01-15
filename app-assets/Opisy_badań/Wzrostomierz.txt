@@ -1,0 +1,3 @@
+﻿Wzrostomierz – pozwala kontrolować procesy wzrastania oraz mierzyć długość ciała oraz tułowia. 
+
+Umożliwia również wyznaczenie szczytu tempa wzrostu (PHV-peak Height Velocity).

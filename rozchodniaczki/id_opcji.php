@@ -9,7 +9,6 @@
 		$_SESSION['id_opcji'] = $_GET['o'];
 		$_SESSION['id_podopcji'] = $_GET['p'];
 		$_SESSION['id_badania'] = $_GET['b'];
-		$_SESSION['error'] = 'loadToast(\'0\',\'id_opcji: '.$_SESSION['id_opcji'].' id_podopcji: './/$_SESSION['id_podopcji'].' id_badania: '.$_SESSION['id_badania'].'\',\'\')';
 	}
 	
 	if(isset($_SESSION['id_admina'])){

@@ -12,6 +12,20 @@ i.m-corr{
 	margin-left: 20px;
 }
 
+h1.error_404{
+	font-size: 100px;
+	font-weight:600;
+}
+
+img.error_404{
+	border-radius: 10px;
+}
+
+div.card-body.error_404{
+	padding-top:20px;
+	border-top: 1px solid #eaeaea;
+}
+
 
 
 
@@ -473,7 +487,7 @@ a.iconsRss-admin > i:hover{
 
 /*Telefon*/
 @media screen and (max-width: 767px){
-
+	
 	.bgLoggin{
 		background-size: cover;
 	}
