@@ -5,6 +5,7 @@
     function return_to_login_page($reason) {
         header('Location: ../logowanie.php');
 		$_SESSION['error'] = 'loadToast(\'2\',\''.$reason.'\',\'\')';
+		exit(0);
     }
 	
     $mail = $_POST['mail'];
@@ -12,6 +13,7 @@
 	$incorrect_login_or_password = 'Nieprawidłowy mail lub hasło!';
 	
 	require_once 'connect.php';
+	
 	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 
 	if ($connection->connect_errno == 0) {
@@ -45,7 +47,25 @@
 					return_to_login_page($incorrect_login_or_password);
 				}
 			} 
-			else {
+			else
+			{
+				$vkey = $row['vkey'];
+				$to = $mail;
+				$subject = "Weryfikacja - Panel RSS";
+				$message = "<a href='realsciencesport.com/rozchodniaczki/weryfikuj.php?vkey=".$vkey."'>Click here!</a>";
+
+				$headers[] = 'MIME-Version: 1.0';
+				$headers[] = 'Content-type: text/html; charset=iso-8859-1';
+
+				// Additional headers
+				$headers[] = 'To: '.$to;
+				$headers[] = 'From: Rss Panel <realsciencesport@gmail.com>';
+
+				if(!mail($to, $subject, $message, implode("\r\n", $headers))){
+					header('Location: ../rejestracja.php');
+					$_SESSION['error'] = 'loadToast(\'3\',\'Błąd formularza wiadomości!\',\'Próba wysłania maila nie powiodła się. Skontaktuj się z działem technicznym!\')';
+				}
+				
 				return_to_login_page("Proszę potwierdzić konto na mailu");
 			}
         } 

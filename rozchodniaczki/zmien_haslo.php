@@ -5,6 +5,7 @@
 	function jump_to_page($location,$mode,$top,$bottom){
         header('Location: ../'.$location);
 		$_SESSION['error'] = 'loadToast(\''.$mode.'\',\''.$top.'\',\''.$bottom.'\')';
+		exit(0);
     }
 	
     $incorrect_data = 'Brak takiego konta!';
@@ -70,12 +71,17 @@
 						$subject = "Nowe hasło - Panel RSS";
 						$message = "<p>Twoje nowe hasło ".$_SESSION['imie']." to:<br/><b>".$nowe_haslo1."</b></p>";
 
-						// Always set content-type when sending HTML email
-						$headers = "MIME-Version: 1.0" . "\r\n";
-						$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-						$headers .= 'From: RSS Panel' . "\r\n";
+						$headers[] = 'MIME-Version: 1.0';
+						$headers[] = 'Content-type: text/html; charset=iso-8859-1';
 
-						mail($to,$subject,$message,$headers);
+						// Additional headers
+						$headers[] = 'To: '.$to;
+						$headers[] = 'From: Rss Panel <'.$_SESSION['mail'].'>';
+
+						if(!mail($to, $subject, $message, implode("\r\n", $headers))){
+							header('Location: ../panel.php');
+							$_SESSION['error'] = 'loadToast(\'3\',\'Błąd formularza wiadomości!\',\'Próba wysłania maila nie powiodła się. Skontaktuj się z działem technicznym!\')';
+						}
 						
 						//Poprawna aktualizacja
 						jump_to_page('panel.php','0','Hasło zostało zmienione poprawnie','');

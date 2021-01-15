@@ -86,13 +86,18 @@
 						$subject = "Nowe hasło - Panel RSS";
 						$message = "<p>Twoje nowe hasło ".$imie." to:<br/><b>".$haslo."</b></p>";
 
-						// Always set content-type when sending HTML email
-						$headers = "MIME-Version: 1.0" . "\r\n";
-						$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-						$headers .= 'From: RSS Panel' . "\r\n";
+						$headers[] = 'MIME-Version: 1.0';
+						$headers[] = 'Content-type: text/html; charset=iso-8859-1';
 
-						mail($to,$subject,$message,$headers);
-						
+						// Additional headers
+						$headers[] = 'To: '.$to;
+						$headers[] = 'From: Rss Panel <realsciencesport@gmail.com>';
+
+						if(!mail($to, $subject, $message, implode("\r\n", $headers))){
+							header('Location: ../rejestracja.php');
+							$_SESSION['error'] = 'loadToast(\'3\',\'Błąd formularza wiadomości!\',\'Próba wysłania maila nie powiodła się. Skontaktuj się z działem technicznym!\')';
+						}
+
 						jump_to_page('0','Hasło zostało wygenerowane pomyślnie!','');
 						$result2->free_result();
 						$connection->close();
@@ -109,14 +114,19 @@
 					
 					$to = $mail;
 					$subject = "Reset hasła - Panel RSS";
-					$message = "<p>Kliknij jeśli chcesz zmienić hasło.</p><a href='localhost/RSS/rozchodniaczki/resetuj_haslo.php?imie=".$imie."&nazwisko=".$nazwisko."&mail=".$mail."&mailAccept=yep'>Click me ^^</a>";
+					$message = "<p>Kliknij jeśli chcesz zmienić hasło.</p><a href='realsciencesport.com/rozchodniaczki/resetuj_haslo.php?imie=".$imie."&nazwisko=".$nazwisko."&mail=".$mail."&mailAccept=yep'>Click me ^^</a>";
 
-					// Always set content-type when sending HTML email
-					$headers = "MIME-Version: 1.0" . "\r\n";
-					$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-					$headers .= 'From: RSS Panel' . "\r\n";
+					$headers[] = 'MIME-Version: 1.0';
+					$headers[] = 'Content-type: text/html; charset=iso-8859-1';
 
-					mail($to,$subject,$message,$headers);
+					// Additional headers
+					$headers[] = 'To: '.$to;
+					$headers[] = 'From: Rss Panel <realsciencesport@gmail.com>';
+
+					if(!mail($to, $subject, $message, implode("\r\n", $headers))){
+						header('Location: ../rejestracja.php');
+						$_SESSION['error'] = 'loadToast(\'3\',\'Błąd formularza wiadomości!\',\'Próba wysłania maila nie powiodła się. Skontaktuj się z działem technicznym!\')';
+					}
 					jump_to_page('0','Wiadomość dotycząca zmiany hasła została wysłana!','Mail: '.$mail);
 					$connection->close();
 				}

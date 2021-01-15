@@ -107,44 +107,45 @@
 				{
 					
 					$ile_badan = $result->num_rows;
-					echo '<table class="badanie_main"><tr><td>';
-					echo '<table class="table bg-white">';
-					echo '<thead class="thead-dark">';
-					echo '<tr>';
-					echo '<th scope="col">Data</th>';
-					echo '<th scope="col">Szczegóły</th>';
-					echo '</tr>';
-					echo '</thead>';
-					echo '</table>';
-					
-					
-					
-					echo '</td></tr><tr><td><div id="badanie_scroll_cont"><table class="table table-bordered bg-white">';
-					
-					
-					$id_opcji = $_SESSION['id_opcji'];
-					$id_podopcji = $_SESSION['id_podopcji'];
-					for($i; $i < $result->num_rows; $i++)
-					{
-						$row = $result->fetch_assoc();
-						$id_badania = $row['id_badania'];
-						$data = $row['data'];
+					if($ile_badan > 0){
+						echo '<table class="badanie_main"><tr><td>';
+						echo '<table class="table bg-white">';
+						echo '<thead class="thead-dark">';
 						echo '<tr>';
-						echo "<td><p>$data</p></td>";
-						echo '<td>
-								<a href="rozchodniaczki/id_opcji.php?o='.$id_opcji.'&p='.$id_podopcji.'&b='.$id_badania.'" class="btn btn-rss">Wyświetl szczegóły</a>
-							 </td>';
+						echo '<th scope="col">Data</th>';
+						echo '<th scope="col">Szczegóły</th>';
 						echo '</tr>';
+						echo '</thead>';
+						echo '</table>';
+						
+						
+						
+						echo '</td></tr><tr><td><div id="badanie_scroll_cont"><table class="table table-bordered bg-white">';
+						
+						
+						$id_opcji = $_SESSION['id_opcji'];
+						$id_podopcji = $_SESSION['id_podopcji'];
+						for($i; $i < $result->num_rows; $i++)
+						{
+							$row = $result->fetch_assoc();
+							$id_badania = $row['id_badania'];
+							$data = $row['data'];
+							echo '<tr>';
+							echo "<td><p>$data</p></td>";
+							echo '<td>
+									<a href="rozchodniaczki/id_opcji.php?o='.$id_opcji.'&p='.$id_podopcji.'&b='.$id_badania.'" class="btn btn-rss">Wyświetl szczegóły</a>
+								 </td>';
+							echo '</tr>';
+						}
+						
+						echo '</table></div></td></tr>';
+						echo '</table>';
 					}
-					
-					echo '</table></div></td></tr>';
-					echo '</table>';
+					else{
+						echo '<h1 class="no_data_msg">Brak zarejestrowanych badań</h1>';
+					}
 									
 					$result->free_result();
-				}
-				
-				if($i == 0){
-					echo '<h1 class="no_data_msg">Brak zarejestrowanych badań</h1>';
 				}
 				
 				$connection->close();

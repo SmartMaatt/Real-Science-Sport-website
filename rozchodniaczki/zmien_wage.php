@@ -3,8 +3,9 @@
 	session_start();
 
 	function jump_to_page($location,$mode,$top,$bottom){
-        //header('Location: ../'.$location);
+        header('Location: ../'.$location);
 		$_SESSION['error'] = 'loadToast(\''.$mode.'\',\''.$top.'\',\''.$bottom.'\')';
+		exit(0);
     }
 	
     $incorrect_data = 'Brak takiego konta!';
@@ -25,7 +26,7 @@
 			//Czy połącznie z bazą zostało nawiązane?
 			if ($connection->connect_errno == 0) {
 				
-				$sql = "INSERT INTO waga(data, id_klienta, wartosc) VALUES (".date("Y-m-d").",$id_klienta,$waga)";
+				$sql = "INSERT INTO waga(data, id_klienta, wartosc) VALUES ('".date("Y-m-d")."',$id_klienta,$waga)";
 				$result = @$connection->query($sql);
 				
 				echo $sql;

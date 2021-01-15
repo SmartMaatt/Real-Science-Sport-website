@@ -13,8 +13,8 @@
 		$plec = '<i class="fas fa-venus"></i>';
 	}
 	
-	$waga = "80kg";
-	$wzrost = "180cm";
+	$waga = "--";
+	$wzrost = "--";
 	$id_klienta = $_SESSION["id_klienta"];
 	
 	require_once 'rozchodniaczki/connect.php';
@@ -93,7 +93,7 @@
 					  
 					  <div id="heading3" role="tab" class="card-header border-bottom-blue-grey border-bottom-lighten-4 profile-card">
 						<a data-toggle="collapse" href="#accordion3" class="h6 collapsed">
-						<i class="fas fa-weight"></i><b> Waga:</b> <?php echo $waga; ?></a>
+						<i class="fas fa-weight"></i><b> Waga:</b> <?php echo $waga; ?>kg</a>
                       </div>
                       <div id="accordion3" class="collapse profile-subcard"  style="">
                         <div class="card-body">

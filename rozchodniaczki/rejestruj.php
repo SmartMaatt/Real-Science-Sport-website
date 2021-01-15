@@ -5,6 +5,7 @@
     function jump_to_page($mode,$top,$bottom) {
         header('Location: ../rejestracja.php');
 		$_SESSION['error'] = 'loadToast(\''.$mode.'\',\''.$top.'\',\''.$bottom.'\')';
+		exit(0);
     }
 
 	//Wymagane jest istnienie wszystkich zmiennych w POST
@@ -27,7 +28,7 @@
 		//$odpowiedz = json_decode($sprawdz);
 		
 		//if(!($odpowiedz->success)) {
-			//jump_to_page('2','Potwierdź, że nie jesteś robotem', '');
+			jump_to_page('2','Potwierdź, że nie jesteś robotem', '');
 		//}
 		
 		//Czy dwa podane hasła są takie same?
@@ -69,18 +70,6 @@
 					
 					if($result2){	
 					
-						//Znalezienie najbliższego wolnego indeksu
-						$new_index = '0';
-						while($row2 = $result2->fetch_row()){
-							echo $new_index.' / '.$row2[0].'</br>';
-							if($new_index != $row2[0]){
-								echo "dupa ".$new_index;
-								break;
-							}
-							$new_index++;
-						}
-						$result2->free_result();
-						
 						//Pseudolosowanie klucza weryfikacyjnego
 						$vkey = md5(time().$mail);
 						$pw_hash = password_hash($haslo1, PASSWORD_BCRYPT);
@@ -120,32 +109,37 @@
 							
 							$to = $mail;
 							$subject = "Weryfikacja - Panel RSS";
-							$message = "<a href='localhost/RSS/rozchodniaczki/weryfikuj.php?vkey=".$vkey."'>Click here!</a>";
+							$message = "<a href='realsciencesport.com/rozchodniaczki/weryfikuj.php?vkey=".$vkey."'>Click here!</a>";
 
-							// Always set content-type when sending HTML email
-							$headers = "MIME-Version: 1.0" . "\r\n";
-							$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-							$headers .= 'From: RSS Panel' . "\r\n";
+							$headers[] = 'MIME-Version: 1.0';
+							$headers[] = 'Content-type: text/html; charset=iso-8859-1';
 
-							mail($to,$subject,$message,$headers);
+							// Additional headers
+							$headers[] = 'To: '.$to;
+							$headers[] = 'From: Rss Panel <realsciencesport@gmail.com>';
+
+							if(!mail($to, $subject, $message, implode("\r\n", $headers))){
+								header('Location: ../rejestracja.php');
+								$_SESSION['error'] = 'loadToast(\'3\',\'Błąd formularza wiadomości!\',\'Próba wysłania maila nie powiodła się. Skontaktuj się z działem technicznym!\')';
+							}
 							
-							$sql4 = "INSERT INTO wszystkie_badania (id_klienta) VALUES ('$new_index')";
+							$sql4 = "SELECT id_klienta AS nowy_index FROM klient ORDER BY id_klienta DESC LIMIT 1";
 							$result4 = @$connection->query($sql4);
-							
-							if ($result3) {
-								//Pomyślna rejestracja!
-								jump_to_page('0','Rejestracja przebiegła pomyślnie','Uwierzytelnij swoje konto mailem aktywacyjnym<br/>'.$mail);
-								$connection->close();
-							}
-							else {
-								//Błąd wykonania zapytania SQL
-								jump_to_page('3','Błąd bazy danych', 'Niepowodzenie w wykonaniu zapytania sql<br/>Command: INSERT badania<br/>'.$new_index);
-								$connection->close();
-							}
+							if($result4)
+							{
+								$row4 = $result4->fetch_assoc();
+								$index = $row4['nowy_index'];
+								$sql5 = "INSERT INTO wszystkie_badania (id_klienta) VALUES ('$index')";
+								$result5 = @$connection->query($sql5);
+							}								
+
+							//Pomyślna rejestracja!
+							jump_to_page('0','Rejestracja przebiegła pomyślnie','Uwierzytelnij swoje konto mailem aktywacyjnym<br/>'.$mail);
+							$connection->close();
 							
 						} 
 						else {
-							//jump_to_page('3','Błąd bazy danych', 'Niepowodzenie w wykonaniu zapytania sql<br/>Command: INSERT klient<br/>'.$new_index);
+							jump_to_page('3','Błąd bazy danych', 'Niepowodzenie w wykonaniu zapytania sql<br/>Command: INSERT klient<br/>'.$new_index);
 							$connection->close();
 						}
 					}
@@ -156,7 +150,6 @@
 					}
 				}
 			}
-			$result->free_result();
 		} 
 		else {
 			//Nie udało się połączyć z bazą

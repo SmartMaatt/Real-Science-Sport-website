@@ -20,21 +20,17 @@
 			else{
 				$to = 'realsciencesport@gmail.com';
 			}
-			
-			$subject = $_SESSION['imie'] . ' ' . $_SESSION['nazwisko'];
+			$subject = $_SESSION['imie'].' '.$_SESSION['nazwisko'].' - zapytanie';
 			$message = "Adresat: " . $_SESSION['imie'] . " " . $_SESSION['nazwisko'] . "<br/>E-mail: " . $_SESSION['mail'] . "<br/>Zagadnienie: <b>". $tematyka ."</b><br/><br/>" . $tresc;
-			$headers = 'RSS Panel: ' . $tytul . "\r\n" .'Content-type: text/html; charset=utf-8';
 
-			/*echo "Tematyka: ".$tematyka."</br>";
-			echo "Tytuł: ".$tytul."</br>";
-			echo "Treść: ".$tresc."</br>";
-			echo "To: ".$to."</br>";
-			echo "Subject: ".$subject."</br>";
-			echo "</br>Message: </br>".$message."</br>";
-			echo "Headers:".$headers."</br>";*/
-			
-			//Wykonanie wysłania
-			if(!mail($to, $subject, $message, $headers)){
+			$headers[] = 'MIME-Version: 1.0';
+			$headers[] = 'Content-type: text/html; charset=iso-8859-1';
+
+			// Additional headers
+			$headers[] = 'To: '.$to;
+			$headers[] = 'From: Rss Panel <'.$_SESSION['mail'].'>';
+
+			if(!mail($to, $subject, $message, implode("\r\n", $headers))){
 				header('Location: ../panel.php');
 				$_SESSION['error'] = 'loadToast(\'3\',\'Błąd formularza wiadomości!\',\'Próba wysłania maila nie powiodła się. Skontaktuj się z działem technicznym!\')';
 			}
