@@ -16,6 +16,8 @@
 		if(isset($_SESSION['id_admina'])){
 
 			$_SESSION['id_klienta'] = $_GET['id_klienta'];
+			$_SESSION['id_badania_tmp'] = $_SESSION['id_badania'];
+			
 			$_SESSION['id_opcji'] = 1;
 			$_SESSION['id_podopcji'] = 0;
 			$_SESSION['id_badania'] = -1;
@@ -35,10 +37,11 @@
 		
 		$_SESSION['id_opcji'] = 101;
 		$_SESSION['id_podopcji'] = 0;
-		$_SESSION['id_badania'] = -1;
+		$_SESSION['id_badania'] = $_GET['wyjscie'];
 		
 		unset($_SESSION['imie_klienta']);
 		unset($_SESSION['nazwisko_klienta']);
+		unset($_SESSION['id_badania_tmp']);
 		
 		jump_to_page('0','Witaj ponownie na panelu admina','','panel_admina');
 	}

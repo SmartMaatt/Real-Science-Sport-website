@@ -221,11 +221,11 @@
 		
 		//Wyświetlenie podglądu dla admina
 		if(isset($_SESSION['id_admina'])){
-			if(isset($_SESSION['imie_klienta']) && isset($_SESSION['nazwisko_klienta'])){
+			if(isset($_SESSION['imie_klienta']) && isset($_SESSION['nazwisko_klienta']) && isset($_SESSION['id_badania_tmp'])){
 				echo '  
 					<div class="admin_powrot">
 						<h3>Przeglądasz jako:</br><b>'.$_SESSION['imie_klienta'].' '.$_SESSION['nazwisko_klienta'].'</b></h3>
-						<a href="rozchodniaczki/admin/podglad_admina.php?wyjscie" class="btn btn-info btn-min-width">Powrót do panelu admina</a>
+						<a href="rozchodniaczki/admin/podglad_admina.php?wyjscie='.$_SESSION['id_badania_tmp'].'" class="btn btn-info btn-min-width">Powrót do panelu admina</a>
 					</div>';
 			}
 		}

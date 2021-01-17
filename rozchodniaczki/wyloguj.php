@@ -27,6 +27,7 @@
 		
 		unset($_SESSION['imie_klienta']);
 		unset($_SESSION['naziwsko_klienta']);
+		unset($_SESSION['id_badania_tmp']);
 		
 		session_destroy();
 	}
