@@ -4,7 +4,7 @@ Order Allow,Deny
 Deny from all
 </FilesMatch>
 
-RewriteEngine on
-RewriteRule StronaGlowna index.php
-#Wersja PHP zmieniona: 2021-01-15 08:36:34
-AddHandler application/x-httpd-php74 php 
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(([A-Za-z0-9\-]+/)*[A-Za-z0-9\-]+)?$ $1.php

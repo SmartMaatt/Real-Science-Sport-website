@@ -1,5 +1,5 @@
-﻿Analizator kwasu mlekowego wykorzystany jest w treningu sportowym do określania stref intensywności wysiłku w oparciu o test stopniowany.
+﻿Analizator kwasu mlekowego służy do łatwego i niezawodnego pomiaru mleczanu (kwasu mlekowego) na podstawie próbek krwi z opuszka palca po ówczesnym odbyciu testu stopniowanego.
 
-Kontrola obciążeń treningowych, których miarą jest stężenie mleczanu we krwi umożliwia precyzyjne sterowanie treningiem i osiągnięcie odpowiedniej formy sportowej we właściwym czasie. 
+Mleczan jest wskaźnikiem stref intensywności wysiłku podczas treningu sportowego, co wykorzystywane jest do kontroli obciążeń treningowych, a dzięki temu do precyzyjnego sterowania nim i osiągnięcia odpowiedniej formy sportowej we właściwym czasie. 
 
-Służy do łatwego i niezawodnego pomiaru mleczanu (kwasu mlekowego) z próbek krwi kapilarnej z opuszka palca. Ma zastosowanie w sporcie i medycynie .
+Samo badania stosowane jest nie tylko w sporcie, ale również medycynie.

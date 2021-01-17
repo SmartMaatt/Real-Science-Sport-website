@@ -1,7 +1,5 @@
-﻿Beep test - służy do sprawdzenia wytrzymałości krążeniowo- oddechowej zawodników. 
+﻿Beep test służy do sprawdzenia wytrzymałości krążeniowo-oddechowej zawodników, poprzez wykonanie kilkustopniowego biegu wahadłowego w odcinkach 20 metrowych. 
 
-Polega na wykonaniu kilkustopniowego biegu wahadłowego w odcinkach 20-metrowych. 
+Test składa się z 21 poziomów, na które przypada od 7 do 16 odcinków. Każdy poziom trwa niewiele ponad 60 sekund, a tempo biegu na każdym kolejnych wzrasta o 0,5 km/h. 
 
-Test składa się z 21 poziomów, na które przypada od 7 do 16 odcinków. Każdy poziom trwa niewiele ponad 60 sekund. Tempo biegu na każdym z kolejnych poziomów nieznacznie wzrasta o 0,5 km/h. 
-
-Na rozpoczęciu testu średnie tempo biegu wynosi 8,5 km/h, a podczas ostatniego poziomu jest już to 18,5 km/h.
+Średnie tempo biegu na pierwszym poziomie wynosi 8,5 km/h, a podczas ostatniego jest już to 18,5 km/h.

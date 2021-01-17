@@ -23,11 +23,15 @@
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-P5CPKEY39Y"></script>
 	<script>
-  	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-  	gtag('js', new Date());
- 	gtag('config', 'G-P5CPKEY39Y');
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-P5CPKEY39Y');
 	</script>
+	
+	<!-- reCAPTCHA V3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6"></script>
+  
 	
 </head>
 
@@ -330,6 +334,7 @@
 								<button type="submit" class="btn center_btn">Wyślij</button>
 							</li>
 						</ul>
+						<input type="hidden" name="token" id="token" required>
 					</form>
 				</div>
 					
@@ -345,12 +350,19 @@
 		<img src="main_page_assets/img/logo_footer.png" alt="SmartMatt - website designer logo"/>
 	</footer>
 	
-
-</div>
 	
 
+</div>
 		<a href="#" class="scrollup"><i class="fas fa-arrow-up"></i></a>
 		<script src="main_page_assets/script.js"></script>
-
 </body>
+
+<!-- reCAPTCHA V3 -->
+   <script>
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6', {action: 'homepage'}).then(function(token) {
+              document.getElementById("token").value = token;
+          });
+        });
+  </script>
 </html>

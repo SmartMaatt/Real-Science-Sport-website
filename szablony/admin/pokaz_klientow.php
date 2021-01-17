@@ -77,34 +77,49 @@
 				$strona = $strona_max;
 			}
 		}
+		else if(isset($_SESSION['id_badania']))
+		{
+			if($_SESSION['id_badania'] != -1)
+			{
+				$strona = $_SESSION['id_badania'];
+			}
+			elseif($strona < 0)
+			{
+				$strona = 0;
+			}
+			elseif($strona >= $strona_max)
+			{
+				$strona = $strona_max;
+			}
+		}
 		else
 		{
 			$strona = 0;
 		}
+		$_SESSION['id_badania'] = $strona;
 		$strona_p = $strona*10;
-		$strona_k = $strona*10+10;
 		if(isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['mail']))
 		{
 			if($imie_post != "" && $nazwisko_post != "" && $mail_post != "")
-				$sql = "SELECT * FROM klient WHERE imie LIKE '%$imie_post%' AND nazwisko LIKE '%$nazwisko_post%' AND mail LIKE '%$mail_post%' LIMIT $strona_p, $strona_k";	
+				$sql = "SELECT * FROM klient WHERE imie LIKE '%$imie_post%' AND nazwisko LIKE '%$nazwisko_post%' AND mail LIKE '%$mail_post%' LIMIT $strona_p, 10";	
 			elseif($imie_post != "" && $nazwisko_post)
-				$sql = "SELECT * FROM klient WHERE imie LIKE '%$imie_post%' AND nazwisko LIKE '%$nazwisko_post%' LIMIT $strona_p, $strona_k";
+				$sql = "SELECT * FROM klient WHERE imie LIKE '%$imie_post%' AND nazwisko LIKE '%$nazwisko_post%' LIMIT $strona_p, 10";
 			elseif($imie_post != "" && $mail_post)
-				$sql = "SELECT * FROM klient WHERE imie LIKE '%$imie_post%' AND mail LIKE '%$mail_post%' LIMIT $strona_p, $strona_k";
+				$sql = "SELECT * FROM klient WHERE imie LIKE '%$imie_post%' AND mail LIKE '%$mail_post%' LIMIT $strona_p, 10";
 			elseif($nazwisko_post != "" && $mail_post != "")
-				$sql = "SELECT * FROM klient WHERE nazwisko LIKE '%$nazwisko_post%' AND mail LIKE '%$mail_post%' LIMIT $strona_p, $strona_k";
+				$sql = "SELECT * FROM klient WHERE nazwisko LIKE '%$nazwisko_post%' AND mail LIKE '%$mail_post%' LIMIT $strona_p, 10";
 			elseif($imie_post != "")
-				$sql = "SELECT * FROM klient WHERE imie LIKE '%$imie_post%' LIMIT $strona_p, $strona_k";
+				$sql = "SELECT * FROM klient WHERE imie LIKE '%$imie_post%' LIMIT $strona_p, 10";
 			elseif($nazwisko_post != "")
-				$sql = "SELECT * FROM klient WHERE nazwisko LIKE '%$nazwisko_post%' LIMIT $strona_p, $strona_k";
+				$sql = "SELECT * FROM klient WHERE nazwisko LIKE '%$nazwisko_post%' LIMIT $strona_p, 10";
 			elseif($mail_post != "")
-				$sql = "SELECT * FROM klient WHERE mail LIKE '%$mail_post%' LIMIT $strona_p, $strona_k";
+				$sql = "SELECT * FROM klient WHERE mail LIKE '%$mail_post%' LIMIT $strona_p, 10";
 			else
-				$sql = "SELECT * FROM klient LIMIT $strona_p, $strona_k";
+				$sql = "SELECT * FROM klient LIMIT $strona_p, 10";
 		}
 		else
 		{
-			$sql = "SELECT * FROM klient LIMIT $strona_p, $strona_k";	
+			$sql = "SELECT * FROM klient LIMIT $strona_p, 10";	
 		}
 		echo'
 			<form class="form" method="POST" action="panel_admina.php">

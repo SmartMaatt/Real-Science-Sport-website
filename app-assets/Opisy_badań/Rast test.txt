@@ -1,3 +1,3 @@
-﻿RAST Test – to test oceniający poziom mocy biegowej i zdolność organizmu zawodnika do powtarzania wysiłków beztlenowych. 
+﻿Rast test pomaga w ocenie poziomu mocy biegowej i zdolność organizmu zawodnika do powtarzania wysiłków beztlenowych. 
 
-Test polega na wykonaniu 7 odcinków biegowych po 30 m każdy, z maksymalną prędkością, pomiędzy którymi jest przerwa 10 sek.
+Test polega na wykonaniu 7 odcinków biegowych po 30 m przy utrzymaniu maksymalnej prędkości. Pomiędzy każdym z nich testowany ma 10 sekund przerwy.

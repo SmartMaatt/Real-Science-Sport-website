@@ -62,9 +62,8 @@
 			$strona = 0;
 		}
 		$strona_p = $strona*10;
-		$strona_k = $strona*10+10;
 
-		$sql = "SELECT * FROM klient WHERE id_klubu LIKE '%$id_klubu%' LIMIT $strona_p, $strona_k";
+		$sql = "SELECT * FROM klient WHERE id_klubu LIKE '%$id_klubu%' LIMIT $strona_p, 10";
 
 		echo'<div class="row">
 				<div class="col-12">

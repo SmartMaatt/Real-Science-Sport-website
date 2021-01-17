@@ -288,6 +288,11 @@ a.settings-link-admin.active{
 	overflow:visible;
 }
 
+.table .thead-rss th {
+  color: white;
+  background-color: #f7ac25;
+  border-color: #f7ac25; 
+}
 
 
 
@@ -339,6 +344,12 @@ div.form-admin .btn-info{
 
 a.szczegoly_klubu{
 	float:right;
+}
+
+.table .thead-admin th {
+  color: #F9FAFD;
+  background-color: #1e9ff2;
+  border-color: #168dee; 
 }
 
 

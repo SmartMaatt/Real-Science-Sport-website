@@ -151,38 +151,39 @@
 				}
 				echo '</table>';
 				echo "<p class='ilosc_stron_klientow'>Strona: ".($strona+1)." / ".($strona_max+1)."</p>";
+				
+				if(isset($_POST['nazwa']))
+				{
+					echo '<form class="admin-form" method="POST" action="panel_admina.php">
+							<input type="hidden" name="nazwa" value="'.$nazwa_post.'" />
+							<input type="hidden" name="strona" value="'.($strona-1).'" />
+							<input value="Poprzednia strona" class="btn btn-info" type="submit" />
+						</form>';
+				
+					echo '<form class="admin-form" method="POST" action="panel_admina.php">
+							<input type="hidden" name="nazwa" value="'.$nazwa_post.'" />
+							<input type="hidden" name="strona" value="'.($strona+1).'" />
+							<input value="Następna strona" class="btn btn-info" type="submit" />
+						</form>';
+				}
+				else
+				{
+					echo '<form class="admin-form" method="POST" action="panel_admina.php">
+							<input type="hidden" name="strona" value="'.($strona-1).'" />
+							<input value="Poprzednia strona" class="btn btn-info" type="submit" />
+						</form>';
+					
+					echo '<form class="admin-form" method="POST" action="panel_admina.php">
+							<input type="hidden" name="strona" value="'.($strona+1).'" />
+							<input value="Następna strona" class="btn btn-info" type="submit" />
+						</form>';
+				}
+						
 			}
 			else {
 				echo '<h1 class="no_data_msg">Brak zarejestrowanych danych klubów!</h1>';
 			}
 			$result->free_result();
-		}
-		
-		if(isset($_POST['nazwa']))
-		{
-			echo '<form class="admin-form" method="POST" action="panel_admina.php">
-					<input type="hidden" name="nazwa" value="'.$nazwa_post.'" />
-					<input type="hidden" name="strona" value="'.($strona-1).'" />
-					<input value="Poprzednia strona" class="btn btn-info" type="submit" />
-				</form>';
-		
-			echo '<form class="admin-form" method="POST" action="panel_admina.php">
-					<input type="hidden" name="nazwa" value="'.$nazwa_post.'" />
-					<input type="hidden" name="strona" value="'.($strona+1).'" />
-					<input value="Następna strona" class="btn btn-info" type="submit" />
-				</form>';
-		}
-		else
-		{
-			echo '<form class="admin-form" method="POST" action="panel_admina.php">
-					<input type="hidden" name="strona" value="'.($strona-1).'" />
-					<input value="Poprzednia strona" class="btn btn-info" type="submit" />
-				</form>';
-			
-			echo '<form class="admin-form" method="POST" action="panel_admina.php">
-					<input type="hidden" name="strona" value="'.($strona+1).'" />
-					<input value="Następna strona" class="btn btn-info" type="submit" />
-				</form>';
 		}
 		$connection->close();
 	}

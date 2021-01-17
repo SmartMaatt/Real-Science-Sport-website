@@ -85,6 +85,8 @@
   <!-- TOASTR PLUGIN -->
   <link rel="stylesheet" type="text/css" href="app-assets/ModernAdminCss/plugins/toastr.css">
   
+  <!-- reCAPTCHA V3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6"></script>
   
 </head>
 <body class="vertical-layout vertical-menu-modern 1-column  bgRegistration menu-expanded blank-page blank-page"
@@ -176,6 +178,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
                           <i class="la la-key"></i>
                         </div>
                       </fieldset>
+					  <input type="hidden" name="token" id="token" required>
                       
 					  <hr>
                       <button type="submit" class="btn btn-rss"><i class="ft-plus-square"></i> Rejestracja</button>
@@ -222,5 +225,15 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
   <script src="app-assets/ownJs.js" type="text/javascript"></script>
   <script src="app-assets/registerValidation.js" type="text/javascript"></script>
   <script src="https://kit.fontawesome.com/9b863fbae2.js"></script>
+  
 </body>
+
+<!-- reCAPTCHA V3 -->
+   <script>
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6', {action: 'homepage'}).then(function(token) {
+              document.getElementById("token").value = token;
+          });
+        });
+  </script>
 </html>

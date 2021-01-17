@@ -1,5 +1,3 @@
-﻿Analizator składu ciała umożliwia pomiar wszystkich najważniejszych komponentów, między innymi: 
+﻿Analizator składu ciała umożliwia pomiar wszystkich najważniejszych komponentów takich jak tkanka tłuszczowa, masa mięśniowa, zawartość wody w organizmie, ale również wiele innych.
 
-Tkanka tłuszczowa, masa mięśniowa, zawartość wody w organizmie oraz innych. 
-
-Jest to najbardziej zaawansowana technologia monitorowania stanu zdrowia przeznaczona dla segmentu fitness, entuzjastów sportu i zdrowego trybu życia.
+Jest to najbardziej zaawansowana technologia monitorowania stanu zdrowia przeznaczona dla segmentu fitness oraz entuzjastów sportu i zdrowego trybu życia.

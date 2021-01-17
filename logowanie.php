@@ -50,6 +50,9 @@
   <!-- TOASTR PLUGIN -->
   <link rel="stylesheet" type="text/css" href="app-assets/ModernAdminCss/plugins/toastr.css">
   
+   <!-- reCAPTCHA V3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6"></script>
+  
 </head>
 
 
@@ -100,6 +103,7 @@
                           <i class="la la-key"></i>
                         </div>
                       </fieldset>
+					  <input type="hidden" name="token" id="token" required>
                       <div class="form-group row">
 							<div class="col-6 text-center text-md-left">
                           <fieldset>
@@ -107,7 +111,6 @@
                             <label for="Zapamiętaj mnie"> Zapamiętaj mnie</label>
                           </fieldset>
                         </div> 
-						
                         <div class="col-6 text-center text-md-right"><a href="reset_hasla.php" class="card-link">Zapomniałeś hasła?</a></div>
                       </div>
 					  
@@ -148,6 +151,15 @@
   
   <!-- WŁASNE SKRYPTY JS-->
   <script src="app-assets/ownJs.js" type="text/javascript"></script>
+  
+  <!-- reCAPTCHA V3 -->
+   <script>
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6', {action: 'homepage'}).then(function(token) {
+              document.getElementById("token").value = token;
+          });
+        });
+  </script>
 
 </body>
 </html>

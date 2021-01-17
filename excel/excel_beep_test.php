@@ -7,12 +7,11 @@ if(isset($_SESSION['excel_plik']))
 	$excel_plik = $_SESSION['excel_plik'];
 	unset($_SESSION['excel_plik']);
 
-	$connect = mysqli_connect("localhost", "root", "", "rss");
+	require_once '../rozchodniaczki/connect.php';
+	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
+	$connect = mysqli_connect($host, $db_user, $db_password, $db_name);
 
 	include ("../Classes/PHPExcel/IOFactory.php");
-	require_once '../rozchodniaczki/connect.php';
-
-	$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 
 	if ($connection->connect_errno == 0)
 	{
@@ -84,6 +83,7 @@ if(isset($_SESSION['excel_plik']))
 		echo '</br>Nie udało się usunąć excel/'.$excel_plik.'!';
 	}
 	echo '</br></br><h1><a href="../panel_admina.php"><= Powrót</a></h1>';
+	header('Location: ../panel_admina.php');
 
 }
 else

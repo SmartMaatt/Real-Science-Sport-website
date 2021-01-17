@@ -51,7 +51,8 @@
  ?>
 
 
-
+ <!-- reCAPTCHA V3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6"></script>
 
 <section id="user-profile-cards" class="row mt-2">
           <div class="col-10 col-md-6">
@@ -103,7 +104,7 @@
 							<div class="form-body">
 								<div class="form-group">
 								  <label for="issueinput1">Wprowadź nową wagę [kg]</label></br>
-								  <input type="number" name="waga" max="170" pattern="[0-9.]+" required />
+								  <input type="number" name="waga" pattern="[0-9.]+" required />
 								</div>								
 							</div>
 						  </form>
@@ -125,7 +126,7 @@
 							<div class="form-body">
 								<div class="form-group">
 								  <label for="issueinput2">Wprowadź nowy wzrost [cm]</label></br>
-								  <input type="number" name="wzrost" max="210" pattern="[0-9.]+" required />
+								  <input type="number" name="wzrost" pattern="[0-9.]+" required />
 								</div>
 							</div>
 						  </form>
@@ -178,6 +179,7 @@
 								  <label for="issueinput3">Wprowadź nowe hasło</label></br>
 								  <input type="password" name="nowe_haslo2" required />
 								</div>
+								<input type="hidden" name="token" id="token" required>
 								<button type="submit" class="btn btn-rss">Zmień hasło</button>
 							</div>
 						  </form>
@@ -192,3 +194,11 @@
               </div>
             </div>
 	</section>
+	<!-- reCAPTCHA V3 -->
+   <script>
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6', {action: 'homepage'}).then(function(token) {
+              document.getElementById("token").value = token;
+          });
+        });
+  </script>

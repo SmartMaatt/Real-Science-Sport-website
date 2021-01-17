@@ -51,6 +51,8 @@
   <!-- WŁASNE STYLE CSS -->
   <link rel="stylesheet" type="text/css" href="app-assets/ownCss.css">
   
+   <!-- reCAPTCHA V3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6"></script>
   
 </head>
 <body class="vertical-layout vertical-menu-modern 1-column  bgResetPass menu-expanded blank-page blank-page"
@@ -102,6 +104,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
                           <i class="ft-mail"></i>
                         </div>
                       </fieldset>
+					  <input type="hidden" name="token" id="token" required>
                       
 					  <hr>
                       <button type="submit" class="btn btn-lg btn-block btn-warning"><i class="ft-download-cloud"></i> Resetuj</button>
@@ -138,5 +141,13 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
   <!-- WŁASNE SKRYPTY JS-->
   <script src="app-assets/ownJs.js" type="text/javascript"></script>
   
+  <!-- reCAPTCHA V3 -->
+   <script>
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6', {action: 'homepage'}).then(function(token) {
+              document.getElementById("token").value = token;
+          });
+        });
+  </script>
 </body>
 </html>

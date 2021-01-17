@@ -1,1 +1,3 @@
-﻿Opto jump- głównie wykorzystywany w teście CMJ (countermovement jump ) jako test mocy kończyn dolnych, polegający na skoku w górę z miejsca poprzedzonym szybkim ugięciem nóg i zamachem.
+﻿Opto jump test jest głównie wykorzystywany w teście CMJ (countermovement jump) jako wyznacznik mocy kończyn dolnych.
+
+Sam test opiera się na skoku w górę z miejsca, który poprzedzony jest szybkim ugięciem nóg wraz z jednoczesnym zamachem kończyn górnych.

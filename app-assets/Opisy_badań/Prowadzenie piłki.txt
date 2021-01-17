@@ -1,2 +1,3 @@
-﻿Prowadzenie piłki – test techniki użytkowej w piłce nożnej polegający na mierzeniu prędkości przemieszczania się zawodnika w prowadzeniu piłki. 
-Często porównywany jest z biegiem bez piłki.
+﻿Ten ten ma na celu zbadanie techniki użytkowej zawodnika w piłce nożnej za pomocą pomiaru jego prędkości przemieszczania się podczas prowadzenia piłki. 
+
+Bardzo często prównywany jest do biegu bez piłki.

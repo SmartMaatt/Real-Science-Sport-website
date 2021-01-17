@@ -59,7 +59,7 @@
 		<div class="card" >
 			<div class="card-header">
 			  <h2 class="card-title" id="basic-layout-tooltip">Informacje o badaniu: <?php echo $nazwa_badania;?></h2>
-			   <div class="card-text">
+			   <div class="card-text text-justify">
 					<p>
 					
 						<?php

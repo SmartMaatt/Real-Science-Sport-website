@@ -5,6 +5,8 @@
 	}
 ?>
 
+<!-- reCAPTCHA V3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6"></script>
 
 <div class="row">
             <div class="col-lg-8 col-12">
@@ -63,12 +65,23 @@
                           <textarea id="issueinput8" rows="8" class="form-control" name="tresc_maila" placeholder="Treść maila" style="margin-top: 0px; margin-bottom: 0px; height: 185px;" required></textarea>
                         </div>
                       </div>
+					  <input type="hidden" name="token" id="token" required>
                       <div class="form-actions">
                         
                         <button type="submit" class="btn btn-success">Wyślij</button>
 						<button type="reset" class="btn btn-warning mr-1">Wyczyść</button>
                       </div>
                     </form>
+					
+					<!-- reCAPTCHA V3 -->
+				   <script>
+						grecaptcha.ready(function() {
+						  grecaptcha.execute('6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6', {action: 'homepage'}).then(function(token) {
+							  document.getElementById("token").value = token;
+						  });
+						});
+				  </script>
+					
                   </div>
                 </div>
               </div>
