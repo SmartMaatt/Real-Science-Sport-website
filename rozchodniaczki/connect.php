@@ -1,6 +1,6 @@
 <?php
-	$host = "localhost";
-	$db_user = "root";
-	$db_password = "";
-	$db_name = "rss";
+	$host = "mysqlhost";
+	$db_user = "smartmat_devision303";
+	$db_password = "dupadupa1";
+	$db_name = "smartmat_rss";
 ?>

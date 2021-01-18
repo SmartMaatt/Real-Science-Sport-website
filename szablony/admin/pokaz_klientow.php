@@ -87,7 +87,7 @@
 			{
 				$strona = $_SESSION['id_badania'];
 			}
-			elseif($strona < 0)
+			if($strona < 0)
 			{
 				$strona = 0;
 			}

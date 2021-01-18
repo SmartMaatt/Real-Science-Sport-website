@@ -2,6 +2,28 @@
 
 session_start();
 
+//Style "konsoli"
+echo '<link rel="stylesheet" href="../app-assets/console.css">';
+echo '<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;600&display=swap" rel="stylesheet">';
+
+echo '<script>
+
+document.addEventListener(\'DOMContentLoaded\', function() {
+    setInterval(zmienKolorKreski, 500);
+}, false);
+
+
+function zmienKolorKreski() {
+  var elem = document.getElementById("kryska");
+  if (elem.style.opacity == \'0\') {
+    elem.style.opacity = \'100\';
+  } else {
+    elem.style.opacity = \'0\';
+  }
+}
+</script>';
+
 if(isset($_SESSION['excel_plik']))
 {
 	$excel_plik = $_SESSION['excel_plik'];
@@ -12,9 +34,12 @@ if(isset($_SESSION['excel_plik']))
 	$connect = mysqli_connect($host, $db_user, $db_password, $db_name);
 
 	include ("../Classes/PHPExcel/IOFactory.php");
+	echo '<p class="orange">Rss console</p>';
 	
 	if ($connection->connect_errno == 0)
 	{
+		echo 'Plik excel/'.$excel_plik.' odebrany pomyslnie!</br></br>';
+		echo '<p style="color:red;">Bledy przeslanego pliku:</p>';
 		echo("<table border='1'>");
 		$objPHPExcel = PHPExcel_IOFactory::load($excel_plik);
 		foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
@@ -79,7 +104,7 @@ if(isset($_SESSION['excel_plik']))
 			}
 		}
 		echo("</table>");
-		echo '<br />Data Inserted';
+		echo '<br/>------------------------------------------------------------------------</br>Dane wprowadzone do bazy</br>';	
 	}
 	
 	//Usuwanie pliku
@@ -89,8 +114,9 @@ if(isset($_SESSION['excel_plik']))
 	else{
 		echo '</br>Nie udało się usunąć excel/'.$excel_plik.'!';
 	}
-	echo '</br></br><h1><a href="../panel_admina.php"><= Powrót</a></h1>';
-	header('Location: ../panel_admina.php');
+	echo '<p id="kryska">|</p>';
+	echo '<a class="ret" href="../panel_admina.php"><= Powrot</a>';
+	//header('Location: ../panel_admina.php');
 
 }
 else

@@ -1,0 +1,19 @@
+body{
+	background: black;
+	color:white;
+	font-family: 'Inconsolata', monospace;
+	padding:2%;
+}
+
+a, .orange{
+	color:orange;
+	text-decoration:none;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+.cont *{
+	float:left;
+}
