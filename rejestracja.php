@@ -115,7 +115,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
 				  <!--FORMULARZ REJESTACJI TUTAJ -->
 				  
 				  
-                    <form class="form-horizontal" action="rozchodniaczki/rejestruj.php" method="post">
+                    <form id="registerForm" class="form-horizontal" action="rozchodniaczki/rejestruj.php" method="post">
 					
 					<label>Imie</label>
                       <fieldset class="form-group register-field position-relative has-icon-left">
@@ -230,10 +230,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
 
 <!-- reCAPTCHA V3 -->
    <script>
+   $('#registerForm').submit( function(){
+	    event.preventDefault();
         grecaptcha.ready(function() {
           grecaptcha.execute('6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6', {action: 'homepage'}).then(function(token) {
               document.getElementById("token").value = token;
+			  document.getElementById("registerForm").submit();
           });
         });
+   });
   </script>
 </html>

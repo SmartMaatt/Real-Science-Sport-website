@@ -52,6 +52,7 @@
 					if($res_recaptcha['success'] == false) {
 						echo '<h1 class="animated fadeInUp" >Nie jesteś człowiekiem</h1>';
 						echo '<a href="../index.php" class="btn center_btn home_screan animated fadeInRight" style="margin:30px auto;">Powrót</a>';
+						echo $token_recaptcha;
 						exit(0);
 					}
 					////////////////////////

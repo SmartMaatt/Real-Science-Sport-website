@@ -41,7 +41,7 @@
 	}
 	
 	//Czy zostały podane parametry GET
-	if(isset($_GET['imie']) && isset($_GET['nazwisko']) && isset($_GET['mail']) && isset($_GET['token'])){
+	if(isset($_GET['imie']) && isset($_GET['nazwisko']) && isset($_GET['mail'])){
 		
 		//Odczyt parametrów
 		$imie = htmlentities($_GET['imie']);
@@ -49,33 +49,35 @@
 		$mail = htmlentities($_GET['mail']);
 		$token_recaptcha = $_GET['token'];
 
-		
-		//RECAPTCHA
-		$url_recaptcha = "https://www.google.com/recaptcha/api/siteverify";
-		$data_recaptcha = [
-			'secret' => "6LePmDAaAAAAABS8AtvLqF7YMYVzUtD_dbArn8tN",
-			'response' => $token_recaptcha,
-			// 'remoteip' => $_SERVER['REMOTE_ADDR']
-		];
+		if(!isset($_GET['mailAccept'])){
+			//RECAPTCHA
+			$url_recaptcha = "https://www.google.com/recaptcha/api/siteverify";
+			$data_recaptcha = [
+				'secret' => "6LePmDAaAAAAABS8AtvLqF7YMYVzUtD_dbArn8tN",
+				'response' => $token_recaptcha,
+				// 'remoteip' => $_SERVER['REMOTE_ADDR']
+			];
 
-		$options_recaptcha = array(
-		    'http' => array(
-		      'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-		      'method'  => 'POST',
-		      'content' => http_build_query($data_recaptcha)
-		    )
-		  );
+			$options_recaptcha = array(
+				'http' => array(
+				  'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+				  'method'  => 'POST',
+				  'content' => http_build_query($data_recaptcha)
+				)
+			  );
 
-		$context_recaptcha  = stream_context_create($options_recaptcha);
-  		$response_recaptcha = file_get_contents($url_recaptcha, false, $context_recaptcha);
+			$context_recaptcha  = stream_context_create($options_recaptcha);
+			$response_recaptcha = file_get_contents($url_recaptcha, false, $context_recaptcha);
 
-		$res_recaptcha = json_decode($response_recaptcha, true);
-		
-		if($res_recaptcha['success'] == false) {
-			jump_to_page('2','Nie jesteś człowiekiem!', 'Zabezpieczenie reCaptcha');
+			$res_recaptcha = json_decode($response_recaptcha, true);
+			
+			if($res_recaptcha['success'] == false) {
+				jump_to_page('2','Nie jesteś człowiekiem!', 'Zabezpieczenie reCaptcha');
+				echo $_GET['mailAccept'].'</br>';
+				echo $token_recaptcha;
+			}
+			////////////////////////
 		}
-		////////////////////////
-		
 		
 		//Połączenie z bazą danych
 		require_once 'connect.php';

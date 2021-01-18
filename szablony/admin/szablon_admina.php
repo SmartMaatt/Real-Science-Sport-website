@@ -122,7 +122,7 @@
           <span class="side_menu_divider" data-i18n="nav.category.ui">Zarządzaj klientami</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Zarządzaj klientami"></i>
         </li>
 		<li class="nav-item <?php echo activateMenu(101,0); ?>">
-			<a href="rozchodniaczki/id_opcji.php?o=101&p=0&b=-1">
+			<a href="rozchodniaczki/id_opcji.php?o=101&p=0&b=0">
 				<i class="ft-user"></i>
 				<span class="menu-title" data-i18n="nav.rickshaw_charts.main">Klienci</span>
 			</a>

@@ -75,11 +75,15 @@
 					
 					<!-- reCAPTCHA V3 -->
 				   <script>
+				   $('#panel_kontakt').submit(function() {
+						event.preventDefault();
 						grecaptcha.ready(function() {
 						  grecaptcha.execute('6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6', {action: 'homepage'}).then(function(token) {
 							  document.getElementById("token").value = token;
+							  document.getElementById("panel_kontakt").submit();
 						  });
 						});
+					});
 				  </script>
 					
                   </div>

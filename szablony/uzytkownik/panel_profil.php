@@ -165,7 +165,8 @@
 				  
                   <div class="tab-content px-1 pt-1">
                     <div role="tabpanel" class="tab-pane active" id="activeIcon">
-					   <form class="form" method="post" action="rozchodniaczki/zmien_haslo.php">
+					
+					   <form id="zmianaHaslaForm" class="form" method="post" action="rozchodniaczki/zmien_haslo.php">
 							<div class="form-body">
 								<div class="form-group">
 								  <label for="issueinput1">Stare hasło</label></br>
@@ -194,11 +195,16 @@
               </div>
             </div>
 	</section>
+	
 	<!-- reCAPTCHA V3 -->
    <script>
+    $('#zmianaHaslaForm').submit(function() {
+	   event.preventDefault();
         grecaptcha.ready(function() {
           grecaptcha.execute('6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6', {action: 'homepage'}).then(function(token) {
               document.getElementById("token").value = token;
+			  document.getElementById("zmianaHaslaForm").submit();
           });
         });
+	 });
   </script>

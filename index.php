@@ -357,12 +357,19 @@
 		<script src="main_page_assets/script.js"></script>
 </body>
 
+<!-- BEGIN VENDOR JS-->
+  <script src="app-assets/ModernAdminJs/vendors.min.js" type="text/javascript"></script>
+
 <!-- reCAPTCHA V3 -->
    <script>
+   $('#formularzKontaktowy').submit(function() {
+	   event.preventDefault();
         grecaptcha.ready(function() {
           grecaptcha.execute('6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6', {action: 'homepage'}).then(function(token) {
               document.getElementById("token").value = token;
+			  document.getElementById("formularzKontaktowy").submit();
           });
         });
+	});
   </script>
 </html>

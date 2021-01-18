@@ -198,6 +198,9 @@
   
   <!-- CHART.JS -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
+  
+  <!-- BEGIN VENDOR JS-->
+  <script src="app-assets/ModernAdminJs/vendors.min.js" type="text/javascript"></script>
    
 </head>
 
@@ -259,9 +262,6 @@
 			}
 		?>;
 	</script>
-  
-	<!-- BEGIN VENDOR JS-->
-	<script src="app-assets/ModernAdminJs/vendors.min.js" type="text/javascript"></script>
 	  
 	<!-- BEGIN PAGE VENDOR JS-->
 	<script src="app-assets/ModernAdminJs/moment.min.js" type="text/javascript"></script>

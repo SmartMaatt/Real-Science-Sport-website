@@ -54,6 +54,8 @@
 			$sql = "SELECT COUNT(id_klienta) as ile FROM klient";
 		}
 		
+		
+		
 		$result = @$connection->query($sql);
 		if($result)
 		{
@@ -64,6 +66,8 @@
 				$strona_max --;
 			}
 		}
+		
+		
 		
 		if(isset($_POST['strona']))
 		{
@@ -96,6 +100,9 @@
 		{
 			$strona = 0;
 		}
+		
+		
+		
 		$_SESSION['id_badania'] = $strona;
 		$strona_p = $strona*10;
 		if(isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['mail']))
@@ -121,6 +128,9 @@
 		{
 			$sql = "SELECT * FROM klient LIMIT $strona_p, 10";	
 		}
+		
+		
+		
 		echo'
 			<form class="form" method="POST" action="panel_admina.php">
 				<div class="form-body form-admin">

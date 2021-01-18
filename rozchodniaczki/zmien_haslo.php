@@ -44,7 +44,7 @@
 		$res_recaptcha = json_decode($response_recaptcha, true);
 		
 		if($res_recaptcha['success'] == false) {
-			jump_to_page('2','Nie jesteś człowiekiem!', 'Zabezpieczenie reCaptcha');
+			jump_to_page('panel.php','2','Nie jesteś człowiekiem!', 'Zabezpieczenie reCaptcha');
 		}
 		////////////////////////
 		

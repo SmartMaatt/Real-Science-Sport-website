@@ -88,7 +88,7 @@
                   <div class="card-body">
 				  
 					<!-- FORMULARZ LOGOWANIE-->
-                    <form class="form-horizontal form-simple" action="rozchodniaczki/loguj.php" method ="post">
+                    <form id="loginForm" class="form-horizontal form-simple" action="rozchodniaczki/loguj.php" method ="post">
                       <fieldset class="form-group position-relative has-icon-left">
 					  
                         <input type="email" class="form-control form-control-lg input-lg" id="user-name" placeholder="Wprowadź mail" name="mail" required>
@@ -154,11 +154,15 @@
   
   <!-- reCAPTCHA V3 -->
    <script>
-        grecaptcha.ready(function() {
-          grecaptcha.execute('6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6', {action: 'homepage'}).then(function(token) {
-              document.getElementById("token").value = token;
-          });
-        });
+   $('#loginForm').submit(function() {
+	   event.preventDefault();
+			grecaptcha.ready(function() {
+			  grecaptcha.execute('6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6', {action: 'login'}).then(function(token) {
+				  document.getElementById("token").value = token;
+				  document.getElementById("loginForm").submit();
+			  });
+			});	
+   });
   </script>
 
 </body>

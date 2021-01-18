@@ -85,7 +85,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
 				  <!--FORMULARZ RESETU TUTAJ TUTAJ -->
 				  
 				  
-                    <form class="form-horizontal" action="rozchodniaczki/resetuj_haslo.php" method="get">
+                    <form id="resetForm" class="form-horizontal" action="rozchodniaczki/resetuj_haslo.php" method="get">
                       <fieldset class="form-group position-relative has-icon-left">
                         <input type="text" class="form-control" id="user-name" placeholder="Imie" name='imie' required>
                         <div class="form-control-position">
@@ -93,7 +93,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
                         </div>
                       </fieldset>
 					  <fieldset class="form-group position-relative has-icon-left">
-                        <input type="text" class="form-control" id="user-name" placeholder="Nazwisko" name='nazwisko' required>
+                        <input type="text" class="form-control" id="user-surname" placeholder="Nazwisko" name='nazwisko' required>
                         <div class="form-control-position">
                           <i class="ft-user"></i>
                         </div>
@@ -143,11 +143,15 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column" <?php ech
   
   <!-- reCAPTCHA V3 -->
    <script>
+     $('#resetForm').submit(function() {
+	   event.preventDefault();
         grecaptcha.ready(function() {
           grecaptcha.execute('6LePmDAaAAAAANPG5K6X_E7geNF1lALQ3oBnCJj6', {action: 'homepage'}).then(function(token) {
               document.getElementById("token").value = token;
+			  document.getElementById("resetForm").submit();
           });
         });
+	});
   </script>
 </body>
 </html>

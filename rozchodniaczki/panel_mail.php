@@ -36,7 +36,9 @@
 			$res_recaptcha = json_decode($response_recaptcha, true);
 			
 			if($res_recaptcha['success'] == false) {
-				jump_to_page('2','Nie jesteś człowiekiem!', 'Zabezpieczenie reCaptcha');
+				header('Location: ../panel.php');
+				$_SESSION['error'] = 'loadToast(\'2\',\'Nie jesteś człowiekiem!\',\'Zabezpieczenie reCaptcha!\')';
+				exit(0);
 			}
 			////////////////////////
 			
