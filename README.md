@@ -55,28 +55,28 @@ The application implements standard security measures for data protection. Howev
 
 ## Screenshots
 <figure>
-  <img src="https://smartmatt.pl/github/real-science-sport-website/rss-presentation.png" title=">Web application presentation." width=75%>
-  <figcaption>Presentation of a web application.</figcaption>
+	<figcaption>Presentation of a web application.</figcaption>
+	<img src="https://smartmatt.pl/github/real-science-sport-website/rss-presentation.png" title=">Web application presentation." width=75%>
 </figure>
 
 <figure>
-  <img src="https://smartmatt.pl/github/real-science-sport-website/rss-registration.png" title="New user registration panel" width=75%>
-  <figcaption>New user registration panel.</figcaption>
+	<figcaption>New user registration panel.</figcaption>
+	<img src="https://smartmatt.pl/github/real-science-sport-website/rss-registration.png" title="New user registration panel" width=75%>
 </figure>
 
 <figure>
-  <img src="https://smartmatt.pl/github/real-science-sport-website/rss-user-panel.png" title="Main customer panel" width=75%>
-  <figcaption>Main customer panel.</figcaption>
+	<figcaption>Main customer panel.</figcaption>
+	<img src="https://smartmatt.pl/github/real-science-sport-website/rss-user-panel.png" title="Main customer panel" width=75%>
 </figure>
 
 <figure>
-  <img src="https://smartmatt.pl/github/real-science-sport-website/rss-charts.png" title="Charts presenting  the results of a specific test by the user." width=75%>
-  <figcaption>Charts presenting  the results of a specific test by the user..</figcaption>
+	<figcaption>Charts presenting  the results of a specific test by the user..</figcaption>
+	<img src="https://smartmatt.pl/github/real-science-sport-website/rss-charts.png" title="Charts presenting  the results of a specific test by the user." width=75%>
 </figure>
 
 <figure>
-  <img src="https://smartmatt.pl/github/real-science-sport-website/rss-admin-panel.png" title="Admin panel when assigning the club to the appropriate user" width=75%>
-  <figcaption>Admin panel when assigning the club to the appropriate user.</figcaption>
+	<figcaption>Admin panel when assigning the club to the appropriate user.</figcaption>
+	<img src="https://smartmatt.pl/github/real-science-sport-website/rss-admin-panel.png" title="Admin panel when assigning the club to the appropriate user" width=75%>
 </figure>
 
 <a href="https://smartmatt.pl/portfolio#54">More screenshots here!</a>
