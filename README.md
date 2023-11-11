@@ -1,7 +1,5 @@
 <h1 align="center">
-	<a href="https://smartmatt.pl/portfolio#54">
-   		<img src="https://smartmatt.pl/github/real-science-sport-website/rss-logo.png" width="50%" title="Real Science Sport logo"/><br>
-    </a>
+    <a href="https://smartmatt.pl/portfolio#54"><img src="https://smartmatt.pl/github/real-science-sport-website/rss-logo.png" width="50%" title="Real Science Sport logo"/></a>
 </h1>
 
 <p align="center">
