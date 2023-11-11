@@ -54,30 +54,20 @@ This repository contains the code for a comprehensive web application designed f
 The application implements standard security measures for data protection. However, regular updates and security checks are recommended to maintain the integrity of user data.
 
 ## Screenshots
-<figure>
-	<figcaption>Presentation of a web application.</figcaption>
-	<img src="https://smartmatt.pl/github/real-science-sport-website/rss-presentation.png" title=">Web application presentation." width=75%>
-</figure>
+![Web application presentation](https://smartmatt.pl/github/real-science-sport-website/rss-presentation.png)
+*Presentation of a web application.*
 
-<figure>
-	<figcaption>New user registration panel.</figcaption>
-	<img src="https://smartmatt.pl/github/real-science-sport-website/rss-registration.png" title="New user registration panel" width=75%>
-</figure>
+![New user registration panel](https://smartmatt.pl/github/real-science-sport-website/rss-registration.png)
+*New user registration panel.*
 
-<figure>
-	<figcaption>Main customer panel.</figcaption>
-	<img src="https://smartmatt.pl/github/real-science-sport-website/rss-user-panel.png" title="Main customer panel" width=75%>
-</figure>
+![Main customer panel](https://smartmatt.pl/github/real-science-sport-website/rss-user-panel.png)
+*Main customer panel.*
 
-<figure>
-	<figcaption>Charts presenting  the results of a specific test by the user..</figcaption>
-	<img src="https://smartmatt.pl/github/real-science-sport-website/rss-charts.png" title="Charts presenting  the results of a specific test by the user." width=75%>
-</figure>
+![Charts presenting the results of a specific test by the user](https://smartmatt.pl/github/real-science-sport-website/rss-charts.png)
+*Charts presenting the results of a specific test by the user.*
 
-<figure>
-	<figcaption>Admin panel when assigning the club to the appropriate user.</figcaption>
-	<img src="https://smartmatt.pl/github/real-science-sport-website/rss-admin-panel.png" title="Admin panel when assigning the club to the appropriate user" width=75%>
-</figure>
+![Admin panel when assigning the club to the appropriate user](https://smartmatt.pl/github/real-science-sport-website/rss-admin-panel.png)
+*Admin panel when assigning the club to the appropriate user.*
 
 <a href="https://smartmatt.pl/portfolio#54">More screenshots here!</a>
 
